@@ -1,0 +1,9 @@
+.god-container {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-areas: 'top-container right-container'
+        'left-container right-container';
+    background: rgb(0 0 0 / 95%);
+    color: white;
+}

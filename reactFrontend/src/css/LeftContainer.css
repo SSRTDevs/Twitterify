@@ -1,0 +1,8 @@
+.left-container {
+    height: 85vh;
+    width: 60vw;
+    border: 1px solid rgb(255, 236, 239);
+    grid-area: left-container;
+    text-align: center;
+    padding-top: 2rem;
+}
