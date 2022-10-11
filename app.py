@@ -40,25 +40,31 @@ def get_trending_topics_volume(trends):
     trending_topics_volume = sorted(trending_topics_volume, reverse=True)
     return trending_topics_volume
 
-def trending_tweets(api, client, location):
+def trending_tweets(api, client, location, tweet_count, topic_count):
     geolocator = Nominatim(user_agent="GetLoc")
     getLoc = geolocator.geocode(location)
 
     latitude = getLoc.latitude
     longitude = getLoc.longitude
 
-    count = 2
+    result = {}
+
 
     for locations in api.closest_trends(latitude, longitude):
         for trends in api.get_place_trends(locations['woeid']):
-            trending_topics_volume = get_trending_topics_volume(trends)[:count]
+            trending_topics_volume = get_trending_topics_volume(trends)[:topic_count]
 
             for trend in trending_topics_volume:
                 q = trend[1]
+                result[q] = []
+                
                 print("Topic : " + q)
-                for tweet in api.search_tweets(q=q,count=count):
+                for tweet in api.search_tweets(q=q,count=tweet_count):
                     print(tweet._json['text'])
+                    result[q].append(tweet._json['text'])
+    
+    print(result)
+    
+    return result
 
-
-trending_tweets(api, client, "Mumbai")
-
+trending_tweets(api, client, "Mumbai", 2, 2)
