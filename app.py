@@ -67,4 +67,20 @@ def trending_tweets(api, client, location, tweet_count, topic_count):
     
     return result
 
-trending_tweets(api, client, "Mumbai", 2, 2)
+def user_summary(client, api, username, tweet_count):
+    user_id = client.get_user(username=username).data.id
+    tweets = api.user_timeline(user_id = user_id, count=tweet_count)
+    tweet_list = [tweet._json["text"] for tweet in tweets]
+    for tweet in tweets:
+        description = tweet._json["user"]["description"]
+        profile_image = tweet.user.profile_image_url_https
+        break
+    print(tweet_list, description, profile_image)
+    return tweet_list, description, profile_image
+        
+    
+
+
+
+#trending_tweets(api, client, "Mumbai", 2, 2)
+user_summary(client, api, "_SaketThota", 5)
