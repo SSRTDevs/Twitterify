@@ -1,18 +1,25 @@
 import tweepy
 import configparser
 from geopy.geocoders import Nominatim
-from transformers import pipeline
+from transformers import AutoModelForSequenceClassification, pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 
 
 summ_tokenizer = AutoTokenizer.from_pretrained("/Users/shashwat/python_projects/twitter_2/tokenzier/")
 summ_model = AutoModelForSeq2SeqLM.from_pretrained("/Users/shashwat/python_projects/twitter_2/model/")
+
+
+sen_tokenizer = AutoTokenizer.from_pretrained("/Users/shashwat/python_projects/twitter_2/tokenizer_sen/")
+
+sen_model = AutoModelForSequenceClassification.from_pretrained("/Users/shashwat/python_projects/twitter_2/model_sen/")
+
 config = configparser.ConfigParser()
 config.read('config.ini')
 
 #Loading models
 summarizer = pipeline("summarization", model = summ_model, tokenizer = summ_tokenizer)
+sentiment = pipeline("sentiment-analysis", model = sen_model, tokenizer = sen_tokenizer)
 
 
 # Api
@@ -45,6 +52,17 @@ def tweet_summarizer(tweets, summarizer):
     res = summarizer(tweets_joined)
     return res[0]["summary_text"]
 
+def tweet_analyser(tweets,sentiment):
+    res = sentiment(tweets)
+    pos, neg, neu = 0,0,0
+    for item in res:
+        if item["label"] == "POS":
+            pos += 1
+        elif item["label"] == "NEG":
+            neg += 1
+        else:
+            neu += 1
+    return {"pos":pos, "neg": neg, "neu":neu}
 
 
 def get_trending_topics_volume(trends):
@@ -66,25 +84,28 @@ def trending_tweets(api, client, location, tweet_count, topic_count, summarizer)
 
     result = {}
     summary_result = {}
-
+    analysis_result = {}
     for locations in api.closest_trends(latitude, longitude):
         for trends in api.get_place_trends(locations['woeid']):
             trending_topics_volume = get_trending_topics_volume(trends)[:topic_count]
 
             for trend in trending_topics_volume:
                 q = trend[1]
-                result[q] = []
-                
                 #print("Topic : " + q)
+                result[q] = []
+                summary_result[q] = None
+                analysis_result[q] = None
                 for tweet in api.search_tweets(q=q,count=tweet_count):
                     #print(tweet._json['text'])
                     result[q].append(tweet._json['text'])
                 summary_result[q] = tweet_summarizer(result[q], summarizer)
+                analysis_result[q] = tweet_analyser(result[q], sentiment)
+
 
     
     #print(result)
     
-    return summary_result
+    return summary_result, analysis_result
 
 def user_summary(client, api, username, tweet_count):
     user_id = client.get_user(username=username).data.id
@@ -101,8 +122,9 @@ def user_summary(client, api, username, tweet_count):
 
 
 
-res = trending_tweets(api, client, "Mumbai", 10, 1, summarizer)
+sum_res, ana_res = trending_tweets(api, client, "Mumbai", 10, 1, summarizer)
 #user_summary(client, api, "_SaketThota", 5)
 # tweets = ["I am a boy", "Boy is playing cricket","'#SantRampalJiMaharaj_App\n\nDownload from Playstore  कौन है दुनियां का मुक्ति दाता   जानने के लिए app sant Rampal Ji… https://t.co/IYTiIxo2Gq", "RT @013Priya: #SantRampalJiMaharaj_App\nKnow from the holy book " ,"Gita Tera Gyan Amrit the opinion of the sage interested in Shraddha-Pinda"]
 # res = tweet_summarizer(tweets, summarizer)
-print(res)
+print(sum_res)
+print(ana_res)
