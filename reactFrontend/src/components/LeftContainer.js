@@ -12,8 +12,7 @@ export default function LeftContainer(props) {
                     (props.Component === "thread-summarizer" ?
                         <ThreadSummarizer /> :
                         <UserSummarizer
-                            wordcloud1={props.wordcloud1}
-                            wordcloud2={props.wordcloud2}
+                            wordclouds={props.wordclouds}
                             tweets={props.tweets}
                             settweets={props.settweets}
                             setUsername={props.setUsername} />)

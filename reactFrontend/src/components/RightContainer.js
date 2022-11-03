@@ -21,7 +21,6 @@ export default function RightContainer(props) {
             <div className="right-container">
                 {props.sentiments === "" ? "Nothing to display" :
                     Object.keys(props.sentiments["Tweet"]).map((index, key) => {
-                        console.log(props.sentiments);
                         return (
                             <div className="card w-75">
                                 <div data-aos="fade-left" className="card-body">

@@ -36,20 +36,22 @@ export default function UserSummarizer(props) {
             <div className="wordclouds">
 
                 {
-                    props.wordcloud1 == "" ?
+                    props.wordclouds == "" ?
                         "Nothig to display" :
                         <div className="wordcloud1">
                             <span>Things talked about</span>
-                            <img src={`data:image/png;base64,${props.wordcloud1}`} alt="wordcloud" />
+                            <img
+                                src={`data:image/png;base64,${JSON.parse(props.wordclouds["cloud_nouns"])}`} alt="wordcloud" />
                         </div>
                 }
 
                 {
-                    props.wordcloud2 == "" ?
+                    props.wordclouds == "" ?
                         <span>&nbsp;&nbsp;"Nothing to display"</span> :
                         <div className="wordcloud2">
                             <span>Names talked about</span>
-                            <img src={`data:image/png;base64,${props.wordcloud2}`} alt="wordcloud" />
+                            <img
+                                src={`data:image/png;base64,${JSON.parse(props.wordclouds["cloud_names"])}`} alt="wordcloud" />
                         </div>
                 }
             </div>
