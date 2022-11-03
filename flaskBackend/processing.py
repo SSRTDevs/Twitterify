@@ -34,6 +34,7 @@ import json
 import matplotlib.animation as animation
 from matplotlib import style
 import base64
+import chardet
 
 
 def cleanTxt(text):
@@ -130,6 +131,20 @@ def get_user_tweets(username, tweets):
 def get_sentiments():
     df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
     df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
+    df1 = df.groupby('Sentiment').count()
+    sub_mean = df["Subjectivity"].mean()
+    try:
+        pos = df1.loc(0)["pos"]["Tweet"]
+    except:
+        pos = 0
+    try:
+        neg = df1.loc(0)["neg"]["Tweet"]
+    except:
+        neg = 0
+    try:
+        neutral = df1.loc(0)["neutral"]["Tweet"]
+    except:
+        neutral = 0
     return df
 
 
@@ -151,11 +166,15 @@ def get_word_cloud1():
     # bytes_image = io.BytesIO()
     # plt.savefig(bytes_image, format='png')
     # bytes_image.seek(0)
+    # print(bytes_image.getvalue())
+    # bytes_image = json.load(bytes_image.getvalue().decode("unicode_escape"))
     # return bytes_image
     plt.savefig('wordcloud.png')
     with open("wordcloud.png", "rb") as img_file:
-        encoded_string = base64.b64encode(img_file.read())
-    return encoded_string
+        encoded_data = base64.b64encode(img_file.read())
+    encoded_string = encoded_data.decode('UTF-8')
+    json_data = json.dumps(encoded_string,indent=2)
+    return json_data
 
 
 def get_word_cloud2():
@@ -178,5 +197,7 @@ def get_word_cloud2():
     # bytes_image.seek(0)
     plt.savefig('wordcloud.png')
     with open("wordcloud.png", "rb") as img_file:
-        encoded_string = base64.b64encode(img_file.read())
-    return encoded_string
+        encoded_data = base64.b64encode(img_file.read())
+    encoded_string = encoded_data.decode('UTF-8')
+    json_data = json.dumps(encoded_string,indent=2)
+    return json_data
