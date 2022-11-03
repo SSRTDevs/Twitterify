@@ -8,6 +8,7 @@ Created on Thu Apr  1 13:41:53 2021
 
 
 from asyncio.windows_events import NULL
+import config
 import streamlit as st
 import nltk
 import io
@@ -113,10 +114,10 @@ def sentiment_textblob(text):
 
 
 def get_user_tweets(username, tweets):
-    consumer_key = 'j5z6oTkkODllydAv4TJa8FxJS'
-    consumer_secret = 'rSig6RvaLe2v8GzrsNsFpirLF2OKVxKune1NqXMuY8JV42RmKv'
-    access_token = '1010014270845698050-rNQS8lrmTbzgMWpNI1khQA3xUSNMEK'
-    access_token_secret = 'n4Jql8f1ao1McHKg5FQHQxTq1vV9ykcPI9hXBIp0CQKFn'
+    consumer_key =  config.consumer_key
+    consumer_secret =  config.consumer_secret
+    access_token =  config.access_token
+    access_token_secret = config.access_token_secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)

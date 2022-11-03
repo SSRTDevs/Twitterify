@@ -6,7 +6,6 @@ export default function General() {
         <div>
             This is where general trending tweets will be displayed.
             Based on tags , tweets along with their summary and analysis will be displayed here.
-            <img src={loader} alt="Loader" />
         </div>
     )
 }

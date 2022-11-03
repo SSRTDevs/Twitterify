@@ -26,7 +26,9 @@ export default function TopContainer(props) {
                     }}>Tags</a>
                 <button className="btn btn-primary"
                     onClick={() => {
-                        props.user_summarizer()
+                        if (props.Component == "user-summarizer") {
+                            props.user_summarizer();
+                        }
                     }}>Twiterify</button>
             </div>
         </div>

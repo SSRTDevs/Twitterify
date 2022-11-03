@@ -37,7 +37,7 @@ export default function UserSummarizer(props) {
 
                 {
                     props.wordcloud1 == "" ?
-                        <img src={loader} alt="Loader" /> :
+                        "Nothig to display" :
                         <div className="wordcloud1">
                             <span>Things talked about</span>
                             <img src={`data:image/png;base64,${props.wordcloud1}`} alt="wordcloud" />
@@ -46,7 +46,7 @@ export default function UserSummarizer(props) {
 
                 {
                     props.wordcloud2 == "" ?
-                        <img src={loader} alt="Loader" /> :
+                        <span>&nbsp;&nbsp;"Nothing to display"</span> :
                         <div className="wordcloud2">
                             <span>Names talked about</span>
                             <img src={`data:image/png;base64,${props.wordcloud2}`} alt="wordcloud" />

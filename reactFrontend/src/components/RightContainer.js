@@ -1,12 +1,15 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import '../css/RightContainer.css'
+import AOS from 'aos';
 import pos from '../images/positive.png'
 import neutral from '../images/neutral.png'
 import neg from '../images/negative.png'
 
 export default function RightContainer(props) {
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
-    // console.log(props.sentiments["Tweet"])
     if (props.Component === "general")
         return (
             <div className="right-container">
@@ -21,7 +24,7 @@ export default function RightContainer(props) {
                         console.log(props.sentiments);
                         return (
                             <div className="card w-75">
-                                <div className="card-body">
+                                <div data-aos="fade-left" className="card-body">
                                     <p className="card-text">{props.sentiments["Tweet"][key]}.</p>
                                     <p className="status">{props.sentiments["Sentiment"][key]} : {props.sentiments["Subjectivity"][key]}</p>
                                     {
