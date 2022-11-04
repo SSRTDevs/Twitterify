@@ -1,9 +1,9 @@
 import React, {  useEffect} from 'react';
-import TrendingCard from './SubComponents/TrendingCard';
-import '../css/LeftContainer.css'
-import TrendingTags from './SubComponents/TrendingTags';
+import TrendingCard from './TrendingCard';
+import '../../css/LeftContainer.css'
+import TrendingTags from './TrendingTags';
 
-export default function General() {
+export default function Trending(props) {
     const trend_data = [
         {
             hashtag: "#KingKohli",

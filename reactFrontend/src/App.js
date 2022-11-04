@@ -7,8 +7,7 @@ function App() {
   const [Component, setComponent] = useState("general")
   const [displayBanner, setdisplayBanner] = useState(false)
   const [sentiments, setsentiments] = useState("")
-  const [wordcloud1, setwordcloud1] = useState("")
-  const [wordcloud2, setwordcloud2] = useState("")
+  const [wordclouds, setwordclouds] = useState("")
   const [Username, setUsername] = useState("")
   const [tweets, settweets] = useState(0)
 
@@ -20,13 +19,9 @@ function App() {
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
     })
-    await axios.get(`http://localhost:5000/wordcloud1/${Username}/${tweets}`).then((res) => {
-      setwordcloud1(res.data)
-    }).catch((err) => {
-      console.log("Kuch toh gadbad hai beta");
-    })
-    await axios.get(`http://localhost:5000/wordcloud2/${Username}/${tweets}`).then((res) => {
-      setwordcloud2(res.data)
+    await axios.get(`http://localhost:5000/wordclouds/${Username}/${tweets}`).then((res) => {
+      let data = JSON.parse(JSON.stringify(res.data));
+      setwordclouds(data)
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
     })
@@ -44,8 +39,7 @@ function App() {
 
         <LeftContainer
           Component={Component}
-          wordcloud1={wordcloud1}
-          wordcloud2={wordcloud2}
+          wordclouds={wordclouds}
           tweets={tweets}
           setUsername={setUsername}
           settweets={settweets} />

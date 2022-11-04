@@ -1,13 +1,4 @@
-# !/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  1 13:41:53 2021
-
-@author: shashwat
-"""
-
-
-
+import config
 import nltk
 import io
 import numpy as np
@@ -32,7 +23,8 @@ import json
 import matplotlib.animation as animation
 from matplotlib import style
 import base64
-nltk.download('punkt')
+
+nltk.download("punkt")
 
 
 def cleanTxt(text):
@@ -62,26 +54,6 @@ def find_features(document):
     for w in all_words:
         features[w] = (w in words)
     return features
-
-
-def make_wordcloud(lst):
-    lst = [item.lower() for item in lst]
-    new_stopwords = {"today", "watch", "people", "amp",
-                     "time", "day", "week", "people", "year", "S"}
-    stopwords = set(STOPWORDS)
-    stopwords = stopwords.union(new_stopwords)
-    wordcloud = WordCloud(width=800, height=800,
-                          background_color='black',
-                          stopwords=stopwords,
-                          min_font_size=10).generate(" ".join(lst))
-    plt.figure(figsize=(8, 8), facecolor=None)
-    plt.imshow(wordcloud)
-    plt.axis("off")
-    plt.tight_layout(pad=0)
-    plt.show()
-    a1, a2, a3 = st.beta_columns((2, 1, 1))
-    a1.pyplot()
-
 
 def nam_adj(df):
     names, adjectives, nouns, adverbs = [], [], [], []
@@ -113,10 +85,10 @@ def sentiment_textblob(text):
 
 
 def get_user_tweets(username, tweets):
-    consumer_key = 'j5z6oTkkODllydAv4TJa8FxJS'
-    consumer_secret = 'rSig6RvaLe2v8GzrsNsFpirLF2OKVxKune1NqXMuY8JV42RmKv'
-    access_token = '1010014270845698050-rNQS8lrmTbzgMWpNI1khQA3xUSNMEK'
-    access_token_secret = 'n4Jql8f1ao1McHKg5FQHQxTq1vV9ykcPI9hXBIp0CQKFn'
+    consumer_key =  config.consumer_key
+    consumer_secret =  config.consumer_secret
+    access_token =  config.access_token
+    access_token_secret = config.access_token_secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
@@ -129,6 +101,20 @@ def get_user_tweets(username, tweets):
 def get_sentiments():
     df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
     df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
+    df1 = df.groupby('Sentiment').count()
+    sub_mean = df["Subjectivity"].mean()
+    try:
+        pos = df1.loc(0)["pos"]["Tweet"]
+    except:
+        pos = 0
+    try:
+        neg = df1.loc(0)["neg"]["Tweet"]
+    except:
+        neg = 0
+    try:
+        neutral = df1.loc(0)["neutral"]["Tweet"]
+    except:
+        neutral = 0
     return df
 
 
@@ -150,11 +136,15 @@ def get_word_cloud1():
     # bytes_image = io.BytesIO()
     # plt.savefig(bytes_image, format='png')
     # bytes_image.seek(0)
+    # print(bytes_image.getvalue())
+    # bytes_image = json.load(bytes_image.getvalue().decode("unicode_escape"))
     # return bytes_image
     plt.savefig('wordcloud.png')
     with open("wordcloud.png", "rb") as img_file:
-        encoded_string = base64.b64encode(img_file.read())
-    return encoded_string
+        encoded_data = base64.b64encode(img_file.read())
+    encoded_string = encoded_data.decode('UTF-8')
+    json_data = json.dumps(encoded_string,indent=2)
+    return json_data
 
 
 def get_word_cloud2():
@@ -177,5 +167,7 @@ def get_word_cloud2():
     # bytes_image.seek(0)
     plt.savefig('wordcloud.png')
     with open("wordcloud.png", "rb") as img_file:
-        encoded_string = base64.b64encode(img_file.read())
-    return encoded_string
+        encoded_data = base64.b64encode(img_file.read())
+    encoded_string = encoded_data.decode('UTF-8')
+    json_data = json.dumps(encoded_string,indent=2)
+    return json_data
