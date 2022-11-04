@@ -1,11 +1,5 @@
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Apr  1 13:41:53 2021
-
-@author: shashwat
-"""
-
 
 from asyncio.windows_events import NULL
 import streamlit as st
@@ -28,7 +22,6 @@ from wordcloud import STOPWORDS
 from wordcloud import WordCloud
 from tweepy import Stream
 from tweepy import OAuthHandler
-from tweepy.streaming import StreamListener
 import json
 import matplotlib.animation as animation
 from matplotlib import style

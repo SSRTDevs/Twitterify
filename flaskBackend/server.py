@@ -1,8 +1,9 @@
 from flask import Flask, render_template, send_file, make_response, jsonify
 from processing import get_user_tweets, get_sentiments, get_word_cloud1, get_word_cloud2
+from threadSummarizer.threadSumm import thread_summarizer
+
 app = Flask(__name__)
 app.run(debug=True)
-
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
@@ -30,3 +31,8 @@ def wordcloud2(Username, tweets):
     response = make_response(wordcloud)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
+
+@app.route("/thread_summary/<url>", methods=['GET'])
+def thread_summary(url):
+    thread_tweets, reply_tweets, username, profile_image_url, references = thread_summarizer(url)
+    return username
