@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/LeftContainer.css'
-import { General, ThreadSummarizer, UserSummarizer } from "./index"
+import { Trending, ThreadSummarizer, UserSummarizer } from "./index"
 
 export default function LeftContainer(props) {
     return (
@@ -8,7 +8,7 @@ export default function LeftContainer(props) {
 
             {
                 props.Component === "general" ?
-                    <General /> :
+                    <Trending /> :
                     (props.Component === "thread-summarizer" ?
                         <ThreadSummarizer /> :
                         <UserSummarizer

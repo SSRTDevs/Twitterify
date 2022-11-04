@@ -1,6 +1,5 @@
 import { React, useEffect, useRef } from 'react';
-import "../css/UserSummarizer.css"
-import loader from '../images/loader.gif';
+import "../../css/LeftComponents/UserSummarizer.css"
 
 export default function UserSummarizer(props) {
     const Ntweets = useRef(0)

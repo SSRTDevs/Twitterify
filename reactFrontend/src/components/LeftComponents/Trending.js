@@ -1,5 +1,4 @@
 import React from 'react';
-import loader from '../images/loader.gif'
 
 export default function General() {
     return (
