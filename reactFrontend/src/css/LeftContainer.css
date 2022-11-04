@@ -1,8 +1,17 @@
 .left-container {
     height: 85vh;
     width: 60vw;
-    border: 1px solid rgb(255, 236, 239);
+    border: 2px solid #2f3336;
+    padding: 1.25rem;
     grid-area: left-container;
     text-align: center;
-    padding-top: 2rem;
+    overflow-y: scroll;
+}
+.heading{
+    font-size:  3rem !important;
+    text-align: left;
+}
+.trending {
+    font-size: 1.2rem;
+    text-align: left;
 }

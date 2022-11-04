@@ -10,7 +10,7 @@ export default function RightContainer(props) {
     if (props.Component === "general")
         return (
             <div className="right-container">
-                This is general.
+                Hello
             </div>
         )
     else if (props.Component == "user-summarizer")

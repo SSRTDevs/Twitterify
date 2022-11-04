@@ -5,7 +5,6 @@ import { General, ThreadSummarizer, UserSummarizer } from "./index"
 export default function LeftContainer(props) {
     return (
         <div className="left-container">
-
             {
                 props.Component === "general" ?
                     <General /> :
@@ -18,7 +17,6 @@ export default function LeftContainer(props) {
                             settweets={props.settweets}
                             setUsername={props.setUsername} />)
             }
-
         </div>
     )
 }

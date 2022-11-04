@@ -7,8 +7,7 @@ Created on Thu Apr  1 13:41:53 2021
 """
 
 
-from asyncio.windows_events import NULL
-import streamlit as st
+
 import nltk
 import io
 import numpy as np
@@ -33,6 +32,7 @@ import json
 import matplotlib.animation as animation
 from matplotlib import style
 import base64
+nltk.download('punkt')
 
 
 def cleanTxt(text):

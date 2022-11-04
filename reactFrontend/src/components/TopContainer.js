@@ -20,10 +20,10 @@ export default function TopContainer(props) {
                         props.setComponent("user-summarizer")
                     }}>User-Summarizer</a>
 
-                <a className="dropdown-toggle"
+                {/* <a className="dropdown-toggle"
                     onClick={() => {
                         props.setdisplayBanner(true)
-                    }}>Tags</a>
+                    }}>Tags</a> */}
                 <button className="btn btn-primary"
                     onClick={() => {
                         props.user_summarizer()
