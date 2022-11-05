@@ -6,13 +6,13 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 
 
-summ_tokenizer = AutoTokenizer.from_pretrained("/Users/shashwat/python_projects/twitter_2/tokenzier/")
-summ_model = AutoModelForSeq2SeqLM.from_pretrained("/Users/shashwat/python_projects/twitter_2/model/")
+summ_tokenizer = AutoTokenizer.from_pretrained("tokenzier")
+summ_model = AutoModelForSeq2SeqLM.from_pretrained("model")
 
 
-sen_tokenizer = AutoTokenizer.from_pretrained("/Users/shashwat/python_projects/twitter_2/tokenizer_sen/")
+sen_tokenizer = AutoTokenizer.from_pretrained("tokenizer_sen")
 
-sen_model = AutoModelForSequenceClassification.from_pretrained("/Users/shashwat/python_projects/twitter_2/model_sen/")
+sen_model = AutoModelForSequenceClassification.from_pretrained("model_sen")
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -76,6 +76,7 @@ def get_trending_topics_volume(trends):
     return trending_topics_volume
 
 def trending_tweets(api, client, location, tweet_count, topic_count, summarizer):
+    print("started")
     geolocator = Nominatim(user_agent="GetLoc")
     getLoc = geolocator.geocode(location)
 
@@ -88,7 +89,7 @@ def trending_tweets(api, client, location, tweet_count, topic_count, summarizer)
     for locations in api.closest_trends(latitude, longitude):
         for trends in api.get_place_trends(locations['woeid']):
             trending_topics_volume = get_trending_topics_volume(trends)[:topic_count]
-
+            print("Got topics")
             for trend in trending_topics_volume:
                 q = trend[1]
                 #print("Topic : " + q)
@@ -98,6 +99,7 @@ def trending_tweets(api, client, location, tweet_count, topic_count, summarizer)
                 for tweet in api.search_tweets(q=q,count=tweet_count):
                     #print(tweet._json['text'])
                     result[q].append(tweet._json['text'])
+                print("Starting to load the models")
                 summary_result[q] = tweet_summarizer(result[q], summarizer)
                 analysis_result[q] = tweet_analyser(result[q], sentiment)
 
