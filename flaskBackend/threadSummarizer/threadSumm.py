@@ -1,22 +1,9 @@
 import tweepy
-from dotenv import dotenv_values
-import re
 import os
-from os.path import join, dirname
-from dotenv import load_dotenv
-
-dotenv_path = join(os.pardir, '.env')
-load_dotenv(dotenv_path)
-
-#API
-auth = tweepy.OAuthHandler(consumer_key=os.environ.get('consumer_key'),
-                           consumer_secret=os.environ.get('consumer_secret'))
-auth.set_access_token(os.environ.get('access_token'), os.environ.get('access_token_secret'))
-api = tweepy.API(auth)
-
-# Client
-client = tweepy.Client(os.environ.get('bearer_token'), consumer_key=os.environ.get('api_key'), consumer_secret=os.environ.get('api_key_secret'),
-                       access_token=os.environ.get('access_token'), access_token_secret=os.environ.get('access_token_secret'))
+backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
+import sys
+sys.path.insert(0, backend_path)
+from tweepy_cred import api,client
 
 def thread_summarizer(url, count = 10):
     screen_name = url.split('/')[3]
@@ -49,7 +36,13 @@ def thread_summarizer(url, count = 10):
             reply_tweets.append(tweet._json['full_text'])
 
     thread_tweets.reverse()
-    return thread_tweets,reply_tweets,username,profile_image_url,references
 
-url = 'https://twitter.com/warikoo/status/1588409404616888320'
-thread_summarizer(url, 10)
+    res_obj = {
+        'thread_tweets': thread_tweets,
+        'reply_tweets' : reply_tweets,
+        'username' : username,
+        'profile_image_url': profile_image_url,
+        'references' : references
+    }
+
+    return res_obj
