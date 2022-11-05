@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState} from 'react';
 import axios from 'axios';
 import './App.css'
 import { TopContainer, LeftContainer, RightContainer, TagBanner } from './components';
@@ -7,11 +7,10 @@ function App() {
   const [Component, setComponent] = useState("general")
   const [displayBanner, setdisplayBanner] = useState(false)
   const [sentiments, setsentiments] = useState("")
-  const [wordcloud1, setwordcloud1] = useState("")
-  const [wordcloud2, setwordcloud2] = useState("")
+  const [wordclouds, setwordclouds] = useState("")
   const [Username, setUsername] = useState("")
   const [tweets, settweets] = useState(0)
-
+  const [show_tweets, setShowtweets] = useState("")
 
   const user_summarizer = async () => {
 
@@ -20,18 +19,20 @@ function App() {
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
     })
-    await axios.get(`http://localhost:5000/wordcloud1/${Username}/${tweets}`).then((res) => {
-      setwordcloud1(res.data)
-    }).catch((err) => {
-      console.log("Kuch toh gadbad hai beta");
-    })
-    await axios.get(`http://localhost:5000/wordcloud2/${Username}/${tweets}`).then((res) => {
-      setwordcloud2(res.data)
+    await axios.get(`http://localhost:5000/wordclouds/${Username}/${tweets}`).then((res) => {
+      let data = JSON.parse(JSON.stringify(res.data));
+      setwordclouds(data)
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
     })
   }
 
+  const display_tweets = async s => {
+    console.log(s)
+    let data = '[{"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}]'
+    let json_data = JSON.parse(data)
+    setShowtweets(json_data);
+  }
 
   return (
     <>
@@ -40,19 +41,23 @@ function App() {
           Component={Component}
           setComponent={setComponent}
           setdisplayBanner={setdisplayBanner}
-          user_summarizer={user_summarizer} />
-
+          user_summarizer={user_summarizer}
+        />
         <LeftContainer
           Component={Component}
-          wordcloud1={wordcloud1}
-          wordcloud2={wordcloud2}
+          wordclouds={wordclouds}
           tweets={tweets}
           setUsername={setUsername}
-          settweets={settweets} />
+          settweets={settweets}
+          display_tweets={display_tweets}
+          show_tweets={show_tweets}
+        />
 
         <RightContainer
           Component={Component}
-          sentiments={sentiments} />
+          sentiments={sentiments} 
+          show_tweets={show_tweets}
+          />
       </div>
       {displayBanner ?
         <TagBanner

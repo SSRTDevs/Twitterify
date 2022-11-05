@@ -1,24 +1,24 @@
 import React from 'react';
 import '../css/LeftContainer.css'
-import { General, ThreadSummarizer, UserSummarizer } from "./index"
+import { Trending, ThreadSummarizer, UserSummarizer } from "./index"
 
 export default function LeftContainer(props) {
     return (
         <div className="left-container">
-
             {
                 props.Component === "general" ?
-                    <General /> :
+                    <Trending 
+                    display_tweets={props.display_tweets}
+                    show_tweets={props.show_tweets} 
+                    /> :
                     (props.Component === "thread-summarizer" ?
                         <ThreadSummarizer /> :
                         <UserSummarizer
-                            wordcloud1={props.wordcloud1}
-                            wordcloud2={props.wordcloud2}
+                            wordclouds={props.wordclouds}
                             tweets={props.tweets}
                             settweets={props.settweets}
                             setUsername={props.setUsername} />)
             }
-
         </div>
     )
 }

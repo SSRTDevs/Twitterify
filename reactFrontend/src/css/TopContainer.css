@@ -1,7 +1,8 @@
 .top-container {
     height: 15vh;
     width: 60vw;
-    border: 1px solid rgb(255, 236, 239);
+    border: 2px solid #2f3336;
+    padding: auto;
     grid-area: top-container;
     display: flex;
     justify-content: center;
@@ -19,7 +20,7 @@ a {
     font-weight: 400;
     line-height: 1.5;
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: rgb(161 179 179) !important;
     cursor: pointer;
 }
