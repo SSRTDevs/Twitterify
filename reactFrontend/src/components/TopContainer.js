@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React} from 'react';
 import '../css/TopContainer.css'
 
 export default function TopContainer(props) {
@@ -26,7 +26,7 @@ export default function TopContainer(props) {
                     }}>Tags</a> */}
                 <button className="btn btn-primary"
                     onClick={() => {
-                        if (props.Component == "user-summarizer") {
+                        if (props.Component === "user-summarizer") {
                             props.user_summarizer();
                         }
                     }}>Twiterify</button>

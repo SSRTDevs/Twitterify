@@ -7,7 +7,10 @@ export default function LeftContainer(props) {
         <div className="left-container">
             {
                 props.Component === "general" ?
-                    <Trending /> :
+                    <Trending 
+                    display_tweets={props.display_tweets}
+                    show_tweets={props.show_tweets} 
+                    /> :
                     (props.Component === "thread-summarizer" ?
                         <ThreadSummarizer /> :
                         <UserSummarizer

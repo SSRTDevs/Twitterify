@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState} from 'react';
 import axios from 'axios';
 import './App.css'
 import { TopContainer, LeftContainer, RightContainer, TagBanner } from './components';
@@ -10,7 +10,7 @@ function App() {
   const [wordclouds, setwordclouds] = useState("")
   const [Username, setUsername] = useState("")
   const [tweets, settweets] = useState(0)
-
+  const [show_tweets, setShowtweets] = useState("")
 
   const user_summarizer = async () => {
 
@@ -27,6 +27,12 @@ function App() {
     })
   }
 
+  const display_tweets = async s => {
+    console.log(s)
+    let data = '[{"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}]'
+    let json_data = JSON.parse(data)
+    setShowtweets(json_data);
+  }
 
   return (
     <>
@@ -35,18 +41,23 @@ function App() {
           Component={Component}
           setComponent={setComponent}
           setdisplayBanner={setdisplayBanner}
-          user_summarizer={user_summarizer} />
-
+          user_summarizer={user_summarizer}
+        />
         <LeftContainer
           Component={Component}
           wordclouds={wordclouds}
           tweets={tweets}
           setUsername={setUsername}
-          settweets={settweets} />
+          settweets={settweets}
+          display_tweets={display_tweets}
+          show_tweets={show_tweets}
+        />
 
         <RightContainer
           Component={Component}
-          sentiments={sentiments} />
+          sentiments={sentiments} 
+          show_tweets={show_tweets}
+          />
       </div>
       {displayBanner ?
         <TagBanner
