@@ -1,6 +1,8 @@
 import { React, useEffect, useRef } from 'react';
 import "../../css/LeftComponents/UserSummarizer.css"
-
+import pos from '../../images/positive.png'
+import neutral from '../../images/neutral.png'
+import neg from '../../images/negative.png'
 export default function UserSummarizer(props) {
     const Ntweets = useRef(0)
     useEffect(() => {
@@ -30,30 +32,20 @@ export default function UserSummarizer(props) {
                         }} />
                     <span className='max'>&nbsp;100</span>
                 </div>
-
             </div>
-            <div className="wordclouds">
-
-                {
-                    props.wordclouds == "" ?
-                        "Nothig to display" :
-                        <div className="wordcloud1">
-                            <span>Things talked about</span>
-                            <img
-                                src={`data:image/png;base64,${JSON.parse(props.wordclouds["cloud_nouns"])}`} alt="wordcloud" />
+            <br />
+            <br />
+            {Object.keys(props.sentiments).length === 0 ? "Nothing to display" :
+                Object.keys(props.sentiments["sentiments"]["Tweet"]).map((index, key) => {
+                    return (
+                        <div className="card w-75">
+                            <div data-aos="fade-left" className="card-body">
+                                <p className="card-text">{props.sentiments["sentiments"]["Tweet"][key]}.</p>
+                            </div>
                         </div>
-                }
-
-                {
-                    props.wordclouds == "" ?
-                        <span>&nbsp;&nbsp;"Nothing to display"</span> :
-                        <div className="wordcloud2">
-                            <span>Names talked about</span>
-                            <img
-                                src={`data:image/png;base64,${JSON.parse(props.wordclouds["cloud_names"])}`} alt="wordcloud" />
-                        </div>
-                }
-            </div>
+                    )
+                })
+            }
         </>
     )
 }
