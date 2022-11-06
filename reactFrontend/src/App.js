@@ -10,7 +10,9 @@ function App() {
   const [wordclouds, setwordclouds] = useState("")
   const [Username, setUsername] = useState("")
   const [tweets, settweets] = useState(0)
+  const [url, seturl] = useState("")
   const [show_tweets, setShowtweets] = useState("")
+  const [thread, setthread] = useState({})
 
   const user_summarizer = async () => {
 
@@ -26,6 +28,17 @@ function App() {
       setwordclouds(data)
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
+    })
+
+  }
+
+  const thread_summarizer = async () => {
+
+    await axios.get(`http://localhost:5000/thread_summary/${url.replaceAll("/", "*")}}`).then((res) => {
+      console.log(res.data)
+      setthread(res.data)
+    }).catch((err) => {
+      console.log("Kuch toh gadbad hai beta", err);
     })
   }
 
@@ -44,6 +57,7 @@ function App() {
           setComponent={setComponent}
           setdisplayBanner={setdisplayBanner}
           user_summarizer={user_summarizer}
+          thread_summarizer={thread_summarizer}
         />
         <LeftContainer
           Component={Component}
@@ -54,6 +68,8 @@ function App() {
           display_tweets={display_tweets}
           show_tweets={show_tweets}
           sentiments={sentiments}
+          seturl={seturl}
+          thread={thread}
         />
 
         <RightContainer
@@ -64,6 +80,7 @@ function App() {
           settweets={settweets}
           sentiments={sentiments}
           show_tweets={show_tweets}
+          thread={thread}
         />
       </div>
       {displayBanner ?

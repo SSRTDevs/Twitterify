@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 
 export default function ThreadSummarizer(props) {
     return (
@@ -7,7 +7,7 @@ export default function ThreadSummarizer(props) {
                 <span className="input-group-text" id="inputGroup-sizing-default">Thread URL</span>
                 <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder='Enter thread URL'
                     onChange={(e) => {
-                        props.setUsername(e.target.value)
+                        props.seturl(e.target.value)
                     }} />
             </div>
             <br />
@@ -22,9 +22,14 @@ export default function ThreadSummarizer(props) {
             <br />
             <h2 style={{ textAlign: "left" }}>References</h2>
             <ul>
-                <li style={{textAlign: "left"}}>Coffee</li>
-                <li style={{textAlign: "left"}}>Tea</li>
-                <li style={{textAlign: "left"}}>Milk</li>
+                {
+                    Object.keys(props.thread).length === 0 ?
+                        <li style={{ textAlign: "left" }}>No references to show</li> :
+                        props.thread["references"].map((item, id) => {
+                            return <li style={{ textAlign: "left" }}>{item}</li>
+                        })
+
+                }
             </ul>
         </>
     )
