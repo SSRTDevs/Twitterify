@@ -29,7 +29,7 @@ function App() {
 
   const display_tweets = async s => {
     console.log(s)
-    let data = '[{"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}, {"tweet": "Make some noise for the desi boys"}]'
+    let data = '[{"tweet": "What a fantastic innings by Virat!! #KingKohli"}, {"tweet": "This has to be the best chase I have seen in my life. Congratulations Virat and Team India. Enjoyed the match #KingKohli"}, {"tweet": "That shot against Haris Rauf has to be the shot of the tournament #KingKohli"}, {"tweet": "TThats why I love the game #KingKohli"}, {"tweet": "Who would have thought that India would win the game #KingKohli"}, {"tweet": "Greatest batsman of all time for a reason #KingKohli"},{"tweet": "Cometh the hour, Cometh the man, Hatsoff Virat, stellar performance #KingKohli"},{"tweet": "Mamba Mentality batting performance, Thank you for the entertainment #KingKohli"}]'
     let json_data = JSON.parse(data)
     setShowtweets(json_data);
   }
