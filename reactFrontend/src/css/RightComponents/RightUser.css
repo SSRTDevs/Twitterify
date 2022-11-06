@@ -1,8 +1,57 @@
-.card {
-    margin: 1rem auto;
-    background-color: #8a819b36
+.input-group {
+    width: 80%;
+    margin: auto;
 }
 
-.status {
-    font-weight: bolder;
+.slider {
+    width: 80%;
+    margin: auto;
+}
+
+.slider-element {
+    display: flex;
+}
+
+.min {
+    padding-right: 2px;
+}
+
+.max {
+    padding-left: 2px;
+}
+
+.wordclouds {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.wordcloud1 {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.wordcloud2 {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.input-group-text {
+    background-color: #4e4f52ad;
+    color: #efefef;
+    border-radius: 1.25rem;
+}
+
+.form-control {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    color: #ffffff;
+    background-color: #fff0;
+}
+
+.form-control:focus {
+    color: #ffffff;
+    background-color: #636363cc;
 }

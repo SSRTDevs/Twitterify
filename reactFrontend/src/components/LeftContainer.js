@@ -17,7 +17,8 @@ export default function LeftContainer(props) {
                             wordclouds={props.wordclouds}
                             tweets={props.tweets}
                             settweets={props.settweets}
-                            setUsername={props.setUsername} />)
+                            setUsername={props.setUsername}
+                            sentiments={props.sentiments}/>)
             }
         </div>
     )
