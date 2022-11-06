@@ -34,6 +34,10 @@ export default function RightContainer(props) {
         return (
             <div className="right-container">
                 <RightUser
+                    wordclouds={props.wordclouds}
+                    tweets={props.tweets}
+                    setUsername={props.setUsername}
+                    settweets={props.settweets}
                     sentiments={props.sentiments} />
             </div>
         )

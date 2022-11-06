@@ -1,4 +1,4 @@
-import { React, useState} from 'react';
+import { React, useState } from 'react';
 import axios from 'axios';
 import './App.css'
 import { TopContainer, LeftContainer, RightContainer, TagBanner } from './components';
@@ -51,13 +51,18 @@ function App() {
           settweets={settweets}
           display_tweets={display_tweets}
           show_tweets={show_tweets}
+          sentiments={sentiments}
         />
 
         <RightContainer
           Component={Component}
-          sentiments={sentiments} 
+          wordclouds={wordclouds}
+          tweets={tweets}
+          setUsername={setUsername}
+          settweets={settweets}
+          sentiments={sentiments}
           show_tweets={show_tweets}
-          />
+        />
       </div>
       {displayBanner ?
         <TagBanner
