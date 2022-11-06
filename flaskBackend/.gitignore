@@ -30,4 +30,24 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
-config.py
+__pycache__
+
+*.pyc
+*.pyo
+
+build/
+dist/
+
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+lib
+lib64
+
+/model
+/tokenizer
