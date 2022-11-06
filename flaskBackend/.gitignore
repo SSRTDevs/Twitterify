@@ -1,2 +1,7 @@
-config.py
 app1.py
+/profileSummarizer/config.py
+/twitter-apis/model
+/twitter-apis/model_sen
+/twitter-apis/tokenizer_sen
+/twitter-apis/tokenizer
+_pycache_

@@ -1,4 +1,4 @@
-import { React, useState} from 'react';
+import { React, useState } from 'react';
 import axios from 'axios';
 import './App.css'
 import { TopContainer, LeftContainer, RightContainer, TagBanner } from './components';
@@ -6,7 +6,7 @@ import { TopContainer, LeftContainer, RightContainer, TagBanner } from './compon
 function App() {
   const [Component, setComponent] = useState("general")
   const [displayBanner, setdisplayBanner] = useState(false)
-  const [sentiments, setsentiments] = useState("")
+  const [sentiments, setsentiments] = useState({})
   const [wordclouds, setwordclouds] = useState("")
   const [Username, setUsername] = useState("")
   const [tweets, settweets] = useState(0)
@@ -15,6 +15,7 @@ function App() {
   const user_summarizer = async () => {
 
     await axios.get(`http://localhost:5000/sentiments/${Username}/${tweets}`).then((res) => {
+      console.log(res.data)
       setsentiments(res.data)
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
@@ -55,9 +56,9 @@ function App() {
 
         <RightContainer
           Component={Component}
-          sentiments={sentiments} 
+          sentiments={sentiments}
           show_tweets={show_tweets}
-          />
+        />
       </div>
       {displayBanner ?
         <TagBanner
