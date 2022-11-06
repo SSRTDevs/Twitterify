@@ -30,7 +30,8 @@ export default function RightContainer(props) {
     else
         return (
             <div className="right-container">
-                <RightThread />
+                <RightThread
+                    thread={props.thread} />
             </div>
         )
 }

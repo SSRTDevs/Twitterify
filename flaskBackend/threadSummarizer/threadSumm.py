@@ -2,6 +2,7 @@ import tweepy
 import os
 backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
 import sys
+import re 
 sys.path.insert(0, backend_path)
 from tweepy_cred import api,client
 
