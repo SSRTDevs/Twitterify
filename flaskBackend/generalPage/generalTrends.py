@@ -1,3 +1,4 @@
+from model_setup import tweet_summarizer, tweet_analyser
 import tweepy
 import os
 backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
@@ -6,32 +7,6 @@ sys.path.insert(0, backend_path)
 from tweepy_cred import api,client
 from geopy.geocoders import Nominatim
 from collections import defaultdict
-from model_setup import summarizer
-
-
-def tweet_summarizer(combined_tweets):
-    try:
-        res = summarizer(combined_tweets)
-        return res[0]["summary_text"]
-    except:
-        print("Sequence length too large for model, cutting text in half and calling again")
-        return tweet_summarizer(combined_tweets[:(len(combined_tweets) // 2)]) + tweet_summarizer(combined_tweets[(len(combined_tweets) // 2):])
-
-
-def tweet_analyser(tweets):
-    pos, neg, neu = 0, 0, 0
-    for tweet in tweets:
-        try:
-            res = sentiment(tweet)[0]
-            if res["label"] == "POS":
-                pos += 1
-            elif res["label"] == "NEG":
-                neg += 1
-            else:
-                neu += 1
-        except:
-            pass
-    return {"pos": pos, "neg": neg, "neu": neu}
 
 def get_trending_topics_count(trends):
     trending_topics_count = []
@@ -74,6 +49,3 @@ def feed_model(trending_tweets):
 
 trending_tweets = get_trending_tweets("Mumbai")
 trending_tweets_summarization,trending_tweets_sentiment = feed_model(trending_tweets)
-
-print(trending_tweets_summarization)
-print(trending_tweets_sentiment)
