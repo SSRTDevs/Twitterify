@@ -1,12 +1,14 @@
 import { React} from 'react';
 import '../css/TopContainer.css'
+import twitter_logo from '../images/twitter_logo.png'
 
 export default function TopContainer(props) {
 
     return (
         <div className="top-container">
             <div className="links">
-
+                <img style={{width: "5%"}}src={twitter_logo} alt="Logo"></img>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <a className={props.Component === "general" ? "active" : ""}
                     onClick={() => {
                         props.setComponent("general")

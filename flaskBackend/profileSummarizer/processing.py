@@ -88,7 +88,7 @@ def get_user_tweets(username, tweets):
     access_token_secret = config.access_token_secret
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret,access_token, access_token_secret)
     api = tweepy.API(auth)
-    tweets = api.user_timeline(user_id=username, count=tweets, tweet_mode="extended" )
+    tweets = api.user_timeline(screen_name=username, count=tweets, tweet_mode="extended" )
     global df
     df = pd.DataFrame([tweet.full_text for tweet in tweets], columns=['Tweet'])
     df["Tweet"] = df["Tweet"].apply(cleanTxt)
