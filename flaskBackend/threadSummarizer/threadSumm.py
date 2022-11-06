@@ -1,11 +1,20 @@
 import tweepy
 import os
+import re
 backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
 import sys
 sys.path.insert(0, backend_path)
 from tweepy_cred import api,client
+from model_setup import tweet_summarizer
 
-def thread_summarizer(url, count = 10):
+def feed_model(thread_summary_obj):
+    thread_tweets = thread_summary_obj['thread_tweets']
+    res_obj = thread_summary_obj
+    res_obj['thread_tweets_summarization'] = tweet_summarizer(' '.join(thread_tweets))
+
+    return res_obj
+
+def thread_summarizer(url, count = 3):
     screen_name = url.split('/')[3]
     tweet_id = url.split('/')[-1]
     q = "from:{0} to:{0} conversation_id:{1}".format(screen_name, tweet_id)
@@ -46,3 +55,7 @@ def thread_summarizer(url, count = 10):
     }
 
     return res_obj
+
+
+thread_summary_obj = thread_summarizer('https://twitter.com/SahilBloom/status/1589291087801090048')
+res_obj = feed_model(thread_summary_obj)
