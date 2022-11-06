@@ -4,8 +4,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 import tweepy
 
-dotenv_path = join(os.pardir, '.env')
-load_dotenv(dotenv_path)
+load_dotenv('.env')
 
 #API
 auth = tweepy.OAuthHandler(consumer_key=os.environ.get('consumer_key'),

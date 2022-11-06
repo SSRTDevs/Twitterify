@@ -9,30 +9,6 @@ from collections import defaultdict
 from model_setup import summarizer
 
 
-def tweet_summarizer(combined_tweets):
-    try:
-        res = summarizer(combined_tweets)
-        return res[0]["summary_text"]
-    except:
-        print("Sequence length too large for model, cutting text in half and calling again")
-        return tweet_summarizer(combined_tweets[:(len(combined_tweets) // 2)]) + tweet_summarizer(combined_tweets[(len(combined_tweets) // 2):])
-
-
-def tweet_analyser(tweets):
-    pos, neg, neu = 0, 0, 0
-    for tweet in tweets:
-        try:
-            res = sentiment(tweet)[0]
-            if res["label"] == "POS":
-                pos += 1
-            elif res["label"] == "NEG":
-                neg += 1
-            else:
-                neu += 1
-        except:
-            pass
-    return {"pos": pos, "neg": neg, "neu": neu}
-
 def get_trending_topics_count(trends):
     trending_topics_count = []
     for trend in trends['trends']:
@@ -71,9 +47,3 @@ def feed_model(trending_tweets):
         trending_tweets_sentiment[tweet_topic] = tweet_analyser(trending_tweets[tweet_topic])
 
     return trending_tweets_summarization,trending_tweets_sentiment
-
-trending_tweets = get_trending_tweets("Mumbai")
-trending_tweets_summarization,trending_tweets_sentiment = feed_model(trending_tweets)
-
-print(trending_tweets_summarization)
-print(trending_tweets_sentiment)

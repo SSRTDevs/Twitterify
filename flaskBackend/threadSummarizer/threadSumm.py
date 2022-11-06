@@ -5,14 +5,13 @@ backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
 import sys
 sys.path.insert(0, backend_path)
 from tweepy_cred import api,client
-from model_setup import tweet_summarizer
+from model_setup import tweet_summarizer,tweet_analyser
 
-def feed_model(thread_summary_obj):
-    thread_tweets = thread_summary_obj['thread_tweets']
-    res_obj = thread_summary_obj
-    res_obj['thread_tweets_summarization'] = tweet_summarizer(' '.join(thread_tweets))
 
-    return res_obj
+def thread_feed_model(thread_tweets):
+    thread_summary = tweet_summarizer(' '.join(thread_tweets))
+    thread_sentiment = tweet_analyser(thread_tweets)
+    return thread_summary,thread_sentiment
 
 def thread_summarizer(url, count = 3):
     screen_name = url.split('/')[3]
@@ -48,14 +47,10 @@ def thread_summarizer(url, count = 3):
 
     res_obj = {
         'thread_tweets': thread_tweets,
-        'reply_tweets' : reply_tweets,
+        'reply_tweets': reply_tweets,
         'username' : username,
         'profile_image_url': profile_image_url,
         'references' : references
     }
 
     return res_obj
-
-
-thread_summary_obj = thread_summarizer('https://twitter.com/SahilBloom/status/1589291087801090048')
-res_obj = feed_model(thread_summary_obj)
