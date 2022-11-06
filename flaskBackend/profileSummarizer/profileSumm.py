@@ -32,7 +32,6 @@ def profile_summarizer(username):
     for tweet in user_tweets_data:
         user_tweets.append(tweet._json['full_text'])
 
-    
     q = "@{0} and -filter:retweets".format(username)
     mention_tweets_data = api.search_tweets(q=q, count=1, tweet_mode="extended")
     mention_tweets = []

@@ -27,7 +27,6 @@ def tweet_summarizer(combined_tweets):
         print("Sequence length too large for model, cutting text in half and calling again")
         return tweet_summarizer(combined_tweets[:(len(combined_tweets) // 2)]) + tweet_summarizer(combined_tweets[(len(combined_tweets) // 2):])
 
-
 def tweet_analyser(tweets):
     pos, neg, neu = 0, 0, 0
     for tweet in tweets:

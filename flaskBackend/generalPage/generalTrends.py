@@ -1,4 +1,3 @@
-from model_setup import tweet_summarizer, tweet_analyser
 import tweepy
 import os
 backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
@@ -7,6 +6,7 @@ sys.path.insert(0, backend_path)
 from tweepy_cred import api,client
 from geopy.geocoders import Nominatim
 from collections import defaultdict
+from model_setup import tweet_summarizer, tweet_analyser
 
 def get_trending_topics_count(trends):
     trending_topics_count = []
@@ -46,6 +46,3 @@ def feed_model(trending_tweets):
         trending_tweets_sentiment[tweet_topic] = tweet_analyser(trending_tweets[tweet_topic])
 
     return trending_tweets_summarization,trending_tweets_sentiment
-
-trending_tweets = get_trending_tweets("Mumbai")
-trending_tweets_summarization,trending_tweets_sentiment = feed_model(trending_tweets)

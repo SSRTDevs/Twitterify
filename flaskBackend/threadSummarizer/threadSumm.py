@@ -1,12 +1,20 @@
 import tweepy
 import os
+import re
 backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
 import sys
 import re 
 sys.path.insert(0, backend_path)
 from tweepy_cred import api,client
+from model_setup import tweet_summarizer,tweet_analyser
 
-def thread_summarizer(url, count = 10):
+
+def thread_feed_model(thread_tweets):
+    thread_summary = tweet_summarizer(' '.join(thread_tweets))
+    thread_sentiment = tweet_analyser(thread_tweets)
+    return thread_summary,thread_sentiment
+
+def thread_summarizer(url, count = 3):
     screen_name = url.split('/')[3]
     tweet_id = url.split('/')[-1]
     q = "from:{0} to:{0} conversation_id:{1}".format(screen_name, tweet_id)
@@ -40,7 +48,7 @@ def thread_summarizer(url, count = 10):
 
     res_obj = {
         'thread_tweets': thread_tweets,
-        'reply_tweets' : reply_tweets,
+        'reply_tweets': reply_tweets,
         'username' : username,
         'profile_image_url': profile_image_url,
         'references' : references
