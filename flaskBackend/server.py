@@ -1,10 +1,11 @@
 from flask import Flask, render_template, send_file, make_response, jsonify
 from profileSummarizer.processing import get_user_tweets, get_sentiments, get_word_cloud1, get_word_cloud2
+from threadSummarizer.threadSumm import thread_summarizer
+
 from flask_cors import CORS
 app = Flask(__name__)
 app.run(debug=True)
 CORS(app)
-
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
@@ -33,3 +34,8 @@ def wordclouds(Username, tweets):
     # return send_file(wordcloud, attachment_filename='plot.png', mimetype='image/png')
     response = make_response(cloud)
     return response
+
+@app.route("/thread_summary/<url>", methods=['GET'])
+def thread_summary(url):
+    thread_tweets, reply_tweets, username, profile_image_url, references = thread_summarizer(url)
+    return username
