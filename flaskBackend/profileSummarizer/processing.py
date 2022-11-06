@@ -1,6 +1,7 @@
-import config
+import profileSummarizer.config as config
 import nltk
 import io
+import pprint
 import numpy as np
 from textblob import TextBlob
 import os
@@ -16,14 +17,11 @@ import plotly.express as px
 import wordcloud
 from wordcloud import STOPWORDS
 from wordcloud import WordCloud
-from tweepy import Stream
 from tweepy import OAuthHandler
 import json
 import matplotlib.animation as animation
 from matplotlib import style
 import base64
-
-nltk.download("punkt")
 
 
 def cleanTxt(text):
@@ -88,10 +86,9 @@ def get_user_tweets(username, tweets):
     consumer_secret =  config.consumer_secret
     access_token =  config.access_token
     access_token_secret = config.access_token_secret
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret,access_token, access_token_secret)
     api = tweepy.API(auth)
-    tweets = api.user_timeline(username, count=tweets, tweet_mode='extended')
+    tweets = api.user_timeline(user_id=username, count=tweets, tweet_mode="extended" )
     global df
     df = pd.DataFrame([tweet.full_text for tweet in tweets], columns=['Tweet'])
     df["Tweet"] = df["Tweet"].apply(cleanTxt)
@@ -114,7 +111,7 @@ def get_sentiments():
         neutral = df1.loc(0)["neutral"]["Tweet"]
     except:
         neutral = 0
-    return df
+    return df.to_json(),str(pos),str(neg),str(neutral)
 
 
 def get_word_cloud1():
