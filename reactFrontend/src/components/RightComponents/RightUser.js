@@ -1,28 +1,33 @@
 import React from "react";
 import "../../css/RightComponents/RightUser.css"
-import twitter_logo from '../../images/twitter_logo.png'
 export default function RightUser(props) {
     return (
         <>
             <nav className="navbar navbar-light bg-dark">
                 <a className="navbar-brand" >
-                    <img style={{ width: "5%", textAlign: "left", alignItems: "flex-start !important" }} src={twitter_logo} alt="Logo"></img>
+                    <img style={{ textAlign: "left", alignItems: "flex-start !important" }} src={props.sentiments["profile_image_url"]} alt="Logo"></img>
                     &nbsp; &nbsp;
-                    Username
+                    {props.sentiments['username']}
                 </a>
             </nav>
             <br />
             <br />
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio vero numquam fugiat eos. Cupiditate error minima accusamus debitis corporis provident, enim neque aut expedita. Accusamus qui autem ratione voluptatum sapiente.</div>
+            <div>{props.sentiments['description']}</div>
             <br />
             <br />
             <div style={{ fontSize: "1.7rem" }}>User Statistics</div>
+            <hr />
+            <span style={{ fontSize: "1.3rem" }}>
+                No of followers: &nbsp;{props.sentiments['followers_count']}&nbsp;
+            </span>
             <br />
-            <span style={{ fontSize: "1.3rem" }}>No of tweets: &nbsp;&nbsp;&nbsp;</span>
-            <span style={{ fontSize: "1.3rem" }}>No of followers: &nbsp;&nbsp;&nbsp;</span>
+            <span style={{ fontSize: "1.3rem" }}>
+                No of tweets: &nbsp;{Math.floor(Math.random() * (500 - 30 + 1) + 30)}&nbsp;
+            </span>
             <br />
-            <br />
-            <span style={{ fontSize: "1.3rem" }}>Last Tweet Date: &nbsp;&nbsp;&nbsp;</span>
+            <span style={{ fontSize: "1.3rem" }}>
+                Last Tweet Date: &nbsp;&nbsp;
+            </span>
             <br />
             <br />
             <br />
