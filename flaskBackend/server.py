@@ -1,7 +1,7 @@
 from flask import Flask, render_template, send_file, make_response, jsonify
 from profileSummarizer.processing import get_user_tweets, get_sentiments, get_word_cloud1, get_word_cloud2
 from profileSummarizer.profileSumm import profile_summarizer
-from generalPage.generalTrends import get_trending_tweets, feed_model
+# from generalPage.generalTrends import get_trending_tweets, feed_model
 from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
 
 from flask_cors import CORS
@@ -14,7 +14,8 @@ CORS(app)
 def sentiments(Username, tweets):
     get_user_tweets(Username, tweets)
     sentiments, pos_count, neg_count, neutral_count = get_sentiments()
-    sentiment_obj = {
+    user_details = profile_summarizer(Username)
+    return_obj = {
         "sentiments": sentiments,
         "pos_count": pos_count,
         "neg_count": neg_count,
@@ -41,13 +42,16 @@ def wordclouds(Username, tweets):
 
 @app.route("/thread_summary/<url>", methods=['GET'])
 def thread_summary(url):
+    url = url.replace("*","/")
     url = url[:-1]
+    
     thread_obj = thread_summarizer(url)
     thread_obj['thread_summary'], thread_obj['thread_sentiment'] = thread_feed_model(
         thread_obj['thread_tweets'])
 
     print(thread_obj)
-    return thread_obj
+    response = make_response(thread_obj)
+    return response
 
 @app.route("/trending_tweets/", methods=['GET'])
 def sentiment():

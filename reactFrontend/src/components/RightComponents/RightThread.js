@@ -16,18 +16,14 @@ export default function RightThread(props) {
             <div style={{ fontSize: "1.7rem" }}>Thread Statistics</div>
             <hr />
             <span style={{ fontSize: "1.3rem" }}>
-                No of tweets in thread: &nbsp;{props.thread["thread_tweets"] === undefined ? 0 : props.thread["thread_tweets"].length};&nbsp;
-            </span>
-            <span style={{ fontSize: "1.3rem" }}>
-                No of replies: &nbsp;{props.thread["reply_tweets"] === undefined ? 0 : props.thread["reply_tweets"].length}&nbsp;
+                No of tweets in thread: &nbsp;{props.thread["thread_tweets"] === undefined ? 0 : props.thread["thread_tweets"].length}&nbsp;
             </span>
             <br />
+            {/* <span style={{ fontSize: "1.3rem" }}>
+                No of replies: &nbsp;{props.thread["reply_tweets"] === undefined ? 0 : props.thread["reply_tweets"].length}&nbsp;
+            </span> */}
             <br />
             <span style={{ fontSize: "1.3rem" }}>Thread Sentiment: &nbsp;&nbsp;&nbsp;</span><span class="badge bg-success" style={{ fontSize: "1.5rem" }}>Positive</span>
-            <br />
-            <br />
-            <span style={{ fontSize: "1.3rem" }}>No of likes: &nbsp;&nbsp;&nbsp;</span>
-            <br />
             <br />
             <div className="card">
                 <div className="card-header" style={{ fontSize: "1.5rem" }}>

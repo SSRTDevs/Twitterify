@@ -141,7 +141,7 @@ toolz==0.11.1
 tornado @ file:///opt/concourse/worker/volumes/live/05341796-4198-4ded-4a9a-332fde3cdfd1/volume/tornado_1606942323372/work
 tqdm==4.59.0
 traitlets @ file:///home/ktietz/src/ci/traitlets_1611929699868/work
-tweepy==3.10.0
+tweepy==4.12.0
 typed-ast @ file:///opt/concourse/worker/volumes/live/b635b0af-0037-435d-5a8b-38d096f36bbf/volume/typed-ast_1610484559102/work
 typing-extensions @ file:///home/ktietz/src/ci_mi/typing_extensions_1612808209620/work
 tzlocal==2.1

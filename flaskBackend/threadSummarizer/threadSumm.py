@@ -14,7 +14,7 @@ def thread_feed_model(thread_tweets):
     thread_sentiment = tweet_analyser(thread_tweets)
     return thread_summary,thread_sentiment
 
-def thread_summarizer(url, count = 3):
+def thread_summarizer(url, count = 20):
     screen_name = url.split('/')[3]
     tweet_id = url.split('/')[-1]
     q = "from:{0} to:{0} conversation_id:{1}".format(screen_name, tweet_id)

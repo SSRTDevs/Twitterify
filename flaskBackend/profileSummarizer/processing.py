@@ -1,4 +1,4 @@
-# import profileSummarizer.config as config
+import profileSummarizer.config as config
 import nltk
 import io
 import pprint

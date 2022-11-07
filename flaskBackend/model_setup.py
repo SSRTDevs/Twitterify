@@ -2,9 +2,10 @@ import os
 from transformers import AutoModelForSequenceClassification, pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-model_path = os.getcwdb() + "\\model\\"
-tokenizer_path = os.getcwdb()+ "\\tokenizer\\"
-
+# model_path = os.getcwdb() + "\\model\\"
+# tokenizer_path = os.getcwdb()+ "\\tokenizer\\"
+model_path = 'model/'
+tokenizer_path = 'tokenizer/'
 summarization_model = AutoModelForSeq2SeqLM.from_pretrained(
     model_path + 'summarization_model')
 summarization_tokenizer = AutoTokenizer.from_pretrained(tokenizer_path + 'summarization_tokenizer')
