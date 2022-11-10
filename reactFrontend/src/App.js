@@ -13,6 +13,30 @@ function App() {
   const [url, seturl] = useState("")
   const [show_tweets, setShowtweets] = useState("")
   const [thread, setthread] = useState({})
+  const [trends, setTrends] = useState({
+    "#INDvsENG": {
+      "neg": 2,
+      "neu": 1,
+      "pos": 0,
+      "summary": "We sh… @IrfanPathan is this what u call a \"GRACE\",  It is such a shameless act that you are showing ur opponent that you gave up the game when u ask the crowd to support you? Jos Buttle saw how Pandya was monkey dancing. #INDvsENG #CricketTwitter #T20WorldCup #BoycottIPL."
+    },
+    "England": {
+      "neg": 1,
+      "neu": 0,
+      "pos": 1,
+      "summary": "Tomori not going to the World Cup is everything that's wrong with the FA and England. Tomori won Serie A, been fantastic, bu… RT @AFCWimbledon:  “We’d like to extend our congratulations to our former loanee, @AaronRamsdale98, after he was…"
+    }
+  })
+
+  const trending = async () => {
+    alert("Trending Api fired")
+    await axios.get(`http://localhost:5000/trending_tweets`).then((res) => {
+      console.log(res.data)
+      setTrends(res.data)
+    }).catch((err) => {
+      console.log("Kuch toh gadbad hai beta");
+    })
+  }
 
   const user_summarizer = async () => {
 
@@ -70,6 +94,8 @@ function App() {
           sentiments={sentiments}
           seturl={seturl}
           thread={thread}
+          trends={trends}
+          trending={trending}
         />
 
         <RightContainer

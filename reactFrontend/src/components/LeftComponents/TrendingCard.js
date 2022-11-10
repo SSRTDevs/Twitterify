@@ -10,9 +10,9 @@ function TrendingCard(props) {
                         <h6 className="card-subtitle mb-2 text-muted">Cricket</h6>
                         <h6 className="card-subtitle">
                             Sentiment Stats: &nbsp; &nbsp;
-                            <span style={{ color: "green" }}>Pos: {props.trend_data.positive} &nbsp; &nbsp;</span>
-                            <span style={{ color: "red" }}>Neg: {props.trend_data.negative} &nbsp; &nbsp;</span>
-                            <span style={{ color: "yellow" }}>Neutral: {props.trend_data.neutral} &nbsp; &nbsp;</span>
+                            <span style={{ color: "green" }}>Pos: {props.trend_data.pos} &nbsp; &nbsp;</span>
+                            <span style={{ color: "red" }}>Neg: {props.trend_data.neg} &nbsp; &nbsp;</span>
+                            <span style={{ color: "yellow" }}>Neutral: {props.trend_data.neu} &nbsp; &nbsp;</span>
                         </h6>
                         <br />
                         <p className="card-text" >{props.trend_data.summary}</p>

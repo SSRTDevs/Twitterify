@@ -19,12 +19,7 @@ export default function RightContainer(props) {
     else if (props.Component === "user-summarizer")
         return (
             <div className="right-container">
-                <RightUser
-                    wordclouds={props.wordclouds}
-                    tweets={props.tweets}
-                    setUsername={props.setUsername}
-                    settweets={props.settweets}
-                    sentiments={props.sentiments} />
+                <RightUser {...props} />
             </div>
         )
     else

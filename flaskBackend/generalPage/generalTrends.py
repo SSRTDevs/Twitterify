@@ -1,12 +1,7 @@
-import tweepy
-import os
-backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
-import sys
-sys.path.insert(0, backend_path)
-from tweepy_cred import api,client
+from setups.tweepy_cred import api,client
 from geopy.geocoders import Nominatim
 from collections import defaultdict
-from model_setup import tweet_summarizer, tweet_analyser
+from setups.model_setup import tweet_summarizer, tweet_analyser
 
 def get_trending_topics_count(trends):
     trending_topics_count = []
@@ -34,7 +29,6 @@ def get_trending_tweets(location, tweet_count = 3, topic_count = 2):
             for trend in trending_topics_count:
                 for tweet in api.search_tweets(q=trend[1],lang='en',count=tweet_count,tweet_mode='extended'):
                     res_obj[trend[1]].append(tweet._json['full_text'])
-
     return res_obj
 
 def feed_model(trending_tweets):

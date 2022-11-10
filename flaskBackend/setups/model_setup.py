@@ -1,19 +1,17 @@
-import os
+import setups.model as model
+import setups.model_sen as model_sen
+import setups.tokenizer as tokenizer
+import setups.tokenizer_sen as tokenizer_sen
 from transformers import AutoModelForSequenceClassification, pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+import os
 
-# model_path = os.getcwdb() + "\\model\\"
-# tokenizer_path = os.getcwdb()+ "\\tokenizer\\"
-model_path = 'model/'
-tokenizer_path = 'tokenizer/'
-summarization_model = AutoModelForSeq2SeqLM.from_pretrained(
-    model_path + 'summarization_model')
-summarization_tokenizer = AutoTokenizer.from_pretrained(tokenizer_path + 'summarization_tokenizer')
 
-sentiment_model = AutoModelForSequenceClassification.from_pretrained(
-    model_path + 'sentiment_model')
-sentiment_tokenizer = AutoTokenizer.from_pretrained(
-    tokenizer_path + 'sentiment_tokenizer')
+summarization_model = AutoModelForSeq2SeqLM.from_pretrained(f'{os.getcwd()}/setups/model')
+summarization_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer')
+
+sentiment_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model_sen')
+sentiment_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer_sen')
 
 summarizer = pipeline("summarization", model=summarization_model,
                       tokenizer=summarization_tokenizer)

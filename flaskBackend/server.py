@@ -1,8 +1,8 @@
 from flask import Flask, render_template, send_file, make_response, jsonify
 from profileSummarizer.processing import get_user_tweets, get_sentiments, get_word_cloud1, get_word_cloud2
 from profileSummarizer.profileSumm import profile_summarizer
-# from generalPage.generalTrends import get_trending_tweets, feed_model
-# from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
+from generalPage.generalTrends import get_trending_tweets, feed_model
+from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
 
 from flask_cors import CORS
 app = Flask(__name__)
@@ -53,18 +53,25 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-@app.route("/trending_tweets/", methods=['GET'])
+@app.route("/trending_tweets", methods=['GET'])
 def sentiment():
     trending_tweets = get_trending_tweets("Mumbai")
     trending_tweets_summarization, trending_tweets_sentiment = feed_model(
         trending_tweets)
-    res = []
+    print(trending_tweets_sentiment)
+    res = {}
     for topic in trending_tweets:
-        pos = trending_tweets_sentiment["pos"]
-        neg = trending_tweets_sentiment["neg"]
-        neu = trending_tweets_sentiment["neu"]
-        res.append(
-            {"hashtag": topic, "summary": trending_tweets_summarization[topic], "pos": pos, "neg": neg, "neu": neu})
-
+        try:
+            pos = trending_tweets_sentiment[topic]["pos"]
+            neg = trending_tweets_sentiment[topic]["neg"]
+            neu = trending_tweets_sentiment[topic]["neu"]
+            res[topic] = {
+                "summary": trending_tweets_summarization[topic], 
+                "pos": pos, 
+                "neg": neg, 
+                "neu": neu
+                }
+        except: 
+            print("Kuch toh gadbad hai bhaiyya")
     print(res)
     return make_response(res)

@@ -1,4 +1,3 @@
-# import profileSummarizer.config as config
 from setups.tweepy_cred import api, client, auth
 import nltk
 import io

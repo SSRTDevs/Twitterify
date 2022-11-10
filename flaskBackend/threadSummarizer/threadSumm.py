@@ -1,12 +1,6 @@
-import tweepy
-import os
-import re
-backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
-import sys
 import re 
-sys.path.insert(0, backend_path)
-from tweepy_cred import api,client
-from model_setup import tweet_summarizer,tweet_analyser
+from setups.tweepy_cred import api,client
+from setups.model_setup import tweet_summarizer,tweet_analyser
 
 
 def thread_feed_model(thread_tweets):

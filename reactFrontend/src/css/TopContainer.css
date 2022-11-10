@@ -1,7 +1,7 @@
 .top-container {
     height: 15vh;
     width: 60vw;
-    border: 2px solid #2f3336;
+    border-bottom: 0.5px solid #2f3336;
     padding: auto;
     grid-area: top-container;
     display: flex;
