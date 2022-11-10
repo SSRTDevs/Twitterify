@@ -1,9 +1,5 @@
-import sys
 import tweepy
-import os
-backend_path = os.path.abspath(os.pardir).replace('\\', '\\\\')
-sys.path.insert(0, backend_path)
-from tweepy_cred import api, client
+from setups.tweepy_cred import api, client
 
 def profile_summarizer(username):
     user_obj = api.get_user(screen_name=username)

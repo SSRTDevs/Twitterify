@@ -1,4 +1,5 @@
-import profileSummarizer.config as config
+# import profileSummarizer.config as config
+from setups.tweepy_cred import api, client, auth
 import nltk
 import io
 import pprint
@@ -12,12 +13,10 @@ from nltk.classify import ClassifierI
 from nltk.tokenize import sent_tokenize, word_tokenize
 import pandas as pd
 import pickle
-import tweepy
 import plotly.express as px
 import wordcloud
 from wordcloud import STOPWORDS
 from wordcloud import WordCloud
-from tweepy import OAuthHandler
 import json
 import matplotlib.animation as animation
 from matplotlib import style
@@ -82,12 +81,6 @@ def sentiment_textblob(text):
 
 
 def get_user_tweets(username, tweets):
-    consumer_key =  config.consumer_key
-    consumer_secret =  config.consumer_secret
-    access_token =  config.access_token
-    access_token_secret = config.access_token_secret
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret,access_token, access_token_secret)
-    api = tweepy.API(auth)
     tweets = api.user_timeline(screen_name=username, count=tweets, tweet_mode="extended" )
     global df
     df = pd.DataFrame([tweet.full_text for tweet in tweets], columns=['Tweet'])

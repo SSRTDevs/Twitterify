@@ -2,7 +2,7 @@ from flask import Flask, render_template, send_file, make_response, jsonify
 from profileSummarizer.processing import get_user_tweets, get_sentiments, get_word_cloud1, get_word_cloud2
 from profileSummarizer.profileSumm import profile_summarizer
 # from generalPage.generalTrends import get_trending_tweets, feed_model
-from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
+# from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
 
 from flask_cors import CORS
 app = Flask(__name__)

@@ -1,10 +1,9 @@
-app1.py
 /profileSummarizer/config.py
 /twitter-apis/model
 /twitter-apis/model_sen
 /twitter-apis/tokenizer_sen
 /twitter-apis/tokenizer
-_pycache_
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
