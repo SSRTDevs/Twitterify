@@ -6,7 +6,7 @@ export default function Trending(props) {
 
     useEffect(() => {
         // //Runs only on the first render
-        props.trending();
+        // props.trending();
     }, []);
 
     return (
@@ -24,6 +24,7 @@ export default function Trending(props) {
                         trend_data={{ "hashtag": key, ...props.trends[key] }}
                         display_tweets={props.display_tweets}
                         show_tweets={props.show_tweets}
+                        setShowtweets={props.setShowtweets}
                     />
                 ))
             }

@@ -12,7 +12,7 @@ export default function TopContainer(props) {
                 <a className={props.Component === "general" ? "active" : ""}
                     onClick={() => {
                         props.setComponent("general")
-                    }}>General</a>
+                    }}>Trending</a>
                 <a className={props.Component === "thread-summarizer" ? "active" : ""}
                     onClick={() => {
                         props.setComponent("thread-summarizer")
