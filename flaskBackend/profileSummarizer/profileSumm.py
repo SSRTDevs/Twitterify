@@ -34,6 +34,8 @@ def profile_summarizer(username):
     for tweet in mention_tweets_data:
         mention_tweets.append(tweet._json['full_text'])
 
+    
+
     res_obj = {
         "username": name,
         "description": description,

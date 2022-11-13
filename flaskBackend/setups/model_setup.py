@@ -1,22 +1,26 @@
-import setups.model as model
-import setups.model_sen as model_sen
-import setups.tokenizer as tokenizer
-import setups.tokenizer_sen as tokenizer_sen
+import setups.model.summarization_model as summarization_model
+import setups.model.sentiment_model as sentiment_model
+import setups.tokenizer.summarization_tokenizer as summarization_tokenizer
+import setups.tokenizer.sentiment_tokenizer as sentiment_tokenizer
 from transformers import AutoModelForSequenceClassification, pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os
 
+summarization_model = AutoModelForSeq2SeqLM.from_pretrained(
+    f'{os.getcwd()}/setups/model/summarization_model')
+summarization_tokenizer = AutoTokenizer.from_pretrained(
+    f'{os.getcwd()}/setups/tokenizer/summarization_tokenizer')
 
-summarization_model = AutoModelForSeq2SeqLM.from_pretrained(f'{os.getcwd()}/setups/model')
-summarization_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer')
-
-sentiment_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model_sen')
-sentiment_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer_sen')
+sentiment_model = AutoModelForSequenceClassification.from_pretrained(
+    f'{os.getcwd()}/setups/model/sentiment_model')
+sentiment_tokenizer = AutoTokenizer.from_pretrained(
+    f'{os.getcwd()}/setups/tokenizer/sentiment_tokenizer')
 
 summarizer = pipeline("summarization", model=summarization_model,
                       tokenizer=summarization_tokenizer)
 sentiment = pipeline("sentiment-analysis", model=sentiment_model,
                      tokenizer=sentiment_tokenizer)
+
 
 def tweet_summarizer(combined_tweets):
     try:
@@ -25,6 +29,7 @@ def tweet_summarizer(combined_tweets):
     except:
         print("Sequence length too large for model, cutting text in half and calling again")
         return tweet_summarizer(combined_tweets[:(len(combined_tweets) // 2)]) + tweet_summarizer(combined_tweets[(len(combined_tweets) // 2):])
+
 
 def tweet_analyser(tweets):
     pos, neg, neu = 0, 0, 0
