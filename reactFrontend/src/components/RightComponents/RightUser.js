@@ -12,7 +12,7 @@ export default function RightUser(props) {
 
     useEffect(() => {
         if (props.sentiments["profile_image_url"]) {
-            setProfile_image_url(props.sentiments["profile_image_url"])
+            setProfile_image_url(props.user.details["profile_image_url"])
         } else {
             setProfile_image_url(default_profile_url)
         }
@@ -80,22 +80,22 @@ export default function RightUser(props) {
             </div>
             <div className="wordclouds">
                 {
-                    props.wordclouds == "" ?
+                    props.user.clouds === "" ?
                         null :
                         <div className="wordcloud1">
                             <span>Things talked about</span>
                             <img
-                                src={`data:image/png;base64,${JSON.parse(props.wordclouds["cloud_nouns"])}`} alt="wordcloud" />
+                                src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_nouns"])}`} alt="wordcloud" />
                         </div>
                 }
 
                 {
-                    props.wordclouds == "" ?
+                    props.user.clouds === "" ?
                         null :
                         <div className="wordcloud2">
                             <span>Names talked about</span>
                             <img
-                                src={`data:image/png;base64,${JSON.parse(props.wordclouds["cloud_names"])}`} alt="wordcloud" />
+                                src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_names"])}`} alt="wordcloud" />
                         </div>
                 }
             </div>

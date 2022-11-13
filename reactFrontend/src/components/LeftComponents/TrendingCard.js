@@ -17,7 +17,7 @@ function TrendingCard(props) {
                         <br />
                         <p className="card-text" >{props.trend_data.summary}</p>
                         <div style={{ textAlign: "right", textDecoration: "underline", cursor: "pointer" }} onClick={() => {
-                            props.display_tweets(props.trend_data.hashtag)
+                            props.setShowtweets(props.trend_data.tweets)
                         }}>Read Tweets</div>
                     </div>
                 </div>

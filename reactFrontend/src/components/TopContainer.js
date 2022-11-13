@@ -1,5 +1,6 @@
 import { React } from 'react';
 import '../css/TopContainer.css'
+import { PAGES } from '../App';
 import twitter_logo from '../images/twitter_logo.png'
 
 export default function TopContainer(props) {
@@ -9,17 +10,17 @@ export default function TopContainer(props) {
             <div className="links">
                 <img style={{ width: "5%" }} src={twitter_logo} alt="Logo"></img>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <a className={props.Component === "general" ? "active" : ""}
+                <a className={props.Component === PAGES.TRENDING ? "active" : ""}
                     onClick={() => {
-                        props.setComponent("general")
-                    }}>General</a>
-                <a className={props.Component === "thread-summarizer" ? "active" : ""}
+                        props.setComponent(PAGES.TRENDING)
+                    }}>Trending</a>
+                <a className={props.Component === PAGES.THREAD ? "active" : ""}
                     onClick={() => {
-                        props.setComponent("thread-summarizer")
+                        props.setComponent(PAGES.THREAD)
                     }}>Thread-Summarizer</a>
-                <a className={props.Component === "user-summarizer" ? "active" : ""}
+                <a className={props.Component === PAGES.PROFILE ? "active" : ""}
                     onClick={() => {
-                        props.setComponent("user-summarizer")
+                        props.setComponent(PAGES.PROFILE)
                     }}>User-Summarizer</a>
 
                 {/* <a className="dropdown-toggle"
@@ -28,10 +29,10 @@ export default function TopContainer(props) {
                     }}>Tags</a> */}
                 <button className="btn btn-primary"
                     onClick={() => {
-                        if (props.Component === "user-summarizer") {
+                        if (props.Component == PAGES.PROFILE) {
                             props.user_summarizer();
                         }
-                        else if (props.Component === "thread-summarizer") {
+                        else if (props.Component == PAGES.THREAD) {
                             props.thread_summarizer();
                         }
                     }}>Twiterify</button>

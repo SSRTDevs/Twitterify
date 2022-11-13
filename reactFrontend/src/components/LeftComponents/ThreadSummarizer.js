@@ -7,7 +7,7 @@ export default function ThreadSummarizer(props) {
                 <span className="input-group-text" id="inputGroup-sizing-default">Thread URL</span>
                 <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder='Enter thread URL'
                     onChange={(e) => {
-                        props.seturl(e.target.value)
+                        props.setThread({ ...props.thread, 'url': e.target.value })
                     }} />
             </div>
             <br />
@@ -17,9 +17,9 @@ export default function ThreadSummarizer(props) {
                     <br />
                     <p className="card-text">
                         {
-                            Object.keys(props.thread).length === 0 
-                            ? <p>No summary to show</p> : 
-                            props.thread["thread_summary"]
+                            Object.keys(props.thread.details).length === 0
+                                ? <p>No summary to show</p> :
+                                props.thread.details["thread_summary"]
                         }
                     </p>
                 </div>
@@ -29,9 +29,9 @@ export default function ThreadSummarizer(props) {
             <h2 style={{ textAlign: "left" }}>References</h2>
             <ul>
                 {
-                    Object.keys(props.thread).length === 0 ?
+                    Object.keys(props.thread.details).length === 0 ?
                         <li style={{ textAlign: "left" }}>No references to show</li> :
-                        props.thread["references"].map((item, id) => {
+                        props.thread.details["references"].map((item, id) => {
                             return <li style={{ textAlign: "left" }}>{item}</li>
                         })
 

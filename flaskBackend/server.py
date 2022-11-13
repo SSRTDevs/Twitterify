@@ -40,6 +40,8 @@ def wordclouds(Username, tweets):
     return response
 
 
+
+
 @app.route("/thread_summary/<url>", methods=['GET'])
 def thread_summary(url):
     url = url.replace("*","/")
