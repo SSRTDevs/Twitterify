@@ -29,7 +29,7 @@ function App() {
   })
 
   const trending = async () => {
-    alert("Trending Api fired")
+    // alert("Trending Api fired")
     await axios.get(`http://localhost:5000/trending_tweets`).then((res) => {
       console.log(res.data)
       setTrends(res.data)
