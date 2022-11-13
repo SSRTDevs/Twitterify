@@ -31,11 +31,13 @@
 .wordcloud1 {
     display: grid;
     grid-template-rows: 1fr 5fr;
+    padding: 4px;
 }
 
 .wordcloud2 {
     display: grid;
     grid-template-rows: 1fr 5fr;
+    padding: 4px;
 }
 
 .input-group-text {
