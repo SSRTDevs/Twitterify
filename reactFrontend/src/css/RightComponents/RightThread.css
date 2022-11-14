@@ -4,3 +4,8 @@
     border: 0.5px solid white;
     margin: 0px;
 }
+
+.reply-div {
+    overflow-y: scroll;
+    max-height: 400px;
+}

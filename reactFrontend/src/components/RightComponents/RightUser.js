@@ -1,6 +1,7 @@
-import React from "react";
+import { React } from "react";
 import "../../css/RightComponents/RightUser.css"
 export default function RightUser(props) {
+
     return (
         <>
             <nav className="navbar navbar-light bg-dark">

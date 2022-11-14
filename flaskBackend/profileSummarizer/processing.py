@@ -21,14 +21,12 @@ import matplotlib.animation as animation
 from matplotlib import style
 import base64
 
-
 def cleanTxt(text):
     text = re.sub('@[A-Za-z0–9]+', '', text)
     text = re.sub('#', '', text)
     text = re.sub('RT[\s]+', '', text)
     text = re.sub('https?:\/\/\S+', '', text)
     return text
-
 
 def tw_sentiment(tweet):
     with open('naivebayes.pickle', 'rb') as f:
@@ -40,7 +38,6 @@ def tw_sentiment(tweet):
     elif d.prob("pos") > 0.6:
         return "pos"
     return "neutral"
-
 
 def find_features(document):
     all_words = np.load("allwords.npy")
@@ -66,10 +63,8 @@ def nam_adj(df):
                 adverbs.append(pair[0])
     return names, adjectives, nouns, adverbs
 
-
 def getSubjectivity(text):
     return TextBlob(text).sentiment.subjectivity
-
 
 def sentiment_textblob(text):
     if TextBlob(text).sentiment.polarity > 0:
@@ -78,33 +73,11 @@ def sentiment_textblob(text):
         return "neg"
     return "neutral"
 
-
 def get_user_tweets(username, tweets):
     tweets = api.user_timeline(screen_name=username, count=tweets, tweet_mode="extended" )
     global df
     df = pd.DataFrame([tweet.full_text for tweet in tweets], columns=['Tweet'])
     df["Tweet"] = df["Tweet"].apply(cleanTxt)
-
-
-def get_sentiments():
-    df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
-    df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
-    df1 = df.groupby('Sentiment').count()
-    sub_mean = df["Subjectivity"].mean()
-    try:
-        pos = df1.loc(0)["pos"]["Tweet"]
-    except:
-        pos = 0
-    try:
-        neg = df1.loc(0)["neg"]["Tweet"]
-    except:
-        neg = 0
-    try:
-        neutral = df1.loc(0)["neutral"]["Tweet"]
-    except:
-        neutral = 0
-    return df.to_json(),str(pos),str(neg),str(neutral)
-
 
 def get_word_cloud1():
     names, adjectives, nouns, adverbs = nam_adj(df)
@@ -134,7 +107,6 @@ def get_word_cloud1():
     json_data = json.dumps(encoded_string,indent=2)
     return json_data
 
-
 def get_word_cloud2():
     names, adjectives, nouns, adverbs = nam_adj(df)
     lst = [item.lower() for item in nouns]
@@ -159,3 +131,30 @@ def get_word_cloud2():
     encoded_string = encoded_data.decode('UTF-8')
     json_data = json.dumps(encoded_string,indent=2)
     return json_data
+
+
+def get_sentiments(Username,tweets):
+    get_user_tweets(Username, tweets)
+    df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
+    df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
+    df1 = df.groupby('Sentiment').count()
+    sub_mean = df["Subjectivity"].mean()
+    try:
+        pos = df1.loc(0)["pos"]["Tweet"]
+    except:
+        pos = 0
+    try:
+        neg = df1.loc(0)["neg"]["Tweet"]
+    except:
+        neg = 0
+    try:
+        neutral = df1.loc(0)["neutral"]["Tweet"]
+    except:
+        neutral = 0
+    return df.to_json(),str(pos),str(neg),str(neutral)
+
+def get_word_clouds(Username, tweets): 
+    get_user_tweets(Username, tweets)
+    wordcloud1 = get_word_cloud1()
+    wordcloud2 = get_word_cloud2()
+    return wordcloud1,wordcloud2

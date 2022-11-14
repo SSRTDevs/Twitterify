@@ -6,7 +6,7 @@ export default function Trending(props) {
 
     useEffect(() => {
         // //Runs only on the first render
-        // props.trending();
+        props.trending();
     }, []);
 
     return (
@@ -14,17 +14,16 @@ export default function Trending(props) {
             <div className='heading'>Trending Today</div>
             <br />
             <div className='trending'>{
-                Object.keys(props.trends).map((item) => (
+                Object.keys(props.trends.latest_trends).map((item) => (
                     <TrendingTags hashtag={item} />
                 ))}
             </div>
             {
-                Object.keys(props.trends).map((key) => (
+                Object.keys(props.trends.latest_trends).map((key) => (
                     <TrendingCard
-                        trend_data={{ "hashtag": key, ...props.trends[key] }}
-                        display_tweets={props.display_tweets}
-                        show_tweets={props.show_tweets}
-                        setShowtweets={props.setShowtweets}
+                        hashtag={key}
+                        trends={props.trends}
+                        setTrends={props.setTrends}
                     />
                 ))
             }
