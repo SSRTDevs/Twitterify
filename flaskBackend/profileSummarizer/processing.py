@@ -10,6 +10,8 @@ import re
 from nltk.classify import SklearnClassifier
 from nltk.classify import ClassifierI
 from nltk.tokenize import sent_tokenize, word_tokenize
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 import pandas as pd
 import pickle
 import plotly.express as px
@@ -30,16 +32,16 @@ def cleanTxt(text):
     return text
 
 
-def tw_sentiment(tweet):
-    with open('naivebayes.pickle', 'rb') as f:
-        clf = pickle.load(f)
-    tweet_features = find_features(tweet)
-    d = clf.prob_classify(tweet_features)
-    if d.prob("neg") > 0.9:
-        return "neg "
-    elif d.prob("pos") > 0.6:
-        return "pos"
-    return "neutral"
+# def tw_sentiment(tweet):
+#     with open('naivebayes.pickle', 'rb') as f:
+#         clf = pickle.load(f)
+#     tweet_features = find_features(tweet)
+#     d = clf.prob_classify(tweet_features)
+#     if d.prob("neg") > 0.9:
+#         return "neg "
+#     elif d.prob("pos") > 0.6:
+#         return "pos"
+#     return "neutral"
 
 
 def find_features(document):

@@ -1,6 +1,6 @@
 .right-container {
     height: 100vh;
-    width: 40vw;
+    width: 35vw;
     padding: 1.25rem;
     grid-area: right-container;
     overflow: scroll;

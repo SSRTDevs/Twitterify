@@ -1,11 +1,9 @@
-import re
 import os
 from dotenv import load_dotenv
 import tweepy
-
 load_dotenv('.env')
 
-#API
+# API
 auth = tweepy.OAuthHandler(consumer_key=os.environ.get('consumer_key'),
                            consumer_secret=os.environ.get('consumer_secret'))
 auth.set_access_token(os.environ.get('access_token'),
