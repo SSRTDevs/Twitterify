@@ -30,15 +30,16 @@ export default function RightThread(props) {
             <br />
             <div style={{ fontSize: "1.7rem" }}>Replies</div>
             <hr />
+            <div className="reply-div">
+                {
+                    Object.keys(props.thread.details).length === 0 ?
+                        <li className="replies">No replies yet</li> :
+                        props.thread.details["reply_tweets"].map((item, key) => {
+                            return <p className="replies">{item}</p>
+                        })
 
-            {
-                Object.keys(props.thread.details).length === 0 ?
-                    <li className="replies">No replies yet</li> :
-                    props.thread.details["reply_tweets"].map((item, key) => {
-                        return <p className="replies">{item}</p>
-                    })
-
-            }
+                }
+            </div>
         </>
     )
 }

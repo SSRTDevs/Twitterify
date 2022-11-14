@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import "../../css/RightComponents/RightUser.css"
 import { useState, useEffect } from "react";
 import plus from "../../images/plus.svg"
@@ -7,6 +7,7 @@ import people from "../../images/people.svg"
 import calendar from "../../images/calendar.svg"
 
 export default function RightUser(props) {
+
     return (
         <>
             <div>

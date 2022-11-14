@@ -6,19 +6,25 @@ function TrendingCard(props) {
             <div>
                 <div className="card">
                     <div className="card-body">
-                        <h5 className="card-title">{props.trend_data.hashtag}</h5>
+                        <h5 className="card-title">{props.hashtag}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">Cricket</h6>
                         <h6 className="card-subtitle">
                             Sentiment Stats: &nbsp; &nbsp;
-                            <span style={{ color: "green" }}>Pos: {props.trend_data.pos} &nbsp; &nbsp;</span>
-                            <span style={{ color: "red" }}>Neg: {props.trend_data.neg} &nbsp; &nbsp;</span>
-                            <span style={{ color: "yellow" }}>Neutral: {props.trend_data.neu} &nbsp; &nbsp;</span>
+                            <span style={{ color: "green" }}>Pos: {props.trends.latest_trends.pos} &nbsp; &nbsp;</span>
+                            <span style={{ color: "red" }}>Neg: {props.trends.latest_trends.neg} &nbsp; &nbsp;</span>
+                            <span style={{ color: "yellow" }}>Neutral: {props.trends.latest_trends.neu} &nbsp; &nbsp;</span>
                         </h6>
                         <br />
-                        <p className="card-text" >{props.trend_data.summary}</p>
-                        <div style={{ textAlign: "right", textDecoration: "underline", cursor: "pointer" }} onClick={() => {
-                            props.setShowtweets(props.trend_data.tweets)
-                        }}>Read Tweets</div>
+                        <p className="card-text" >
+                            {props.trends.latest_trends[props.hashtag].summary}
+                        </p>
+                        <div style={{ textAlign: "right", textDecoration: "underline", cursor: "pointer" }}
+                            onClick={() => {
+                                props.setTrends({
+                                    ...props.trends,
+                                    'show_tweets': props.trends.latest_trends[props.hashtag].tweets
+                                })
+                            }}>Read Tweets</div>
                     </div>
                 </div>
             </div>

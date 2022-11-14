@@ -56,16 +56,20 @@ function App() {
     url: '',
     details: mock_thread
   })
+  const [trends, setTrends] = useState({
+    'latest_trends': mock_trends,
+    'show_tweets': []
+  })
   const [displayBanner, setdisplayBanner] = useState(false)
-  const [show_tweets, setShowtweets] = useState("")
-  const [trends, setTrends] = useState(mock_trends)
 
 
   const trending = async () => {
     // alert("Trending Api fired")
     await axios.get(`http://localhost:5000/trending_tweets`).then((res) => {
-      console.log(res.data)
-      trends = res.data;
+      console.log("Trending Tweets", res.data)
+      setTrends((trends) => {
+        return { ...trends, 'latest_trends': res.data }
+      })
     }).catch((err) => {
       console.log("Kuch toh gadbad hai beta");
     })
@@ -118,14 +122,13 @@ function App() {
           thread_summarizer={thread_summarizer}
         />
         <LeftContainer
+          Component={Component}
           user={user}
           setUser={setUser}
           thread={thread}
           setThread={setThread}
-          Component={Component}
-          show_tweets={show_tweets}
-          setShowtweets={setShowtweets}
           trends={trends}
+          setTrends={setTrends}
           trending={trending}
         />
 
@@ -133,7 +136,7 @@ function App() {
           Component={Component}
           user={user}
           thread={thread}
-          show_tweets={show_tweets}
+          trends={trends}
         />
       </div>
       {displayBanner ?

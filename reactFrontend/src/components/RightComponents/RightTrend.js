@@ -4,8 +4,8 @@ export default function RightTrend(props) {
     return (
         <>
             {
-                props.show_tweets === "" ? "Nothing to show" :
-                    props.show_tweets.map((item) => {
+                props.trends.show_tweets.length === 0 ? "Nothing to show" :
+                    props.trends.show_tweets.map((item) => {
                         return (
                             <div>
                                 <div className="card">

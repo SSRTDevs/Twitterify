@@ -16,7 +16,6 @@ export default function UserSummarizer(props) {
                 <span className="input-group-text" id="inputGroup-sizing-default">Username</span>
                 <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder='@username'
                     onChange={(e) => {
-                        // props.setUsername(e.target.value)
                         props.setUser({ ...props.user, "Username": e.target.value })
                     }} />
             </div>
