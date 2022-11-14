@@ -12,12 +12,13 @@ export default function UserSummarizer(props) {
 
     return (
         <>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="inputGroup-sizing-default">Username</span>
-                <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder='@username'
-                    onChange={(e) => {
+
+            <div className="container w-[75%]">
+                <div className="flex flex-row">
+                    <input type="search" id="default-search" className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-900 rounded-lg text-base" placeholder="Search Username" onChange={(e) => {
                         props.setUser({ ...props.user, "Username": e.target.value })
                     }} />
+                </div>
             </div>
             <div className="slider">
                 <label for="customRange1" class="form-label">
