@@ -1,11 +1,8 @@
 .replies {
     padding: 0.5rem 0.5rem;
-    background-color: #9c9a9724 !important;
-    border: 0.5px solid white;
-    margin: 0px;
 }
 
 .reply-div {
     overflow-y: scroll;
-    max-height: 400px;
+    max-height: 300px;
 }

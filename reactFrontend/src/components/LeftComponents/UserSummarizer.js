@@ -13,21 +13,21 @@ export default function UserSummarizer(props) {
     return (
         <>
 
-            <div className="container w-[75%]">
+            <div className="container mx-auto w-[75%]">
                 <div className="flex flex-row">
                     <input type="search" id="default-search" className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-900 rounded-lg text-base" placeholder="Search Username" onChange={(e) => {
                         props.setUser({ ...props.user, "Username": e.target.value })
                     }} />
                 </div>
             </div>
-            <div className="slider">
-                <label for="customRange1" class="form-label">
+            <div className="slider mt-5 mx-auto">
+                <label for="customRange1" className="text form-label">
                     Number of Tweets
                     {props.user.tweets == 0 ? "" : ` : ${props.user.tweets}`}
                 </label>
-                <div className="slider-element">
+                <div className="slider-element w-full">
                     <span className='min'>0&nbsp;</span>
-                    <input ref={Ntweets} type="range" class="form-range" min="0" max="100" id="customRange1"
+                    <input ref={Ntweets} type="range" className="form-range w-full" min="0" max="100" id="customRange1"
                         onChange={(e) => {
                             // props.settweets(e.target.value)
                             props.setUser({ ...props.user, "tweets": e.target.value })
@@ -41,11 +41,14 @@ export default function UserSummarizer(props) {
             {Object.keys(props.user.details).length === 0 ? "Nothing to display" :
                 Object.keys(props.user.details.sentiments["Tweet"]).map((index, key) => {
                     return (
-                        <div className="card w-75">
-                            <div data-aos="fade-left" className="card-body">
-                                <p className="card-text">{props.user.details.sentiments["Tweet"][key]}.</p>
+                        <>
+                            <div
+                                className="w-3/4 border border-slate-900 my-px mx-auto rounded p-2 shadow-md transition hover:shadow-cyan-500/50">
+                                <p className="mt-2 text-sm leading-relaxed text-white-500 line-clamp-3 dark:text-white-500">
+                                    {props.user.details.sentiments["Tweet"][key]}
+                                </p>
                             </div>
-                        </div>
+                        </>
                     )
                 })
             }
