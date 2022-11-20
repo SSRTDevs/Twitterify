@@ -10,7 +10,7 @@ export default function RightUser(props) {
     return (
         <>
             <div>
-                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-900">
+                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-800">
                     <div className="w-14 h-auto rounded-full bg-cover flex-none">
                         <img className="rounded-full w-[100%]" src={props.user.details["profile_image_url"]} />
                     </div>

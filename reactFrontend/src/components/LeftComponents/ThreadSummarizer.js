@@ -7,7 +7,7 @@ export default function ThreadSummarizer(props) {
         <>
             <div className="container mx-auto w-[75%]">
                 <div className="flex flex-row">
-                    <input type="search" id="default-search" className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-900 rounded-lg text-base" placeholder="Enter Thread URL" onChange={(e) => {
+                    <input type="search" id="default-search" className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base" placeholder="Enter Thread URL" onChange={(e) => {
                         props.setUser({ ...props.user, "Username": e.target.value })
 
                     }} />

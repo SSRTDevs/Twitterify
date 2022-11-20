@@ -9,8 +9,6 @@ app = Flask(__name__)
 app.run(debug=True)
 CORS(app)
 
-
-
 trending_tweets_obj = {}
 def process_trending_tweets():
     trending_tweets = get_trending_tweets("Mumbai")

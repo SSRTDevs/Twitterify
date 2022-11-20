@@ -7,7 +7,7 @@ export default function RightThread(props) {
     return (
         <>
             <div>
-                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-900">
+                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-800">
                     <div className="w-14 h-auto rounded-full bg-cover flex-none">
                         <img className="rounded-full w-[100%]" src={props.thread.details["profile_image_url"]} />
                     </div>
@@ -36,7 +36,7 @@ export default function RightThread(props) {
                                 {props.thread.details["thread_tweets"] === undefined ? '' :
                                     props.thread.details["thread_tweets"].length}
                             </div>
-                            <div className="text-sm text-gray-400">Tweets</div>
+                            <div className="text-sm text-gray-400">Tweets Length</div>
                         </div>
                     </div>
                     <div className="flex flex-1 items-center">

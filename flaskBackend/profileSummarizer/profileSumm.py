@@ -1,5 +1,4 @@
 import tweepy
-import os
 from setups.tweepy_cred import api, client
 
 def profile_summarizer(username):
