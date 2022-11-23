@@ -6,3 +6,8 @@
 .status {
     font-weight: bolder;
 }
+
+.tweet-card {
+    margin: auto;
+    border-bottom: 0.5px solid #ffffff69 !important;
+}

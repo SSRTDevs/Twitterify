@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { TrendingCard, TrendingTags } from '../index'
 import '../../css/LeftContainer.css'
 

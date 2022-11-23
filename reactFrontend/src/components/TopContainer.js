@@ -27,12 +27,13 @@ export default function TopContainer(props) {
                     onClick={() => {
                         props.setdisplayBanner(true)
                     }}>Tags</a> */}
-                <button className="btn btn-primary"
+                <button
+                    className="p-2 rounded-sm transition ease-in-out delay-150 bg-blue-600 active:scale-95 hover:bg-blue-500 active:scale-110 duration-100"
                     onClick={() => {
-                        if (props.Component == PAGES.PROFILE) {
+                        if (props.Component === PAGES.PROFILE) {
                             props.user_summarizer();
                         }
-                        else if (props.Component == PAGES.THREAD) {
+                        else if (props.Component === PAGES.THREAD) {
                             props.thread_summarizer();
                         }
                     }}>Twiterify</button>

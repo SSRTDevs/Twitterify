@@ -13,7 +13,7 @@
     color: white !important;
 }
 
-a {
+.top-container>.links>a {
     text-align: center;
     text-decoration: none;
     vertical-align: middle;

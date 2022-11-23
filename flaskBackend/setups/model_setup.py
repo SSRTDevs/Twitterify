@@ -1,7 +1,3 @@
-import setups.model.summarization_model as summarization_model
-import setups.model.sentiment_model as sentiment_model
-import setups.tokenizer.summarization_tokenizer as summarization_tokenizer
-import setups.tokenizer.sentiment_tokenizer as sentiment_tokenizer
 from transformers import AutoModelForSequenceClassification, pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os

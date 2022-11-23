@@ -1,6 +1,5 @@
 import { React } from "react";
 import "../../css/RightComponents/RightUser.css"
-import { useState, useEffect } from "react";
 import plus from "../../images/plus.svg"
 import minus from "../../images/minus.svg"
 import people from "../../images/people.svg"
@@ -11,7 +10,7 @@ export default function RightUser(props) {
     return (
         <>
             <div>
-                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-900">
+                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-800">
                     <div className="w-14 h-auto rounded-full bg-cover flex-none">
                         <img className="rounded-full w-[100%]" src={props.user.details["profile_image_url"]} />
                     </div>
@@ -72,17 +71,17 @@ export default function RightUser(props) {
             </div>
             {
                 props.user.clouds === "" ?
-                    null:
+                    null :
                     <div className="flex gap-2 justify-between mt-[6%] w-full">
-                    <div className="container flex gap-2 flex-col gap-1 items-center">
-                        <h1 className="text-lg">Things mentioned</h1>
-                        <img src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_nouns"])}`} alt="wordcloud" className="max-w-[80%] h-auto" />
+                        <div className="container flex gap-2 flex-col gap-1 items-center">
+                            <h1 className="text-lg">Things mentioned</h1>
+                            <img src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_nouns"])}`} alt="wordcloud" className="max-w-[80%] h-auto" />
+                        </div>
+                        <div className="container flex gap-2 flex-col gap-1 items-center">
+                            <h1 className="text-lg">Names mentioned</h1>
+                            <img src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_names"])}`} alt="wordcloud" className="max-w-[80%] h-auto" />
+                        </div>
                     </div>
-                    <div className="container flex gap-2 flex-col gap-1 items-center">
-                        <h1 className="text-lg">Names mentioned</h1>
-                        <img src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_names"])}`} alt="wordcloud" className="max-w-[80%] h-auto" />
-                    </div>
-                </div>
             }
         </>
     )
