@@ -1,18 +1,18 @@
 # Twitterify
 *A web platform to get quick, accurate and valuable statistical insights for real time twitter data.*
 
-![Home Page](https://github.com/SaketThota/BE-project/assets/Trending_Section.png?raw=true "Home Page")
+![Home Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Trending_Section.png?raw=true "Home Page")
 
 ### Table of contents
 | Title                           |
 | ------------------------------- |
-| [About](README.md#about)                           |
-| [Why Twitterify?](README.md#why-twitterify?)                  |
-| [Demonstration](README.md#demonstration)                   |
-| [Architecture](README.md#project-architecture) |
-| [Implementation Details](README.md#implementaion-details) |
-| [Tech stacks used](README.md#tech-stacks-used)|
-| [How to contribute](README.md#How-to-Contribute)     | 
+| [About](https://github.com/SaketThota/Twitterify#about)                           |
+| [Why Twitterify?](https://github.com/SaketThota/Twitterify#why-twitterify)                  |
+| [Demonstration](https://github.com/SaketThota/Twitterify#demonstration)                   |
+| [Architecture](https://github.com/SaketThota/Twitterify#project-architecture) |
+| [Implementation Details](https://github.com/SaketThota/Twitterify#implementaion-details) |
+| [Tech stacks used](https://github.com/SaketThota/Twitterify#tech-stacks-used)|
+| [How to contribute](https://github.com/SaketThota/Twitterify#project-contributors)     | 
 
 ### About
 - Twitterify is a web application which provides quick accurate and valuable statistical insights on real time twitter data.
@@ -28,14 +28,14 @@
 #### Trending Data Analysis
 - Trending Data Analysis page
 
-![Trending Data Analysis Page](https://github.com/SaketThota/BE-project/assets/Trending_Section.png?raw=true "Trending Data Analysis Page")
+![Trending Data Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Trending_Section.png?raw=true "Trending Data Analysis Page")
 
 - This page displays the summaries of the top 10 trends on twitter along with the percentage of sentiments involved in each one of them. Users on the platform can read a few tweets, too associated with the particular trends with the same hashtag
 
 #### Analysis of Twitter Threads
 - Thread Analysis Page
 
-![Thread Analysis Page](https://github.com/SaketThota/BE-project/assets/Thread_Summarizer.png?raw=true "Thread Analysis Page")
+![Thread Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Thread_Summarizer.png?raw=true "Thread Analysis Page")
 
 - This section displays the summary of a thread and statistical information associated with it like the no of tweets the thread consists of and the replies it has received.
 - Users can enter the thread link in the input field for analyzing a particular thread
@@ -44,7 +44,7 @@
 #### Analysis of User profiles
 - Twitter User Profile Analysis Page
 
-![User Profile Analysis Page](https://github.com/SaketThota/BE-project/assets/Profile_Analysis.png?raw=true "User Profile Analysis Page")
+![User Profile Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Profile_Analysis.png?raw=true "User Profile Analysis Page")
 
 - This page extracts analyzes a particular user profile on twitter
 - Ther sentiments in the user tweets are noted and a statistical figure of the positiv and negative tweets tweeted by the user is displayed.
@@ -53,7 +53,7 @@
 
 ### Project Architecture
 
-![Architecture Diagram](https://github.com/SaketThota/BE-project/assets/Architecture.png?raw=true "Architecture Diagram")
+![Architecture Diagram](https://github.com/SaketThota/Twitterify/blob/main/Assets/Architecture.png?raw=true "Architecture Diagram")
 
 
 ### Implementaion Details
