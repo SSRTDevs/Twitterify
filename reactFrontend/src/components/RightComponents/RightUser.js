@@ -9,6 +9,7 @@ export default function RightUser(props) {
 
     return (
         <>
+
             <div>
                 <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-800">
                     <div className="w-14 h-auto rounded-full bg-cover flex-none">

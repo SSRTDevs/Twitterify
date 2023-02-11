@@ -1,12 +1,12 @@
-import React from 'react';
+import {React,useEffect,useRef} from 'react';
 import "../../css/LeftComponents/UserSummarizer.css"
 
 export default function UserSummarizer(props) {
-    // const Ntweets = useRef(0)
-    // useEffect(() => {
-    //     props.setUser({ ...props.user, 'Username': '', 'tweets': 0 })
-    //     Ntweets.current.value = 0
-    // }, [])
+    const Ntweets = useRef(0)
+    useEffect(() => {
+        props.setUser({ ...props.user, 'Username': '', 'tweets': 0 })
+        Ntweets.current.value = 0
+    }, [])
 
     return (
         <>
@@ -21,12 +21,12 @@ export default function UserSummarizer(props) {
                     </div>
                 </div>
             </div>
-            {/* <div className="slider mt-5 mx-auto"> */}
-                {/* <label for="customRange1" className="text form-label">
+            <div className="slider mt-5 mx-auto">
+                <label for="customRange1" className="text form-label">
                     Number of Tweets
                     {props.user.tweets == 0 ? "" : ` : ${props.user.tweets}`}
-                </label> */}
-                {/* <div className="slider-element w-full">
+                </label>
+                <div className="slider-element w-full">
                     <span className='min'>0&nbsp;</span>
                     <input ref={Ntweets} type="range" className="form-range w-full" min="0" max="100" id="customRange1"
                         onChange={(e) => {
@@ -35,10 +35,10 @@ export default function UserSummarizer(props) {
                             Ntweets.current.value = e.target.value
                         }} />
                     <span className='max'>&nbsp;100</span>
-                </div> */}
-            {/* </div> */}
-            {/* <br />
-            <br /> */}
+                </div>
+            </div>
+            <br />
+            <br />
             {Object.keys(props.user.details).length === 0 ? "Nothing to display" :
                 Object.keys(props.user.details.sentiments["Tweet"]).map((index, key) => {
                     return (

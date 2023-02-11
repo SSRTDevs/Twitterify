@@ -9,4 +9,5 @@ export { default as RightThread } from "./RightComponents/RightThread"
 export { default as RightUser } from "./RightComponents/RightUser"
 export { default as TagBanner } from "./TagBanner"
 export { default as TrendingCard } from "./LeftComponents/TrendingCard";
-export { default as TrendingTags } from "./LeftComponents/TrendingTags"
+export { default as TrendingTags } from "./LeftComponents/TrendingTags"; 
+export {default as Tabs} from "./Tabs";

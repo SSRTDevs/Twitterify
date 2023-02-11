@@ -6,7 +6,7 @@ export default function Trending(props) {
 
     useEffect(() => {
         // //Runs only on the first render
-        props.trending();
+        // props.trending();
     }, []);
 
     return (

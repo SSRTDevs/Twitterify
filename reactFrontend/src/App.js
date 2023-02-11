@@ -1,13 +1,17 @@
 import { React, useState } from 'react';
 import axios from 'axios';
 import './App.css'
-import { TopContainer, LeftContainer, RightContainer, TagBanner } from './components';
+import { TopContainer, LeftContainer, RightContainer, TagBanner, Tabs } from './components';
+import {
+  Trending,
+  ThreadSummarizer,
+  UserSummarizer,
+  RightThread,
+  RightTrend,
+  RightUser
+} from "./components"
 
-export const PAGES = {
-  TRENDING: 'trending',
-  THREAD: 'thread',
-  PROFILE: 'profile'
-}
+
 
 let mock_trends = {
   "#INDvsENG": {
@@ -45,7 +49,7 @@ let mock_thread = {
 }
 
 function App() {
-  const [Component, setComponent] = useState(PAGES.TRENDING)
+  // const [Component, setComponent] = useState(PAGES.TRENDING)
   const [user, setUser] = useState({
     "Username": '',
     "tweets": 0,
@@ -110,11 +114,59 @@ function App() {
     })
   }
 
+  const tabs = [
+    {
+      name: 'Trending',
+      leftComponent: <Trending
+        user={user}
+        setUser={setUser}
+        thread={thread}
+        setThread={setThread}
+        trends={trends}
+        setTrends={setTrends}
+        trending={trending} />,
+      rightComponent: <RightTrend
+        user={user}
+        thread={thread}
+        trends={trends} />,
+    },
+    {
+      name: 'Thread',
+      leftComponent: <ThreadSummarizer
+        user={user}
+        setUser={setUser}
+        thread={thread}
+        setThread={setThread}
+        trends={trends}
+        setTrends={setTrends}
+        trending={trending} />,
+      rightComponent: <RightThread
+        user={user}
+        thread={thread}
+        trends={trends} />,
+    },
+    {
+      name: 'Profile',
+      leftComponent: <UserSummarizer
+        user={user}
+        setUser={setUser}
+        thread={thread}
+        setThread={setThread}
+        trends={trends}
+        setTrends={setTrends}
+        trending={trending} />,
+      rightComponent: <RightUser
+        user={user}
+        thread={thread}
+        trends={trends} />,
+    }
+  ]
+
 
   return (
     <>
-      <div className="god-container">
-        <TopContainer
+      {/* <div className="god-container">
+        /*<TopContainer
           Component={Component}
           setComponent={setComponent}
           setdisplayBanner={setdisplayBanner}
@@ -138,12 +190,17 @@ function App() {
           thread={thread}
           trends={trends}
         />
-      </div>
+      </div> */}
+
+      <Tabs tabs={tabs} />
+
+
       {displayBanner ?
         <TagBanner
           setdisplayBanner={setdisplayBanner} /> :
         ""
       }
+
     </>
   );
 }
