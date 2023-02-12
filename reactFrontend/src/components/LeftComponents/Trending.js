@@ -1,6 +1,5 @@
 import React, {  useEffect } from 'react';
 import { TrendingCard, TrendingTags } from '../index'
-import '../../css/LeftContainer.css'
 
 export default function Trending({trends, setTrends}) {
 
@@ -11,7 +10,7 @@ export default function Trending({trends, setTrends}) {
 
     return (
         <>
-            <div className='heading'>Trending Today</div>
+            <div className='heading text-xl'>Trending Today</div>
             <br />
             <div className='trending'>{
                 Object.keys(trends.latest_trends).map((item) => (

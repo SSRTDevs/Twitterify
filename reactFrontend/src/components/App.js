@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-import '../css/App.css'
 import { Tabs } from '.';
 import {
   Trending,

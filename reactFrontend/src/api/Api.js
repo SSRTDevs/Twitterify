@@ -20,6 +20,7 @@ const user_summarizer = async (user, setUser) => {
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
+      console.log(res)
       setUser((user) => {
         return { ...user, details: res.data };
       });
