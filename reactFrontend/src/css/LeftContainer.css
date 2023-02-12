@@ -1,11 +1,11 @@
-.left-container {
+/* .left-container {
     height: 85vh;
     width: 65vw;
     padding: 1.25rem;
     grid-area: left-container;
     text-align: center;
     overflow-y: scroll;
-}
+} */
 .heading{
     font-size:  3rem !important;
     text-align: left;
