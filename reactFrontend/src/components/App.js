@@ -14,6 +14,15 @@ import {
   user_summarizer,
   thread_summarizer
 } from "../api/Api"
+import {
+  IoTrendingUpOutline
+} from 'react-icons/io5'
+import {
+  MdOutlineSummarize
+} from'react-icons/md'
+import {
+  ImProfile
+} from 'react-icons/im'
 
 
 
@@ -75,18 +84,21 @@ export default function App() {
       name: 'Trending',
       leftComponent: <Trending trends={trends} setTrends={setTrends} />,
       rightComponent: <RightTrend trends={trends} />,
+      icon: <IoTrendingUpOutline/>,
       details: (()=> trending(trends,setTrends)),
     },
     {
       name: 'Thread',
       leftComponent: <ThreadSummarizer thread={thread} setThread={setThread} />,
       rightComponent: <RightThread thread={thread} />,
+      icon: <MdOutlineSummarize/>,
       details: (() => thread_summarizer(thread,setThread)),
     },
     {
       name: 'Profile',
       leftComponent: <UserSummarizer user={user} setUser={setUser} />,
       rightComponent: <RightUser user={user} />,
+      icon: <ImProfile/>,
       details: (() => user_summarizer(user,setUser))
     }
   ]

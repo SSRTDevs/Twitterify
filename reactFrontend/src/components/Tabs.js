@@ -4,6 +4,7 @@ import "../css/LeftContainer.css";
 import "../css/RightContainer.css";
 import "../css/TopContainer.css";
 import twitter_logo from "../images/twitter_logo.png";
+import {FiTwitter} from 'react-icons/fi'
 
 export default function Tabs({ tabs }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -15,17 +16,19 @@ export default function Tabs({ tabs }) {
         <div className='left-section h-screen col-span-4 flex flex-col w-full p-2'>
 
           <div className='top-container h-fit flex justify-between items-start p-1 mb-5'>
-            <img style={{ width: "5%" }} src={twitter_logo} alt='Logo'></img>
+            {/* <img style={{ width: "5%" }} src={twitter_logo} alt='Logo'></img> */}
+            <FiTwitter size={48} />
             <div className='tabs'>
-              {tabs.map((tab, index) => (
+              {tabs.map((tab, index) => 
                 <a
                   key={index}
-                  className={`tab tab-lg tab-lifted w-52
+                  className={`tab tab-lg tab-lifted w-52 space-x-3
                                 ${activeTabIndex == index ? "tab-active" : ""}`}
                   onClick={() => setActiveTabIndex(index)}>
-                  {tab.name}
+                  <span>{tab.icon}</span>
+                  <span>{tab.name}</span>
                 </a>
-              ))}
+              )}
             </div>
             <button
               className='btn btn-outline btn-primary'
