@@ -2,11 +2,11 @@ import React, {  useEffect } from 'react';
 import { TrendingCard, TrendingTags } from '../index'
 import '../../css/LeftContainer.css'
 
-export default function Trending(props) {
+export default function Trending({trends, setTrends}) {
 
     useEffect(() => {
-        // //Runs only on the first render
-        // props.trending();
+        // Runs only on the first render
+        // trending();
     }, []);
 
     return (
@@ -14,16 +14,16 @@ export default function Trending(props) {
             <div className='heading'>Trending Today</div>
             <br />
             <div className='trending'>{
-                Object.keys(props.trends.latest_trends).map((item) => (
+                Object.keys(trends.latest_trends).map((item) => (
                     <TrendingTags hashtag={item} />
                 ))}
             </div>
             {
-                Object.keys(props.trends.latest_trends).map((key) => (
+                Object.keys(trends.latest_trends).map((key) => (
                     <TrendingCard
                         hashtag={key}
-                        trends={props.trends}
-                        setTrends={props.setTrends}
+                        trends={trends}
+                        setTrends={setTrends}
                     />
                 ))
             }

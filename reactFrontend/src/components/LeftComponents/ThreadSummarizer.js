@@ -2,15 +2,18 @@ import { React } from 'react';
 import link from '../../images/link.png'
 
 
-export default function ThreadSummarizer(props) {
+export default function ThreadSummarizer({ thread, setThread }) {
     return (
         <>
             <div className="container mx-auto w-[75%]">
                 <div className="flex flex-row">
-                    <input type="search" id="default-search" className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base" placeholder="Enter Thread URL" onChange={(e) => {
-                        props.setUser({ ...props.user, "Username": e.target.value })
+                    <input type="search" id="default-search"
+                        className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base"
+                        placeholder="Enter Thread URL"
+                        onChange={(e) => {
+                            setThread({ ...thread, "url": e.target.value })
 
-                    }} />
+                        }} />
                 </div>
             </div>
             <br />
@@ -20,9 +23,9 @@ export default function ThreadSummarizer(props) {
                 </div>
                 <p className="card-text text-md bg-[#f4f4f40f] p-2.5 rounded-sm">
                     {
-                        Object.keys(props.thread.details).length === 0
+                        Object.keys(thread.details).length === 0
                             ? <p>No summary to show</p> :
-                            props.thread.details["thread_summary"]
+                            thread.details["thread_summary"]
                     }
                 </p>
             </div>
@@ -33,9 +36,9 @@ export default function ThreadSummarizer(props) {
                 </div>
                 <div className="grid grid-cols-12 gap-3.5">
                     {
-                        Object.keys(props.thread.details).length === 0 ?
+                        Object.keys(thread.details).length === 0 ?
                             <li style={{ textAlign: "left" }}>No references to show</li> :
-                            props.thread.details["references"].map((item, id) => {
+                            thread.details["references"].map((item, id) => {
                                 return (
                                     <div className="text-white bg-[#ffffff78] w-10 h-10 p-1.5 rounded-[50%]">
                                         <a className="" href={item}><img src={link} alt="links" /></a>

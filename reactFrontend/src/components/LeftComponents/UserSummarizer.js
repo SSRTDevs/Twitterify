@@ -1,10 +1,10 @@
 import {React,useEffect,useRef} from 'react';
 import "../../css/LeftComponents/UserSummarizer.css"
 
-export default function UserSummarizer(props) {
+export default function UserSummarizer({user, setUser}) {
     const Ntweets = useRef(0)
     useEffect(() => {
-        props.setUser({ ...props.user, 'Username': '', 'tweets': 0 })
+        setUser({ ...user, 'Username': '', 'tweets': 0 })
         Ntweets.current.value = 0
     }, [])
 
@@ -14,7 +14,7 @@ export default function UserSummarizer(props) {
             <div className="container mx-auto w-[75%] mb-2">
                 <div className="flex flex-col">
                     <input type="search" id="default-search" className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base" placeholder="Search Username" onChange={(e) => {
-                        props.setUser({ ...props.user, "Username": e.target.value })
+                        setUser({ ...user, "Username": e.target.value })
                     }} />
                     <div className="text-xl font-semibold my-2 underline  decoration-sky-500/50">
                         User Tweets
@@ -24,14 +24,14 @@ export default function UserSummarizer(props) {
             <div className="slider mt-5 mx-auto">
                 <label for="customRange1" className="text form-label">
                     Number of Tweets
-                    {props.user.tweets == 0 ? "" : ` : ${props.user.tweets}`}
+                    {user.tweets == 0 ? "" : ` : ${user.tweets}`}
                 </label>
                 <div className="slider-element w-full">
                     <span className='min'>0&nbsp;</span>
                     <input ref={Ntweets} type="range" className="form-range w-full" min="0" max="100" id="customRange1"
                         onChange={(e) => {
-                            // props.settweets(e.target.value)
-                            props.setUser({ ...props.user, "tweets": e.target.value })
+                            // settweets(e.target.value)
+                            setUser({ ...user, "tweets": e.target.value })
                             Ntweets.current.value = e.target.value
                         }} />
                     <span className='max'>&nbsp;100</span>
@@ -39,14 +39,14 @@ export default function UserSummarizer(props) {
             </div>
             <br />
             <br />
-            {Object.keys(props.user.details).length === 0 ? "Nothing to display" :
-                Object.keys(props.user.details.sentiments["Tweet"]).map((index, key) => {
+            {Object.keys(user.details).length === 0 ? "Nothing to display" :
+                Object.keys(user.details.sentiments["Tweet"]).map((index, key) => {
                     return (
                         <>
                             <div
                                 className="w-[80%] border border-neutral-800 my-px mx-auto rounded rounded-[50%] p-2 shadow-md hover:bg-neutral-800 mb-2">
                                 <p className="py-1 text-sm leading-relaxed text-white-500 line-clamp-3 dark:text-white-500">
-                                    {props.user.details.sentiments["Tweet"][key]}
+                                    {user.details.sentiments["Tweet"][key]}
                                 </p>
                             </div>
                         </>
