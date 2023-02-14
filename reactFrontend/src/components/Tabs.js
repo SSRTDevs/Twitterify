@@ -39,7 +39,7 @@ export default function Tabs({ tabs }) {
 
         </div>
 
-        <div className='right-container h-screen col-span-2 p-5 w-full text-center'>
+        <div className='right-container overflow-y-scroll h-screen col-span-2 p-5 w-full text-center'>
           {tabs[activeTabIndex].rightComponent}
         </div>
       </div>
