@@ -27,18 +27,17 @@ def tweet_summarizer(combined_tweets):
     #    return tweet_summarizer(combined_tweets[:(len(combined_tweets) // 2)]) + tweet_summarizer(combined_tweets[(len(combined_tweets) // 2):])
     #raw_document = 'You must be 18 years old to live or work in New York State...'
     #prompt = "Produce an article summary of the following news article:"
-    try:
-        results = summarizer(combined_tweets,
-            min_length = 5,
-            truncation=True,
-            max_length=50,
-        )
+    results = summarizer(combined_tweets,
+        min_length = 5,
+        truncation=True,
+        max_length=50,
+    )
         #print(combined_tweets)
         #print()
         #print(len(combined_tweets))
         #print()
         #print(results[0]["summary_text"])
-        return results[0]["summary_text"]
+    return results[0]["summary_text"]
 
 
 def tweet_analyser(tweets):
