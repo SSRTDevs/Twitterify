@@ -1,24 +1,14 @@
-from setups.tweepy_cred import api, client, auth
+from setups.tweepy_cred import api
 import nltk
-import io
-import pprint
 import numpy as np
 from textblob import TextBlob
-import os
 import matplotlib.pyplot as plt
 import re
-from nltk.classify import SklearnClassifier
-from nltk.classify import ClassifierI
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import word_tokenize
 import pandas as pd
-import pickle
-import plotly.express as px
-import wordcloud
 from wordcloud import STOPWORDS
 from wordcloud import WordCloud
 import json
-import matplotlib.animation as animation
-from matplotlib import style
 import base64
 
 def cleanTxt(text):
@@ -69,7 +59,7 @@ def get_user_tweets(username, tweets):
     df["Tweet"] = df["Tweet"].apply(cleanTxt)
 
 def get_word_cloud1():
-    names, adjectives, nouns, adverbs = nam_adj(df)
+    names = nam_adj(df)
     lst = [item.lower() for item in names]
     new_stopwords = {"today", "watch", "people", "amp",
                      "time", "day", "week", "people", "year", "S"}
@@ -83,12 +73,6 @@ def get_word_cloud1():
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    # bytes_image = io.BytesIO()
-    # plt.savefig(bytes_image, format='png')
-    # bytes_image.seek(0)
-    # print(bytes_image.getvalue())
-    # bytes_image = json.load(bytes_image.getvalue().decode("unicode_escape"))
-    # return bytes_image
     plt.savefig('wordcloud.png')
     with open("wordcloud.png", "rb") as img_file:
         encoded_data = base64.b64encode(img_file.read())
@@ -97,7 +81,7 @@ def get_word_cloud1():
     return json_data
 
 def get_word_cloud2():
-    names, adjectives, nouns, adverbs = nam_adj(df)
+    nouns = nam_adj(df)
     lst = [item.lower() for item in nouns]
     new_stopwords = {"today", "watch", "people", "amp",
                      "time", "day", "week", "people", "year", "S"}
@@ -111,9 +95,6 @@ def get_word_cloud2():
     plt.imshow(wordcloud)
     plt.axis("off")
     plt.tight_layout(pad=0)
-    # bytes_image = io.BytesIO()
-    # plt.savefig(bytes_image, format='png')
-    # bytes_image.seek(0)
     plt.savefig('wordcloud.png')
     with open("wordcloud.png", "rb") as img_file:
         encoded_data = base64.b64encode(img_file.read())
@@ -127,7 +108,6 @@ def get_sentiments(Username,tweets):
     df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
     df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
     df1 = df.groupby('Sentiment').count()
-    sub_mean = df["Subjectivity"].mean()
     try:
         pos = df1.loc(0)["pos"]["Tweet"]
     except:

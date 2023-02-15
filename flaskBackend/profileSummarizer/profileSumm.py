@@ -1,5 +1,4 @@
-import tweepy
-from setups.tweepy_cred import api, client
+from setups.tweepy_cred import api
 
 def profile_summarizer(username):
     user_obj = api.get_user(screen_name=username)

@@ -1,5 +1,5 @@
 import re 
-from setups.tweepy_cred import api,client
+from setups.tweepy_cred import api
 from setups.model_setup import tweet_summarizer,tweet_analyser
 
 
