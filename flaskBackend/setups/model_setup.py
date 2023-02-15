@@ -31,7 +31,7 @@ def tweet_summarizer(combined_tweets):
         results = summarizer(combined_tweets,
             min_length = 5,
             truncation=True,
-            max_length=100,
+            max_length=52,
         )
         #print(combined_tweets)
         #print()
