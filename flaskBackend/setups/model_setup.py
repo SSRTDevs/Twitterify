@@ -31,20 +31,13 @@ def tweet_summarizer(combined_tweets):
         results = summarizer(combined_tweets,
             min_length = 5,
             truncation=True,
-            max_length=100,
+            max_length=50,
         )
         #print(combined_tweets)
         #print()
         #print(len(combined_tweets))
         #print()
         #print(results[0]["summary_text"])
-        return results[0]["summary_text"]
-    except:
-        results = summarizer(combined_tweets,
-            min_length = 5,
-            truncation=True,
-            max_length=50,
-        )
         return results[0]["summary_text"]
 
 
