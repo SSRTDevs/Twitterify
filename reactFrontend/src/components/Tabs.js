@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import {FiTwitter} from 'react-icons/fi'
 
 export default function Tabs({ tabs }) {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(2);
 
   return (
     <>

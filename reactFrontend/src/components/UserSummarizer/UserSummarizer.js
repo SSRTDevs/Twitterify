@@ -1,10 +1,31 @@
 import { React, useEffect } from "react";
 import "../../css/LeftComponents/UserSummarizer.css";
+import {
+  UserTweets,
+  MentionTweets,
+  UserTimeline,
+  UserTabs,
+} from "../index"
 
 export default function UserSummarizer({ user, setUser }) {
   useEffect(() => {
     setUser({ ...user, Username: "", tweets: 0 });
   }, []);
+
+  const tabItems = [
+    {
+      name : 'User Tweets',
+      component : <UserTweets user={user}/>
+    },
+    {
+      name : 'Mention Tweets', 
+      component : <MentionTweets/>
+    },
+    {
+      name : 'User Timeline',
+      component : <UserTimeline/>
+    }
+  ]
 
   return (
     <>
@@ -22,33 +43,9 @@ export default function UserSummarizer({ user, setUser }) {
         </div>
       </div>
       <br/>
-      <div className='overflow-y-scroll h-72 flex justify-center items-baseline'>
-        {Object.keys(user.details).length === 0 ? (
-          <div className='tabs'>
-            <a className='tab tab-bordered'>User Tweets</a>
-            <a className='tab tab-bordered tab-active'>Mentioned Tweets</a>
-            <a className='tab tab-bordered'>User Timeline chart</a>
-          </div>
-        ) : (
-          Object.keys(user.details.sentiments["Tweet"]).map((index, key) => {
-            return (
-              <>
-                <div
-                  className={`w-[80%] border border-neutral-800 my-px mx-auto rounded rounded-[50%] p-2 shadow-md hover:bg-neutral-800 mb-2 
-                        ${
-                          user.details.sentiments.Sentiment[key] === "pos"
-                            ? "hover:border-green-300"
-                            : "hover:border-red-300"
-                        }`}>
-                  <p className='py-1 text-sm leading-relaxed text-white-500 line-clamp-3 dark:text-white-500'>
-                    {user.details.sentiments["Tweet"][key]}
-                  </p>
-                </div>
-              </>
-            );
-          })
-        )}
-      </div>
+        {Object.keys(user.details).length === 0 ? 
+          <h3 className="font-bold text-2xl">Nothing to show</h3>
+         : <UserTabs tabItems={tabItems}/> }
     </>
   );
 }
