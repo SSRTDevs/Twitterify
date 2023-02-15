@@ -70,6 +70,4 @@ def thread_summary(url):
 @app.route("/trending_tweets", methods=['GET'])
 def sentiment():
     return make_response(trending_tweets_obj)
-
-
-
+    
