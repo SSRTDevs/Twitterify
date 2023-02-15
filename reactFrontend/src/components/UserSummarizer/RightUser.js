@@ -1,89 +1,98 @@
 import { React } from "react";
-import "../../css/RightComponents/RightUser.css"
-import plus from "../../images/plus.svg"
-import minus from "../../images/minus.svg"
-import people from "../../images/people.svg"
-import calendar from "../../images/calendar.svg"
+import "../../css/RightComponents/RightUser.css";
+import { TiGroup } from "react-icons/ti";
+import { BiCalendar } from "react-icons/bi";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
-export default function RightUser(props) {
-
-    return (
-        <>
-
-            <div>
-                <div className="h-auto w-full flex items-center border-black-700  rounded-lg p-2  bg-neutral-800">
-                    <div className="w-14 h-auto rounded-full bg-cover flex-none">
-                        <img className="rounded-full w-[100%]" src={props.user.details["profile_image_url"]} />
-                    </div>
-                    <div className="ml-[5%]">
-                        <h1 className="text-2xl font-bold">
-                            {props.user.details['username']}
-                        </h1>
-                        <h1 className="text-sm">
-                            {props.user.details['description']}
-                        </h1>
-                    </div>
-                </div>
+export default function RightUser({ user }) {
+  console.log(user);
+  return (
+    <>
+      <div>
+        <div className='h-auto w-full flex items-center border-black-700  rounded-lg p-4  bg-neutral-800'>
+          {Object.keys(user.details).length > 0 && (
+            <div className='avatar'>
+              <div className='w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
+                <img src={user.details["profile_image_url"]} />
+              </div>
             </div>
-            <div className="h-auto w-full checker-bg flex flex-col items-start border-gray-200 rounded-lg px-3 py-2 border mt-3 justify-around gap-3">
-                <div className="w-full">
-                    <div className="text-2xl">Statistics</div>
-                </div>
-                <div className="flex w-full justify-around">
-                    <div className="flex flex-1 items-center">
-                        <div className="icon flex-none w-10 h-10 p-2.5 bg-blue-400 text-white rounded-full mr-3">
-                            <img src={people} alt="people" />
-                        </div>
-                        <div className="flex flex-col justify-center content-center">
-                            <div className="text-lg leading-4">{props.user.details['followers_count']}</div>
-                            <div className="text-sm text-gray-400">Followers</div>
-                        </div>
-                    </div>
-                    <div className="flex flex-1 items-center">
-                        <div className="icon flex-none w-10 h-10 p-2.5 bg-blue-400 text-white rounded-full mr-3">
-                            <img src={calendar} alt="calendar" />
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <div className="text-lg leading-4">{props.user.details['created_at']}</div>
-                            <div className="text-sm text-gray-400">Joined</div>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex w-full justify-around">
-                    <div className="flex flex-1 items-center">
-                        <div className="icon flex-none w-10 h-10 p-2.5 bg-green-500 text-white rounded-full mr-3">
-                            <img src={plus} alt="+" className="flex-none" />
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <div className="text-lg leading-4">{props.user.details["pos_count"]}</div>
-                            <div className="text-sm text-gray-400">Positive Tweets</div>
-                        </div>
-                    </div>
-                    <div className="flex flex-1 items-center">
-                        <div className="icon flex-none w-10 h-10 p-2.5 bg-red-500 text-white rounded-full mr-3  ">
-                            <img src={minus} alt="-" className="flex-none" />
-                        </div>
-                        <div className="flex flex-col justify-center">
-                            <div className="text-lg leading-4">{props.user.details["neg_count"]}</div>
-                            <div className="text-sm text-gray-400">Negative Tweets</div>
-                        </div>
-                    </div>
-                </div>
+          )}
+
+          <div className='ml-[5%] space-y-2'>
+            <h1 className='text-2xl font-bold'>{user.details["username"]}</h1>
+            <h1 className='text-sm'>{user.details["description"]}</h1>
+          </div>
+        </div>
+      </div>
+
+      <div className='h-auto w-full checker-bg flex flex-col items-start rounded-lg border border-current p-4 space-y-2 mt-3'>
+        <div className='w-full'>
+          <div className='text-2xl'>Statistics</div>
+        </div>
+
+        <div className='stats shadow w-full'>
+          <div className='stat'>
+            <div className='stat-figure text-primary'>
+              <TiGroup size={30} />
             </div>
-            {
-                props.user.clouds === "" ?
-                    null :
-                    <div className="flex gap-2 justify-between mt-[6%] w-full">
-                        <div className="container flex gap-2 flex-col gap-1 items-center">
-                            <h1 className="text-lg">Things mentioned</h1>
-                            <img src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_nouns"])}`} alt="wordcloud" className="max-w-[80%] h-auto" />
-                        </div>
-                        <div className="container flex gap-2 flex-col gap-1 items-center">
-                            <h1 className="text-lg">Names mentioned</h1>
-                            <img src={`data:image/png;base64,${JSON.parse(props.user.clouds["cloud_names"])}`} alt="wordcloud" className="max-w-[80%] h-auto" />
-                        </div>
-                    </div>
-            }
-        </>
-    )
+            <div className='stat-title'>Followers</div>
+            <div className='stat-value'>{user.details["followers_count"]}</div>
+          </div>
+
+          <div className='stat'>
+            <div className='stat-figure text-primary'>
+              <BiCalendar size={30} />
+            </div>
+            <div className='stat-title'>Joined</div>
+            <div className='stat-desc font-bold text-xl'>
+              {user.details["created_at"]}
+            </div>
+          </div>
+        </div>
+
+        <div className='stats shadow w-full'>
+          <div className='stat'>
+            <div className='stat-figure text-primary'>
+              <AiOutlinePlus size={20} />
+            </div>
+            <div className='stat-title'>Positive</div>
+            <div className='stat-value'>{user.details["pos_count"]}</div>
+            <div className='stat-desc'>Tweets</div>
+          </div>
+          <div className='stat'>
+            <div className='stat-figure text-primary'>
+              <AiOutlineMinus size={30} />
+            </div>
+            <div className='stat-title'>Negative</div>
+            <div className='stat-value'>{user.details["neg_count"]}</div>
+            <div className='stat-desc'>Tweets</div>
+          </div>
+        </div>
+      </div>
+      {user.clouds === "" ? null : (
+        <div className='flex gap-2 justify-between mt-[6%] w-full'>
+          <div className='container flex gap-2 flex-col gap-1 items-center'>
+            <h1 className='text-lg'>Things mentioned</h1>
+            <img
+              src={`data:image/png;base64,${JSON.parse(
+                user.clouds["cloud_nouns"]
+              )}`}
+              alt='wordcloud'
+              className='max-w-[80%] h-auto'
+            />
+          </div>
+          <div className='container flex gap-2 flex-col gap-1 items-center'>
+            <h1 className='text-lg'>Names mentioned</h1>
+            <img
+              src={`data:image/png;base64,${JSON.parse(
+                user.clouds["cloud_names"]
+              )}`}
+              alt='wordcloud'
+              className='max-w-[80%] h-auto'
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
