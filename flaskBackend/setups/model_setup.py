@@ -33,11 +33,11 @@ def tweet_summarizer(combined_tweets):
             truncation=True,
             max_length=100,
         )
-        print(combined_tweets)
-        print()
-        print(len(combined_tweets))
-        print()
-        print(results[0]["summary_text"])
+        #print(combined_tweets)
+        #print()
+        #print(len(combined_tweets))
+        #print()
+        #print(results[0]["summary_text"])
         return results[0]["summary_text"]
     except:
         return None
