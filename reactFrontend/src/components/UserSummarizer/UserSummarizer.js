@@ -1,31 +1,26 @@
 import { React, useEffect } from "react";
 import "../../css/LeftComponents/UserSummarizer.css";
-import {
-  UserTweets,
-  MentionTweets,
-  UserTimeline,
-  UserTabs,
-} from "../index"
+import { UserTweets, MentionTweets, UserTimeline, UserTabs } from "../index";
 
 export default function UserSummarizer({ user, setUser }) {
-  useEffect(() => {
-    setUser({ ...user, Username: "", tweets: 0 });
-  }, []);
-
+  // useEffect(() => {
+  //   setUser({ ...user, Username: "", tweets: 0 });
+  // }, []);
+  console.log("UserSummarizer rendered again");
   const tabItems = [
     {
-      name : 'User Tweets',
-      component : <UserTweets user={user}/>
+      name: "User Tweets",
+      component: <UserTweets user={user} />,
     },
     {
-      name : 'Mention Tweets', 
-      component : <MentionTweets/>
+      name: "Mention Tweets",
+      component: <MentionTweets />,
     },
     {
-      name : 'User Timeline',
-      component : <UserTimeline/>
-    }
-  ]
+      name: "User Timeline",
+      component: <UserTimeline />,
+    },
+  ];
 
   return (
     <>
@@ -42,10 +37,12 @@ export default function UserSummarizer({ user, setUser }) {
           />
         </div>
       </div>
-      <br/>
-        {Object.keys(user.details).length === 0 ? 
-          <h3 className="font-bold text-2xl">Nothing to show</h3>
-         : <UserTabs tabItems={tabItems}/> }
+      <br />
+      {Object.keys(user.details).length === 0 ? (
+        <h3 className='font-bold text-2xl'>Nothing to show</h3>
+      ) : (
+        <UserTabs tabItems={tabItems} />
+      )}
     </>
   );
 }

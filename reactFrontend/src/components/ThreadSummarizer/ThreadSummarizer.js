@@ -2,6 +2,7 @@ import { React } from "react";
 import link from "../../images/link.png";
 
 export default function ThreadSummarizer({ thread, setThread }) {
+  console.log("Thread Summarizer rendered again");
   return (
     <>
       <div className='container mx-auto w-[75%]'>
@@ -22,12 +23,12 @@ export default function ThreadSummarizer({ thread, setThread }) {
         <div className='card-body items-center text-center'>
           <h2 className='card-title'>Thread Summary</h2>
           <p>
-          {Object.keys(thread.details).length === 0 ? (
-            <p>No summary to show</p>
-          ) : (
-            thread.details["thread_summary"]
-          )}
-        </p>
+            {Object.keys(thread.details).length === 0 ? (
+              <p>No summary to show</p>
+            ) : (
+              thread.details["thread_summary"]
+            )}
+          </p>
         </div>
       </div>
       {/* <div className='h-auto w-full checker-bg flex flex-col items-start border-gray-200 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>

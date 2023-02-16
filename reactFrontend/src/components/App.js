@@ -7,6 +7,7 @@ import {
   RightThread,
   RightTrend,
   RightUser,
+  Alert,
 } from ".";
 import { trending, user_summarizer, thread_summarizer } from "../api/Api";
 import { IoTrendingUpOutline } from "react-icons/io5";
@@ -154,7 +155,7 @@ export default function App() {
     latest_trends: mock_trends,
     show_tweets: [],
   });
-  const [displayBanner, setdisplayBanner] = useState(false);
+  const [alert, setAlert] = useState({});
 
   const tabs = [
     {
@@ -162,26 +163,29 @@ export default function App() {
       leftComponent: <Trending trends={trends} setTrends={setTrends} />,
       rightComponent: <RightTrend trends={trends} />,
       icon: <IoTrendingUpOutline />,
-      details: () => trending(trends, setTrends),
+      details: () => trending(trends, setTrends, setAlert),
     },
     {
       name: "Thread",
       leftComponent: <ThreadSummarizer thread={thread} setThread={setThread} />,
       rightComponent: <RightThread thread={thread} />,
       icon: <MdOutlineSummarize />,
-      details: () => thread_summarizer(thread, setThread),
+      details: () => thread_summarizer(thread, setThread, setAlert),
     },
     {
       name: "Profile",
       leftComponent: <UserSummarizer user={user} setUser={setUser} />,
       rightComponent: <RightUser user={user} />,
       icon: <ImProfile />,
-      details: () => user_summarizer(user, setUser),
+      details: () => user_summarizer(user, setUser, setAlert),
     },
   ];
 
   return (
     <>
+      {Object.keys(alert).length > 0 && (
+        <Alert error={alert.error} type={alert.type} />
+      )}
       <Tabs tabs={tabs} />
     </>
   );
