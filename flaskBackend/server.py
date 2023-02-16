@@ -39,6 +39,7 @@ def sentiments(Username, tweets):
         "neg_count": neg_count,
         "neutral_count": neutral_count
     }
+    print(return_obj);
     return_obj.update(user_details)
     response = make_response(return_obj)
     return response
@@ -70,6 +71,3 @@ def thread_summary(url):
 @app.route("/trending_tweets", methods=['GET'])
 def sentiment():
     return make_response(trending_tweets_obj)
-
-
-
