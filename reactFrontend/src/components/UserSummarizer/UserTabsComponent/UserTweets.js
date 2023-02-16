@@ -9,7 +9,7 @@ export default function UserTweets({ user }) {
             <>
               <div
                 key={index}
-                className={`w-[80%] border-l-8 border-neutral-800 rounded-r-md my-px mx-auto p-2 shadow-md hover:bg-neutral-700 mb-2 
+                className={`w-[80%] border-l-2 border-neutral-800 rounded-r-md my-px mx-auto p-2 shadow-md hover:bg-neutral-700 mb-2 
                       ${
                         user.details.sentiments.Sentiment[key] === "pos"
                           ? "border-green-300"
