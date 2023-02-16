@@ -44,6 +44,7 @@ def profile_summarizer(username):
             mention_tweets.append(tweet._json['full_text'])
 
         res_obj = {
+            "result": "success",
             "username": name,
             "description": description,
             "followers_count": followers,
@@ -54,13 +55,13 @@ def profile_summarizer(username):
         }
     except tweepy.errors.Unauthorized:
         res_obj = {
-            "username": "private_account",
-            "description": "private_account",
-            "followers_count": "private_account",
-            "created_at": "private_account",
-            "profile_image_url": "private_account",
-            "user_tweets": "private_account",
-            "mention_tweets": "private_account"
+            "result":"private_account",
+            "username": None,
+            "description": None,
+            "followers_count": None,
+            "created_at": None,
+            "profile_image_url": None,
+            "user_tweets": None,
+            "mention_tweets": None
         }
-        
     return res_obj

@@ -32,6 +32,7 @@ def thread_summarizer(url, count = 20):
         urls = re.findall(link_regex, tweet._json['full_text'])
         for url in urls:
             references.append(url[0])
+        
 
     q = "from:{0} conversation_id:{1}".format(screen_name, tweet_id)
     for tweet in api.search_tweets(q=q, count=count, tweet_mode='extended'):
