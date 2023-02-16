@@ -1,34 +1,34 @@
 import { React, useState } from "react";
-import "../css/App.css";
-import "../css/LeftContainer.css";
-import "../css/RightContainer.css";
-import "../css/TopContainer.css";
+import { FiTwitter } from "react-icons/fi";
 import twitter_logo from "../images/twitter_logo.png";
 
 export default function Tabs({ tabs }) {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [activeTabIndex, setActiveTabIndex] = useState(2);
 
   return (
     <>
       <div className='god-container grid grid-cols-6 h-screen '>
-
         <div className='left-section h-screen col-span-4 flex flex-col w-full p-2'>
-
           <div className='top-container h-fit flex justify-between items-start p-1 mb-5'>
-            <img style={{ width: "5%" }} src={twitter_logo} alt='Logo'></img>
+            <div className='avatar'>
+              <div className='w-10 rounded-full'>
+                <img src={twitter_logo} />
+              </div>
+            </div>
             <div className='tabs'>
               {tabs.map((tab, index) => (
                 <a
                   key={index}
-                  className={`tab tab-lg tab-lifted w-52
+                  className={`tab tab-lg tab-lifted w-52 space-x-3
                                 ${activeTabIndex == index ? "tab-active" : ""}`}
                   onClick={() => setActiveTabIndex(index)}>
-                  {tab.name}
+                  <span>{tab.icon}</span>
+                  <span>{tab.name}</span>
                 </a>
               ))}
             </div>
             <button
-              className='btn btn-outline btn-primary'
+              className='btn btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200'
               onClick={() => {
                 tabs[activeTabIndex].details();
               }}>
@@ -36,13 +36,12 @@ export default function Tabs({ tabs }) {
             </button>
           </div>
 
-          <div className='left-container h-full overflow-y-scroll items-start text-center p-2 m-2'>
+          <div className='left-container h-full overflow-y-scroll items-start text-center p-5 m-2'>
             {tabs[activeTabIndex].leftComponent}
           </div>
-
         </div>
 
-        <div className='right-container h-screen col-span-2 p-5 w-full text-center'>
+        <div className='right-container overflow-y-scroll h-screen col-span-2 p-5 w-full text-center'>
           {tabs[activeTabIndex].rightComponent}
         </div>
       </div>

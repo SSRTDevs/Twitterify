@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const trending = async (trends, setTrends) => {
-  alert("Trending Api fired")
+const trending = async (trends, setTrends, setAlert) => {
+  alert("Trending Api fired");
   await axios
     .get(`http://localhost:5000/trending_tweets`)
     .then((res) => {
@@ -12,10 +12,17 @@ const trending = async (trends, setTrends) => {
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
+      setAlert({
+        error: "Error with Api-call",
+        bg: "bg-error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 2000);
     });
 };
 
-const user_summarizer = async (user, setUser) => {
+const user_summarizer = async (user, setUser, setAlert) => {
   await axios
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
@@ -26,6 +33,13 @@ const user_summarizer = async (user, setUser) => {
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
+      setAlert({
+        error: "You might have entered wrong username",
+        bg: "bg-error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 3000);
     });
 
   await axios
@@ -41,7 +55,7 @@ const user_summarizer = async (user, setUser) => {
     });
 };
 
-const thread_summarizer = async (thread, setThread) => {
+const thread_summarizer = async (thread, setThread, setAlert) => {
   console.log(thread.url);
   await axios
     .get(
@@ -54,8 +68,15 @@ const thread_summarizer = async (thread, setThread) => {
       });
     })
     .catch((err) => {
-      console.log("Kuch toh gadbad hai beta", err);
+      console.log("Kuch toh gadbad hai beta");
+      setAlert({
+        error: "Bruh !! Somethings wrong with your api. Fix it quick",
+        bg: "bg-error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 3000);
     });
 };
 
-export {trending, user_summarizer, thread_summarizer} ;
+export { trending, user_summarizer, thread_summarizer };
