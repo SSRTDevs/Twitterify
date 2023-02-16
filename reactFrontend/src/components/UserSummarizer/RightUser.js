@@ -5,14 +5,14 @@ import { BiCalendar } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 export default function RightUser({ user }) {
-  console.log(user);
+  console.log("RightUser rendered again");
   return (
     <>
       <div>
         <div className='h-auto w-full flex items-center border-black-700  rounded-lg p-4  bg-neutral-800'>
           {Object.keys(user.details).length > 0 && (
             <div className='avatar'>
-              <div className='w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2'>
+              <div className='w-16 rounded-full ring ring-twitter-200 ring-offset-base-100 ring-offset-1'>
                 <img src={user.details["profile_image_url"]} />
               </div>
             </div>
@@ -32,7 +32,7 @@ export default function RightUser({ user }) {
 
         <div className='stats shadow w-full'>
           <div className='stat'>
-            <div className='stat-figure text-primary'>
+            <div className='stat-figure text-twitter-100'>
               <TiGroup size={30} />
             </div>
             <div className='stat-title'>Followers</div>
@@ -40,7 +40,7 @@ export default function RightUser({ user }) {
           </div>
 
           <div className='stat'>
-            <div className='stat-figure text-primary'>
+            <div className='stat-figure text-twitter-100'>
               <BiCalendar size={30} />
             </div>
             <div className='stat-title'>Joined</div>
@@ -52,7 +52,7 @@ export default function RightUser({ user }) {
 
         <div className='stats shadow w-full'>
           <div className='stat'>
-            <div className='stat-figure text-primary'>
+            <div className='stat-figure text-twitter-100'>
               <AiOutlinePlus size={20} />
             </div>
             <div className='stat-title'>Positive</div>
@@ -60,7 +60,7 @@ export default function RightUser({ user }) {
             <div className='stat-desc'>Tweets</div>
           </div>
           <div className='stat'>
-            <div className='stat-figure text-primary'>
+            <div className='stat-figure text-twitter-100'>
               <AiOutlineMinus size={30} />
             </div>
             <div className='stat-title'>Negative</div>
