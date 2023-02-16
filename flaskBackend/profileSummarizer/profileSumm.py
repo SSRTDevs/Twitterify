@@ -56,9 +56,8 @@ def user_activity(username):
             'count': value
         }
         freq_payload.append(res_obj)
-    
-    json_payload = json.dumps(freq_payload)
-    return json_payload
+    freq_payload.reverse()
+    return {"payload": freq_payload}
     
 
 def format_followers_count(followers_count):

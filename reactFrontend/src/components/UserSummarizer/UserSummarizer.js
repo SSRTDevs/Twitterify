@@ -18,7 +18,7 @@ export default function UserSummarizer({ user, setUser }) {
     },
     {
       name: "User Timeline",
-      component: <UserTimeline />,
+      component: <UserTimeline user={user}/>,
     },
   ];
 

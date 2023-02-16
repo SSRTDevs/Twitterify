@@ -4,88 +4,89 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, Legend, } from '
 
 
 
-export default function UserTimeline() {
+export default function UserTimeline({ user }) {
+  console.log(user)
+  // const Saket_data = [
+  //   {
+  //     "title": "Jan,'23",
+  //     "week": 2,
+  //     "month": "Jan",
+  //     "year": 2023,
+  //     "count": 1
+  //   },
+  //   {
+  //     "title": "",
+  //     "week": 52,
+  //     "month": "Dec",
+  //     "year": 2022,
+  //     "count": 1
+  //   },
+  //   {
+  //     "title": "Dec,'22",
+  //     "week": 48,
+  //     "month": "Dec",
+  //     "year": 2022,
+  //     "count": 3
+  //   },
+  //   {
+  //     "title": "",
+  //     "week": 46,
+  //     "month": "Nov",
+  //     "year": 2022,
+  //     "count": 2
+  //   },
+  //   {
+  //     "title": "Nov,'22",
+  //     "week": 45,
+  //     "month": "Nov",
+  //     "year": 2022,
+  //     "count": 2
+  //   },
+  //   {
+  //     "title": "",
+  //     "week": 44,
+  //     "month": "Nov",
+  //     "year": 2022,
+  //     "count": 1
+  //   },
+  //   {
+  //     "title": "",
+  //     "week": 42,
+  //     "month": "Oct",
+  //     "year": 2022,
+  //     "count": 2
+  //   },
+  //   {
+  //     "title": "Oct,'22",
+  //     "week": 41,
+  //     "month": "Oct",
+  //     "year": 2022,
+  //     "count": 4
+  //   },
+  //   {
+  //     "title": "",
+  //     "week": 40,
+  //     "month": "Oct",
+  //     "year": 2022,
+  //     "count": 3
+  //   },
+  //   {
+  //     "title": "Sep,'22",
+  //     "week": 39,
+  //     "month": "Sep",
+  //     "year": 2022,
+  //     "count": 1
+  //   }
+  // ]
 
-  const Saket_data = [
-    {
-      "title": "Jan,'23",
-      "week": 2,
-      "month": "Jan",
-      "year": 2023,
-      "count": 1
-    },
-    {
-      "title": "",
-      "week": 52,
-      "month": "Dec",
-      "year": 2022,
-      "count": 1
-    },
-    {
-      "title": "Dec,'22",
-      "week": 48,
-      "month": "Dec",
-      "year": 2022,
-      "count": 3
-    },
-    {
-      "title": "",
-      "week": 46,
-      "month": "Nov",
-      "year": 2022,
-      "count": 2
-    },
-    {
-      "title": "Nov,'22",
-      "week": 45,
-      "month": "Nov",
-      "year": 2022,
-      "count": 2
-    },
-    {
-      "title": "",
-      "week": 44,
-      "month": "Nov",
-      "year": 2022,
-      "count": 1
-    },
-    {
-      "title": "",
-      "week": 42,
-      "month": "Oct",
-      "year": 2022,
-      "count": 2
-    },
-    {
-      "title": "Oct,'22",
-      "week": 41,
-      "month": "Oct",
-      "year": 2022,
-      "count": 4
-    },
-    {
-      "title": "",
-      "week": 40,
-      "month": "Oct",
-      "year": 2022,
-      "count": 3
-    },
-    {
-      "title": "Sep,'22",
-      "week": 39,
-      "month": "Sep",
-      "year": 2022,
-      "count": 1
-    }
-  ]
+  return <>{Object.keys(user.details).length > 0 && <>
 
-  return <>
-    <div class="grid-container">
-      <div class="grid-item">
+    <div className="grid-container">
+      <div className="grid-item">
         <BarChart
           width={500}
           height={300}
-          data={Saket_data}
+          data={user.details.payload}
           margin={{
             top: 5,
             right: 80,
@@ -93,18 +94,18 @@ export default function UserTimeline() {
             bottom: 5,
           }}
         >
-          <XAxis dataKey="title" />
+          <XAxis dataKey="title"/>
           <YAxis dataKey="count" />
           <Tooltip />
           <Legend />
           <Bar dataKey="count" fill="#00adee" />
         </BarChart>
       </div>
-      <div class="grid-item">
+      <div className="grid-item">
         <LineChart
           width={500}
           height={300}
-          data={Saket_data}
+          data={user.details.payload}
           margin={{
             top: 5,
             right: 80,
@@ -120,5 +121,9 @@ export default function UserTimeline() {
         </LineChart>
       </div>
     </div>
+
+  </>
+  }
+
   </>;
 }
