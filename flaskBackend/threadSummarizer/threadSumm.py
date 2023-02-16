@@ -1,6 +1,7 @@
 import re 
 from setups.tweepy_cred import api
 from setups.model_setup import tweet_summarizer,tweet_analyser
+import urlexpander
 
 
 def thread_feed_model(thread_tweets):
@@ -32,7 +33,21 @@ def thread_summarizer(url, count = 20):
         urls = re.findall(link_regex, tweet._json['full_text'])
         for url in urls:
             references.append(url[0])
-        
+    
+    expanded_urls = urlexpander.expand(references)
+    images, sites = [],[]
+
+    for url in expanded_urls:
+        if re.search(r"(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|bmp)", url):
+            images.append(url)
+        else:
+            title = urlexpander.html_utils.get_webpage_title(url) 
+            if title:
+                sites.append(title)
+            else:
+                sites.append(url)
+
+
 
     q = "from:{0} conversation_id:{1}".format(screen_name, tweet_id)
     for tweet in api.search_tweets(q=q, count=count, tweet_mode='extended'):
@@ -46,7 +61,9 @@ def thread_summarizer(url, count = 20):
         'reply_tweets': reply_tweets,
         'username' : username,
         'profile_image_url': profile_image_url,
-        'references' : references
+        'references' : {"sites": sites, "images": images}
     }
-
+    print(res_obj)
     return res_obj
+thread_summarizer("https://twitter.com/tusharnankanii/status/1579943971648045058")
+
