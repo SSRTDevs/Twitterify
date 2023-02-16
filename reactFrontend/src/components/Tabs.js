@@ -28,7 +28,7 @@ export default function Tabs({ tabs }) {
               ))}
             </div>
             <button
-              className='btn btn-outline hover:bg-twitter-200 border-twitter-100'
+              className='btn btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200'
               onClick={() => {
                 tabs[activeTabIndex].details();
               }}>
