@@ -1,6 +1,6 @@
 from flask import Flask, make_response
 from profileSummarizer.processing import get_sentiments, get_word_clouds
-from profileSummarizer.profileSumm import profile_summarizer
+from profileSummarizer.profileSumm import profile_summarizer, user_activity
 from generalPage.generalTrends import get_trending_tweets, feed_model
 from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
 from flask_cors import CORS
@@ -27,20 +27,21 @@ def process_trending_tweets():
                 }
     
     # Timer(10*60, process_trending_tweets).start()   
-process_trending_tweets()
+# process_trending_tweets()
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
     sentiments, pos_count, neg_count, neutral_count = get_sentiments(Username,tweets)
     user_details = profile_summarizer(Username)
+    user_activity_details = user_activity(Username)
     return_obj = {
         "sentiments": sentiments,
         "pos_count": pos_count,
         "neg_count": neg_count,
         "neutral_count": neutral_count
     }
-    print(return_obj);
     return_obj.update(user_details)
+    return_obj.update(user_activity_details)
     response = make_response(return_obj)
     return response
 

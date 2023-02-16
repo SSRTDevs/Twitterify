@@ -58,7 +58,7 @@ def user_activity(username):
         freq_payload.append(res_obj)
     
     json_payload = json.dumps(freq_payload)
-    return json_payload
+    return {"payload": freq_payload}
     
 
 def format_followers_count(followers_count):
