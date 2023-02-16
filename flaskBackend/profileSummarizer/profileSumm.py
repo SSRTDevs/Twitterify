@@ -13,6 +13,7 @@ def user_activity(username):
         user_tweets_creation.append(tweet._json['created_at'])
 
     tweet_creation_freq = {}
+    month_weeks = {}
     for date_str in user_tweets_creation:
         date = datetime.strptime(date_str, '%a %b %d %H:%M:%S %z %Y')
         year = date.year
@@ -20,24 +21,44 @@ def user_activity(username):
         week = date.isocalendar()[1]
         key = (week, month, year)
 
-        if key not in tweet_creation_freq:
+        if key not in tweet_creation_freq.items():
             tweet_creation_freq.setdefault(key, 0)
-        
         tweet_creation_freq[key] += 1
+    
+        if month not in month_weeks:    
+            month_weeks.setdefault(month , set())
+        month_weeks[month].add(week)
+
+    month_freq = {}
+
+    for key, value in month_weeks.items():
+        month_freq[key] = len(value)//2
 
     freq_payload = []
 
     for key, value in tweet_creation_freq.items():
+        week = key[0]
+        month = key[1]
+        year = key[2]
+
+        flag = False
+        if month_freq[month] == 0:
+            flag = True
+        month_freq[month] -= 1
+
+        title = (key[1] + ",'" + str(key[2]%100)) if flag else ""
+
         res_obj = {
-            'week': key[0],
-            'month': key[1],
-            'year': key[2],
+            'title': title,
+            'week': week,
+            'month': month,
+            'year': year,
             'count': value
         }
         freq_payload.append(res_obj)
     
     json_payload = json.dumps(freq_payload)
-    print(json_payload)
+    return json_payload
     
 
 def format_followers_count(followers_count):
@@ -95,6 +116,3 @@ def profile_summarizer(username):
     }
     
     return res_obj
-
-
-print(user_activity("@_SaketThota"))
