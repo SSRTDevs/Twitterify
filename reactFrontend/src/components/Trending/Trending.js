@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { TrendingCard, TrendingTags } from "../index";
 
 export default function Trending({ trends, setTrends }) {
-  console.log("Trending rendered again");
   useEffect(() => {
     // Runs only on the first render
     // trending();

@@ -11,21 +11,21 @@ export default function RightUser({ user }) {
       <div>
         <div className='h-auto w-full flex items-center border-black-700  rounded-lg p-4  bg-neutral-800'>
           {Object.keys(user.details).length > 0 && (
-            <div className='avatar'>
+            <div className='avatar p-2'>
               <div className='w-16 rounded-full ring ring-twitter-200 ring-offset-base-100 ring-offset-1'>
                 <img src={user.details["profile_image_url"]} />
               </div>
             </div>
           )}
 
-          <div className='ml-[5%] space-y-2'>
+          <div className='ml-[5%] space-y-2 text-left'>
             <h1 className='text-2xl font-bold'>{user.details["username"]}</h1>
             <h1 className='text-sm'>{user.details["description"]}</h1>
           </div>
         </div>
       </div>
 
-      <div className='h-auto w-full checker-bg flex flex-col items-start rounded-lg border border-current p-4 space-y-2 mt-3'>
+      <div className='h-auto w-full checker-bg flex flex-col items-start rounded-lg border border-base-300 p-4 space-y-2 mt-3'>
         <div className='w-full'>
           <div className='text-2xl'>Statistics</div>
         </div>

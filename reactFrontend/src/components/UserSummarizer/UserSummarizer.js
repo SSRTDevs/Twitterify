@@ -6,7 +6,6 @@ export default function UserSummarizer({ user, setUser }) {
   // useEffect(() => {
   //   setUser({ ...user, Username: "", tweets: 0 });
   // }, []);
-  console.log("UserSummarizer rendered again");
   const tabItems = [
     {
       name: "User Tweets",

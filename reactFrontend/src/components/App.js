@@ -103,7 +103,12 @@ let mock_thread = {
   profile_image_url:
     "https://pbs.twimg.com/profile_images/1534219666352111616/IgR93M63_normal.jpg",
   references: {
-    images: [],
+    images: [
+      "https://pbs.twimg.com/media/FpD7g7CacAEb_CP?format=jpg&name=small",
+      "https://pbs.twimg.com/media/FpE_MIaWAAA89-f?format=jpg&name=small",
+      "https://pbs.twimg.com/media/FpFh5o-aUAEWFOY?format=jpg&name=small",
+      "https://pbs.twimg.com/media/FpExdPbacAEe7fq?format=jpg&name=small",
+    ],
     urls: [
       "https://t.co/GAqzTMncMM",
       "https://t.co/zg9utP5lt0",
