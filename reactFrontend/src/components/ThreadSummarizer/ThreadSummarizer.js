@@ -1,37 +1,6 @@
 import { React } from "react";
 
 export default function ThreadSummarizer({ thread, setThread }) {
-<<<<<<< HEAD
-    return (
-        <>
-            <div className="container mx-auto w-[75%]">
-                <div className="flex flex-row">
-                    <input
-                        type="search"
-                        id="default-search"
-                        className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base"
-                        placeholder="Enter Thread URL"
-                        onChange={(e) => {
-                            setThread({ ...thread, url: e.target.value });
-                        }}
-                    />
-                </div>
-            </div>
-            <br />
-            <div className="card w-full bg-neutral text-neutral-content">
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title">Thread Summary</h2>
-                    <p>
-                        {Object.keys(thread.details).length === 0 ? (
-                            <p>No summary to show</p>
-                        ) : (
-                            thread.details["thread_summary"]
-                        )}
-                    </p>
-                </div>
-            </div>
-            {/* <div className='h-auto w-full checker-bg flex flex-col items-start border-gray-200 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
-=======
   console.log("Thread Summarizer rendered again");
   return (
     <>
@@ -62,7 +31,6 @@ export default function ThreadSummarizer({ thread, setThread }) {
         </div>
       </div>
       {/* <div className='h-auto w-full checker-bg flex flex-col items-start border-gray-200 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
->>>>>>> 8551472537834ffd3fa2d2539ac1a6a58b9d9ece
         <div className='w-full'>
           <div className='text-2xl'>Thread Summary</div>
         </div>
