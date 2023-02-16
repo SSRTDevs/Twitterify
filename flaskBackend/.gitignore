@@ -48,5 +48,13 @@ src/*.egg-info
 lib
 lib64
 
-/model
-/tokenizer
+setups/model
+setups/tokenizer
+
+env
+env/Scripts
+env/Include
+env/Lib
+env/pyenv.cfg
+
+.python-version
