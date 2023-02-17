@@ -206,5 +206,39 @@ let mock_user_details = {
   username: "Abhishek Sharma",
 };
 
+let mock_tag_detail = {
+  summary: `
+  Per capita income has more than doubled to ₹1.97 lakh in around nine years.
+  Indian economy has increased in size from being 10th to 5th largest in the world in the past nine years.
+  EPFO membership has more than doubled to 27 crore.
+  7,400 crore digital payments of ₹126 lakh crore has taken place through UPI in 2022.
+  11.7 crore household toilets constructed under Swachh Bharat Mission.
+  9.6 crore LPG connections provided under Ujjwala.
+  220 crore covid vaccination of 102 crore persons.
+  47.8 crore PM Jan Dhan bank accounts.
+  Insurance cover for 44.6 crore persons under PM Suraksha Bima and PM Jeevan Jyoti Yojana.
+  Cash transfer of ₹2.2 lakh crore to over 11.4 crore farmers under PM Kisan Samman Nidhi.
+  Seven priorities of the budget ‘Saptarishi’ are inclusive development, reaching the last mile, infrastructure and investment, unleashing the potential, green growth, youth power and financial sector.
 
-export {mock_trends, mock_thread, mock_user_details};
+  Atmanirbhar Clean Plant Program with an outlay of ₹2200 crore to be launched to boost availability of disease-free, quality planting material for high value horticultural crops.
+  157 new nursing colleges to be established in co-location with the existing 157 medical colleges established since 2014.
+
+· Centre to recruit 38,800 teachers and support staff for the 740 Eklavya Model Residential Schools, serving 3.5 lakh tribal students over the next three years.
+
+· Outlay for PM Awas Yojana is being enhanced by 66% to over Rs. 79,000 crore.
+
+· Capital outlay of Rs. 2.40 lakh crore has been provided for the Railways, which is the highest ever outlay and about nine times the outlay made in 2013-14.
+
+· Urban Infrastructure Development Fund (UIDF) will be established through use of priority Sector Lending shortfall, which will be managed by the national Housing Bank, and will be used by public agencies to create urban infrastructure in Tier 2 and Tier 3 cities.
+
+  Entity DigiLocker to be setup for use by MSMEs, large business and charitable trusts to store and share documents online securely.
+  100 labs to be setup for 5G services based application development to realize a new range of opportunities, business models, and employment potential. 
+
+· 500 new ‘waste to wealth’ plants under GOBARdhan (Galvanizing Organic Bio-Agro Resources Dhan) scheme to be established for promoting circular economy at total investment of Rs 10,000 crore. 5 per cent compressed biogas mandate to be introduced for all organizations marketing natural and bio gas.
+
+· Centre to facilitate one crore farmers to adopt natural farming over the next three years. For this, 10,000 Bio-Input Resource Centres to be set-up, creating a national-level distributed micro-fertilizer and pesticide manufacturing network.`
+  
+}
+
+
+export {mock_trends, mock_thread, mock_user_details, mock_tag_detail};
