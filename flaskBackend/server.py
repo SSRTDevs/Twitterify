@@ -27,7 +27,7 @@ def process_trending_tweets():
                 }
     
     # Timer(10*60, process_trending_tweets).start()   
-process_trending_tweets()
+# process_trending_tweets()
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
