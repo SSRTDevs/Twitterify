@@ -25,48 +25,53 @@ export default function RightUser({ user }) {
       </div>
 
       <div className='h-auto w-full checker-bg flex flex-col items-start rounded-lg border border-base-300 p-4 space-y-2 mt-3'>
-        <div className='w-full'>
-          <div className='text-2xl'>Statistics</div>
+        <div className='w-full text-2xl'>Statistics</div>
+
+        <div className='stat-container grid grid-cols-2'>
+          <div className='stats shadow'>
+            <div className='stat'>
+              <div className='stat-figure text-twitter-100'>
+                <TiGroup size={30} />
+              </div>
+              <div className='stat-title'>Followers</div>
+              <div className='stat-value'>
+                {user.details["followers_count"]}
+              </div>
+            </div>
+          </div>
+          <div className='stats shadow'>
+            <div className='stat'>
+              <div className='stat-figure text-twitter-100'>
+                <BiCalendar size={30} />
+              </div>
+              <div className='stat-title'>Joined</div>
+              <div className='stat-desc font-bold text-xl'>
+                {user.details["created_at"]}
+              </div>
+            </div>
+          </div>
+          <div className='stats shadow'>
+            <div className='stat'>
+              <div className='stat-figure text-twitter-100'>
+                <AiOutlinePlus size={20} />
+              </div>
+              <div className='stat-title'>Positive</div>
+              <div className='stat-value'>{user.details["pos_count"]}</div>
+              <div className='stat-desc'>Tweets</div>
+            </div>
+          </div>
+          <div className='stats shadow'>
+            <div className='stat'>
+              <div className='stat-figure text-twitter-100'>
+                <AiOutlineMinus size={30} />
+              </div>
+              <div className='stat-title'>Negative</div>
+              <div className='stat-value'>{user.details["neg_count"]}</div>
+              <div className='stat-desc'>Tweets</div>
+            </div>
+          </div>
         </div>
 
-        <div className='stats shadow w-full'>
-          <div className='stat'>
-            <div className='stat-figure text-twitter-100'>
-              <TiGroup size={30} />
-            </div>
-            <div className='stat-title'>Followers</div>
-            <div className='stat-value'>{user.details["followers_count"]}</div>
-          </div>
-
-          <div className='stat'>
-            <div className='stat-figure text-twitter-100'>
-              <BiCalendar size={30} />
-            </div>
-            <div className='stat-title'>Joined</div>
-            <div className='stat-desc font-bold text-xl'>
-              {user.details["created_at"]}
-            </div>
-          </div>
-        </div>
-
-        <div className='stats shadow w-full'>
-          <div className='stat'>
-            <div className='stat-figure text-twitter-100'>
-              <AiOutlinePlus size={20} />
-            </div>
-            <div className='stat-title'>Positive</div>
-            <div className='stat-value'>{user.details["pos_count"]}</div>
-            <div className='stat-desc'>Tweets</div>
-          </div>
-          <div className='stat'>
-            <div className='stat-figure text-twitter-100'>
-              <AiOutlineMinus size={30} />
-            </div>
-            <div className='stat-title'>Negative</div>
-            <div className='stat-value'>{user.details["neg_count"]}</div>
-            <div className='stat-desc'>Tweets</div>
-          </div>
-        </div>
       </div>
       {user.clouds === "" ? null : (
         <div className='flex gap-2 justify-between mt-[6%] w-full'>
