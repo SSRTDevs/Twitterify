@@ -1,129 +1,85 @@
-import React from "react";
-import "../../../css/LeftComponents/UserSummarizer.css"
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, Legend, } from 'recharts';
-
+import { React, useState } from "react";
+import "../../../css/LeftComponents/UserSummarizer.css";
+import { VscGraph, VscGraphLine } from "react-icons/vsc";
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 
 export default function UserTimeline({ user }) {
-  console.log(user)
-  // const Saket_data = [
-  //   {
-  //     "title": "Jan,'23",
-  //     "week": 2,
-  //     "month": "Jan",
-  //     "year": 2023,
-  //     "count": 1
-  //   },
-  //   {
-  //     "title": "",
-  //     "week": 52,
-  //     "month": "Dec",
-  //     "year": 2022,
-  //     "count": 1
-  //   },
-  //   {
-  //     "title": "Dec,'22",
-  //     "week": 48,
-  //     "month": "Dec",
-  //     "year": 2022,
-  //     "count": 3
-  //   },
-  //   {
-  //     "title": "",
-  //     "week": 46,
-  //     "month": "Nov",
-  //     "year": 2022,
-  //     "count": 2
-  //   },
-  //   {
-  //     "title": "Nov,'22",
-  //     "week": 45,
-  //     "month": "Nov",
-  //     "year": 2022,
-  //     "count": 2
-  //   },
-  //   {
-  //     "title": "",
-  //     "week": 44,
-  //     "month": "Nov",
-  //     "year": 2022,
-  //     "count": 1
-  //   },
-  //   {
-  //     "title": "",
-  //     "week": 42,
-  //     "month": "Oct",
-  //     "year": 2022,
-  //     "count": 2
-  //   },
-  //   {
-  //     "title": "Oct,'22",
-  //     "week": 41,
-  //     "month": "Oct",
-  //     "year": 2022,
-  //     "count": 4
-  //   },
-  //   {
-  //     "title": "",
-  //     "week": 40,
-  //     "month": "Oct",
-  //     "year": 2022,
-  //     "count": 3
-  //   },
-  //   {
-  //     "title": "Sep,'22",
-  //     "week": 39,
-  //     "month": "Sep",
-  //     "year": 2022,
-  //     "count": 1
-  //   }
-  // ]
+  const [flipGraph, setFlipGraph] = useState(true);
+  return (
+    <>
+      {user.details.payload.length > 0 && (
+        <div className="flex flex-col items-center">
+          <label className='swap swap-active badge bg-gray-700 badge-outline mr-32 p-3 items-end self-end'>
+            <div
+              className={`${
+                flipGraph ? "swap-on" : "swap-off"
+              } flex justify-center items-center w-fit`}
+              onClick={() => setFlipGraph(!flipGraph)}>
+              <VscGraph size={15} /> &nbsp; Histogram
+            </div>
+            <div
+              className={`${
+                !flipGraph ? "swap-on" : "swap-off"
+              } flex justify-center items-center w-fit`}
+              onClick={() => setFlipGraph(!flipGraph)}>
+              <VscGraphLine size={15} /> &nbsp; Line Graph
+            </div>
+          </label>
 
-  return <>{Object.keys(user.details).length > 0 && <>
-
-    <div className="grid-container">
-      <div className="grid-item">
-        <BarChart
-          width={500}
-          height={300}
-          data={user.details.payload}
-          margin={{
-            top: 5,
-            right: 80,
-            left: 10,
-            bottom: 5,
-          }}
-        >
-          <XAxis dataKey="title"/>
-          <YAxis dataKey="count" />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="count" fill="#00adee" />
-        </BarChart>
-      </div>
-      <div className="grid-item">
-        <LineChart
-          width={500}
-          height={300}
-          data={user.details.payload}
-          margin={{
-            top: 5,
-            right: 80,
-            left: 10,
-            bottom: 5,
-          }}
-        >
-          <XAxis dataKey="title" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="count" stroke="#00adee" />
-        </LineChart>
-      </div>
-    </div>
-
-  </>
-  }
-
-  </>;
+          <div className='flex items-center'>
+            {!flipGraph && (
+              <div className="histogram">
+                <BarChart
+                  width={500}
+                  height={300}
+                  data={user.details.payload}
+                  margin={{
+                    top: 5,
+                    right: 80,
+                    left: 10,
+                    bottom: 5,
+                  }}>
+                  <XAxis dataKey='title' />
+                  <YAxis dataKey='count' />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey='count' fill='#00adee' />
+                </BarChart>
+              </div>
+            )}
+            {flipGraph && (
+              <div className="line-graph">
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={user.details.payload}
+                  margin={{
+                    top: 5,
+                    right: 80,
+                    left: 10,
+                    bottom: 5,
+                  }}>
+                  <XAxis dataKey='title' />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type='monotone' dataKey='count' stroke='#00adee' />
+                </LineChart>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
 }

@@ -5,7 +5,6 @@ import { BiCalendar } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 export default function RightUser({ user }) {
-  console.log("RightUser rendered again");
   return (
     <>
       <div>

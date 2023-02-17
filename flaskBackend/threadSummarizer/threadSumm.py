@@ -61,9 +61,8 @@ def thread_summarizer(url, count = 20):
         'reply_tweets': reply_tweets,
         'username' : username,
         'profile_image_url': profile_image_url,
-        'references' : {"sites": sites, "images": images}
+        'references' : {"urls": sites, "images": images}
     }
     print(res_obj)
     return res_obj
-thread_summarizer("https://twitter.com/tusharnankanii/status/1579943971648045058")
 

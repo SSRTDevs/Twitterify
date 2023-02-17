@@ -82,7 +82,6 @@ def profile_summarizer(username):
         profile_image_url = user_obj._json['profile_image_url_https']
 
         user_tweets_data = api.user_timeline(screen_name=username, count=1, tweet_mode="extended")
-        print(user_tweets_data)
         user_tweets = []
         for tweet in user_tweets_data:
             user_tweets.append(tweet._json['full_text'])
@@ -119,8 +118,7 @@ def profile_summarizer(username):
             "created_at": created_at,
             "profile_image_url": profile_image_url,
             "user_tweets": user_tweets,
-         
-   "mention_tweets": mention_tweets
+            "mention_tweets": mention_tweets
         }
     except tweepy.errors.Unauthorized:
         res_obj = {
@@ -134,6 +132,3 @@ def profile_summarizer(username):
             "mention_tweets": None
         }
     return res_obj
-
-
-print(user_activity("@_SaketThota"))

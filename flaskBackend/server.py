@@ -31,8 +31,6 @@ def process_trending_tweets():
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
-    print(Username)
-    print(tweets)
     sentiments, pos_count, neg_count, neutral_count = get_sentiments(Username,tweets)
     user_details = profile_summarizer(Username)
     user_activity_details = user_activity(Username)
