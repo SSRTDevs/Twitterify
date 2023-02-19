@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import tweepy
-load_dotenv('.env')
+load_dotenv()
 
 consumer_key = os.environ.get('consumer_key')
 consumer_secret = os.environ.get('consumer_secret')

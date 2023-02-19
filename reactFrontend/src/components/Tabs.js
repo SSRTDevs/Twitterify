@@ -9,7 +9,7 @@ export default function Tabs({ tabs }) {
     <>
       <div className='god-container grid grid-cols-6 h-screen '>
         <div className='left-section h-screen col-span-4 flex flex-col w-full p-2'>
-          <div className='top-container h-fit flex justify-between items-start p-1 mb-5'>
+          <div className='top-container h-fit flex justify-between items-center p-4 mb-4'>
             <div className='avatar'>
               <div className='w-10 rounded-full'>
                 <img src={twitter_logo} />
@@ -28,7 +28,7 @@ export default function Tabs({ tabs }) {
               ))}
             </div>
             <button
-              className='btn btn-outline hover:bg-twitter-200 border-twitter-100'
+              className='btn btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200'
               onClick={() => {
                 tabs[activeTabIndex].details();
               }}>

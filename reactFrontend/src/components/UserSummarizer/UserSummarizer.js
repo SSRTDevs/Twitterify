@@ -3,10 +3,7 @@ import "../../css/LeftComponents/UserSummarizer.css";
 import { UserTweets, MentionTweets, UserTimeline, UserTabs } from "../index";
 
 export default function UserSummarizer({ user, setUser }) {
-  // useEffect(() => {
-  //   setUser({ ...user, Username: "", tweets: 0 });
-  // }, []);
-  console.log("UserSummarizer rendered again");
+
   const tabItems = [
     {
       name: "User Tweets",
@@ -18,7 +15,7 @@ export default function UserSummarizer({ user, setUser }) {
     },
     {
       name: "User Timeline",
-      component: <UserTimeline />,
+      component: <UserTimeline user={user}/>,
     },
   ];
 

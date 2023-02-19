@@ -26,10 +26,14 @@ const user_summarizer = async (user, setUser, setAlert) => {
   await axios
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
+      console.log(res.data)
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
+      console.log("Hello World")
+      console.log(res.data.payload)
       setUser((user) => {
         return { ...user, details: res.data };
       });
+      console.log(user)
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
