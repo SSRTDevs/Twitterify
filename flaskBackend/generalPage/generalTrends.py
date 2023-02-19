@@ -1,6 +1,6 @@
-import sys
-sys.path.insert(0, "C:\\Users\\hp\\Desktop\\Website\\Twitterify\\flaskBackend\\generalPage")
-sys.path.insert(0, "C:\\Users\\hp\\Desktop\\Website\\Twitterify\\flaskBackend")
+# import sys
+# sys.path.insert(0, "C:\\Users\\hp\\Desktop\\Website\\Twitterify\\flaskBackend\\generalPage")
+# sys.path.insert(0, "C:\\Users\\hp\\Desktop\\Website\\Twitterify\\flaskBackend")
 
 from setups.tweepy_cred import api
 from geopy.geocoders import Nominatim
