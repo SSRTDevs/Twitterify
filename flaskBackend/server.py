@@ -9,9 +9,8 @@ app = Flask(__name__)
 app.run(debug=True)
 CORS(app)
 
-trending_tweets_obj = {}
+@app.route("/trending_tweets", methods=['GET'])
 def process_trending_tweets():
-    print("Hello")
     trending_payload = get_trending_tweets("Mumbai")
     trending_tweets_data = []
     
@@ -28,9 +27,9 @@ def process_trending_tweets():
             "neu": trending_tweets_sentiment["neu"],
         }
         trending_tweets_data.append(res_obj)
-    
-    # Timer(10*60, process_trending_tweets).start()   
-process_trending_tweets()
+
+    response = make_response(trending_tweets_data)
+    return response
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
@@ -72,7 +71,4 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-@app.route("/trending_tweets", methods=['GET'])
-def sentiment():
-    return make_response(trending_tweets_obj)
     
