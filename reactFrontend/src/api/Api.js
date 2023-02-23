@@ -6,9 +6,9 @@ const trending = async (trends, setTrends, setAlert) => {
     .get(`http://localhost:5000/trending_tweets`)
     .then((res) => {
       console.log("Trending Tweets", res.data);
-      setTrends((trends) => {
-        return { ...trends, latest_trends: res.data };
-      });
+      // setTrends((trends) => {
+      //   return { ...trends, latest_trends: res.data };
+      // });
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
