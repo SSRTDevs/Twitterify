@@ -1,7 +1,3 @@
-# import sys
-# sys.path.insert(0, "C:\\Users\\hp\\Desktop\\Website\\Twitterify\\flaskBackend\\generalPage")
-# sys.path.insert(0, "C:\\Users\\hp\\Desktop\\Website\\Twitterify\\flaskBackend")
-
 from setups.tweepy_cred import api
 from geopy.geocoders import Nominatim
 from datetime import datetime
@@ -69,13 +65,12 @@ def get_trending_tweets(location, tweet_count = 2, topic_count = 1):
         }
         result.append(topic_object)
 
-    # Kindly implement the result body and return the data from her
+    return result
 
 def feed_model(trending_tweets):
-    trending_tweets_summarization = {}
+    trending_tweets_summarization = ""
     trending_tweets_sentiment = {}
-    for tweet_topic in trending_tweets:
-        trending_tweets_summarization[tweet_topic] = tweet_summarizer(' '.join(trending_tweets[tweet_topic]))
-        trending_tweets_sentiment[tweet_topic] = tweet_analyser(trending_tweets[tweet_topic])
+    trending_tweets_summarization = tweet_summarizer(' '.join(trending_tweets))
+    trending_tweets_sentiment = tweet_analyser(trending_tweets)
 
     return trending_tweets_summarization,trending_tweets_sentiment

@@ -11,23 +11,26 @@ CORS(app)
 
 trending_tweets_obj = {}
 def process_trending_tweets():
-    trending_tweets = get_trending_tweets("Mumbai")
-    trending_tweets_summarization, trending_tweets_sentiment = feed_model(
-        trending_tweets)
+    print("Hello")
+    trending_payload = get_trending_tweets("Mumbai")
+    trending_tweets_data = []
     
-    for topic in trending_tweets:
-            pos = trending_tweets_sentiment[topic]["pos"]
-            neg = trending_tweets_sentiment[topic]["neg"]
-            neu = trending_tweets_sentiment[topic]["neu"]
-            trending_tweets_obj[topic] = {
-                "summary": trending_tweets_summarization[topic], 
-                "pos": pos, 
-                "neg": neg, 
-                "neu": neu
-                }
+    for object in trending_payload:
+        trending_tweets_summarization, trending_tweets_sentiment = feed_model(object["topic_tweets"])
+        res_obj = {
+            "topic_tweets" : object["topic_tweets"],
+            "topic_name" : object["topic_name"],
+            "topic_tweet_count" : object["topic_tweet_count"],
+            "time_stamp" : object["time_stamp"],
+            "summary": trending_tweets_summarization, 
+            "pos": trending_tweets_sentiment["pos"], 
+            "neg": trending_tweets_sentiment["neg"], 
+            "neu": trending_tweets_sentiment["neu"],
+        }
+        trending_tweets_data.append(res_obj)
     
     # Timer(10*60, process_trending_tweets).start()   
-# process_trending_tweets()
+process_trending_tweets()
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
