@@ -10,7 +10,8 @@ function TrendingTags({hashtag}) {
     }
     return (
       <>
-        <a style={{ textAlign: 'left', textDecoration: "underline", cursor: "pointer" }} 
+        <a 
+        style={{ textAlign: 'left', textDecoration: "underline", cursor: "pointer" }} 
         onClick={smoothScroll}
         >{hashtag} </a> &nbsp; &nbsp;
       </>
