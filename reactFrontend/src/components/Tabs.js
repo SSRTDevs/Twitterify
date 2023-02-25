@@ -7,7 +7,8 @@ export default function Tabs({ tabs }) {
 
   return (
     <>
-      <div className='god-container grid grid-cols-6 h-screen '>
+      <div className='god-container grid grid-cols-6 h-screen '
+      data-theme="black">
         <div className='left-section h-screen col-span-4 flex flex-col w-full p-2'>
           <div className='top-container flex justify-between items-center p-4 mb-2'>
             <div className='avatar'>
