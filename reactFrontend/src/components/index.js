@@ -5,7 +5,6 @@ export { default as RightTrend } from "./Trending/RightTrend";
 export { default as RightThread } from "./ThreadSummarizer/RightThread";
 export { default as RightUser } from "./UserSummarizer/RightUser";
 export { default as TrendingCard } from "./Trending/TrendingCard";
-export { default as TrendingTags } from "./Trending/TrendingTags";
 export { default as Tabs } from "./Tabs";
 export { default as App } from "./App";
 export { default as UserTabs } from "./UserSummarizer/UserTabs";

@@ -48,7 +48,7 @@ export default function Trending({ trends, setTrends }) {
       <br />
       <div className='trending w-full'>
         {Object.keys(trends.latest_trends).map((item, idx) => (
-          <TrendingTags key={idx} hashtag={item} />
+          <TrendingCard.Tags index={idx} hashtag={item} />
         ))}
       </div>
       {Object.keys(trends.latest_trends).map((key, idx) => (
