@@ -15,7 +15,7 @@ docutils==0.16
 entrypoints==0.3
 future==0.18.2
 gitdb==4.0.7
-GitPython==3.1.14
+GitPython==3.1.30
 ipykernel==5.5.3
 ipywidgets==7.6.3
 jedi==0.18.0
