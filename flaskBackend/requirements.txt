@@ -9,7 +9,7 @@ black==19.10b0
 blinker==1.4
 brotlipy==0.7.0
 cachetools==4.2.1
-certifi==2020.12.5
+certifi==2022.12.7
 cycler==0.10.0
 docutils==0.16
 entrypoints==0.3
