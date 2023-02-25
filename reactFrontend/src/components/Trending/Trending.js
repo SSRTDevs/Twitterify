@@ -25,7 +25,7 @@ export default function Trending({ trends, setTrends, trending }) {
       <div className='h-full w-full flex items-center justify-between flex-col space-y-2 p-1'>
         <div className='h-[13%] topSection w-full m-2'>
           <div className='topbar w-full flex items-center justify-between'>
-            <div className='heading text-4xl'>Trending Today</div>
+            <div className='heading text-2xl'>Trending Today</div>
             <div className='form-control mr-8'>
               <div className='input-group'>
                 <input
