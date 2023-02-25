@@ -10,14 +10,14 @@ function TrendingTags({hashtag}) {
     }
     return (
       <>
-        <a 
-        style={{ textAlign: 'left', textDecoration: "underline", cursor: "pointer" }} 
+        <a className='w-full'
+        style={{ textDecoration: "underline", cursor: "pointer", }} 
         onClick={smoothScroll}
-        >{hashtag} </a> &nbsp; &nbsp;
+        >{hashtag.replaceAll(" ","_")} </a>
       </>
     )
   }
-function TrendingCard({trends, hashtag, setTrends}) {
+function TrendingCard({index, trend, hashtag, setReadTweets}) {
     return (
         <>
             <div>
@@ -27,20 +27,17 @@ function TrendingCard({trends, hashtag, setTrends}) {
                         <h6 className="card-subtitle mb-2 text-muted">Cricket</h6>
                         <h6 className="card-subtitle">
                             Sentiment Stats: &nbsp; &nbsp;
-                            <span style={{ color: "green" }}>Pos: {trends.latest_trends.pos} &nbsp; &nbsp;</span>
-                            <span style={{ color: "red" }}>Neg: {trends.latest_trends.neg} &nbsp; &nbsp;</span>
-                            <span style={{ color: "yellow" }}>Neutral: {trends.latest_trends.neu} &nbsp; &nbsp;</span>
+                            <span style={{ color: "green" }}>Pos: {trend.pos} &nbsp; &nbsp;</span>
+                            <span style={{ color: "red" }}>Neg: {trend.neg} &nbsp; &nbsp;</span>
+                            <span style={{ color: "yellow" }}>Neutral: {trend.neu} &nbsp; &nbsp;</span>
                         </h6>
                         <br />
                         <p className="card-text" >
-                            {trends.latest_trends[hashtag].summary}
+                            {trend.summary}
                         </p>
                         <div style={{ textAlign: "right", textDecoration: "underline", cursor: "pointer" }}
                             onClick={() => {
-                                setTrends({
-                                    ...trends,
-                                    'show_tweets': trends.latest_trends[hashtag].tweets
-                                })
+                                setReadTweets(index);
                             }}>Read Tweets</div>
                     </div>
                 </div>

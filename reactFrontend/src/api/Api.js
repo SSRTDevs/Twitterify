@@ -1,14 +1,13 @@
 import axios from "axios";
 
 const trending = async (trends, setTrends, setAlert) => {
-  alert("Trending Api fired");
   await axios
     .get(`http://localhost:5000/trending_tweets`)
     .then((res) => {
       console.log("Trending Tweets", res.data);
-      // setTrends((trends) => {
-      //   return { ...trends, latest_trends: res.data };
-      // });
+      setTrends((trends) => {
+        return { ...trends, latest_trends: res.data };
+      });
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
@@ -28,7 +27,6 @@ const user_summarizer = async (user, setUser, setAlert) => {
     .then((res) => {
       console.log(res.data)
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
-      console.log("Hello World")
       console.log(res.data.payload)
       setUser((user) => {
         return { ...user, details: res.data };

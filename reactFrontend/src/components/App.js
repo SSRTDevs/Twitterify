@@ -35,7 +35,7 @@ export default function App() {
   const tabs = [
     {
       name: "Trending",
-      leftComponent: <Trending trends={trends} setTrends={setTrends} />,
+      leftComponent: <Trending trends={trends} setTrends={setTrends} trending={trending} />,
       rightComponent: <RightTrend trends={trends} />,
       icon: <IoTrendingUpOutline />,
       details: () => trending(trends, setTrends, setAlert),

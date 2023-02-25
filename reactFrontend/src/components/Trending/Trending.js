@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { mock_tag_detail } from "../Mock_data";
 import { TrendingCard, TrendingTags } from "../index";
 
-export default function Trending({ trends, setTrends }) {
+export default function Trending({ trends, setTrends, trending }) {
   const [tagDetail, settagDetail] = useState({
     tag: "",
     detail: mock_tag_detail,
@@ -13,10 +13,17 @@ export default function Trending({ trends, setTrends }) {
     // trending();
   }, []);
 
+  const read_tweets = (index) => {
+    setTrends({
+      ...trends,
+      'show_tweets': trends.latest_trends[index].topic_tweets
+  })
+  }
+
   return (
     <>
-      <div className='h-full w-full flex items-center justify-between flex-col space-y-2'>
-        <div className='h-[13%] topSection w-full'>
+      <div className='h-full w-full flex items-center justify-between flex-col space-y-2 p-1'>
+        <div className='h-[13%] topSection w-full m-2'>
           <div className='topbar w-full flex items-center justify-between'>
             <div className='heading text-4xl'>Trending Today</div>
             <div className='form-control mr-8'>
@@ -44,18 +51,19 @@ export default function Trending({ trends, setTrends }) {
               </div>
             </div>
           </div>
-
-          {Object.keys(trends.latest_trends).map((item, idx) => (
-            <TrendingCard.Tags index={idx} hashtag={item} />
+          <div className="overflow-x-scroll w-full flex space-x-2 p-2">
+          {trends.latest_trends.map((item, idx) => (
+            <TrendingCard.Tags index={idx} hashtag={item.topic_name} />
           ))}
+          </div>
         </div>
-        <div className="h-[87%] overflow-y-scroll">
-          {Object.keys(trends.latest_trends).map((key, idx) => (
+        <div className="h-[87%] overflow-y-scroll px-2">
+          {trends.latest_trends.map((trend, idx) => (
             <TrendingCard
-              key={idx}
-              hashtag={key}
-              trends={trends}
-              setTrends={setTrends}
+              index={idx}
+              hashtag={trend.topic_name}
+              trend={trend}
+              setReadTweets={read_tweets}
             />
           ))}
         </div>

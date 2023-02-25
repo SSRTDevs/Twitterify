@@ -14,7 +14,7 @@ CORS(app)
 
 @app.route("/trending_tweets", methods=['GET'])
 def process_trending_tweets():
-    trending_payload = get_trending_tweets("Mumbai")
+    trending_payload = get_trending_tweets("India")
     trending_tweets_data = []
     
     for object in trending_payload:

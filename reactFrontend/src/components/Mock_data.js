@@ -1,4 +1,4 @@
-let mock_trends = {
+let prev_mock_trends = {
   "#INDvsENG": {
     neg: 2,
     neu: 1,
@@ -50,6 +50,77 @@ let mock_trends = {
     ],
   },
 };
+
+let mock_trends = [
+  {
+    neg: 0,
+    neu: 2,
+    pos: 0,
+    summary:
+      "This is mock data: Respected Garibdas Ji Maharaj ji had met God Kabir Saheb in the year 1727 at the age of 10 years. The description of Satlok which he saw with his own eyes is described in",
+    time_stamp: "25/02/2023 18:34:52",
+    topic_name: "#Who_Is_SantGaribdasJiMaharaj",
+    topic_tweet_count: 437324,
+    topic_tweets: [
+      "One day, Sant Garibdas ji came with his other fellows outside his village to graze their cows (in 1727 when He was 10 years). As per the Constitution of Supreme God Kabir, lord Kabir came &amp; met His pious Soul Garibdas ji in the form of a Jinda sant.\n#Who_Is_SantGaribdasJiMaharaj https://t.co/jBE8ObFWjZ",
+      '#Who_Is_SantGaribdasJiMaharaj\nRespected Garibdas Ji Maharaj ji had met God Kabir Saheb in the year 1727 at the age of 10 years, after which he showed Satlok to Garibdas Ji Maharaj ji and the description of Satlok which he saw with his own eyes is described in "Sat Granth Sahib". https://t.co/MmTGm6RXaO',
+    ],
+  },
+  {
+    neg: 0,
+    neu: 0,
+    pos: 0,
+    summary:
+      "CNN.com will feature iReporter photos in a weekly Travel Snapshots gallery. Please submit your best shots of New York for next week. Visit CNN.com/Travel next Wednesday for a new gallery of snapshots.",
+    time_stamp: "25/02/2023 18:34:54",
+    topic_name: "#TheLastKinnPorsche",
+    topic_tweet_count: 357722,
+    topic_tweets: [],
+  },
+  {
+    neg: 0,
+    neu: 0,
+    pos: 2,
+    summary:
+      "A memorable picture with my inspiration &amp; soul of the @INCIndia Smt. Sonia Gandhi ji along with Former Minister my Sister Yashomati Thakur, MLA Praniti Shinde and Brother Gurd",
+    time_stamp: "25/02/2023 18:34:55",
+    topic_name: "#CongressVoiceOfIndia",
+    topic_tweet_count: 43968,
+    topic_tweets: [
+      "A memorable picture with my inspiration &amp; soul of the @INCIndia Smt. Sonia Gandhi ji along with Former Minister my Sister Yashomati Thakur, MLA Praniti Shinde &amp; Brother Gurdeep Sappal \n\n#CongressVoiceOfIndia https://t.co/bRwEfaMjhm",
+      '"I congratulate the congress party workers for the Yatra, the lakhs of people &amp; their enthusiasm for the Yatra &amp; I specially thank Shri Rahul Ji as his leadership was crucial for the Bharat Jodo Yatra"\n\n-Smt Sonia Gandhi Ji \n#CongressVoiceOfIndia https://t.co/qcbqmLmpTQ',
+    ],
+  },
+  {
+    neg: 0,
+    neu: 0,
+    pos: 2,
+    summary:
+      "NATION LOVES ASIM RIAZ. @Sb_se_dur @imrealasim Thank you. @UmarkiSania @im realasim thank you so much.",
+    time_stamp: "25/02/2023 18:34:56",
+    topic_name: "NATION LOVES ASIM RIAZ",
+    topic_tweet_count: 43075,
+    topic_tweets: [
+      "@Sb_se_dur @imrealasim Thank you \nNATION LOVES ASIM RIAZ",
+      "@UmarkiSania @imrealasim Thank you so much!!\n\nNATION LOVES ASIM RIAZ",
+    ],
+  },
+  {
+    neg: 2,
+    neu: 0,
+    pos: 0,
+    summary:
+      "Post on....... #ArrestJunaidNasirKillers. #StopTargetingIndianMuslims. Hate monu manesar.",
+    time_stamp: "25/02/2023 18:34:57",
+    topic_name:
+      "#मोनू_मानेसर_को_गिरफ्तार_करो",
+    topic_tweet_count: 36875,
+    topic_tweets: [
+      "Hate monu manesar\nPost on.......\n\n #ArrestJunaidNasirKillers\n#मोनू_मानेसर_को_गिरफ्तार_करो \n#StopTargetingIndianMuslims https://t.co/5Dqz38iAdP",
+      "Post on.......\n\n #ArrestJunaidNasirKillers\n#मोनू_मानेसर_को_गिरफ्तार_करो \n#StopTargetingIndianMuslims https://t.co/0dVoytTmZM",
+    ],
+  },
+];
 
 let mock_thread = {
   thread_tweets: [
@@ -236,9 +307,7 @@ let mock_tag_detail = {
 
 · 500 new ‘waste to wealth’ plants under GOBARdhan (Galvanizing Organic Bio-Agro Resources Dhan) scheme to be established for promoting circular economy at total investment of Rs 10,000 crore. 5 per cent compressed biogas mandate to be introduced for all organizations marketing natural and bio gas.
 
-· Centre to facilitate one crore farmers to adopt natural farming over the next three years. For this, 10,000 Bio-Input Resource Centres to be set-up, creating a national-level distributed micro-fertilizer and pesticide manufacturing network.`
-  
-}
+· Centre to facilitate one crore farmers to adopt natural farming over the next three years. For this, 10,000 Bio-Input Resource Centres to be set-up, creating a national-level distributed micro-fertilizer and pesticide manufacturing network.`,
+};
 
-
-export {mock_trends, mock_thread, mock_user_details, mock_tag_detail};
+export { mock_trends, mock_thread, mock_user_details, mock_tag_detail };
