@@ -54,3 +54,12 @@ def tweet_analyser(tweets):
         except:
             pass
     return {"pos": pos, "neg": neg, "neu": neu}
+
+
+def summarize(text): 
+    results = summarizer(text,
+        min_length = 5,
+        truncation=True,
+        max_length=100,
+    )
+    return results

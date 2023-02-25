@@ -3,11 +3,14 @@ from profileSummarizer.processing import get_sentiments, get_word_clouds
 from profileSummarizer.profileSumm import profile_summarizer, user_activity
 from generalPage.generalTrends import get_trending_tweets, feed_model
 from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
+from setups.model_setup import summarize
 from flask_cors import CORS
 from threading import Timer
+from mock_text import mock_text, summarizer
 app = Flask(__name__)
 app.run(debug=True)
 CORS(app)
+
 
 @app.route("/trending_tweets", methods=['GET'])
 def process_trending_tweets():
@@ -30,6 +33,8 @@ def process_trending_tweets():
 
     response = make_response(trending_tweets_data)
     return response
+    # Timer(10*60, process_trending_tweets).start()   
+# process_trending_tweets()
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
@@ -71,4 +76,12 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-    
+
+@app.route("/summary",methods=['GET'])
+def get_summary():
+    print(summarizer())
+    return make_response(summarize(mock_text))
+    # return make_response(summarizer())
+
+
+
