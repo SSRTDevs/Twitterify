@@ -1,12 +1,15 @@
 from flask import Flask, make_response
 from profileSummarizer.processing import get_sentiments, get_word_clouds
-from profileSummarizer.profileSumm import profile_summarizer, user_activity
-from generalPage.generalTrends import get_trending_tweets, feed_model
-from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
+# from profileSummarizer.profileSumm import profile_summarizer, user_activity
+from profileSummarizer.profileSumm import profile_summary
+from generalPage.generalTrends import get_trending_tweets
+from threadSummarizer.threadSumm import thread_summarizer
 from setups.model_setup import summarize
 from flask_cors import CORS
 from threading import Timer
 from mock_text import mock_text, summarizer
+from setups.model_setup import tweet_summarizer, tweet_analyser
+
 app = Flask(__name__)
 app.run(debug=True)
 CORS(app)
@@ -18,7 +21,9 @@ def process_trending_tweets():
     trending_tweets_data = []
     
     for object in trending_payload:
-        trending_tweets_summarization, trending_tweets_sentiment = feed_model(object["topic_tweets"])
+        trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
+        trending_tweets_sentiment = tweet_analyser(object["topic_tweets"])
+        # trending_tweets_summarization, trending_tweets_sentiment = feed_model(object["topic_tweets"])
         res_obj = {
             "topic_tweets" : object["topic_tweets"],
             "topic_name" : object["topic_name"],
@@ -33,23 +38,18 @@ def process_trending_tweets():
 
     response = make_response(trending_tweets_data)
     return response
-    # Timer(10*60, process_trending_tweets).start()   
-# process_trending_tweets()
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
-    sentiments, pos_count, neg_count, neutral_count = get_sentiments(Username,tweets)
-    user_details = profile_summarizer(Username)
-    user_activity_details = user_activity(Username)
-    return_obj = {
-        "sentiments": sentiments,
-        "pos_count": pos_count,
-        "neg_count": neg_count,
-        "neutral_count": neutral_count
-    }
-    return_obj.update(user_details)
-    return_obj.update(user_activity_details)
-    response = make_response(return_obj)
+    # sentiments, pos_count, neg_count, neutral_count = get_sentiments(Username,tweets)
+    # user_sentiments, user_details, user_activity_details = profile_summary(Username)
+
+    
+    # return_obj.update(user_details)
+    # return_obj.update(user_activity_details)
+
+    res_obj = profile_summary(Username)
+    response = make_response(res_obj)
     return response
 
 @app.route("/wordclouds/<Username>/<tweets>", methods=['GET'])
@@ -69,8 +69,10 @@ def thread_summary(url):
     url = url[:-1]
     
     thread_obj = thread_summarizer(url)
-    thread_obj['thread_summary'], thread_obj['thread_sentiment'] = thread_feed_model(
-        thread_obj['thread_tweets'])
+    thread_obj['thread_summary'] = tweet_summarizer(' '.join(thread_obj['thread_tweets']))
+    thread_obj['thread_sentiment'] = tweet_analyser(thread_obj['thread_tweets'])
+    # thread_obj['thread_summary'], thread_obj['thread_sentiment'] = thread_feed_model(
+    #     thread_obj['thread_tweets'])
 
     print(thread_obj)
     response = make_response(thread_obj)
@@ -82,6 +84,3 @@ def get_summary():
     print(summarizer())
     return make_response(summarize(mock_text))
     # return make_response(summarizer())
-
-
-

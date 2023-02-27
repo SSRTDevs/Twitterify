@@ -1,4 +1,5 @@
-from setups.tweepy_cred import api
+# from setups.tweepy_cred import api
+from helper.api import closest_trends, search_trending_tweets, get_place_trends
 from geopy.geocoders import Nominatim
 from datetime import datetime
 import re
@@ -28,13 +29,13 @@ def get_location_info(location):
 
 def get_locations_woeid(latitude , longitude):
     locations_woeid = []
-    for locations in api.closest_trends(latitude, longitude):
+    for locations in closest_trends(latitude, longitude):
         locations_woeid.append(locations["woeid"])
     return locations_woeid
 
 def get_topic_tweets(topic_name, tweet_count, geocode):
     topic_tweets = []
-    for tweet in api.search_tweets(q=topic_name,lang='en',geocode=geocode,count=tweet_count,tweet_mode='extended'):
+    for tweet in search_trending_tweets(topic_name, geocode, tweet_count):
         full_text = tweet._json["full_text"]
         full_text = re.sub(r'\bRT\b', 'Retweet by', full_text)
         topic_tweets.append(full_text)
@@ -46,7 +47,7 @@ def get_trending_tweets(location, tweet_count = 2, topic_count = 5):
 
     topics_count_name = []
     for woeid in locations_woeid:
-        for trends in api.get_place_trends(woeid):
+        for trends in get_place_trends(woeid):
             topic_count_name = get_trend_count_name(trends, topic_count)
             for obj in topic_count_name:
                 topics_count_name.append(obj)
@@ -67,10 +68,10 @@ def get_trending_tweets(location, tweet_count = 2, topic_count = 5):
 
     return result
 
-def feed_model(trending_tweets):
-    trending_tweets_summarization = ""
-    trending_tweets_sentiment = {}
-    trending_tweets_summarization = tweet_summarizer(' '.join(trending_tweets))
-    trending_tweets_sentiment = tweet_analyser(trending_tweets)
+# def feed_model(trending_tweets):
+#     trending_tweets_summarization = ""
+#     trending_tweets_sentiment = {}
+#     trending_tweets_summarization = tweet_summarizer(' '.join(trending_tweets))
+#     trending_tweets_sentiment = tweet_analyser(trending_tweets)
 
-    return trending_tweets_summarization,trending_tweets_sentiment
+#     return trending_tweets_summarization,trending_tweets_sentiment

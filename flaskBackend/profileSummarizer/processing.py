@@ -58,6 +58,32 @@ def get_user_tweets(username, tweets):
     df = pd.DataFrame([tweet.full_text for tweet in tweets], columns=['Tweet'])
     df["Tweet"] = df["Tweet"].apply(cleanTxt)
 
+def get_sentiments(Username,tweets):
+    get_user_tweets(Username, tweets)
+    df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
+    df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
+    df1 = df.groupby('Sentiment').count()
+    try:
+        pos = df1.loc(0)["pos"]["Tweet"]
+    except:
+        pos = 0
+    try:
+        neg = df1.loc(0)["neg"]["Tweet"]
+    except:
+        neg = 0
+    try:
+        neutral = df1.loc(0)["neutral"]["Tweet"]
+    except:
+        neutral = 0
+    return df.to_json(),str(pos),str(neg),str(neutral)
+
+def get_word_clouds(Username, tweets): 
+    # get_user_tweets(Username, tweets)
+    # wordcloud1 = get_word_cloud1()
+    # wordcloud2 = get_word_cloud2()
+    # return wordcloud1,wordcloud2
+    return tweets
+
 # def get_word_cloud1():
 #     names = nam_adj(df)
 #     lst = [item.lower() for item in names]
@@ -101,30 +127,3 @@ def get_user_tweets(username, tweets):
 #     encoded_string = encoded_data.decode('UTF-8')
 #     json_data = json.dumps(encoded_string,indent=2)
 #     return json_data
-
-
-def get_sentiments(Username,tweets):
-    get_user_tweets(Username, tweets)
-    df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
-    df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
-    df1 = df.groupby('Sentiment').count()
-    try:
-        pos = df1.loc(0)["pos"]["Tweet"]
-    except:
-        pos = 0
-    try:
-        neg = df1.loc(0)["neg"]["Tweet"]
-    except:
-        neg = 0
-    try:
-        neutral = df1.loc(0)["neutral"]["Tweet"]
-    except:
-        neutral = 0
-    return df.to_json(),str(pos),str(neg),str(neutral)
-
-def get_word_clouds(Username, tweets): 
-    # get_user_tweets(Username, tweets)
-    # wordcloud1 = get_word_cloud1()
-    # wordcloud2 = get_word_cloud2()
-    # return wordcloud1,wordcloud2
-    return tweets
