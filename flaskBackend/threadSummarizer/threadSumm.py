@@ -1,13 +1,14 @@
 import re 
-from setups.tweepy_cred import api
+# from setups.tweepy_cred import api
+from helper.api import search_tweets
 from setups.model_setup import tweet_summarizer,tweet_analyser
 import urlexpander
 
 
-def thread_feed_model(thread_tweets):
-    thread_summary = tweet_summarizer(' '.join(thread_tweets))
-    thread_sentiment = tweet_analyser(thread_tweets)
-    return thread_summary,thread_sentiment
+# def thread_feed_model(thread_tweets):
+#     thread_summary = tweet_summarizer(' '.join(thread_tweets))
+#     thread_sentiment = tweet_analyser(thread_tweets)
+#     return thread_summary,thread_sentiment
 
 def thread_summarizer(url, count = 20):
     screen_name = url.split('/')[3]
@@ -20,7 +21,7 @@ def thread_summarizer(url, count = 20):
     profile_image_url = None
     references = []
 
-    for tweet in api.search_tweets(q=q, count=count, tweet_mode='extended'):
+    for tweet in search_tweets(q, count):
         if(not username):
             username = tweet._json['user']['name']
 
@@ -50,7 +51,7 @@ def thread_summarizer(url, count = 20):
 
 
     q = "from:{0} conversation_id:{1}".format(screen_name, tweet_id)
-    for tweet in api.search_tweets(q=q, count=count, tweet_mode='extended'):
+    for tweet in search_tweets(q, count):
         if tweet._json['full_text'] not in thread_tweets:
             reply_tweets.append(tweet._json['full_text'])
 
@@ -65,4 +66,3 @@ def thread_summarizer(url, count = 20):
     }
     print(res_obj)
     return res_obj
-

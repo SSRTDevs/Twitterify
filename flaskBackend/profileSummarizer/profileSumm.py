@@ -1,21 +1,17 @@
-from setups.tweepy_cred import api
+# from setups.tweepy_cred import api
+from helper.api import get_user,search_tweets, user_timeline
 import calendar
 from datetime import datetime
 import tweepy
+import pandas as pd
+from textblob import TextBlob
+import re
 
-def get_user_id(username):
-    user_obj = api.get_user(screen_name=username)
-    user_id = user_obj._json['id']
-    return user_id
-
-def get_user_tweets_creation(username):
-    user_id = get_user_id(username)
-    user_tweets_creation = []
-    user_tweets_data = api.user_timeline(user_id=user_id, screen_name=username, count=5, tweet_mode="extended")
+def get_user_tweet_dates(user_tweets_data):
+    tweet_dates = []
     for tweet in user_tweets_data:
-        user_tweets_creation.append(tweet._json['created_at'])
-
-    return user_tweets_creation
+        tweet_dates.append(tweet._json['created_at'])
+    return tweet_dates
 
 def get_date_details(date_str):
     date = datetime.strptime(date_str, '%a %b %d %H:%M:%S %z %Y')
@@ -26,11 +22,103 @@ def get_date_details(date_str):
 
     return month, week, key
 
-def user_activity(username):
-    user_tweets_creation = get_user_tweets_creation(username)
+def format_followers_count(followers_count):
+    if not isinstance(followers_count, int):
+        followers_count = int(followers_count)
+
+    if followers_count >= 10**9:
+        return f"{followers_count/(10**9):.2f}B"
+    elif followers_count >= 10**6:
+        return f"{followers_count/(10**6):.2f}M"
+    elif followers_count >= 10**3:
+        return f"{followers_count/(10**3):.1f}K"
+    else:
+        return str(followers_count)
+
+def cleanTxt(text):
+    text = re.sub('@[A-Za-z0–9]+', '', text)
+    text = re.sub('#', '', text)
+    text = re.sub('RT[\s]+', '', text)
+    text = re.sub('https?:\/\/\S+', '', text)
+    return text
+
+def create_DataFrame(user_tweets_data):
+    df = pd.DataFrame([tweet.full_text for tweet in user_tweets_data], columns=['Tweet'])
+    df["Tweet"] = df["Tweet"].apply(cleanTxt)
+    return df
+
+def sentiment_textblob(text):
+    if TextBlob(text).sentiment.polarity > 0:
+        return "pos"
+    elif TextBlob(text).sentiment.polarity < 0:
+        return "neg"
+    return "neutral"
+
+def getSubjectivity(text):
+    return TextBlob(text).sentiment.subjectivity
+
+def get_sentiments(user_tweets_data):
+    df = create_DataFrame(user_tweets_data)
+    df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
+    df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
+    df1 = df.groupby('Sentiment').count()
+    try:
+        pos = df1.loc(0)["pos"]["Tweet"]
+    except:
+        pos = 0
+    try:
+        neg = df1.loc(0)["neg"]["Tweet"]
+    except:
+        neg = 0
+    try:
+        neutral = df1.loc(0)["neutral"]["Tweet"]
+    except:
+        neutral = 0
+    
+    sentiment_obj = {
+        "sentiments": df.to_json(),
+        "pos_count": str(pos),
+        "neg_count": str(neg),
+        "neutral_count": str(neutral)
+    }
+    return sentiment_obj
+
+def get_user_details(username, user_obj, user_tweets_data):
+    name = user_obj._json['name']
+    description = user_obj._json['description']
+    followers = format_followers_count(user_obj._json['followers_count'])
+    profile_image_url = user_obj._json['profile_image_url_https']
+    created_at = user_obj._json['created_at']
+    arr = created_at.split()
+    created_at = arr[1] + ", " + arr[-1]
+
+    user_tweets = []
+    for tweet in user_tweets_data:
+        user_tweets.append(tweet._json['full_text'])
+
+    q = "@{0} and -filter:retweets".format(username)
+    mention_tweets_data = search_tweets(q, 1)
+    mention_tweets = []
+    for tweet in mention_tweets_data:
+        mention_tweets.append(tweet._json['full_text'])
+
+    user_details = {
+        "result": "success",
+        "username": name,
+        "description": description,
+        "followers_count": followers,
+        "created_at": created_at,
+        "profile_image_url": profile_image_url,
+        "user_tweets": user_tweets,
+        "mention_tweets": mention_tweets
+    }
+    return user_details
+
+def get_user_activity(user_tweets_data):
+    tweet_dates = get_user_tweet_dates(user_tweets_data)    
     tweet_creation_freq = {}
     month_weeks = {}
-    for date_str in user_tweets_creation:
+    for date_str in tweet_dates:
         month, week, key = get_date_details(date_str)
 
         if key not in tweet_creation_freq.items():
@@ -68,53 +156,20 @@ def user_activity(username):
     freq_payload.reverse()
     return {"payload": freq_payload}
 
-def format_followers_count(followers_count):
-    if not isinstance(followers_count, int):
-        followers_count = int(followers_count)
-
-    if followers_count >= 10**9:
-        return f"{followers_count/(10**9):.2f}B"
-    elif followers_count >= 10**6:
-        return f"{followers_count/(10**6):.2f}M"
-    elif followers_count >= 10**3:
-        return f"{followers_count/(10**3):.1f}K"
-    else:
-        return str(followers_count)
-
-def profile_summarizer(username):
+def profile_summary(username):
     try:
-        user_tweets_data = api.user_timeline(screen_name=username, count=1, tweet_mode="extended")
-        user_tweets = []
-        for tweet in user_tweets_data:
-            user_tweets.append(tweet._json['full_text'])
-
-        user_obj = api.get_user(screen_name=username)
-        name = user_obj._json['name']
-        description = user_obj._json['description']
-        followers = format_followers_count(user_obj._json['followers_count'])
-        profile_image_url = user_obj._json['profile_image_url_https']
-        created_at = user_obj._json['created_at']
-        arr = created_at.split()
-        created_at = arr[1] + ", " + arr[-1]
-
-        q = "@{0} and -filter:retweets".format(username)
-        mention_tweets_data = api.search_tweets(q=q, count=1, tweet_mode="extended")
-        mention_tweets = []
-        for tweet in mention_tweets_data:
-            mention_tweets.append(tweet._json['full_text'])
-
-        res_obj = {
-            "result": "success",
-            "username": name,
-            "description": description,
-            "followers_count": followers,
-            "created_at": created_at,
-            "profile_image_url": profile_image_url,
-            "user_tweets": user_tweets,
-            "mention_tweets": mention_tweets
-        }
+        user_obj = get_user(username)
+        user_id = user_obj._json['id']
+        user_tweets_data = user_timeline(user_id, username, 5)
+    
     except tweepy.errors.Unauthorized:
         res_obj = {
             "result":"private_account",
         }
+        return res_obj, res_obj
+    
+    res_obj = get_sentiments(user_tweets_data)
+    res_obj.update(get_user_details(username, user_obj, user_tweets_data))
+    res_obj.update(get_user_activity(user_tweets_data))
+    
     return res_obj
