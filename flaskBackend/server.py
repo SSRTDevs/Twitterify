@@ -1,38 +1,46 @@
 from flask import Flask, make_response
 from profileSummarizer.processing import get_sentiments, get_word_clouds
-from profileSummarizer.profileSumm import profile_summarizer
+from profileSummarizer.profileSumm import profile_summarizer, user_activity
 from generalPage.generalTrends import get_trending_tweets, feed_model
 from threadSummarizer.threadSumm import thread_summarizer, thread_feed_model
+from setups.model_setup import summarize
 from flask_cors import CORS
 from threading import Timer
+from mock_text import mock_text, summarizer
 app = Flask(__name__)
 app.run(debug=True)
 CORS(app)
 
-trending_tweets_obj = {}
+
+@app.route("/trending_tweets", methods=['GET'])
 def process_trending_tweets():
-    trending_tweets = get_trending_tweets("Mumbai")
-    trending_tweets_summarization, trending_tweets_sentiment = feed_model(
-        trending_tweets)
+    trending_payload = get_trending_tweets("India")
+    trending_tweets_data = []
     
-    for topic in trending_tweets:
-            pos = trending_tweets_sentiment[topic]["pos"]
-            neg = trending_tweets_sentiment[topic]["neg"]
-            neu = trending_tweets_sentiment[topic]["neu"]
-            trending_tweets_obj[topic] = {
-                "summary": trending_tweets_summarization[topic], 
-                "pos": pos, 
-                "neg": neg, 
-                "neu": neu
-                }
-    
+    for object in trending_payload:
+        trending_tweets_summarization, trending_tweets_sentiment = feed_model(object["topic_tweets"])
+        res_obj = {
+            "topic_tweets" : object["topic_tweets"],
+            "topic_name" : object["topic_name"],
+            "topic_tweet_count" : object["topic_tweet_count"],
+            "time_stamp" : object["time_stamp"],
+            "summary": trending_tweets_summarization, 
+            "pos": trending_tweets_sentiment["pos"], 
+            "neg": trending_tweets_sentiment["neg"], 
+            "neu": trending_tweets_sentiment["neu"],
+        }
+        trending_tweets_data.append(res_obj)
+
+    response = make_response(trending_tweets_data)
+    return response
     # Timer(10*60, process_trending_tweets).start()   
-process_trending_tweets()
+# process_trending_tweets()
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
     sentiments, pos_count, neg_count, neutral_count = get_sentiments(Username,tweets)
     user_details = profile_summarizer(Username)
+    user_activity_details = user_activity(Username)
     return_obj = {
         "sentiments": sentiments,
         "pos_count": pos_count,
@@ -40,6 +48,7 @@ def sentiments(Username, tweets):
         "neutral_count": neutral_count
     }
     return_obj.update(user_details)
+    return_obj.update(user_activity_details)
     response = make_response(return_obj)
     return response
 
@@ -67,9 +76,12 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-@app.route("/trending_tweets", methods=['GET'])
-def sentiment():
-    return make_response(trending_tweets_obj)
+
+@app.route("/summary",methods=['GET'])
+def get_summary():
+    print(summarizer())
+    return make_response(summarize(mock_text))
+    # return make_response(summarizer())
 
 
 

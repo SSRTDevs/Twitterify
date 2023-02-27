@@ -1,5 +1,4 @@
 import { React } from "react";
-import link from "../../images/link.png";
 
 export default function ThreadSummarizer({ thread, setThread }) {
   return (
@@ -18,50 +17,101 @@ export default function ThreadSummarizer({ thread, setThread }) {
         </div>
       </div>
       <br />
-      <div className='card w-full bg-neutral text-neutral-content'>
-        <div className='card-body items-center text-center'>
-          <h2 className='card-title'>Thread Summary</h2>
-          <p>
+      <div
+        tabIndex={0}
+        className='collapse border border-base-300 bg-base-100 rounded-box'>
+        <div className='collapse-title text-xl font-medium'>Thread Summary</div>
+        <div className='collapse-content'>
           {Object.keys(thread.details).length === 0 ? (
             <p>No summary to show</p>
           ) : (
             thread.details["thread_summary"]
           )}
-        </p>
         </div>
       </div>
-      {/* <div className='h-auto w-full checker-bg flex flex-col items-start border-gray-200 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
-        <div className='w-full'>
-          <div className='text-2xl'>Thread Summary</div>
+      <div className='h-auto text-center w-full space-y-4 checker-bg border border-base-300 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
+        <div className='collapse m-auto w-80 collapse-arrow'>
+          <input type='checkbox' />
+          <div className='collapse-title text-xl font-medium'>
+            Reference/Links
+          </div>
+          <div className='collapse-content'>
+            {Object.keys(thread.details).length === 0 ? (
+              <p>Summarize a Thread to see the links associated with it </p>
+            ) : (
+              thread.details["references"]["urls"].map((item, id) => {
+                return (
+                  <div className='text-blue-600 dark:text-blue-500 hover:underline'>
+                    <a href={item} target='blank' rel='noopener noreferrer'>
+                      {item}
+                    </a>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
-        <p className='card-text text-md bg-[#f4f4f40f] p-2.5 rounded-sm'>
-          {Object.keys(thread.details).length === 0 ? (
-            <p>No summary to show</p>
-          ) : (
-            thread.details["thread_summary"]
-          )}
-        </p>
-      </div> */}
-      <br />
-      <div className='h-auto w-full checker-bg flex flex-col items-start border-gray-200 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
-        <div className='w-full'>
-          <div className='text-2xl'>References</div>
-        </div>
-        <div className='grid grid-cols-12 gap-3.5'>
-          {Object.keys(thread.details).length === 0 ? (
-            <li style={{ textAlign: "left" }}>No references to show</li>
-          ) : (
-            thread.details["references"].map((item, id) => {
+
+        {Object.keys(thread.details).length === 0 ? (
+          <span style={{ textAlign: "left" }}>No references to show</span>
+        ) : (
+          <div className='carousel w-96 h-96 m-auto rounded'>
+            {thread.details["references"]["images"].map((item, id, images) => {
               return (
-                <div className='text-white bg-[#ffffff78] w-10 h-10 p-1.5 rounded-[50%]'>
-                  <a className='' href={item}>
-                    <img src={link} alt='links' />
-                  </a>
+                <div
+                  id={`slide${id + 1}`}
+                  className='carousel-item relative w-full'>
+                  <img size={20} src={item} className='w-full' alt="image_resource"/>
+                  <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
+                    <a
+                      href={`#slide${id === 0 ? images.length : id}`}
+                      className='btn btn-circle'>
+                      ❮
+                    </a>
+                    <a
+                      href={`#slide${id + 2 > images.length ? 1 : id + 2}`}
+                      className='btn btn-circle'>
+                      ❯
+                    </a>
+                  </div>
                 </div>
               );
-            })
-          )}
-        </div>
+            })}
+          </div>
+          // <div className='grid grid-flow-col'>
+          //   <div className='col-start-auto gap-6 columns-3xs'>
+          //     {thread.details["references"]["urls"].map((item, id) => {
+          //       let randomNumber = Math.floor(Math.random() * 2);
+          //       return (
+          //         <div className='my-1'>
+          //           <img
+          //             className={`w-full rounded-xl ${
+          //               randomNumber ? `aspect-video` : `aspect-square`
+          //             }`}
+          //             src={item}
+          //             alt='thread-images'
+          //           />
+          //         </div>
+          //       );
+          //     })}
+          //   </div>
+          //   <div className='col-start-end'>
+          //     {Object.keys(thread.details).length === 0 ? (
+          //       <span style={{ textAlign: "left" }}>No references to show</span>
+          //     ) : (
+          //       thread.details["references"]["urls"].map((item, id) => {
+          //         return (
+          //           <div className='text-blue-600 dark:text-blue-500 hover:underline'>
+          //             <a href={item} target='blank' rel='noopener noreferrer'>
+          //               {item}
+          //             </a>
+          //           </div>
+          //         );
+          //       })
+          //     )}
+          //   </div>
+          // </div>
+        )}
       </div>
     </>
   );

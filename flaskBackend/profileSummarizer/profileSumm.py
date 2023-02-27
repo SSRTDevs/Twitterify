@@ -1,44 +1,72 @@
 from setups.tweepy_cred import api
 import calendar
 from datetime import datetime
-import json
+import tweepy
 
-def user_activity(username):
+def get_user_id(username):
     user_obj = api.get_user(screen_name=username)
     user_id = user_obj._json['id']
-    user_tweets_data = api.user_timeline(user_id=user_id, screen_name=username, count=20, tweet_mode="extended")
+    return user_id
 
+def get_user_tweets_creation(username):
+    user_id = get_user_id(username)
     user_tweets_creation = []
+    user_tweets_data = api.user_timeline(user_id=user_id, screen_name=username, count=5, tweet_mode="extended")
     for tweet in user_tweets_data:
         user_tweets_creation.append(tweet._json['created_at'])
 
-    tweet_creation_freq = {}
-    for date_str in user_tweets_creation:
-        date = datetime.strptime(date_str, '%a %b %d %H:%M:%S %z %Y')
-        year = date.year
-        month = calendar.month_abbr[date.month]
-        week = date.isocalendar()[1]
-        key = (week, month, year)
+    return user_tweets_creation
 
-        if key not in tweet_creation_freq:
+def get_date_details(date_str):
+    date = datetime.strptime(date_str, '%a %b %d %H:%M:%S %z %Y')
+    year = date.year
+    month = calendar.month_abbr[date.month]
+    week = date.isocalendar()[1]
+    key = (week, month, year)
+
+    return month, week, key
+
+def user_activity(username):
+    user_tweets_creation = get_user_tweets_creation(username)
+    tweet_creation_freq = {}
+    month_weeks = {}
+    for date_str in user_tweets_creation:
+        month, week, key = get_date_details(date_str)
+
+        if key not in tweet_creation_freq.items():
             tweet_creation_freq.setdefault(key, 0)
-        
         tweet_creation_freq[key] += 1
+    
+        if month not in month_weeks:    
+            month_weeks.setdefault(month , set())
+        month_weeks[month].add(week)
+
+    month_freq = {}
+    for key, value in month_weeks.items():
+        month_freq[key] = len(value)//2
 
     freq_payload = []
 
     for key, value in tweet_creation_freq.items():
+        week = key[0]
+        month = key[1]
+        year = key[2]
+        title = ""
+        
+        if month_freq[month] == 0:
+            title = (month + ",'" + str(year%100))
+        month_freq[month] -= 1
+
         res_obj = {
-            'week': key[0],
-            'month': key[1],
-            'year': key[2],
+            'title': title,
+            'week': week,
+            'month': month,
+            'year': year,
             'count': value
         }
         freq_payload.append(res_obj)
-    
-    json_payload = json.dumps(freq_payload)
-    print(json_payload)
-    
+    freq_payload.reverse()
+    return {"payload": freq_payload}
 
 def format_followers_count(followers_count):
     if not isinstance(followers_count, int):
@@ -54,47 +82,39 @@ def format_followers_count(followers_count):
         return str(followers_count)
 
 def profile_summarizer(username):
-    user_obj = api.get_user(screen_name=username)
-    name = user_obj._json['name']
-    description = user_obj._json['description']
-    followers = user_obj._json['followers_count']
-    profile_image_url = user_obj._json['profile_image_url_https']
+    try:
+        user_tweets_data = api.user_timeline(screen_name=username, count=1, tweet_mode="extended")
+        user_tweets = []
+        for tweet in user_tweets_data:
+            user_tweets.append(tweet._json['full_text'])
 
-    user_tweets_data = api.user_timeline(screen_name=username, count=1, tweet_mode="extended")
-    user_tweets = []
-    for tweet in user_tweets_data:
-        user_tweets.append(tweet._json['full_text'])
-    user_obj = api.get_user(screen_name=username)
-    name = user_obj._json['name']
-    description = user_obj._json['description']
-    followers =  format_followers_count(user_obj._json['followers_count'])
-    profile_image_url = user_obj._json['profile_image_url_https']
-    created_at = user_obj._json['created_at']
-    arr = created_at.split()
-    created_at = arr[1] + ", " + arr[-1]
+        user_obj = api.get_user(screen_name=username)
+        name = user_obj._json['name']
+        description = user_obj._json['description']
+        followers = format_followers_count(user_obj._json['followers_count'])
+        profile_image_url = user_obj._json['profile_image_url_https']
+        created_at = user_obj._json['created_at']
+        arr = created_at.split()
+        created_at = arr[1] + ", " + arr[-1]
 
-    user_tweets_data = api.user_timeline(screen_name=username, count=1, tweet_mode="extended")
-    user_tweets = []
-    for tweet in user_tweets_data:
-        user_tweets.append(tweet._json['full_text'])
+        q = "@{0} and -filter:retweets".format(username)
+        mention_tweets_data = api.search_tweets(q=q, count=1, tweet_mode="extended")
+        mention_tweets = []
+        for tweet in mention_tweets_data:
+            mention_tweets.append(tweet._json['full_text'])
 
-    q = "@{0} and -filter:retweets and -filter:replies".format(username)
-    mention_tweets_data = api.search_tweets(q=q, count=1, tweet_mode="extended")
-    mention_tweets = []
-    for tweet in mention_tweets_data:
-        mention_tweets.append(tweet._json['full_text'])
-
-    res_obj = {
-        "username": name,
-        "description": description,
-        "followers_count": followers,
-        "created_at": created_at,
-        "profile_image_url": profile_image_url,
-        "user_tweets": user_tweets,
-        "mention_tweets": mention_tweets
-    }
-    
+        res_obj = {
+            "result": "success",
+            "username": name,
+            "description": description,
+            "followers_count": followers,
+            "created_at": created_at,
+            "profile_image_url": profile_image_url,
+            "user_tweets": user_tweets,
+            "mention_tweets": mention_tweets
+        }
+    except tweepy.errors.Unauthorized:
+        res_obj = {
+            "result":"private_account",
+        }
     return res_obj
-
-
-print(user_activity("@_SaketThota"))
