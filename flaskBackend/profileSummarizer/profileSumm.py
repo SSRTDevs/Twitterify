@@ -160,7 +160,7 @@ def profile_summary(username):
     try:
         user_obj = get_user(username)
         user_id = user_obj._json['id']
-        user_tweets_data = user_timeline(user_id, username, 5)
+        user_tweets_data = user_timeline(user_id, username, 500)
     
     except tweepy.errors.Unauthorized:
         res_obj = {
