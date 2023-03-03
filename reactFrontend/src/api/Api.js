@@ -23,7 +23,7 @@ const trending = async (trends, setTrends, setAlert) => {
 
 const user_summarizer = async (user, setUser, setAlert) => {
   await axios
-    .get(`http://172.17.0.2:5000/sentiments/${user.Username}/${user.tweets}`)
+    .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
       console.log(res.data)
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
@@ -45,7 +45,7 @@ const user_summarizer = async (user, setUser, setAlert) => {
     });
 
   await axios
-    .get(`http://172.17.0.2:5000/wordclouds/${user.Username}/${user.tweets}`)
+    .get(`http://localhost:5000/wordclouds/${user.Username}/${user.tweets}`)
     .then((res) => {
       let data = JSON.parse(JSON.stringify(res.data));
       setUser((user) => {
@@ -61,7 +61,7 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
   console.log(thread.url);
   await axios
     .get(
-      `http://172.17.0.2:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
+      `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
     )
     .then((res) => {
       console.log(res.data);

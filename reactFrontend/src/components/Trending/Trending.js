@@ -23,7 +23,7 @@ export default function Trending({ trends, setTrends, trending }) {
   return (
     <>
       <div className='h-full w-full flex items-center justify-between flex-col space-y-2 p-1'>
-        <div className='h-[13%] topSection w-full m-2'>
+        <div className='h-[13%] topSection w-full'>
           <div className='topbar w-full flex items-center justify-between'>
             <div className='heading text-2xl'>Trending Today</div>
             <div className='form-control mr-8'>
@@ -31,9 +31,9 @@ export default function Trending({ trends, setTrends, trending }) {
                 <input
                   type='text'
                   placeholder='Enter any hashtag'
-                  className='input max-w-xs'
+                  className='input input-sm max-w-xs'
                 />
-                <button className='btn btn-square'>
+                <button className='btn btn-sm btn-square'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     className='h-6 w-6'

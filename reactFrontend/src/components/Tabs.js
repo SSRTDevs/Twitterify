@@ -9,18 +9,18 @@ export default function Tabs({ tabs }) {
     <>
       <div className='god-container grid grid-cols-6 h-screen '
       data-theme="black">
-        <div className='left-section h-screen col-span-4 flex flex-col w-full p-2'>
-          <div className='top-container flex justify-between items-center p-4 mb-2'>
+        <div className='left-section h-screen col-span-4 flex flex-col w-full p-4'>
+          <div className='top-container flex justify-between items-center mb-2 p-2 border-b border-base-300'>
             <div className='avatar'>
               <div className='w-10 rounded-full'>
                 <img src={twitter_logo} />
               </div>
             </div>
-            <div className='tabs'>
+            <div className='tabs tabs-boxed'>
               {tabs.map((tab, index) => (
                 <a
                   key={index}
-                  className={`tab tab-lg tab-lifted w-52 space-x-3
+                  className={`tab w-52 space-x-3
                                 ${activeTabIndex == index ? "tab-active" : ""}`}
                   onClick={() => setActiveTabIndex(index)}>
                   <span>{tab.icon}</span>
@@ -29,7 +29,7 @@ export default function Tabs({ tabs }) {
               ))}
             </div>
             <button
-              className='btn btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200'
+              className='btn btn-sm btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200'
               onClick={() => {
                 tabs[activeTabIndex].details();
               }}>
