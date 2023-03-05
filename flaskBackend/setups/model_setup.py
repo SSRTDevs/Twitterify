@@ -27,17 +27,25 @@ def tweet_summarizer(combined_tweets):
     #    return tweet_summarizer(combined_tweets[:(len(combined_tweets) // 2)]) + tweet_summarizer(combined_tweets[(len(combined_tweets) // 2):])
     #raw_document = 'You must be 18 years old to live or work in New York State...'
     #prompt = "Produce an article summary of the following news article:"
-    results = summarizer(combined_tweets,
-        min_length = 5,
-        truncation=True,
-        max_length=50,
-    )
-        #print(combined_tweets)
-        #print()
-        #print(len(combined_tweets))
-        #print()
-        #print(results[0]["summary_text"])
-    return results[0]["summary_text"]
+    text = combined_tweets
+    tokenized_text = summarizer.tokenizer(text, return_tensors='pt')
+    input_ids = tokenized_text['input_ids']
+    max_length = 128
+    tokens = input_ids.size(1)//2
+    if input_ids.size(1) > 512:
+        stride = 512
+        summaries = []
+        for i in range(0, input_ids.size(1), stride):
+            start = max(0, i - max_length)
+            end = min(input_ids.size(1), i + stride)
+            input_ids_chunk = input_ids[:, start:end]
+            summary = summarizer.model.generate(input_ids_chunk, max_length=max_length, min_length=30, do_sample=False)[0]
+            summary_text = summarizer.tokenizer.decode(summary, skip_special_tokens=True)
+            summaries.append(summary_text)
+        summary = ' '.join(summaries)
+    else:
+        summary = summarizer(text, max_length=tokens, min_length=5, do_sample=False)[0]['summary_text']
+    return summary
 
 
 def tweet_analyser(tweets):
