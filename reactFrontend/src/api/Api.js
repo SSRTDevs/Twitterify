@@ -1,6 +1,10 @@
 import axios from "axios";
 
 const trending = async (trends, setTrends, setAlert) => {
+  setAlert({
+    error: "Fetching trending tweets...",
+    type: "info",
+  });
   await axios
     .get(`http://127.0.0.1:5000/trending_tweets`)
     .then((res) => {
@@ -13,7 +17,7 @@ const trending = async (trends, setTrends, setAlert) => {
       console.log("Kuch toh gadbad hai beta");
       setAlert({
         error: "Error with Api-call",
-        bg: "bg-error",
+        type: "error",
       });
       setTimeout(() => {
         setAlert({});
@@ -22,6 +26,10 @@ const trending = async (trends, setTrends, setAlert) => {
 };
 
 const user_summarizer = async (user, setUser, setAlert) => {
+  setAlert({
+    error: "Fetching User data, please wait...",
+    type: "info",
+  });
   await axios
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
@@ -31,13 +39,12 @@ const user_summarizer = async (user, setUser, setAlert) => {
       setUser((user) => {
         return { ...user, details: res.data };
       });
-      console.log(user)
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
       setAlert({
         error: "You might have entered wrong username",
-        bg: "bg-error",
+        type: "error",
       });
       setTimeout(() => {
         setAlert({});
@@ -51,9 +58,17 @@ const user_summarizer = async (user, setUser, setAlert) => {
       setUser((user) => {
         return { ...user, clouds: data };
       });
+      setAlert({});
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
+      setAlert({
+        error: "Wordcloud wasn't generated.",
+        type: "error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 3000);
     });
 };
 
@@ -73,7 +88,7 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
       console.log("Kuch toh gadbad hai beta");
       setAlert({
         error: "Bruh !! Somethings wrong with your api. Fix it quick",
-        bg: "bg-error",
+        type: "type-error",
       });
       setTimeout(() => {
         setAlert({});
