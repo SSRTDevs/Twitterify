@@ -4,15 +4,14 @@
 ![Home Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Trending_Section.png?raw=true "Home Page")
 
 ### Table of contents
-| Title                           |
-| ------------------------------- |
-| [About](https://github.com/SaketThota/Twitterify#about)                           |
-| [Why Twitterify?](https://github.com/SaketThota/Twitterify#why-twitterify)                  |
-| [Demonstration](https://github.com/SaketThota/Twitterify#demonstration)                   |
-| [Architecture](https://github.com/SaketThota/Twitterify#project-architecture) |
-| [Implementation Details](https://github.com/SaketThota/Twitterify#implementaion-details) |
-| [Tech stacks used](https://github.com/SaketThota/Twitterify#tech-stacks-used)|
-| [How to contribute](https://github.com/SaketThota/Twitterify#project-contributors)     | 
+
+- [About](https://github.com/SaketThota/Twitterify#about)                           
+- [Why Twitterify?](https://github.com/SaketThota/Twitterify#why-twitterify)                  
+- [Demonstration](https://github.com/SaketThota/Twitterify#demonstration)                   
+- [Architecture](https://github.com/SaketThota/Twitterify#project-architecture) 
+- [Implementation Details](https://github.com/SaketThota/Twitterify#implementaion-details) 
+- [Tech stacks used](https://github.com/SaketThota/Twitterify#tech-stacks-used)
+- [How to contribute](https://github.com/SaketThota/Twitterify#project-contributors)   
 
 ### About
 - Twitterify is a web application which provides quick accurate and valuable statistical insights on real time twitter data.
