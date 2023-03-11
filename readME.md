@@ -43,7 +43,11 @@
 #### Analysis of User profiles
 - Twitter User Profile Analysis Page
 
-![User Profile Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Profile_Analysis.png?raw=true "User Profile Analysis Page")
+<img src="./Assets/Profile_user_tweets.png" />
+
+<br/>
+
+<img src="./Assets/Profile_user_timeline.png" />
 
 - This page extracts analyzes a particular user profile on twitter
 - Ther sentiments in the user tweets are noted and a statistical figure of the positiv and negative tweets tweeted by the user is displayed.
@@ -55,7 +59,7 @@
 ![Architecture Diagram](https://github.com/SaketThota/Twitterify/blob/main/Assets/Architecture.png?raw=true "Architecture Diagram")
 
 
-### Implementaion Details
+### Implementation Details
 - The platform uses the BART model for Abstractive Text Summarization and BERT model for Sentiment Analysis from [Hugging Face]("https://huggingface.co/")
 - The [Tweepy]("https://www.tweepy.org/") library was used to extract the required tweets using the Twitter API's.
 - The application conisted of 2 servers catering to the frontend and backend of the application.
