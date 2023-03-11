@@ -12,6 +12,7 @@ const trending = async (trends, setTrends, setAlert) => {
       setTrends((trends) => {
         return { ...trends, latest_trends: res.data };
       });
+      setAlert({});
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");

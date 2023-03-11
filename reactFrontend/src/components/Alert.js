@@ -3,7 +3,7 @@ import React from "react";
 export default function Alert({ error, type }) {
   return (
     <div
-      className={`alert alert-${type} text-black shadow-lg w-fit absolute z-10 left-1/2 -translate-x-1/2 bottom-1 mb-6`}>
+      className={`alert ${type==="info"?"bg-info":"bg-error"} ${type==="info"?"animate-pulse":""} text-black shadow-lg w-fit absolute z-10 left-1/2 -translate-x-1/2 bottom-1 mb-6`}>
       <div>
         {type === "error" ? (
           <svg
