@@ -10,7 +10,7 @@ export default function Tabs({ tabs }) {
       <div className='god-container grid grid-cols-6 h-screen '
       data-theme="black">
         <div className='left-section h-screen col-span-4 flex flex-col w-full p-4'>
-          <div className='top-container flex justify-between items-center mb-2 p-2 border-b border-base-300'>
+          <div className='top-container h-1/10 flex justify-between items-center mb-2 p-2 border-b border-base-300'>
             <div className='avatar'>
               <div className='w-10 rounded-full'>
                 <img src={twitter_logo} />
@@ -37,7 +37,7 @@ export default function Tabs({ tabs }) {
             </button>
           </div>
 
-          <div className='left-container h-fit items-start text-center p-1'>
+          <div className='left-container h-9/10 items-start text-center p-1'>
             {tabs[activeTabIndex].leftComponent}
           </div>
         </div>

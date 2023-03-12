@@ -24,7 +24,6 @@ def process_trending_tweets():
         print(' '.join(object["topic_tweets"]))
         trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
         trending_tweets_sentiment = tweet_analyser(object["topic_tweets"])
-        # trending_tweets_summarization, trending_tweets_sentiment = feed_model(object["topic_tweets"])
         res_obj = {
             "topic_tweets" : object["topic_tweets"],
             "topic_name" : object["topic_name"],

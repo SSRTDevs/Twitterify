@@ -4,8 +4,8 @@ export default function UserTabs({ tabItems }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   return (
     <>
-      <div className='space-y-8 mt-2'>
-        <div className='tabs w-full flex justify-center'>
+      <div className='space-y-4 h-9/10'>
+        <div className='tabs w-full flex justify-center h-1/10'>
           {tabItems.map((tab, idx) => (
             <a
               key={idx}
@@ -17,7 +17,7 @@ export default function UserTabs({ tabItems }) {
             </a>
           ))}
         </div>
-        <div className='w-full h-fit max-h-[28rem] overflow-y-scroll'>{tabItems[activeTabIndex].component}</div>
+        <div className='w-full h-8/10 overflow-y-scroll'>{tabItems[activeTabIndex].component}</div>
       </div>
     </>
   );

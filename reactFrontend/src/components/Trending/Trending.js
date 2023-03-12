@@ -24,9 +24,9 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
 
   return (
     <>
-      <div className='w-full flex items-center flex-col space-y-2 px-2'>
+      <div className='w-full h-full flex items-center flex-col space-y-2 px-2'>
 
-        <div className='topSection w-full flex items-center justify-between'>
+        <div className='topSection h-1/10 w-full flex items-center justify-between'>
           <TrendingCard.Dropdown trends={trends} />
           <div className='form-control mr-8'>
             <div className='input-group'>
@@ -54,7 +54,7 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
           </div>
         </div>
 
-        <div className="h-[37rem] overflow-y-scroll pr-2">
+        <div className="h-9/10 overflow-y-scroll pr-2">
           {trends.latest_trends.map((trend, idx) => (
             <TrendingCard
               index={idx}

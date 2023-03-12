@@ -25,6 +25,11 @@ module.exports = {
         error: "#f87272",
         info: "#3abff8",
       },
+      height: {
+        '1/10': '10%',
+        '9/10': '90%',
+        '8/10': '80%',
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp"), require("daisyui")],
