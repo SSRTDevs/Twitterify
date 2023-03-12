@@ -54,7 +54,7 @@ function TrendingCard({ index, trend, hashtag, setReadTweets }) {
               </p>
             </div>
 
-            <h6 className='card-subtitle text-muted'>Cricket</h6>
+            {/* <h6 className='card-subtitle text-muted'>Cricket</h6> */}
             {/* <h6 className="card-subtitle">
                             Sentiment Stats: &nbsp; &nbsp;
                             <span style={{ color: "green" }}>Pos: {trend.pos} &nbsp; &nbsp;</span>

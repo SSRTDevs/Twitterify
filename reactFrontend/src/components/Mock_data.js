@@ -58,13 +58,23 @@ let mock_trends = [
     neu: 2,
     pos: 0,
     summary:
-      "This is mock data: Respected Garibdas Ji Maharaj ji had met God Kabir Saheb in the year 1727 at the age of 10 years. The description of Satlok which he saw with his own eyes is described in",
+      `The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
+      `,
     time_stamp: "25/02/2023 18:34:52",
-    topic_name: "#Who_Is_SantGaribdasJiMaharaj",
+    topic_name: "#Vande Bharat",
     topic_tweet_count: 437324,
     topic_tweets: [
-      "One day, Sant Garibdas ji came with his other fellows outside his village to graze their cows (in 1727 when He was 10 years). As per the Constitution of Supreme God Kabir, lord Kabir came &amp; met His pious Soul Garibdas ji in the form of a Jinda sant.\n#Who_Is_SantGaribdasJiMaharaj https://t.co/jBE8ObFWjZ",
-      '#Who_Is_SantGaribdasJiMaharaj\nRespected Garibdas Ji Maharaj ji had met God Kabir Saheb in the year 1727 at the age of 10 years, after which he showed Satlok to Garibdas Ji Maharaj ji and the description of Satlok which he saw with his own eyes is described in "Sat Granth Sahib". https://t.co/MmTGm6RXaO',
+      "Let’s count… How many coaches👇in Vande Bharat?",
+      'How the railway rolling stock has evolved over the time.. ICF, LHB and the latest Vande Bharat at Sainagar Shirdi! ',
+      `Everyone now takes Vande Bharat for granted For 50 years we were slogging it out in shitty trains, nobody cared Then this guy comes in. Builds it. 
+      
+      Gets pushed back by babus. Vigilance enquiry! 
+      
+      Then a new leader comes, pushes forward
+      
+      So many roadblocks. 
+      
+      It wasn't easy.`
     ],
   },
   {
@@ -72,11 +82,15 @@ let mock_trends = [
     neu: 0,
     pos: 0,
     summary:
-      "CNN.com will feature iReporter photos in a weekly Travel Snapshots gallery. Please submit your best shots of New York for next week. Visit CNN.com/Travel next Wednesday for a new gallery of snapshots.",
+      "India's entry RRR is running in the Best Song nomination for Naatu Naatu, and all hopes are pinned on it. Ahead of that, Ram Charan delighted his fans in the US by having a small meet-and-greet with them. Fans thronged in large numbers to see him.RRR has received an Oscar nomination for Naatu Naatu in Best Original Song category.",
     time_stamp: "25/02/2023 18:34:54",
-    topic_name: "#TheLastKinnPorsche",
+    topic_name: "#RamCharanBossingOscars",
     topic_tweet_count: 357722,
-    topic_tweets: [],
+    topic_tweets: [
+      "నేను ఇక్కడ కూర్చొని మాట్లాడడం కాదు. I Want to Give My Time to You & Meet You All Personally. I Will Come to Your Tables ❤️ @AlwaysRamCharan Anna Love for fans 🙏🏻🫶",
+      "It was a festival for the fans in LA, USA🥳 The meet & greet of our @AlwaysRamCharan with the fans couldn't have been more amazing🤩",
+      "Bossing India Wide at #5 🔥@TheAcademy #Oscars95 Red Carpet Will be Taken OveRRR by Royal StoRRRm of Mr. C in Few More Hours !!",
+    ],
   },
   {
     neg: 0,
@@ -97,13 +111,16 @@ let mock_trends = [
     neu: 0,
     pos: 2,
     summary:
-      "NATION LOVES ASIM RIAZ. @Sb_se_dur @imrealasim Thank you. @UmarkiSania @im realasim thank you so much.",
+      "You DON'T need to be a genius to learn coding -- All you need do is: 1. Learn HTML & CSS 2. Learn JavaScript 3. Learn ReactJS 4. Build an ePortfolio with 4-5 good projects 5. Apply for 100+ jobs daily",
     time_stamp: "25/02/2023 18:34:56",
-    topic_name: "NATION LOVES ASIM RIAZ",
+    topic_name: "#SoftwareDeveloper",
     topic_tweet_count: 43075,
     topic_tweets: [
-      "@Sb_se_dur @imrealasim Thank you \nNATION LOVES ASIM RIAZ",
-      "@UmarkiSania @imrealasim Thank you so much!!\n\nNATION LOVES ASIM RIAZ",
+      "HTML: The Language That Thinks It's a Programmer",
+      "Yay!!! I just completed my first HTML/CSS project. I created a personal website for myself using HTML, css, and  @getbootstrap. Now moving on to JavaScript ✈️",
+      "Client never knows it all",
+      "PO as a software developer : If you must be referred to as a world class dev, your process to things must be well developed.",
+      "Azure Clouding is the most important thing you can learn as a software developer."
     ],
   },
   {
@@ -111,14 +128,15 @@ let mock_trends = [
     neu: 0,
     pos: 0,
     summary:
-      "Post on....... #ArrestJunaidNasirKillers. #StopTargetingIndianMuslims. Hate monu manesar.",
+      "No, the British Empire did not spontaneously end slavery.  Credit for that goes to several generations of slave revolts—including the successful Dandi March and sustained pressure from radical social movements pushing for abolition.",
     time_stamp: "25/02/2023 18:34:57",
     topic_name:
-      "#मोनू_मानेसर_को_गिरफ्तार_करो",
+      "#ब्रिटिश साम्राज्य",
     topic_tweet_count: 36875,
     topic_tweets: [
-      "Hate monu manesar\nPost on.......\n\n #ArrestJunaidNasirKillers\n#मोनू_मानेसर_को_गिरफ्तार_करो \n#StopTargetingIndianMuslims https://t.co/5Dqz38iAdP",
-      "Post on.......\n\n #ArrestJunaidNasirKillers\n#मोनू_मानेसर_को_गिरफ्तार_करो \n#StopTargetingIndianMuslims https://t.co/0dVoytTmZM",
+      "डियर #RavishKumar का यूट्यूब से पैगाम. ◆तानाशाही के दौर में लाखों खर्च कर पत्रकार बने पत्रकारों को दलाली करनी पड़ती है| ◆गोदी मीडिया की गुलामी से हमें लड़ना है!आप ब्रिटिश साम्राज्य को घूटनो पे लाये थे, मुझे यकीन है इस गुलामी से भी एक दिन बाहर आएंगे।",
+      "वर्ष 1930 में आज के ही दिन साबरमती आश्रम से दांडी मार्च यात्रा प्रारम्भ हुआ था जिसने भारतीय स्वाधीनता आंदोलन को एक नई दिशा व ऊर्जा प्रदान की थी। ब्रिटिश साम्राज्य की बुनियाद को हिला देने वाले ऐतिहासिक 'दांडी मार्च' के समस्त सत्याग्रहियों को कोटि कोटि नमन।",
+      "No, the British Empire didn't just make mistakes, with a few massacres here and there. They committed genocide on several continents, orchestrated famines that killed tens of millions of people, and led a human trafficking cartel for 200 years. The violence was systematic.",
     ],
   },
 ];
