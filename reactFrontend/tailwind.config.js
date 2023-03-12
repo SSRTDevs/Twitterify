@@ -23,6 +23,7 @@ module.exports = {
           200: "#1da1f2",
         },
         error: "#f87272",
+        info: "#3abff8",
       },
     },
   },

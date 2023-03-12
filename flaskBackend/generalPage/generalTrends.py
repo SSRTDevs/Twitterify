@@ -41,7 +41,7 @@ def get_topic_tweets(topic_name, tweet_count, geocode):
         topic_tweets.append(full_text)
     return topic_tweets
 
-def get_trending_tweets(location, tweet_count = 2, topic_count = 5):
+def get_trending_tweets(location, tweet_count = 5, topic_count = 4):
     latitude, longitude, geocode = get_location_info(location)
     locations_woeid = get_locations_woeid(latitude, longitude)
 

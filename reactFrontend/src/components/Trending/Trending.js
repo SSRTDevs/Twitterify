@@ -8,13 +8,7 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
         detail: mock_tag_detail, 
     });
 
-    const topicInputRef = useRef(null);
-
-    const handleOnClick = () => {
-        let topic = topicInputRef.current.value;
-        topic = topic.replace(/#\w+/g, "");
-        setTopic(topic)
-    };
+    
 
     useEffect(() => {
         // Runs only on the first render
@@ -28,56 +22,50 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
         });
     };
 
-    return (
-        <>
-            <div className="h-full w-full flex items-center justify-between flex-col space-y-2 p-1">
-                <div className="h-[13%] topSection w-full m-2">
-                    <div className="topbar w-full flex items-center justify-between">
-                        <div className="heading text-2xl">Trending Today</div>
-                        <div className="form-control mr-8">
-                            <div className="input-group">
-                                <input
-                                    type="text"
-                                    placeholder="Enter any hashtag"
-                                    className="input max-w-xs"
-                                    ref={topicInputRef}
-                                />
-                                <button className="btn btn-square" onClick={handleOnClick}>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-6 w-6"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="overflow-x-scroll w-full flex space-x-2 p-2">
-                        {trends.latest_trends.map((item, idx) => (
-                            <TrendingCard.Tags index={idx} hashtag={item.topic_name} />
-                        ))}
-                    </div>
-                </div>
-                <div className="h-[87%] overflow-y-scroll px-2">
-                    {trends.latest_trends.map((trend, idx) => (
-                        <TrendingCard
-                            index={idx}
-                            hashtag={trend.topic_name}
-                            trend={trend}
-                            setReadTweets={read_tweets}
-                        />
-                    ))}
-                </div>
+  return (
+    <>
+      <div className='w-full flex items-center flex-col space-y-2 px-2'>
+
+        <div className='topSection w-full flex items-center justify-between'>
+          <TrendingCard.Dropdown trends={trends} />
+          <div className='form-control mr-8'>
+            <div className='input-group'>
+              <input
+                type='text'
+                placeholder='Enter any hashtag'
+                className='input input-sm max-w-xs'
+              />
+              <button className='btn btn-sm btn-square'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='h-6 w-6'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='2'
+                    d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                  />
+                </svg>
+              </button>
             </div>
-        </>
-    );
+          </div>
+        </div>
+
+        <div className="h-[37rem] overflow-y-scroll pr-2">
+          {trends.latest_trends.map((trend, idx) => (
+            <TrendingCard
+              index={idx}
+              hashtag={trend.topic_name}
+              trend={trend}
+              setReadTweets={read_tweets}
+            />
+          ))}
+        </div>
+
+      </div>
+    </>
+  );
 }

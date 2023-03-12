@@ -1,18 +1,17 @@
 # Twitterify
 *A web platform to get quick, accurate and valuable statistical insights for real time twitter data.*
 
-![Home Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Trending_Section.png?raw=true "Home Page")
+<img src="./Assets/Trending_section.png"/>
 
 ### Table of contents
-| Title                           |
-| ------------------------------- |
-| [About](https://github.com/SaketThota/Twitterify#about)                           |
-| [Why Twitterify?](https://github.com/SaketThota/Twitterify#why-twitterify)                  |
-| [Demonstration](https://github.com/SaketThota/Twitterify#demonstration)                   |
-| [Architecture](https://github.com/SaketThota/Twitterify#project-architecture) |
-| [Implementation Details](https://github.com/SaketThota/Twitterify#implementaion-details) |
-| [Tech stacks used](https://github.com/SaketThota/Twitterify#tech-stacks-used)|
-| [How to contribute](https://github.com/SaketThota/Twitterify#project-contributors)     | 
+
+- [About](#about)                           
+- [Why Twitterify?](#why-twitterify)                  
+- [Demonstration](#demonstration)                   
+- [Architecture](#project-architecture) 
+- [Implementation Details](#implementaion-details) 
+- [Tech stacks used](#tech-stacks-used)
+- [How to contribute](#project-contributors)   
 
 ### About
 - Twitterify is a web application which provides quick accurate and valuable statistical insights on real time twitter data.
@@ -28,7 +27,7 @@
 #### Trending Data Analysis
 - Trending Data Analysis page
 
-![Trending Data Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Trending_Section.png?raw=true "Trending Data Analysis Page")
+<img src="./Assets/Trending_section.png"/>
 
 - This page displays the summaries of the top 10 trends on twitter along with the percentage of sentiments involved in each one of them. Users on the platform can read a few tweets, too associated with the particular trends with the same hashtag
 
@@ -44,7 +43,11 @@
 #### Analysis of User profiles
 - Twitter User Profile Analysis Page
 
-![User Profile Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Profile_Analysis.png?raw=true "User Profile Analysis Page")
+<img src="./Assets/Profile_user_tweets.png" />
+
+<br/>
+
+<img src="./Assets/Profile_user_timeline.png" />
 
 - This page extracts analyzes a particular user profile on twitter
 - Ther sentiments in the user tweets are noted and a statistical figure of the positiv and negative tweets tweeted by the user is displayed.
@@ -56,7 +59,7 @@
 ![Architecture Diagram](https://github.com/SaketThota/Twitterify/blob/main/Assets/Architecture.png?raw=true "Architecture Diagram")
 
 
-### Implementaion Details
+### Implementation Details
 - The platform uses the BART model for Abstractive Text Summarization and BERT model for Sentiment Analysis from [Hugging Face]("https://huggingface.co/")
 - The [Tweepy]("https://www.tweepy.org/") library was used to extract the required tweets using the Twitter API's.
 - The application conisted of 2 servers catering to the frontend and backend of the application.
@@ -77,4 +80,3 @@
 [Shashwat Satao](https://github.com/kafka-654)
 
 [Prithvi Rohira](https://github.com/prithvirohira8)
-

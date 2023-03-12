@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import re
 from nltk.tokenize import word_tokenize
 import pandas as pd
-# from wordcloud import STOPWORDS
-# from wordcloud import WordCloud
+from wordcloud import STOPWORDS
+from wordcloud import WordCloud
 import json
 import base64
 
@@ -78,52 +78,52 @@ def get_sentiments(Username,tweets):
     return df.to_json(),str(pos),str(neg),str(neutral)
 
 def get_word_clouds(Username, tweets): 
-    # get_user_tweets(Username, tweets)
-    # wordcloud1 = get_word_cloud1()
-    # wordcloud2 = get_word_cloud2()
-    # return wordcloud1,wordcloud2
+    get_user_tweets(Username, tweets)
+    wordcloud1 = get_word_cloud1()
+    wordcloud2 = get_word_cloud2()
+    return wordcloud1,wordcloud2
     return tweets
 
-# def get_word_cloud1():
-#     names = nam_adj(df)
-#     lst = [item.lower() for item in names]
-#     new_stopwords = {"today", "watch", "people", "amp",
-#                      "time", "day", "week", "people", "year", "S"}
-#     stopwords = set(STOPWORDS)
-#     stopwords = stopwords.union(new_stopwords)
-#     wordcloud = WordCloud(width=800, height=800,
-#                           background_color='black',
-#                           stopwords=stopwords,
-#                           min_font_size=10).generate(" ".join(lst))
-#     plt.figure(figsize=(2, 2), facecolor=None)
-#     plt.imshow(wordcloud)
-#     plt.axis("off")
-#     plt.tight_layout(pad=0)
-#     plt.savefig('wordcloud.png')
-#     with open("wordcloud.png", "rb") as img_file:
-#         encoded_data = base64.b64encode(img_file.read())
-#     encoded_string = encoded_data.decode('UTF-8')
-#     json_data = json.dumps(encoded_string,indent=2)
-#     return json_data
+def get_word_cloud1():
+    names = nam_adj(df)
+    lst = [word.lower() for item in names for word in item]
+    new_stopwords = {"today", "watch", "people", "amp",
+                     "time", "day", "week", "people", "year", "S"}
+    stopwords = set(STOPWORDS)
+    stopwords = stopwords.union(new_stopwords)
+    wordcloud = WordCloud(width=800, height=800,
+                          background_color='black',
+                          stopwords=stopwords,
+                          min_font_size=10).generate(" ".join(lst))
+    plt.figure(figsize=(2, 2), facecolor=None)
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    plt.tight_layout(pad=0)
+    plt.savefig('wordcloud.png')
+    with open("wordcloud.png", "rb") as img_file:
+        encoded_data = base64.b64encode(img_file.read())
+    encoded_string = encoded_data.decode('UTF-8')
+    json_data = json.dumps(encoded_string,indent=2)
+    return json_data
 
-# def get_word_cloud2():
-#     nouns = nam_adj(df)
-#     lst = [item.lower() for item in nouns]
-#     new_stopwords = {"today", "watch", "people", "amp",
-#                      "time", "day", "week", "people", "year", "S"}
-#     stopwords = set(STOPWORDS)
-#     stopwords = stopwords.union(new_stopwords)
-#     wordcloud = WordCloud(width=800, height=800,
-#                           background_color='black',
-#                           stopwords=stopwords,
-#                           min_font_size=10).generate(" ".join(lst))
-#     plt.figure(figsize=(2, 2), facecolor=None)
-#     plt.imshow(wordcloud)
-#     plt.axis("off")
-#     plt.tight_layout(pad=0)
-#     plt.savefig('wordcloud.png')
-#     with open("wordcloud.png", "rb") as img_file:
-#         encoded_data = base64.b64encode(img_file.read())
-#     encoded_string = encoded_data.decode('UTF-8')
-#     json_data = json.dumps(encoded_string,indent=2)
-#     return json_data
+def get_word_cloud2():
+    nouns = nam_adj(df)
+    lst = [word.lower() for item in nouns for word in item]
+    new_stopwords = {"today", "watch", "people", "amp",
+                     "time", "day", "week", "people", "year", "S"}
+    stopwords = set(STOPWORDS)
+    stopwords = stopwords.union(new_stopwords)
+    wordcloud = WordCloud(width=800, height=800,
+                          background_color='black',
+                          stopwords=stopwords,
+                          min_font_size=10).generate(" ".join(lst))
+    plt.figure(figsize=(2, 2), facecolor=None)
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    plt.tight_layout(pad=0)
+    plt.savefig('wordcloud.png')
+    with open("wordcloud.png", "rb") as img_file:
+        encoded_data = base64.b64encode(img_file.read())
+    encoded_string = encoded_data.decode('UTF-8')
+    json_data = json.dumps(encoded_string,indent=2)
+    return json_data
