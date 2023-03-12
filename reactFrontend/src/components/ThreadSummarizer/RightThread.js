@@ -25,7 +25,7 @@ export default function RightThread(props) {
 
       <br />
 
-      <div className='p-4 h-auto w-full checker-bg flex flex-col items-start border border-base-300 rounded-lg border mt-3 justify-around gap-3'>
+      <div className='p-2 h-auto w-full checker-bg flex flex-col items-start border border-base-300 rounded-lg border mt-3 justify-around gap-3'>
         <div className='w-full'>
           <div className='text-2xl'>Statistics</div>
         </div>
@@ -52,12 +52,12 @@ export default function RightThread(props) {
 
       <br />
 
-      <div className='overflow-y-scroll p-4 h-2/3 w-full checker-bg border rounded border border-base-300'>
+      <div className='overflow-y-scroll p-4 h-96 w-full checker-bg border rounded border border-base-300'>
         <div className='w-full'>
           <div className='text-2xl'>Replies</div>
         </div>
         <br />
-        <div className='reply-div chat chat-end'>
+        <div className='chat chat-end space-y-2'>
           {Object.keys(props.thread.details).length === 0 ? (
             <p className='replies text-lg hover:bg-[#f4f4f40f]'>
               No replies yet{" "}
@@ -65,7 +65,7 @@ export default function RightThread(props) {
           ) : (
             props.thread.details["reply_tweets"].map((item, key) => {
               return (
-                <div className='chat-bubble replies text-md border border-x-0 border-gray-700 hover:bg-[#f4f4f40f]'>
+                <div className='chat-bubble text-md hover:bg-[#f4f4f40f]'>
                   {item}
                 </div>
               );

@@ -20,7 +20,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
       <br />
       <div
         tabIndex={0}
-        className='collapse border border-base-300 bg-base-100 rounded-box'>
+        className='collapse collapse-open border border-base-300 bg-base-100 rounded-box'>
         <div className='collapse-title text-xl font-medium'>Thread Summary</div>
         <div className='collapse-content'>
           {Object.keys(thread.details).length === 0 ? (
@@ -30,7 +30,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
           )}
         </div>
       </div>
-      <div className='h-auto text-center w-full space-y-4 checker-bg border border-base-300 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
+      <div className='h-96 overflow-y-scroll text-center w-full space-y-4 checker-bg border border-base-300 rounded-lg px-3 py-2 border mt-3 justify-around gap-3'>
         <div className='collapse m-auto w-80 collapse-arrow'>
           <input type='checkbox' />
           <div className='collapse-title text-xl font-medium'>

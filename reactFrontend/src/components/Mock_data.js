@@ -1,3 +1,4 @@
+
 let prev_mock_trends = {
   "#INDvsENG": {
     neg: 2,
@@ -136,33 +137,26 @@ let mock_thread = {
     "If you liked this, you'd enjoy my infrequent newsletter, delivering simple, actionable productivity tips in your inbox!\n\nJoin here:\nhttps://t.co/GAqzTMncMM",
   ],
   reply_tweets: [
-    "@tdbryant2 @roboflow 😊 that might be!",
-    "@flare3103 @LexicaArt I'm sure that is going to be a job eventually! 😆",
-    "@JonnyPink Not to my knowledge.\n\nBut it is a new field where lawyers try to find where the lines go. An example is the GitHub AI tool copilot: https://t.co/4q90s827Cd",
-    "@CK71984165 Happy to hear!",
-    "@ktguru @nleonid @unbuttonmyeyes @laphamsquart It is also an interesting thought exercise how this is going to evolve when eventually the input to these AIs will have been generates by AIs. \n\nI am pretty sure there never has been created more van Gogh illustrations than it currently is. 😅",
-    "@johnbuilds Cool! Will try out!",
-    "@bresslertweets @excelformulabot Looks like a cool product!",
-    "@jena_ratikanta @nleonid 😄 Happy to hear!",
-    "@KamarThomas12 @LexicaArt It is an interesting problem.\n\nAn example is this lawsuit chal\xadleng\xading GitHub Copi\xadlot, an AI prod\xaduct that relies on open-source soft\xadware piracy. I imagine the same can come for the art created.\n\nhttps://t.co/4q90s827Cd",
-    "@nleonid Thanks for sharing!\nI haven’t seen this before!",
-    "@ElephasApp You were on the long list, but I had to cut it down. 😅\n\nA great addition!",
-    "@SheilaSully55 😆",
-    "@IAmClintMurphy Glad you enjoyed it! Amazing how fast it went from no AI to AI everywhere!",
-    "@TheTrevorRich Thanks!\n\nI’ve recently started reaching out to people and complimenting them after I’ve noticed how much I enjoy it when other people do the same for me!",
-    "@Heartheclick12 Happy to hear! 😄",
-    "@TheTrevorRich Thanks! This made my day! 😄\n\nI always try to make it actionable and actually useful!",
-    "@WPDeveloperPro Thanks! Glad to hear!",
+    "Part of your year in review that was a sneaky top performer: identify and minimize the boat anchors. Really valuable exercise for me.",
+    "Straight facts 👌",
+    "Sometime saving yourself from relationships is the only way to save yourself.❤️",
+    "Removed them like Joel got rid of his memories of Clementine.😁",
+    "Even if they're family, you can't let that be the reason they're allowed to bring you down 😅",
+    "What's funny is the people who are the hardest to get rid off often provide the greatest relief from",
+    "This is the simplest solution, but it feels difficult.",
+    "Your physical circle of influence is of the same importance as your social circle ",
+    "Thanks! This made my day! 😄 I always try to make it actionable and actually useful!",
   ],
-  username: "Marius Hauken",
+  username: "Sacheil Bloom",
   profile_image_url:
-    "https://pbs.twimg.com/profile_images/1534219666352111616/IgR93M63_normal.jpg",
+    "https://images.generated.photos/zDm6WNAATR2-bOBf0_qcZ0vJ2q1e1K1vvXERSxqgrH0/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDMyMDA2LmpwZw.jpg",
   references: {
     images: [
-      "https://pbs.twimg.com/media/FpD7g7CacAEb_CP?format=jpg&name=small",
-      "https://pbs.twimg.com/media/FpE_MIaWAAA89-f?format=jpg&name=small",
-      "https://pbs.twimg.com/media/FpFh5o-aUAEWFOY?format=jpg&name=small",
-      "https://pbs.twimg.com/media/FpExdPbacAEe7fq?format=jpg&name=small",
+      "https://pbs.twimg.com/media/Fq4gg0hX0AEdyyM?format=jpg&name=900x900",
+      "https://th.bing.com/th?id=OIP.UYV_bihup-y039M8_Dk0KQHaFP&w=297&h=210&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      "https://th.bing.com/th/id/OIP._5g8Ec7fLoLES3CYUp1evQHaJ4?w=140&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      "https://th.bing.com/th?id=OIP.kdmpPmRlzz-u8Zf8r3LSvwHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      "https://th.bing.com/th?id=OIP.k-q_vJLFJ7uccPEkmFh2SgHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
     ],
     urls: [
       "https://t.co/GAqzTMncMM",
@@ -179,7 +173,7 @@ let mock_thread = {
     ],
   },
   thread_summary:
-    "Mhauken shares some of his favorite tools and apps. Use them to help you improve your productivity and design. Follow me on Twitter @mhaukensurveillance and follow me on Facebook and Google+ for more tips and tricks. Like/Retweet the first tweet below if you can.",
+    "Sacheil shares some of his life idealogies. Remove people who make you feel bad, both in the physical and digital worlds. Unfollow, mute, or block to improve happiness and avoid overcomplication.A good life is about subtraction as much as it is about addition.While it's important to surround ourselves with positivity, completely cutting out people from our lives may not always be feasible. Instead, we can try to focus on setting boundaries and limiting interactions with those who negatively impact us.",
   thread_sentiment: { pos: 8, neg: 0, neu: 2 },
 };
 
@@ -256,25 +250,38 @@ let mock_user_details = {
       year: 2023,
     },
   ],
-  created_at: "Nov, 2021",
+  created_at: "Nov, 2018",
   description:
-    "Former intern at JPMorgan | Competitive Programmer | Exploring Software World\nLinkedIn : https://t.co/o3alNJU05n…",
-  followers_count: 25,
-  mention_tweets: ["Hi Darling Abhi"],
+    "DevRel manager @CivoCloud, Founder@WeMakeDevs, YouTuber (300k+) CNCF Ambassador, GitHub Star",
+  followers_count: "2.5K",
+  mention_tweets: [
+    "You're the average of the people you surround yourself with. Follow the right people on Twitter.",
+    "One of the threads you must read today: Wish more successful people shared raw truths and lessons we can learn from, what you remember are a person's stories, not random data and statistics (which are mostly individual and mostly useless)",
+    "Honestly one of my favourite threads so far.",
+    "Love this method and framework",
+    "What a relief it is to recognize that.",
+  ],
   neg_count: "2",
-  neutral_count: "5",
-  pos_count: "13",
+  neutral_count: "4",
+  pos_count: "6",
   profile_image_url:
-    "https://pbs.twimg.com/profile_images/1599024008175190018/F5mkHp4t_normal.jpg",
+   "https://images.generated.photos/kEtyIuts_R7fqTwr6dHBpwY3mMm-3GwWrw7xq51A_VI/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ2ODAxLmpwZw.jpg",
   sentiments: {
-    Sentiment: { 0: "pos", 1: "neg", 2: "neutral" },
+    Sentiment: { 0: "pos", 1: "pos", 2: "neg", 3: "neutral", 4: "neg", 5: "pos", 6:"pos", 7:"pos", 8:"pos", 9:"neutral" },
     Tweet: {
-      0: "Dance for me Dance for me Dance for me Oo Oo Ooh",
-      1: "Its about drive, Its about power, we grow hungry we desire",
-      2: "I study in thadomal shahani engineering college",
+      0: " Most of your friends aren’t really your friends. They’re just along for the ride when it’s fun or convenient. Your real friends are there for you when you have nothing to offer.",
+      1: "You don't need to have an opinion on everything. It's perfectly reasonable to have no opinion on something that you haven't researched or don't understand.",
+      2: "You can get pretty damn far in life by just saying what you're going to do and then doing it. No fancy hack needed.",
+      3: "Most of us need fewer friends and more intellectual sparring partners. Friends are easy to come by, but intellectual sparring partners question our assumptions and force us to level up.",
+      4: "Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.",
+      5: "Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.",
+      6: "For the first time in my life I don’t have my next 6 months planned. For the first time I feel like I can escape the matrix. For the first time I feel confident even without knowing my next move. Feels surreal.",
+      7: "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job. Junior Devs  >>>>>> 😂",
+      8: "The failure of #SVB is likely to have a ripple effect on #Indian startups, many of which have significant amounts of funds deposited with the bank. It will also dent the #fundraising ability of Indian #startups as the US-based bank was a key source of funding for #tech startups.",
+      9: "It’s my 7th year in tech & I’m  a software Engineer who’s also enthusiastic about UX Design & Data Science, you possibly use or have used one of the products I’ve built😎.",
     },
   },
-  username: "Abhishek Sharma",
+  username: "Jennifer Johnson",
 };
 
 let mock_tag_detail = {

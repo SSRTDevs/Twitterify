@@ -11,7 +11,7 @@ export default function UserSummarizer({ user, setUser }) {
     },
     {
       name: "Mention Tweets",
-      component: <MentionTweets />,
+      component: <MentionTweets user={user}/>,
     },
     {
       name: "User Timeline",
