@@ -29,17 +29,17 @@ export default function App() {
   const [trends, setTrends] = useState({
     latest_trends: mock_trends,
     show_tweets: [],
+    hash_tweets: [], 
   });
-  const [topic, setTopic] = useState("");
   const [alert, setAlert] = useState({});
 
   const tabs = [
       {
           name: "Trending",
-          leftComponent: <Trending trends={trends} setTrends={setTrends} trending={trending} setTopic={setTopic} />,
+          leftComponent: <Trending trends={trends} setTrends={setTrends} setAlert={setAlert} />,
           rightComponent: <RightTrend trends={trends} />,
           icon: <IoTrendingUpOutline />,
-          details: () => trending(trends, setTrends, setAlert, topic),
+          details: () => trending(trends, setTrends, setAlert),
       },
       {
           name: "Thread",

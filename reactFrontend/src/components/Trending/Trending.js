@@ -1,14 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { mock_tag_detail } from "../Mock_data";
-import { TrendingCard, TrendingTags } from "../index";
+import React, { useEffect, useState } from "react";
+import { TrendingCard } from "../index";
+import { search_hash } from "../../api/Api";
 
-export default function Trending({ trends, setTrends, trending, setTopic }) {
-    const [tagDetail, settagDetail] = useState({
-        tag: "",
-        detail: mock_tag_detail, 
-    });
-
-    
+export default function Trending({ trends, setTrends, setAlert }) {
+    const [tag, settag] = useState("AirIndia");
 
     useEffect(() => {
         // Runs only on the first render
@@ -19,6 +14,7 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
         setTrends({
             ...trends,
             show_tweets: trends.latest_trends[index].topic_tweets,
+            hash_tweets: [],
         });
     };
 
@@ -34,8 +30,11 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
                 type='text'
                 placeholder='Enter any hashtag'
                 className='input input-sm max-w-xs'
+                onChange={(e)=> settag(e.target.value)}
               />
-              <button className='btn btn-sm btn-square'>
+              <button 
+              className='btn btn-sm btn-square'
+              onClick={()=> search_hash(tag, setTrends, setAlert)}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   className='h-6 w-6'
@@ -57,6 +56,7 @@ export default function Trending({ trends, setTrends, trending, setTopic }) {
         <div className="h-9/10 overflow-y-scroll pr-2">
           {trends.latest_trends.map((trend, idx) => (
             <TrendingCard
+              key={idx}
               index={idx}
               hashtag={trend.topic_name}
               trend={trend}

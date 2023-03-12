@@ -26,8 +26,32 @@ const trending = async (trends, setTrends, setAlert) => {
     });
 };
 
-const user_summarizer = async (user, setUser, setAlert) => {
+const search_hash = async (tag, setTrends, setAlert) => {
+  setAlert({
+    error: `Fetching tweets for ${tag}...`,
+    type: "info",
+  });
+  await axios
+    .get(`http://127.0.0.1:5000/hashtag/${tag}`)
+    .then((res) => {
+      setTrends((trends) => {
+        return { ...trends, show_tweets: [], hash_tweets: res.data };
+      });
+      setAlert({});
+    })
+    .catch((err) => {
+      console.log("Kuch toh gadbad hai beta");
+      setAlert({
+        error: "Could not fetch tweets. This hashtag might not be trending...",
+        type: "error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 2000);
+    });
+};
 
+const user_summarizer = async (user, setUser, setAlert) => {
   setAlert({
     error: "Fetching User data, please wait...",
     type: "info",
@@ -36,9 +60,9 @@ const user_summarizer = async (user, setUser, setAlert) => {
   await axios
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
-      console.log(res.data)
+      console.log(res.data);
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
-      console.log(res.data.payload)
+      console.log(res.data.payload);
       setUser((user) => {
         return { ...user, details: res.data };
       });
@@ -97,8 +121,6 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
         setAlert({});
       }, 3000);
     });
-}
+};
 
-
-
-export { trending, user_summarizer, thread_summarizer };
+export { trending, search_hash, user_summarizer, thread_summarizer };
