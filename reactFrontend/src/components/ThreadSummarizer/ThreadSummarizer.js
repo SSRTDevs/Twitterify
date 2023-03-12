@@ -1,4 +1,5 @@
 import { React } from "react";
+import {Carousel} from "../"
 
 export default function ThreadSummarizer({ thread, setThread }) {
   return (
@@ -54,64 +55,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
 
         {Object.keys(thread.details).length === 0 ? (
           <span style={{ textAlign: "left" }}>No references to show</span>
-        ) : (
-          <div className='carousel w-96 h-96 m-auto rounded'>
-            {thread.details["references"]["images"].map((item, id, images) => {
-              return (
-                <div
-                  id={`slide${id + 1}`}
-                  className='carousel-item relative w-full'>
-                  <img size={20} src={item} className='w-full' alt="image_resource"/>
-                  <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
-                    <a
-                      href={`#slide${id === 0 ? images.length : id}`}
-                      className='btn btn-circle'>
-                      ❮
-                    </a>
-                    <a
-                      href={`#slide${id + 2 > images.length ? 1 : id + 2}`}
-                      className='btn btn-circle'>
-                      ❯
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          // <div className='grid grid-flow-col'>
-          //   <div className='col-start-auto gap-6 columns-3xs'>
-          //     {thread.details["references"]["urls"].map((item, id) => {
-          //       let randomNumber = Math.floor(Math.random() * 2);
-          //       return (
-          //         <div className='my-1'>
-          //           <img
-          //             className={`w-full rounded-xl ${
-          //               randomNumber ? `aspect-video` : `aspect-square`
-          //             }`}
-          //             src={item}
-          //             alt='thread-images'
-          //           />
-          //         </div>
-          //       );
-          //     })}
-          //   </div>
-          //   <div className='col-start-end'>
-          //     {Object.keys(thread.details).length === 0 ? (
-          //       <span style={{ textAlign: "left" }}>No references to show</span>
-          //     ) : (
-          //       thread.details["references"]["urls"].map((item, id) => {
-          //         return (
-          //           <div className='text-blue-600 dark:text-blue-500 hover:underline'>
-          //             <a href={item} target='blank' rel='noopener noreferrer'>
-          //               {item}
-          //             </a>
-          //           </div>
-          //         );
-          //       })
-          //     )}
-          //   </div>
-          // </div>
-        )}
+        ) : <Carousel thread={thread}/>}
       </div>
     </>
   );

@@ -30,30 +30,31 @@ export default function App() {
     latest_trends: mock_trends,
     show_tweets: [],
   });
+  const [topic, setTopic] = useState("");
   const [alert, setAlert] = useState({});
 
   const tabs = [
-    {
-      name: "Trending",
-      leftComponent: <Trending trends={trends} setTrends={setTrends} trending={trending} />,
-      rightComponent: <RightTrend trends={trends} />,
-      icon: <IoTrendingUpOutline />,
-      details: () => trending(trends, setTrends, setAlert),
-    },
-    {
-      name: "Thread",
-      leftComponent: <ThreadSummarizer thread={thread} setThread={setThread} />,
-      rightComponent: <RightThread thread={thread} />,
-      icon: <MdOutlineSummarize />,
-      details: () => thread_summarizer(thread, setThread, setAlert),
-    },
-    {
-      name: "Profile",
-      leftComponent: <UserSummarizer user={user} setUser={setUser} />,
-      rightComponent: <RightUser user={user} />,
-      icon: <ImProfile />,
-      details: () => user_summarizer(user, setUser, setAlert),
-    },
+      {
+          name: "Trending",
+          leftComponent: <Trending trends={trends} setTrends={setTrends} trending={trending} setTopic={setTopic} />,
+          rightComponent: <RightTrend trends={trends} />,
+          icon: <IoTrendingUpOutline />,
+          details: () => trending(trends, setTrends, setAlert, topic),
+      },
+      {
+          name: "Thread",
+          leftComponent: <ThreadSummarizer thread={thread} setThread={setThread} />,
+          rightComponent: <RightThread thread={thread} />,
+          icon: <MdOutlineSummarize />,
+          details: () => thread_summarizer(thread, setThread, setAlert),
+      },
+      {
+          name: "Profile",
+          leftComponent: <UserSummarizer user={user} setUser={setUser} />,
+          rightComponent: <RightUser user={user} />,
+          icon: <ImProfile />,
+          details: () => user_summarizer(user, setUser, setAlert),
+      },
   ];
 
   return (

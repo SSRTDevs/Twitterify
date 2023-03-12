@@ -24,7 +24,7 @@ function TrendingCard({ index, trend, hashtag, setReadTweets }) {
   return (
     <>
       <div>
-        <div id={`${hashtag}`} className='card shadow-md'>
+        <div id={`${hashtag}`} className='card shadow-md rounded'>
           <div className='card-body p-5 space-y-1'>
             <div className='topbar w-full flex justify-between '>
               <h5 className='card-title w-fit'>{hashtag}</h5>
