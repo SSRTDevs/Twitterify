@@ -1,5 +1,5 @@
 # from setups.tweepy_cred import api
-from helper.api import closest_trends, search_trending_tweets, get_place_trends
+from helper.api import closest_trends, search_trending_tweets, get_place_trends, search_tweets
 from geopy.geocoders import Nominatim
 from datetime import datetime
 import re
@@ -67,6 +67,26 @@ def get_trending_tweets(location, tweet_count = 5, topic_count = 4):
         result.append(topic_object)
 
     return result
+
+def get_hashtag_tweets(hashtag):
+    hashtag = "#" + hashtag
+    time_stamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    # More than 100 tweets cannot be retreived
+    tweet_count = 100
+    hashtag_tweets = []
+    
+    for tweet in search_tweets(hashtag,tweet_count):
+        full_text = tweet._json["full_text"]
+        full_text = re.sub(r'\bRT\b', 'Retweet by', full_text)
+        hashtag_tweets.append(full_text)
+        
+    res_obj = {
+        "hashtag": hashtag,
+        "hashtag_tweet_count": len(hashtag_tweets),
+        "hashtag_tweets": hashtag_tweets,
+        "time_stamp": time_stamp,
+    }
+    return res_obj
 
 # def feed_model(trending_tweets):
 #     trending_tweets_summarization = ""

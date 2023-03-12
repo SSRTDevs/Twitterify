@@ -4,7 +4,7 @@ def get_user(username):
     return api.get_user(screen_name=username)
 
 def search_tweets(q, count):
-    return api.search_tweets(q=q, lang="en", count=count, tweet_mode="extended")
+    return api.search_tweets(q=q, lang='en', count=count, tweet_mode="extended")
 
 def search_trending_tweets(q, geocode, count):
     return api.search_tweets(q=q, lang='en', geocode=geocode, count=count, tweet_mode='extended')
