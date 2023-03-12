@@ -1,3 +1,4 @@
+
 let prev_mock_trends = {
   "#INDvsENG": {
     neg: 2,
@@ -57,13 +58,23 @@ let mock_trends = [
     neu: 2,
     pos: 0,
     summary:
-      "This is mock data: Respected Garibdas Ji Maharaj ji had met God Kabir Saheb in the year 1727 at the age of 10 years. The description of Satlok which he saw with his own eyes is described in",
+      `The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
+      `,
     time_stamp: "25/02/2023 18:34:52",
-    topic_name: "#Who_Is_SantGaribdasJiMaharaj",
+    topic_name: "#Vande Bharat",
     topic_tweet_count: 437324,
     topic_tweets: [
-      "One day, Sant Garibdas ji came with his other fellows outside his village to graze their cows (in 1727 when He was 10 years). As per the Constitution of Supreme God Kabir, lord Kabir came &amp; met His pious Soul Garibdas ji in the form of a Jinda sant.\n#Who_Is_SantGaribdasJiMaharaj https://t.co/jBE8ObFWjZ",
-      '#Who_Is_SantGaribdasJiMaharaj\nRespected Garibdas Ji Maharaj ji had met God Kabir Saheb in the year 1727 at the age of 10 years, after which he showed Satlok to Garibdas Ji Maharaj ji and the description of Satlok which he saw with his own eyes is described in "Sat Granth Sahib". https://t.co/MmTGm6RXaO',
+      "Let’s count… How many coaches👇in Vande Bharat?",
+      'How the railway rolling stock has evolved over the time.. ICF, LHB and the latest Vande Bharat at Sainagar Shirdi! ',
+      `Everyone now takes Vande Bharat for granted For 50 years we were slogging it out in shitty trains, nobody cared Then this guy comes in. Builds it. 
+      
+      Gets pushed back by babus. Vigilance enquiry! 
+      
+      Then a new leader comes, pushes forward
+      
+      So many roadblocks. 
+      
+      It wasn't easy.`
     ],
   },
   {
@@ -71,11 +82,15 @@ let mock_trends = [
     neu: 0,
     pos: 0,
     summary:
-      "CNN.com will feature iReporter photos in a weekly Travel Snapshots gallery. Please submit your best shots of New York for next week. Visit CNN.com/Travel next Wednesday for a new gallery of snapshots.",
+      "India's entry RRR is running in the Best Song nomination for Naatu Naatu, and all hopes are pinned on it. Ahead of that, Ram Charan delighted his fans in the US by having a small meet-and-greet with them. Fans thronged in large numbers to see him.RRR has received an Oscar nomination for Naatu Naatu in Best Original Song category.",
     time_stamp: "25/02/2023 18:34:54",
-    topic_name: "#TheLastKinnPorsche",
+    topic_name: "#RamCharanBossingOscars",
     topic_tweet_count: 357722,
-    topic_tweets: [],
+    topic_tweets: [
+      "నేను ఇక్కడ కూర్చొని మాట్లాడడం కాదు. I Want to Give My Time to You & Meet You All Personally. I Will Come to Your Tables ❤️ @AlwaysRamCharan Anna Love for fans 🙏🏻🫶",
+      "It was a festival for the fans in LA, USA🥳 The meet & greet of our @AlwaysRamCharan with the fans couldn't have been more amazing🤩",
+      "Bossing India Wide at #5 🔥@TheAcademy #Oscars95 Red Carpet Will be Taken OveRRR by Royal StoRRRm of Mr. C in Few More Hours !!",
+    ],
   },
   {
     neg: 0,
@@ -96,13 +111,16 @@ let mock_trends = [
     neu: 0,
     pos: 2,
     summary:
-      "NATION LOVES ASIM RIAZ. @Sb_se_dur @imrealasim Thank you. @UmarkiSania @im realasim thank you so much.",
+      "You DON'T need to be a genius to learn coding -- All you need do is: 1. Learn HTML & CSS 2. Learn JavaScript 3. Learn ReactJS 4. Build an ePortfolio with 4-5 good projects 5. Apply for 100+ jobs daily",
     time_stamp: "25/02/2023 18:34:56",
-    topic_name: "NATION LOVES ASIM RIAZ",
+    topic_name: "#SoftwareDeveloper",
     topic_tweet_count: 43075,
     topic_tweets: [
-      "@Sb_se_dur @imrealasim Thank you \nNATION LOVES ASIM RIAZ",
-      "@UmarkiSania @imrealasim Thank you so much!!\n\nNATION LOVES ASIM RIAZ",
+      "HTML: The Language That Thinks It's a Programmer",
+      "Yay!!! I just completed my first HTML/CSS project. I created a personal website for myself using HTML, css, and  @getbootstrap. Now moving on to JavaScript ✈️",
+      "Client never knows it all",
+      "PO as a software developer : If you must be referred to as a world class dev, your process to things must be well developed.",
+      "Azure Clouding is the most important thing you can learn as a software developer."
     ],
   },
   {
@@ -110,14 +128,15 @@ let mock_trends = [
     neu: 0,
     pos: 0,
     summary:
-      "Post on....... #ArrestJunaidNasirKillers. #StopTargetingIndianMuslims. Hate monu manesar.",
+      "No, the British Empire did not spontaneously end slavery.  Credit for that goes to several generations of slave revolts—including the successful Dandi March and sustained pressure from radical social movements pushing for abolition.",
     time_stamp: "25/02/2023 18:34:57",
     topic_name:
-      "#मोनू_मानेसर_को_गिरफ्तार_करो",
+      "#ब्रिटिश साम्राज्य",
     topic_tweet_count: 36875,
     topic_tweets: [
-      "Hate monu manesar\nPost on.......\n\n #ArrestJunaidNasirKillers\n#मोनू_मानेसर_को_गिरफ्तार_करो \n#StopTargetingIndianMuslims https://t.co/5Dqz38iAdP",
-      "Post on.......\n\n #ArrestJunaidNasirKillers\n#मोनू_मानेसर_को_गिरफ्तार_करो \n#StopTargetingIndianMuslims https://t.co/0dVoytTmZM",
+      "डियर #RavishKumar का यूट्यूब से पैगाम. ◆तानाशाही के दौर में लाखों खर्च कर पत्रकार बने पत्रकारों को दलाली करनी पड़ती है| ◆गोदी मीडिया की गुलामी से हमें लड़ना है!आप ब्रिटिश साम्राज्य को घूटनो पे लाये थे, मुझे यकीन है इस गुलामी से भी एक दिन बाहर आएंगे।",
+      "वर्ष 1930 में आज के ही दिन साबरमती आश्रम से दांडी मार्च यात्रा प्रारम्भ हुआ था जिसने भारतीय स्वाधीनता आंदोलन को एक नई दिशा व ऊर्जा प्रदान की थी। ब्रिटिश साम्राज्य की बुनियाद को हिला देने वाले ऐतिहासिक 'दांडी मार्च' के समस्त सत्याग्रहियों को कोटि कोटि नमन।",
+      "No, the British Empire didn't just make mistakes, with a few massacres here and there. They committed genocide on several continents, orchestrated famines that killed tens of millions of people, and led a human trafficking cartel for 200 years. The violence was systematic.",
     ],
   },
 ];
@@ -136,33 +155,26 @@ let mock_thread = {
     "If you liked this, you'd enjoy my infrequent newsletter, delivering simple, actionable productivity tips in your inbox!\n\nJoin here:\nhttps://t.co/GAqzTMncMM",
   ],
   reply_tweets: [
-    "@tdbryant2 @roboflow 😊 that might be!",
-    "@flare3103 @LexicaArt I'm sure that is going to be a job eventually! 😆",
-    "@JonnyPink Not to my knowledge.\n\nBut it is a new field where lawyers try to find where the lines go. An example is the GitHub AI tool copilot: https://t.co/4q90s827Cd",
-    "@CK71984165 Happy to hear!",
-    "@ktguru @nleonid @unbuttonmyeyes @laphamsquart It is also an interesting thought exercise how this is going to evolve when eventually the input to these AIs will have been generates by AIs. \n\nI am pretty sure there never has been created more van Gogh illustrations than it currently is. 😅",
-    "@johnbuilds Cool! Will try out!",
-    "@bresslertweets @excelformulabot Looks like a cool product!",
-    "@jena_ratikanta @nleonid 😄 Happy to hear!",
-    "@KamarThomas12 @LexicaArt It is an interesting problem.\n\nAn example is this lawsuit chal\xadleng\xading GitHub Copi\xadlot, an AI prod\xaduct that relies on open-source soft\xadware piracy. I imagine the same can come for the art created.\n\nhttps://t.co/4q90s827Cd",
-    "@nleonid Thanks for sharing!\nI haven’t seen this before!",
-    "@ElephasApp You were on the long list, but I had to cut it down. 😅\n\nA great addition!",
-    "@SheilaSully55 😆",
-    "@IAmClintMurphy Glad you enjoyed it! Amazing how fast it went from no AI to AI everywhere!",
-    "@TheTrevorRich Thanks!\n\nI’ve recently started reaching out to people and complimenting them after I’ve noticed how much I enjoy it when other people do the same for me!",
-    "@Heartheclick12 Happy to hear! 😄",
-    "@TheTrevorRich Thanks! This made my day! 😄\n\nI always try to make it actionable and actually useful!",
-    "@WPDeveloperPro Thanks! Glad to hear!",
+    "Part of your year in review that was a sneaky top performer: identify and minimize the boat anchors. Really valuable exercise for me.",
+    "Straight facts 👌",
+    "Sometime saving yourself from relationships is the only way to save yourself.❤️",
+    "Removed them like Joel got rid of his memories of Clementine.😁",
+    "Even if they're family, you can't let that be the reason they're allowed to bring you down 😅",
+    "What's funny is the people who are the hardest to get rid off often provide the greatest relief from",
+    "This is the simplest solution, but it feels difficult.",
+    "Your physical circle of influence is of the same importance as your social circle ",
+    "Thanks! This made my day! 😄 I always try to make it actionable and actually useful!",
   ],
-  username: "Marius Hauken",
+  username: "Sacheil Bloom",
   profile_image_url:
-    "https://pbs.twimg.com/profile_images/1534219666352111616/IgR93M63_normal.jpg",
+    "https://images.generated.photos/zDm6WNAATR2-bOBf0_qcZ0vJ2q1e1K1vvXERSxqgrH0/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDMyMDA2LmpwZw.jpg",
   references: {
     images: [
-      "https://pbs.twimg.com/media/FpD7g7CacAEb_CP?format=jpg&name=small",
-      "https://pbs.twimg.com/media/FpE_MIaWAAA89-f?format=jpg&name=small",
-      "https://pbs.twimg.com/media/FpFh5o-aUAEWFOY?format=jpg&name=small",
-      "https://pbs.twimg.com/media/FpExdPbacAEe7fq?format=jpg&name=small",
+      "https://pbs.twimg.com/media/Fq4gg0hX0AEdyyM?format=jpg&name=900x900",
+      "https://th.bing.com/th?id=OIP.UYV_bihup-y039M8_Dk0KQHaFP&w=297&h=210&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      "https://th.bing.com/th/id/OIP._5g8Ec7fLoLES3CYUp1evQHaJ4?w=140&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      "https://th.bing.com/th?id=OIP.kdmpPmRlzz-u8Zf8r3LSvwHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      "https://th.bing.com/th?id=OIP.k-q_vJLFJ7uccPEkmFh2SgHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
     ],
     urls: [
       "https://t.co/GAqzTMncMM",
@@ -179,7 +191,7 @@ let mock_thread = {
     ],
   },
   thread_summary:
-    "Mhauken shares some of his favorite tools and apps. Use them to help you improve your productivity and design. Follow me on Twitter @mhaukensurveillance and follow me on Facebook and Google+ for more tips and tricks. Like/Retweet the first tweet below if you can.",
+    "Sacheil shares some of his life idealogies. Remove people who make you feel bad, both in the physical and digital worlds. Unfollow, mute, or block to improve happiness and avoid overcomplication.A good life is about subtraction as much as it is about addition.While it's important to surround ourselves with positivity, completely cutting out people from our lives may not always be feasible. Instead, we can try to focus on setting boundaries and limiting interactions with those who negatively impact us.",
   thread_sentiment: { pos: 8, neg: 0, neu: 2 },
 };
 
@@ -256,25 +268,38 @@ let mock_user_details = {
       year: 2023,
     },
   ],
-  created_at: "Nov, 2021",
+  created_at: "Nov, 2018",
   description:
-    "Former intern at JPMorgan | Competitive Programmer | Exploring Software World\nLinkedIn : https://t.co/o3alNJU05n…",
-  followers_count: 25,
-  mention_tweets: ["Hi Darling Abhi"],
+    "DevRel manager @CivoCloud, Founder@WeMakeDevs, YouTuber (300k+) CNCF Ambassador, GitHub Star",
+  followers_count: "2.5K",
+  mention_tweets: [
+    "You're the average of the people you surround yourself with. Follow the right people on Twitter.",
+    "One of the threads you must read today: Wish more successful people shared raw truths and lessons we can learn from, what you remember are a person's stories, not random data and statistics (which are mostly individual and mostly useless)",
+    "Honestly one of my favourite threads so far.",
+    "Love this method and framework",
+    "What a relief it is to recognize that.",
+  ],
   neg_count: "2",
-  neutral_count: "5",
-  pos_count: "13",
+  neutral_count: "4",
+  pos_count: "6",
   profile_image_url:
-    "https://pbs.twimg.com/profile_images/1599024008175190018/F5mkHp4t_normal.jpg",
+   "https://images.generated.photos/kEtyIuts_R7fqTwr6dHBpwY3mMm-3GwWrw7xq51A_VI/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ2ODAxLmpwZw.jpg",
   sentiments: {
-    Sentiment: { 0: "pos", 1: "neg", 2: "neutral" },
+    Sentiment: { 0: "pos", 1: "pos", 2: "neg", 3: "neutral", 4: "neg", 5: "pos", 6:"pos", 7:"pos", 8:"pos", 9:"neutral" },
     Tweet: {
-      0: "Dance for me Dance for me Dance for me Oo Oo Ooh",
-      1: "Its about drive, Its about power, we grow hungry we desire",
-      2: "I study in thadomal shahani engineering college",
+      0: " Most of your friends aren’t really your friends. They’re just along for the ride when it’s fun or convenient. Your real friends are there for you when you have nothing to offer.",
+      1: "You don't need to have an opinion on everything. It's perfectly reasonable to have no opinion on something that you haven't researched or don't understand.",
+      2: "You can get pretty damn far in life by just saying what you're going to do and then doing it. No fancy hack needed.",
+      3: "Most of us need fewer friends and more intellectual sparring partners. Friends are easy to come by, but intellectual sparring partners question our assumptions and force us to level up.",
+      4: "Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.",
+      5: "Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.",
+      6: "For the first time in my life I don’t have my next 6 months planned. For the first time I feel like I can escape the matrix. For the first time I feel confident even without knowing my next move. Feels surreal.",
+      7: "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job. Junior Devs  >>>>>> 😂",
+      8: "The failure of #SVB is likely to have a ripple effect on #Indian startups, many of which have significant amounts of funds deposited with the bank. It will also dent the #fundraising ability of Indian #startups as the US-based bank was a key source of funding for #tech startups.",
+      9: "It’s my 7th year in tech & I’m  a software Engineer who’s also enthusiastic about UX Design & Data Science, you possibly use or have used one of the products I’ve built😎.",
     },
   },
-  username: "Abhishek Sharma",
+  username: "Jennifer Johnson",
 };
 
 let mock_tag_detail = {

@@ -17,7 +17,7 @@ export default function UserTabs({ tabItems }) {
             </a>
           ))}
         </div>
-        <div className='w-full h-[28rem] overflow-y-scroll'>{tabItems[activeTabIndex].component}</div>
+        <div className='w-full h-fit max-h-[28rem] overflow-y-scroll'>{tabItems[activeTabIndex].component}</div>
       </div>
     </>
   );
