@@ -29,7 +29,7 @@ export default function App() {
   const [trends, setTrends] = useState({
     latest_trends: mock_trends,
     show_tweets: [],
-    hash_tweets: [], 
+    hash_tweets: {}, 
   });
   const [alert, setAlert] = useState({});
 

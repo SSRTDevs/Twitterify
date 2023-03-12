@@ -45,7 +45,7 @@ function TrendingCard({ index, trend, hashtag, setReadTweets }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}>
-        <div id={`${hashtag}`} className='card shadow-md rounded'>
+        <div id={`${hashtag}`} className='card shadow-md rounded !bg-[#2222224a]'>
           <div className='card-body p-5 space-y-1'>
             <div className='topbar w-full flex justify-between '>
               <h5 className='card-title w-fit'>{hashtag}</h5>
@@ -65,7 +65,7 @@ function TrendingCard({ index, trend, hashtag, setReadTweets }) {
             <p className='card-text'>{trend.summary}</p>
 
             <div className='endbar flex justify-between w-full'>
-              <p className='text-xs text-left'>{trend.time_stamp}</p>
+              <p className='text-xs text-left text-[#707070]'>{trend.time_stamp}</p>
               <a
                 style={{
                   textAlign: "right",

@@ -35,7 +35,7 @@ const search_hash = async (tag, setTrends, setAlert) => {
     .get(`http://127.0.0.1:5000/hashtag/${tag}`)
     .then((res) => {
       setTrends((trends) => {
-        return { ...trends, show_tweets: [], hash_tweets: res.data };
+        return { ...trends, show_tweets: [], hash_tweets:res.data};
       });
       setAlert({});
     })

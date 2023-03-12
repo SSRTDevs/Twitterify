@@ -7,7 +7,7 @@ from threadSummarizer.threadSumm import thread_summarizer
 from setups.model_setup import summarize
 from flask_cors import CORS
 from threading import Timer
-from mock_text import mock_text, summarizer
+from mock_text import mock_text, summarizer, mock_hash
 from setups.model_setup import tweet_summarizer, tweet_analyser
 
 app = Flask(__name__)

@@ -4,42 +4,68 @@ import { motion } from "framer-motion";
 function Trending_tweets({ trends }) {
   return (
     <>
-      {trends.show_tweets.length === 0
-        ? "Nothing to show"
-        : trends.show_tweets.map((item) => {
+      {trends.show_tweets.length === 0 ? (
+        "Nothing to show"
+      ) : (
+        <motion.div className="chat chat-end w-full space-y-2">
+          {trends.show_tweets.map((item) => {
             return (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0.5, 1] }}
-              >
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0.5, 1] }}
-                  className="card"
-                >
-                  <div className="card-body">
-                    <p className="card-text">{item}</p>
-                  </div>
-                </motion.div>
-              </motion.div>
+              <div className="chat-bubble w-full bg-[#2222224a]">{item}</div>
             );
           })}
+        </motion.div>
+      )}
     </>
   );
 }
 
 function Hashtag_tweets({ trends }) {
-  return <>Hey</>;
+  return (
+    <div className="h-full">
+      <div className="text-neutral-content !bg-[#2222224a] h-1/3 overflow-y-scroll">
+        <div className="p-6 space-y-1">
+          <h2 className="card-title">{trends.hash_tweets["hashtag"]}</h2>
+          <p>{trends.hash_tweets["summary"]}</p>
+          <p className="text-xs text-left text-[#707070]">
+            {trends.hash_tweets["time_stamp"]}
+          </p>
+          <div className="flex justify-between w-48 m-auto text-xl">
+            <span className="text-green-500">
+              🙂  {trends.hash_tweets["pos"]}
+            </span>
+            <span className="text-red-500">
+              🙁  {trends.hash_tweets["neg"]}
+            </span>
+            <span className="text-yellow-500">
+              😐 {trends.hash_tweets["neu"]}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="border p-2 rounded space-y-2 mt-2 h-2/3">
+        <p className='text-lg h-heading'>Tweets</p>
+        <div className="h-body overflow-y-scroll">
+        <div className="chat chat-end w-full space-y-2">
+          {
+            trends.hash_tweets["hashtag_tweets"].map((tweet,idx)=>{
+              return <div className="chat-bubble bg-[#2222224a]">{tweet}</div>
+            })
+          }
+        </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function RightTrend({ trends }) {
   return (
     <>
-    {
-        trends.hash_tweets.length > 0 ? 
-        <Hashtag_tweets trends={trends} /> : 
+      {Object.keys(trends.hash_tweets).length > 0 ? (
+        <Hashtag_tweets trends={trends} />
+      ) : (
         <Trending_tweets trends={trends} />
-    }
+      )}
     </>
   );
 }
