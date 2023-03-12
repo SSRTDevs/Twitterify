@@ -29,11 +29,11 @@ export default function Tabs({ tabs }) {
               ))}
             </div>
             <button
-              className='btn btn-sm btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200'
+              className='btn btn-sm btn-outline hover:bg-twitter-200 border-twitter-100 hover:border-twitter-200 normal-case'
               onClick={() => {
                 tabs[activeTabIndex].details();
               }}>
-              Twiterify
+              Twitterify
             </button>
           </div>
 
