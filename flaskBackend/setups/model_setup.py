@@ -1,6 +1,8 @@
 from transformers import AutoModelForSequenceClassification, pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os
+import numpy as np
+from scipy.special import expit
 
 summarization_model = AutoModelForSeq2SeqLM.from_pretrained(
     f'{os.getcwd()}/setups/model/summarization_model')
@@ -11,6 +13,9 @@ sentiment_model = AutoModelForSequenceClassification.from_pretrained(
     f'{os.getcwd()}/setups/model/sentiment_model')
 sentiment_tokenizer = AutoTokenizer.from_pretrained(
     f'{os.getcwd()}/setups/tokenizer/sentiment_tokenizer')
+
+topic_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model/topic_model')
+topic_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer/topic_tokenizer')
 
 summarizer = pipeline("summarization", model=summarization_model,
                       tokenizer=summarization_tokenizer)
@@ -62,3 +67,22 @@ def tweet_analyser(tweets):
         except:
             pass
     return {"pos": pos, "neg": neg, "neu": neu}
+
+def tweet_topic(combined_tweets):
+    class_mapping = topic_model.config.id2label
+
+    text = combined_tweets
+    tokens = topic_tokenizer(text, return_tensors='pt')
+    output = topic_model(**tokens)
+
+    scores = output[0][0].detach().numpy()
+    scores = expit(scores)
+    predictions = (scores >= 0.5) * 1
+
+    output = []
+    # Map to classes
+    for i in range(len(predictions)):
+        if predictions[i]:
+            output.append(class_mapping[i])
+    return output
+
