@@ -1,4 +1,4 @@
-from flask import Flask, make_response
+from flask import Flask, make_response, jsonify
 from profileSummarizer.processing import get_sentiments, get_word_clouds
 # from profileSummarizer.profileSumm import profile_summarizer, user_activity
 from profileSummarizer.profileSumm import profile_summary
@@ -36,7 +36,7 @@ def process_trending_tweets():
         }
         trending_tweets_data.append(res_obj)
 
-    response = make_response(trending_tweets_data)
+    response = make_response(jsonify(trending_tweets_data))
     return response
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])

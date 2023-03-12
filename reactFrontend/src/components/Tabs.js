@@ -37,7 +37,7 @@ export default function Tabs({ tabs }) {
             </button>
           </div>
 
-          <div className='left-container h-fit overflow-y-scroll items-start text-center p-1'>
+          <div className='left-container h-fit items-start text-center p-1'>
             {tabs[activeTabIndex].leftComponent}
           </div>
         </div>

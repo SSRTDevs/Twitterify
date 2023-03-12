@@ -21,7 +21,7 @@ export default function UserSummarizer({ user, setUser }) {
 
   return (
     <>
-      <div className='container mx-auto w-[75%] mb-2'>
+      <div className='container mx-auto w-[75%] mb-2 mt-6'>
         <div className='flex flex-col'>
           <input
             type='search'
