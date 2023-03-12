@@ -2,7 +2,7 @@ from flask import Flask, make_response
 from profileSummarizer.processing import get_sentiments, get_word_clouds
 # from profileSummarizer.profileSumm import profile_summarizer, user_activity
 from profileSummarizer.profileSumm import profile_summary
-from generalPage.generalTrends import get_trending_tweets
+from generalPage.generalTrends import get_trending_tweets, get_hashtag_tweets
 from threadSummarizer.threadSumm import thread_summarizer
 from setups.model_setup import summarize
 from flask_cors import CORS
@@ -21,6 +21,7 @@ def process_trending_tweets():
     trending_tweets_data = []
     
     for object in trending_payload:
+        print(' '.join(object["topic_tweets"]))
         trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
         trending_tweets_sentiment = tweet_analyser(object["topic_tweets"])
         # trending_tweets_summarization, trending_tweets_sentiment = feed_model(object["topic_tweets"])
@@ -38,6 +39,26 @@ def process_trending_tweets():
 
     response = make_response(trending_tweets_data)
     return response
+
+@app.route("/hashtag/<hashtag>", methods=['GET'])
+def hashtag_analysis(hashtag):
+    hashtag_tweets_payload = get_hashtag_tweets(hashtag)
+    
+    hashtag_tweets_summarization = tweet_summarizer(' '.join(hashtag_tweets_payload["hashtag_tweets"]))
+    hashtag_tweets_sentiment = tweet_analyser(hashtag_tweets_payload["hashtag_tweets"])
+
+    res_obj = {
+            "hashtag_tweets" : hashtag_tweets_payload["hashtag_tweets"],
+            "hashtag" : hashtag_tweets_payload["hashtag"],
+            "hashtag_tweet_count" : hashtag_tweets_payload["hashtag_tweet_count"],
+            "time_stamp" : hashtag_tweets_payload["time_stamp"],
+            "summary": hashtag_tweets_summarization, 
+            "pos": hashtag_tweets_sentiment["pos"], 
+            "neg": hashtag_tweets_sentiment["neg"], 
+            "neu": hashtag_tweets_sentiment["neu"],
+        }
+    return res_obj
+
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
@@ -84,3 +105,4 @@ def get_summary():
     print(summarizer())
     return make_response(summarize(mock_text))
     # return make_response(summarizer())
+
