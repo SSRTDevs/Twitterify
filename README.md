@@ -8,6 +8,7 @@ setups
 -- model 
 ---- sentiment_model
 ---- summarization_model
+---- topic_model
 -- tokenizer
 ---- sentiment_tokenizer
 ---- summarization_tokenizer
