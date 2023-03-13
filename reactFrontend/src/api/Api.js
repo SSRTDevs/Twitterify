@@ -1,4 +1,5 @@
 import axios from "axios";
+import { mock_tweets } from "../components/Mock_data";
 
 const trending = async (trends, setTrends, setAlert) => {
   setAlert({
@@ -62,7 +63,6 @@ const user_summarizer = async (user, setUser, setAlert) => {
     .then((res) => {
       console.log(res.data);
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
-      console.log(res.data.payload);
       setUser((user) => {
         return { ...user, details: res.data };
       });
@@ -100,7 +100,6 @@ const user_summarizer = async (user, setUser, setAlert) => {
 };
 
 const thread_summarizer = async (thread, setThread, setAlert) => {
-  console.log(thread.url);
   await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
@@ -123,4 +122,14 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
     });
 };
 
-export { trending, search_hash, user_summarizer, thread_summarizer };
+const get_topics = async (tweets) => {
+  let data = {"tweets": tweets} ; 
+  await axios.post("http://localhost:5000/topic",JSON.stringify(data)).then(res => {
+    console.log(res.data);
+  }).catch(err => {
+    console.log("Kuch toh gadbad hai beta");
+  })
+
+}
+
+export { trending, search_hash, user_summarizer, thread_summarizer, get_topics };

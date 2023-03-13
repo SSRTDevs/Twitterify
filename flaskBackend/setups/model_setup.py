@@ -76,10 +76,13 @@ def summarize(text):
         max_length=100,
     )
     return results
-def tweet_topic(combined_tweets):
-    class_mapping = topic_model.config.id2label
 
+def tweet_topic(combined_tweets):
+
+    class_mapping = topic_model.config.id2label
+    # text = " ".join(combined_tweets)
     text = combined_tweets
+    # print(text)
     tokens = topic_tokenizer(text, return_tensors='pt')
     output = topic_model(**tokens)
 
@@ -94,3 +97,4 @@ def tweet_topic(combined_tweets):
             output.append(class_mapping[i])
     return output
 
+# print(tweet_topic("Ye grandfather vala toh The Boys moment ho gaya Best thing, she will put it as whatsapp status or dp so that everyone can see how weird I was. But this is something which is cute and cringe at the same time.  Perfect example of how visuals and figures can be misleading at times. If you tie both ends of a 80m rope on a 50m pole,  only then it will satisfy the numbers given.  I remember my mom doing the same. Moments like these makes us nostalgic now. _Jadwani Very deep. This quote always reminds of Itachi Uchiha.  4india Nice, shortest solution saw till now. _jaden Awesome Jaden Well said, dheeraj !! Just wanted to add that self complimenting is equally beneficial as receiving them from loved ones. The reason I say this is because I believe that there might be times when we won't be appreciated much.  To be honest, I use to love writing essays in Hindi. It was my teacher who made me fall in love with the literature and I could still see that today.  Everything has good and bad in it. You can't make your blood boil by just looking at the bad side.  Congratulations !!  Symmetry is indeed beautiful ! So the radius of circle should be 3.  And 1/3rd of 9π is the answer. _texplorer So true. Yet seeking external validation is so taught to us that it becomes our nature as such. 3 Well, I believe that this struggle will continue because the point between logic and emotions is in an unstable equilibrium. You might attain it temporarily but hard to maintain it throughout. _texplorer Sach bata, kal se karunga kitne din se bol raha hai _kumar_4 Because to stay humble, you need to accept that you may not be always right, is what I think. Hence it is indeed difficult to develop. _raj_sharma DSA/Dev are the two sides of the same coin. Engineering is not just about problem solving but also about applications. So both the options go hand in hand.  Difficult to digest that  people of 2nd type are more than that of 1st type.  I was expecting a complete opposite distribution, when I clicked on the poll.  Awesome, Congratulations Definitely teaching. In fact, I'm doing it right now by helping with my mother's tuition. I'm not sure why, but after getting a decent job offer, I feel like I'm doing CP (competitive programming) more for fun now. I no "))

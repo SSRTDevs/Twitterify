@@ -1,4 +1,4 @@
-from flask import Flask, make_response
+from flask import Flask, make_response, request
 from profileSummarizer.processing import get_sentiments, get_word_clouds
 # from profileSummarizer.profileSumm import profile_summarizer, user_activity
 from profileSummarizer.profileSumm import profile_summary
@@ -8,7 +8,7 @@ from setups.model_setup import summarize
 from flask_cors import CORS
 from threading import Timer
 from mock_text import mock_text, summarizer, mock_hash
-from setups.model_setup import tweet_summarizer, tweet_analyser
+from setups.model_setup import tweet_summarizer, tweet_analyser, tweet_topic
 
 app = Flask(__name__)
 app.run(debug=True)
@@ -58,6 +58,10 @@ def hashtag_analysis(hashtag):
         }
     return res_obj
 
+@app.route("/topic", methods=['POST'])
+def topic(): 
+    data = request.get_json(force=True)["tweets"]
+    return make_response(tweet_topic(data))
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):

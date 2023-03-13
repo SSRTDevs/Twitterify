@@ -335,4 +335,16 @@ let mock_tag_detail = {
 · Centre to facilitate one crore farmers to adopt natural farming over the next three years. For this, 10,000 Bio-Input Resource Centres to be set-up, creating a national-level distributed micro-fertilizer and pesticide manufacturing network.`,
 };
 
-export { mock_trends, mock_thread, mock_user_details, mock_tag_detail };
+let mock_tweets = [
+  "Most of your friends aren’t really your friends. They’re just along for the ride when it’s fun or convenient. Your real friends are there for you when you have nothing to offer.",
+  "You don't need to have an opinion on everything. It's perfectly reasonable to have no opinion on something that you haven't researched or don't understand.",
+  "You can get pretty damn far in life by just saying what you're going to do and then doing it. No fancy hack needed.",
+  "Most of us need fewer friends and more intellectual sparring partners. Friends are easy to come by, but intellectual sparring partners question our assumptions and force us to level up.",
+  "Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.",
+  "Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.",
+  "For the first time in my life I don’t have my next 6 months planned. For the first time I feel like I can escape the matrix. For the first time I feel confident even without knowing my next move. Feels surreal.",
+  "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job.😂"
+]
+
+
+export { mock_trends, mock_thread, mock_user_details, mock_tag_detail, mock_tweets };
