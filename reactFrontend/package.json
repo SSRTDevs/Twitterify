@@ -2,7 +2,7 @@
   "name": "twitterify",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ssrtdev.com/Twitterify",
+  "homepage": "https://SSRTDevs.github.io/Twitterify",
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",
     "@testing-library/jest-dom": "^5.16.5",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "rm -rf node_modules/.cache/gh-pages && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
