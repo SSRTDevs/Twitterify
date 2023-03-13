@@ -23,26 +23,33 @@ function Hashtag_tweets({ trends }) {
   return (
     <div className="h-full">
       <div className="text-neutral-content !bg-[#2222224a] h-1/3 overflow-y-scroll">
-        <div className="p-6 space-y-1">
+        <div className="py-4 px-6 space-y-1">
           <h2 className="card-title">{trends.hash_tweets["hashtag"]}</h2>
           <p>{trends.hash_tweets["summary"]}</p>
-          <p className="text-xs text-left text-[#707070]">
+          <p className="text-xs text-left text-[#707070] pr-2">
             {trends.hash_tweets["time_stamp"]}
           </p>
-          <div className="flex justify-between w-48 m-auto text-xl">
-            <span className="text-green-500">
-              🙂  {trends.hash_tweets["pos"]}
-            </span>
-            <span className="text-red-500">
-              🙁  {trends.hash_tweets["neg"]}
-            </span>
-            <span className="text-yellow-500">
-              😐 {trends.hash_tweets["neu"]}
-            </span>
-          </div>
+        </div>
+        <div className="flex justify-between w-48 mx-auto text-xl cursor-auto">
+            <div className="tooltip tooltip-left" data-tip="Positive">
+              <span className="text-green-500">
+                🙂  {trends.hash_tweets["pos"]}
+              </span>
+            </div>
+            <div className="tooltip tooltip-top" data-tip="Negative">
+              <span className="text-red-500">
+                🙁  {trends.hash_tweets["neg"]}
+              </span>
+            </div>
+            <div className="tooltip tooltip-right" data-tip="Neutral">
+              <span className="text-yellow-500">
+                😐 {trends.hash_tweets["neu"]}
+              </span>
+            </div>
         </div>
       </div>
-      <div className="border p-2 rounded space-y-2 mt-2 h-2/3">
+
+      <div className="border border-[#2a2a2a] p-2 rounded space-y-2 mt-2 h-2/3">
         <p className='text-lg h-heading'>Tweets</p>
         <div className="h-body overflow-y-scroll">
         <div className="chat chat-end w-full space-y-2">

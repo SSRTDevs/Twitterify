@@ -12,7 +12,7 @@ function TrendingDropdown({ trends }) {
   return (
     <>
       <div className='dropdown'>
-        <label tabIndex={0} className='btn normal-case'>
+        <label tabIndex={0} className='btn btn-sm normal-case'>
           Trending Today
         </label>
         <ul
