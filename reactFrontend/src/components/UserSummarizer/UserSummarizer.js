@@ -1,6 +1,13 @@
 import { React, useEffect } from "react";
 import "../../css/LeftComponents/UserSummarizer.css";
-import { UserTweets, MentionTweets, UserTimeline, UserTabs } from "../index";
+import {
+  UserTweets,
+  MentionTweets,
+  UserTimeline,
+  UserTabs,
+  RightUser,
+} from "../index";
+import { Breakpoint } from "react-socks";
 
 export default function UserSummarizer({ user, setUser }) {
   const tabItems = [
@@ -32,6 +39,11 @@ export default function UserSummarizer({ user, setUser }) {
             }}
           />
         </div>
+
+        <Breakpoint small down>
+          <RightUser user={user} />
+          <br />
+        </Breakpoint>
 
         {Object.keys(user.details).length === 0 ? (
           <h3 className="font-bold text-2xl">Nothing to show</h3>
