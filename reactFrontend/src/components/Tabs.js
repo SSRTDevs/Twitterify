@@ -3,7 +3,7 @@ import { FiTwitter } from "react-icons/fi";
 import twitter_logo from "../images/twitter_logo.png";
 
 export default function Tabs({ tabs }) {
-  const [activeTabIndex, setActiveTabIndex] = useState(2);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   return (
     <>

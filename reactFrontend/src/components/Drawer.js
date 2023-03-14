@@ -7,10 +7,15 @@ export default function Drawer({ tabs }) {
   return (
     <>
       <div
-        className="god-container grid grid-rows-6 h-screen w-screen"
+        className="god-container flex flex-col h-screen w-screen"
         data-theme="black"
       >
-        <div className="top-container h-1/4 row-span-2 w-full flex justify-between items-center mb-2 p-2 border-b border-base-300">
+
+        <div className="container h-full overflow-y-scroll text-center p-1">
+          {tabs[activeTabIndex].leftComponent}
+        </div>
+
+        <div className="bottom-container h-fit w-full flex justify-between items-center mt-2 p-2 border-t border-base-300">
           <div className="tabs tabs-boxed w-full">
             {tabs.map((tab, index) => (
               <a
@@ -31,14 +36,6 @@ export default function Drawer({ tabs }) {
           >
             Twitterify
           </button>
-        </div>
-
-        <div className="container h-2/4  row-span-4 items-start text-center p-1">
-          {/* {tabs[activeTabIndex].leftComponent} */}
-        </div>
-
-        <div className="bottom-container overflow-y-scroll h-1/4 row-span-2 p-5 w-full text-center">
-          {/* {tabs[activeTabIndex].rightComponent} */}
         </div>
       </div>
     </>

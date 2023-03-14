@@ -1,16 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-function Trending_tweets({ trends }) {
+function Trending_tweets({ trends, className=""}) {
   return (
     <>
       {trends.show_tweets.length === 0 ? (
         "Nothing to show"
       ) : (
-        <motion.div className="chat chat-end w-full space-y-2">
+        <motion.div className={`chat chat-end w-full space-y-2 ${className}`}>
           {trends.show_tweets.map((item) => {
             return (
-              <div className="chat-bubble w-full bg-[#2222224a]">{item}</div>
+              <div className="chat-bubble min-w-min max-w-full bg-[#2222224a]">{item}</div>
             );
           })}
         </motion.div>
@@ -65,7 +65,7 @@ function Hashtag_tweets({ trends }) {
   );
 }
 
-export default function RightTrend({ trends }) {
+function RightTrend({ trends }) {
   return (
     <>
       {Object.keys(trends.hash_tweets).length > 0 ? (
@@ -76,3 +76,7 @@ export default function RightTrend({ trends }) {
     </>
   );
 }
+
+RightTrend.Trending_tweets = Trending_tweets ; 
+RightTrend.Hashtag_tweets = Hashtag_tweets ; 
+export default RightTrend ; 

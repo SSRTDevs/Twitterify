@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { TrendingCard } from "../index";
+import {RightTrend} from "../index"
 import { search_hash } from "../../api/Api";
+
 
 export default function Trending({ trends, setTrends, setAlert }) {
     const [tag, settag] = useState("AirIndia");
@@ -18,18 +20,20 @@ export default function Trending({ trends, setTrends, setAlert }) {
         });
     };
 
+    const RightTrendComponent = <RightTrend trends={trends} className="h-20 overflow-y-scroll"/>
+
   return (
     <>
       <div className='w-full h-full flex items-center flex-col space-y-2 px-2'>
 
         <div className='topSection h-1/10 w-full flex items-center justify-between'>
           <TrendingCard.Dropdown trends={trends} />
-          <div className='form-control mr-8'>
+          <div className='form-control'>
             <div className='input-group'>
               <input
                 type='text'
                 placeholder='Enter any hashtag'
-                className='input input-sm max-w-xs'
+                className='input input-sm w-48'
                 onChange={(e)=> settag(e.target.value)}
               />
               <button 
@@ -61,6 +65,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
               hashtag={trend.topic_name}
               trend={trend}
               setReadTweets={read_tweets}
+              RightComponent={RightTrendComponent}
             />
           ))}
         </div>
