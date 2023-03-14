@@ -1,5 +1,7 @@
 import { React } from "react";
-import { Carousel } from "../";
+import {Carousel} from "../";
+import {RightThread} from "../";
+import {Breakpoint} from "react-socks"
 
 export default function ThreadSummarizer({ thread, setThread }) {
   return (
@@ -63,6 +65,10 @@ export default function ThreadSummarizer({ thread, setThread }) {
           )}
         </div>
       </div>
+      <Breakpoint small down>
+        <br/>
+        <RightThread  thread={thread}/>
+      </Breakpoint>
     </>
   );
 }
