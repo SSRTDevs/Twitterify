@@ -15,13 +15,16 @@ app.run(debug=True)
 CORS(app)
 
 
+@app.route("/", methods=['GET'])
+def init(): 
+    return make_response("Hey there, Welcome to Twitterify's API.")
+
 @app.route("/trending_tweets", methods=['GET'])
 def process_trending_tweets():
     trending_payload = get_trending_tweets("India")
     trending_tweets_data = []
     
     for object in trending_payload:
-        print(' '.join(object["topic_tweets"]))
         trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
         trending_tweets_sentiment = tweet_analyser(object["topic_tweets"])
         res_obj = {

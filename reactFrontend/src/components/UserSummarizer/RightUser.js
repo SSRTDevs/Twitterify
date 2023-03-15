@@ -77,7 +77,7 @@ export default function RightUser({ user }) {
       </div>
 
       <div className="text-left w-full p-4">
-        {user.topics.map((topic,idx)=>{
+        {user.topics && user.topics.map((topic,idx)=>{
           return <> <div className="badge border-twitter-100 rounded-full bg-twitter-100 text-white">{topic}</div> &nbsp; </>
         })}
       </div>

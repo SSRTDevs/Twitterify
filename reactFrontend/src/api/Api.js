@@ -62,6 +62,10 @@ const user_summarizer = async (user, setUser, setAlert) => {
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
+      setAlert({
+        error: "Fetching User wordcloud...",
+        type: "info",
+      });
       return res.data;
     })
     .catch((err) => {
@@ -73,6 +77,7 @@ const user_summarizer = async (user, setUser, setAlert) => {
       setTimeout(() => {
         setAlert({});
       }, 3000);
+      return {}; 
     });
 
   const get_user_cloud = await axios
@@ -89,6 +94,7 @@ const user_summarizer = async (user, setUser, setAlert) => {
       setTimeout(() => {
         setAlert({});
       }, 3000);
+      return "" ;
     });
     
     let [user_details, user_cloud] = await Promise.all([
