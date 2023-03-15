@@ -26,6 +26,7 @@ export default function App() {
     tweets: 0,
     details: mock_user_details,
     clouds: "",
+    topics:[]
   });
   const [thread, setThread] = useState({
     url: "",

@@ -36,7 +36,7 @@ const search_hash = async (tag, setTrends, setAlert) => {
     .get(`http://127.0.0.1:5000/hashtag/${tag}`)
     .then((res) => {
       setTrends((trends) => {
-        return { ...trends, show_tweets: [], hash_tweets:res.data};
+        return { ...trends, show_tweets: [], hash_tweets: res.data };
       });
       setAlert({});
     })
@@ -58,17 +58,14 @@ const user_summarizer = async (user, setUser, setAlert) => {
     type: "info",
   });
 
-  await axios
+  const get_user_details = await axios
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
-      console.log(res.data);
       res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
-      setUser((user) => {
-        return { ...user, details: res.data };
-      });
+      return res.data;
     })
     .catch((err) => {
-      console.log("Kuch toh gadbad hai beta");
+      console.log(err);
       setAlert({
         error: "You might have entered wrong username",
         type: "error",
@@ -78,17 +75,13 @@ const user_summarizer = async (user, setUser, setAlert) => {
       }, 3000);
     });
 
-  await axios
+  const get_user_cloud = await axios
     .get(`http://localhost:5000/wordclouds/${user.Username}/${user.tweets}`)
     .then((res) => {
-      let data = JSON.parse(JSON.stringify(res.data));
-      setUser((user) => {
-        return { ...user, clouds: data };
-      });
-      setAlert({});
+      return JSON.parse(JSON.stringify(res.data));
     })
     .catch((err) => {
-      console.log("Kuch toh gadbad hai beta");
+      console.log(err);
       setAlert({
         error: "Wordcloud wasn't generated.",
         type: "error",
@@ -97,6 +90,35 @@ const user_summarizer = async (user, setUser, setAlert) => {
         setAlert({});
       }, 3000);
     });
+    
+    let [user_details, user_cloud] = await Promise.all([
+      get_user_details,
+      get_user_cloud,
+    ])
+
+    setAlert({
+      error: "Fetching User topics...",
+      type: "info",
+    })
+    
+    let tweets = Object.keys(user_details.sentiments["Tweet"]).map((idx)=>  user_details.sentiments["Tweet"][idx]) ; 
+    let data = { tweets: tweets };
+    const user_topics = await axios.post("http://localhost:5000/topic", JSON.stringify(data)).then((res) => {
+      return res.data ; 
+    }).catch((err) => {
+      console.log(err);
+      setAlert({
+        error: "Seems like an error in API call", 
+        type: "error"
+      })
+    });
+
+    setAlert({})
+
+    console.log(user_topics)
+    setUser((user)=> {
+      return {...user, details: user_details, clouds: user_cloud, topics: user_topics}
+    })
 };
 
 const thread_summarizer = async (thread, setThread, setAlert) => {
@@ -122,14 +144,10 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
     });
 };
 
-const get_topics = async (tweets) => {
-  let data = {"tweets": tweets} ; 
-  await axios.post("http://localhost:5000/topic",JSON.stringify(data)).then(res => {
-    console.log(res.data);
-  }).catch(err => {
-    console.log("Kuch toh gadbad hai beta");
-  })
 
-}
-
-export { trending, search_hash, user_summarizer, thread_summarizer, get_topics };
+export {
+  trending,
+  search_hash,
+  user_summarizer,
+  thread_summarizer,
+};

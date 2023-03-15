@@ -1,16 +1,6 @@
 import React, { useEffect } from "react";
-import { get_topics } from "../../../api/Api";
 
 export default function UserTweets({ user }) {
-  useEffect(()=>{
-    
-  },[])
-  useEffect(()=>{
-    let tweets = Object.keys(user.details.sentiments["Tweet"]).map((idx)=>  user.details.sentiments["Tweet"][idx]) ; 
-    console.log(tweets)
-    get_topics(tweets);
-  },[user.details.sentiments]);
-
   return (
     <>
       {Object.keys(user.details).length > 0 &&
