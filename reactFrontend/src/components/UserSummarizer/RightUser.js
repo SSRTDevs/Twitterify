@@ -75,6 +75,13 @@ export default function RightUser({ user }) {
           </div>
         </div>
       </div>
+
+      <div className="text-left w-full p-4">
+        {user.topics.map((topic,idx)=>{
+          return <> <div className="badge border-twitter-100 rounded-full bg-twitter-100 text-white">{topic}</div> &nbsp; </>
+        })}
+      </div>
+
       {user.clouds === "" ? null : (
         <div className='flex gap-2 justify-between mt-[6%] w-full'>
           <Zoom>

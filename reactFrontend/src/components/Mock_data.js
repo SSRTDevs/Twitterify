@@ -346,5 +346,7 @@ let mock_tweets = [
   "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job.😂"
 ]
 
+let mock_topics = ['Software', 'Politics', "Entertainment", 'Health', 'Blockchain', 'DSA', 'Competitive Programming']
 
-export { mock_trends, mock_thread, mock_user_details, mock_tag_detail, mock_tweets };
+
+export { mock_trends, mock_thread, mock_user_details, mock_tag_detail, mock_tweets, mock_topics };
