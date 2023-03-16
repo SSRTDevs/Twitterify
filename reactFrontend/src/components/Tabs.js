@@ -2,18 +2,39 @@ import { React, useState } from "react";
 import { FiTwitter } from "react-icons/fi";
 import twitter_logo from "../images/twitter_logo.png";
 
+const Themes = [
+  "black",
+  "dark",
+  "forest",
+  "luxury",
+  "night",
+  "halloween",
+  "coffee",
+  "dracula",
+  "synthwave",
+  "valentine",
+  "retro", 
+  "cyberpunk",
+  "autumn"
+];
+
 export default function Tabs({ tabs }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+  const [themeIndex, setThemeIndex] = useState(0);
 
   return (
     <>
       <div
         className="god-container grid grid-cols-6 h-screen "
-        data-theme="black"
+        data-theme={Themes[themeIndex]}
       >
         <div className="left-section h-screen col-span-4 flex flex-col w-full p-4">
           <div className="top-container h-1/10 flex justify-between items-center mb-2 p-2 border-b border-base-300">
-            <div className="avatar">
+            <div
+              className="avatar tooltip tooltip-bottom cursor-pointer"
+              data-tip={Themes[themeIndex]}
+              onClick={() => setThemeIndex((themeIndex + 1) % Themes.length)}
+            >
               <div className="w-10 rounded-full">
                 <img src={twitter_logo} />
               </div>
