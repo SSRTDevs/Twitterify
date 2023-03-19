@@ -12,7 +12,7 @@ export default function RightThread(props) {
         <div className='h-auto w-full flex items-center border-black-700  rounded-lg p-4  bg-neutral-800'>
           <div className='avatar'>
             <div className='w-16 rounded-full ring ring-twitter-200 ring-offset-base-100 ring-offset-1'>
-              <img src={props.thread.details["profile_image_url"]} />
+              <img src={props.thread.details["profile_image_url"]} alt="profile_image"/>
             </div>
           </div>
           <div className='ml-[5%]'>
@@ -36,7 +36,7 @@ export default function RightThread(props) {
             </div>
             <div className='stat-title'>Thread Length</div>
             <div className='stat-value'>
-              {props.thread.details["thread_tweets"].length}
+              {props.thread.details["thread_tweets"].length + 1}
             </div>
           </div>
 

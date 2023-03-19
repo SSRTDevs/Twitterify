@@ -1,8 +1,7 @@
 # from setups.tweepy_cred import api
 from helper.api import closest_trends, search_trending_tweets, get_place_trends, search_tweets
+from helper.utilities import get_full_text, clean_text, current_time
 from geopy.geocoders import Nominatim
-from datetime import datetime
-import re
 from setups.model_setup import tweet_summarizer, tweet_analyser
 
 def get_trend_count_name(trends, topic_count):
@@ -36,8 +35,8 @@ def get_locations_woeid(latitude , longitude):
 def get_topic_tweets(topic_name, tweet_count, geocode):
     topic_tweets = []
     for tweet in search_trending_tweets(topic_name, geocode, tweet_count):
-        full_text = tweet._json["full_text"]
-        full_text = re.sub(r'\bRT\b', 'Retweet by', full_text)
+        full_text = get_full_text(tweet) 
+        full_text = clean_text(full_text)
         topic_tweets.append(full_text)
     return topic_tweets
 
@@ -56,7 +55,7 @@ def get_trending_tweets(location, tweet_count = 5, topic_count = 4):
     for topic_count_name in topics_count_name:
         topic_name = topic_count_name[1]
         topic_tweet_count = topic_count_name[0]
-        time_stamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        time_stamp = current_time()
         topic_tweets = get_topic_tweets(topic_name, tweet_count, geocode)
         topic_object = {
             "topic_name": topic_name,
@@ -70,14 +69,13 @@ def get_trending_tweets(location, tweet_count = 5, topic_count = 4):
 
 def get_hashtag_tweets(hashtag):
     hashtag = "#" + hashtag
-    time_stamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    # More than 100 tweets cannot be retreived
+    time_stamp = current_time()
     tweet_count = 10
     hashtag_tweets = []
     
-    for tweet in search_tweets(hashtag,tweet_count):
-        full_text = tweet._json["full_text"]
-        full_text = re.sub(r'\bRT\b', 'Retweet by', full_text)
+    for tweet in search_tweets(hashtag, tweet_count):
+        full_text = get_full_text(tweet) 
+        full_text = clean_text(full_text)
         hashtag_tweets.append(full_text)
         
     res_obj = {
