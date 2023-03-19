@@ -50,9 +50,9 @@ def hashtag_analysis(hashtag):
     hashtag_tweets_sentiment = tweet_analyser(hashtag_tweets_payload["hashtag_tweets"])
 
     res_obj = {
-            "hashtag_tweets" : hashtag_tweets_payload["hashtag_tweets"],
-            "hashtag" : hashtag_tweets_payload["hashtag"],
-            "hashtag_tweet_count" : hashtag_tweets_payload["hashtag_tweet_count"],
+            "topic_tweets" : hashtag_tweets_payload["hashtag_tweets"],
+            "topic_name" : hashtag_tweets_payload["hashtag"],
+            "topic_tweet_count" : hashtag_tweets_payload["hashtag_tweet_count"],
             "time_stamp" : hashtag_tweets_payload["time_stamp"],
             "summary": hashtag_tweets_summarization, 
             "pos": hashtag_tweets_sentiment["pos"], 

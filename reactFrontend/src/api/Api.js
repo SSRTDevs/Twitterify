@@ -37,9 +37,11 @@ const search_hash = async (tag, setTrends, setAlert) => {
     .get(`http://127.0.0.1:5000/hashtag/${tag}`)
     .then((res) => {
       setTrends((trends) => {
-        return { ...trends, show_tweets: [], hash_tweets: res.data };
+        let search_hash = [res.data] ; 
+        return {...trends, latest_trends: search_hash.concat(trends.latest_trends)} ;
       });
       setAlert({});
+      
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");

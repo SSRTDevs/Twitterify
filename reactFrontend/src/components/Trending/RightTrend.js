@@ -10,7 +10,7 @@ function Trending_tweets({ trends, className=""}) {
         <motion.div className={`chat chat-end w-full space-y-2 ${className}`}>
           {trends.show_tweets.map((item) => {
             return (
-              <div className="chat-bubble min-w-min max-w-full bg-[#2222224a]">{item}</div>
+              <div className="chat-bubble  text-left min-w-min max-w-full bg-[#2222224a]">{item}</div>
             );
           })}
         </motion.div>
@@ -49,13 +49,13 @@ function Hashtag_tweets({ trends }) {
         </div>
       </div>
 
-      <div className="border border-[#2a2a2a] p-2 rounded space-y-2 mt-2 h-2/3">
+      <div className="p-2 rounded space-y-2 mt-2 h-2/3">
         <p className='text-lg h-heading'>Tweets</p>
         <div className="h-body overflow-y-scroll">
         <div className="chat chat-end w-full space-y-2">
           {
             trends.hash_tweets["hashtag_tweets"].map((tweet,idx)=>{
-              return <div className="chat-bubble bg-[#2222224a]">{tweet}</div>
+              return <div className="chat-bubble text-left bg-[#2222224a]">{tweet}</div>
             })
           }
         </div>

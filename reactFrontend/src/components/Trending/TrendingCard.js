@@ -85,7 +85,7 @@ function TrendingCard({
                             <span style={{ color: "yellow" }}>Neutral: {trend.neu} &nbsp; &nbsp;</span>
                         </h6> */}
 
-            <p className="card-text">{trend.summary}</p>
+            <p className="card-text text-left">{trend.summary}</p>
 
             <div className="endbar flex justify-between w-full">
               <p className="text-xs text-left text-[#707070]">
