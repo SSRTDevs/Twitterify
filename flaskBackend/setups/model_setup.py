@@ -81,14 +81,6 @@ def tweet_topic(combined_tweets):
     class_mapping = topic_model.config.id2label
     num_labels = topic_model.config.num_labels
 
-<<<<<<< HEAD
-    # Concatenate the list of strings and truncate to a maximum length of 1024
-    text = " ".join(combined_tweets)[:1024]
-
-    # Tokenize the truncated text with a larger max_length
-    tokens = topic_tokenizer(text, max_length=1024, truncation=True, return_tensors='pt')
-    output = topic_model(**tokens)
-=======
     # Update class_mapping dictionary to include all possible keys
     for i in range(num_labels):
         if i not in class_mapping:
@@ -115,7 +107,6 @@ def tweet_topic(combined_tweets):
             scores = output[0][0].detach().numpy()
         else:
             scores = np.concatenate((scores, output[0][0].detach().numpy()), axis=0)
->>>>>>> f2d2721dbd3dea2fd8c7daaed98331ef2c7ae04f
 
     scores = expit(scores)
     predictions = (scores >= 0.5) * 1
