@@ -68,6 +68,7 @@ function TrendingCard({
         <div
           id={`${hashtag}`}
           className="card shadow-md rounded !bg-[#2222224a]"
+          style={{margin: "2vh 1vw"}}
         >
           <div className="card-body p-5 space-y-1">
             <div className="topbar w-full flex justify-between ">

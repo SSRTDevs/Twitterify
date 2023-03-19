@@ -28,7 +28,7 @@ export default function Tabs({ tabs }) {
         className="god-container grid grid-cols-6 h-screen "
         data-theme={Themes[themeIndex]}
       >
-        <div className="left-section h-screen col-span-4 flex flex-col w-full p-4">
+        <div className="left-section h-screen col-span-4 flex flex-col w-full p-4 px-5 border-r border-zinc-800">
           <div className="top-container h-1/10 flex justify-between items-center mb-2 p-2 border-b border-base-300">
             <div
               className="avatar tooltip tooltip-bottom cursor-pointer"

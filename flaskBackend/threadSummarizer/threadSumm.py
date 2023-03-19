@@ -1,7 +1,7 @@
 import re 
 # from setups.tweepy_cred import api
 from helper.utilities import get_full_text
-from helper.utilities import get_profile_image_url
+from helper.utilities import format_profile_image_url
 from helper.api import search_tweets
 from setups.model_setup import tweet_summarizer,tweet_analyser
 import urlexpander
@@ -28,7 +28,7 @@ def thread_summarizer(url, count = 20):
             username = tweet._json['user']['name']
 
         if(not profile_image_url):
-            profile_image_url = get_profile_image_url(tweet._json['user']['profile_image_url_https'])
+            profile_image_url = format_profile_image_url(tweet._json['user']['profile_image_url_https'])
 
         thread_tweets.append(get_full_text(tweet))
 

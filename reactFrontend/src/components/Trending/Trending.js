@@ -24,10 +24,10 @@ export default function Trending({ trends, setTrends, setAlert }) {
     return (
         <>
             <div className="w-full h-full flex items-center flex-col space-y-2 px-2">
-                <div className="topSection h-1/10 w-full flex items-center justify-between">
+                <div className="topSection h-1/10 w-full flex items-center justify-between px-[2vw]">
                     <TrendingCard.Dropdown trends={trends} />
                     <div className="form-control">
-                        <div className="input-group">
+                        <div className="input-group border border-zinc-800 rounded-sm">
                             <input
                                 type="text"
                                 placeholder="Enter any hashtag"
@@ -57,7 +57,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
                     </div>
                 </div>
 
-                <div className="h-9/10 overflow-y-scroll pr-2">
+                <div className="h-9/10 overflow-y-scroll pr-2 px-3">
                     {trends.latest_trends.map((trend, idx) => (
                         <TrendingCard
                             key={idx}
