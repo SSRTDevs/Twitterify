@@ -72,7 +72,7 @@ def get_hashtag_tweets(hashtag):
     hashtag = "#" + hashtag
     time_stamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     # More than 100 tweets cannot be retreived
-    tweet_count = 100
+    tweet_count = 10
     hashtag_tweets = []
     
     for tweet in search_tweets(hashtag,tweet_count):

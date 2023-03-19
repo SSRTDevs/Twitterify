@@ -22,15 +22,15 @@ function Trending_tweets({ trends, className=""}) {
 function Hashtag_tweets({ trends }) {
   return (
     <div className="h-full">
-      <div className="text-neutral-content !bg-[#2222224a] h-1/3 overflow-y-scroll">
-        <div className="py-4 px-6 space-y-1">
+      <div className="text-neutral-content !bg-[#2222224a] h-1/3 flex flex-col justify-between">
+        <div className="py-4 px-6 space-y-1 h-48 overflow-y-scroll">
           <h2 className="card-title">{trends.hash_tweets["hashtag"]}</h2>
-          <p>{trends.hash_tweets["summary"]}</p>
+          <p className="text-left">{trends.hash_tweets["summary"]}</p>
           <p className="text-xs text-left text-[#707070] pr-2">
             {trends.hash_tweets["time_stamp"]}
           </p>
         </div>
-        <div className="flex justify-between w-48 mx-auto text-xl cursor-auto">
+        <div className="flex justify-between w-48 mx-auto text-xl cursor-auto p-2">
             <div className="tooltip tooltip-left" data-tip="Positive">
               <span className="text-green-500">
                 🙂  {trends.hash_tweets["pos"]}

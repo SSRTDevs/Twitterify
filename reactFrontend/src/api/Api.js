@@ -109,26 +109,33 @@ const user_summarizer = async (user, setUser, setAlert) => {
     
     let tweets = Object.keys(user_details.sentiments["Tweet"]).map((idx)=>  user_details.sentiments["Tweet"][idx]) ; 
     let data = { tweets: tweets };
-    const user_topics = await axios.post("http://localhost:5000/topic", JSON.stringify(data)).then((res) => {
-      return res.data ; 
-    }).catch((err) => {
-      console.log(err);
-      setAlert({
-        error: "Seems like an error in API call", 
-        type: "error"
-      })
-    });
-
+    const user_topics = await get_topics(tweets,setAlert) ;
     setAlert({})
-
     console.log(user_topics)
     setUser((user)=> {
       return {...user, details: user_details, clouds: user_cloud, topics: user_topics}
     })
 };
 
+const get_topics = async (tweets, setAlert) => {
+  let data = { tweets: tweets };
+  let topics = [] ; 
+  await axios.post("http://localhost:5000/topic", JSON.stringify(data)).then((res) => {
+    topics = res.data 
+  }).catch((err) => {
+    setAlert({
+      error: "Seems like an error while fetching topics", 
+      type: "error"
+    });
+    setTimeout(() => {
+      setAlert({});
+    }, 3000);
+  })
+  return topics ;
+}
+
 const thread_summarizer = async (thread, setThread, setAlert) => {
-  await axios
+  return await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
     )

@@ -1,6 +1,4 @@
 import { React, useState } from "react";
-import { FiTwitter } from "react-icons/fi";
-import twitter_logo from "../images/twitter_logo.png";
 
 export default function Drawer({ tabs }) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -11,7 +9,7 @@ export default function Drawer({ tabs }) {
         data-theme="black"
       >
 
-        <div className="container h-full overflow-y-scroll text-center p-1">
+        <div className="container h-full overflow-y-scroll text-center p-2">
           {tabs[activeTabIndex].leftComponent}
         </div>
 

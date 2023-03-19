@@ -27,7 +27,7 @@ export default function RightUser({ user }) {
         </div>
       </div>
 
-      <div className='h-auto w-full checker-bg flex flex-col items-start rounded-lg border border-base-300 p-4 space-y-2 mt-3'>
+      <div className='h-auto w-full text-center checker-bg flex flex-col items-center rounded-lg border border-base-300 p-4 space-y-2 mt-3'>
         <div className='w-full text-2xl'>Statistics</div>
 
         <div className='stat-container grid grid-cols-2'>
