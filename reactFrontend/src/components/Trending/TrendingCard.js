@@ -5,12 +5,8 @@ import { Breakpoint } from "react-socks";
 function Collapse({ RightComponent, click }) {
   return (
     <div onClick={click} tabIndex={0} className="collapse w-full">
-      <div className="link collapse-title text-sm text-right">
-        Read more
-      </div>
-      <div className="collapse-content w-full">
-        {RightComponent}
-      </div>
+      <div className="link collapse-title text-sm text-right">Read more</div>
+      <div className="collapse-content w-full">{RightComponent}</div>
     </div>
   );
 }
@@ -70,11 +66,28 @@ function TrendingCard({
           className="card shadow-md rounded !bg-[#2222224a]"
         >
           <div className="card-body p-5 space-y-1">
-            <div className="topbar w-full flex justify-between ">
-              <h5 className="card-title w-fit">{hashtag}</h5>
-              <p className="text-sm text-right w-fit text-gray-400 hover:text-gray-300">
-                {trend.topic_tweet_count} tweets posted
-              </p>
+            <div className="topbar w-full flex justify-between items-center">
+              <h5 className="card-title">{hashtag}</h5>
+              <div className="flex justify-between gap-6 text-center mx-auto text-xl cursor-auto p-2">
+                <div className="tooltip tooltip-left" data-tip="Positive">
+                  <span className="text-green-500">
+                    🙂 &nbsp; {trend["pos"]}
+                  </span>
+                </div>
+                <div className="tooltip tooltip-top" data-tip="Negative">
+                  <span className="text-red-500">
+                    🙁 &nbsp; {trend["neg"]}
+                  </span>
+                </div>
+                <div className="tooltip tooltip-right" data-tip="Neutral">
+                  <span className="text-yellow-500">
+                    😐 &nbsp; {trend["neu"]}
+                  </span>
+                </div>
+              </div>
+              <div className="text-sm text-right text-gray-400 hover:text-gray-300">
+                {trend.topic_tweet_count} &nbsp; tweets posted
+              </div>
             </div>
 
             {/* <h6 className='card-subtitle text-muted'>Cricket</h6> */}
@@ -92,7 +105,10 @@ function TrendingCard({
                 {trend.time_stamp}
               </p>
               <Breakpoint small down>
-                <Collapse RightComponent={RightComponent} click={() => setReadTweets(index)}/>
+                <Collapse
+                  RightComponent={RightComponent}
+                  click={() => setReadTweets(index)}
+                />
               </Breakpoint>
               <Breakpoint medium up>
                 <a
@@ -106,7 +122,6 @@ function TrendingCard({
               </Breakpoint>
             </div>
           </div>
-          
         </div>
       </motion.div>
     </>
