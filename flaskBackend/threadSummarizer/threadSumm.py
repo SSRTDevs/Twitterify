@@ -1,5 +1,7 @@
 import re 
 # from setups.tweepy_cred import api
+from helper.utilities import get_full_text
+from helper.utilities import get_profile_image_url
 from helper.api import search_tweets
 from setups.model_setup import tweet_summarizer,tweet_analyser
 import urlexpander
@@ -26,12 +28,12 @@ def thread_summarizer(url, count = 20):
             username = tweet._json['user']['name']
 
         if(not profile_image_url):
-            profile_image_url = tweet._json['user']['profile_image_url_https']
+            profile_image_url = get_profile_image_url(tweet._json['user']['profile_image_url_https'])
 
-        thread_tweets.append(tweet._json['full_text'])
+        thread_tweets.append(get_full_text(tweet))
 
         link_regex = '((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)'
-        urls = re.findall(link_regex, tweet._json['full_text'])
+        urls = re.findall(link_regex, get_full_text(tweet))
         for url in urls:
             references.append(url[0])
     
@@ -52,8 +54,9 @@ def thread_summarizer(url, count = 20):
 
     q = "from:{0} conversation_id:{1}".format(screen_name, tweet_id)
     for tweet in search_tweets(q, count):
-        if tweet._json['full_text'] not in thread_tweets:
-            reply_tweets.append(tweet._json['full_text'])
+        full_text = get_full_text(tweet)
+        if full_text not in thread_tweets:
+            reply_tweets.append(full_text)
 
     thread_tweets.reverse()
 

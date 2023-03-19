@@ -1,5 +1,7 @@
 # from setups.tweepy_cred import api
 from helper.api import get_user,search_tweets, user_timeline
+from helper.utilities import get_full_text
+from helper.utilities import get_profile_image_url
 import calendar
 from datetime import datetime
 import tweepy
@@ -87,20 +89,20 @@ def get_user_details(username, user_obj, user_tweets_data):
     name = user_obj._json['name']
     description = user_obj._json['description']
     followers = format_followers_count(user_obj._json['followers_count'])
-    profile_image_url = user_obj._json['profile_image_url_https']
+    profile_image_url = get_profile_image_url(user_obj._json['profile_image_url'])
     created_at = user_obj._json['created_at']
     arr = created_at.split()
     created_at = arr[1] + ", " + arr[-1]
 
     user_tweets = []
     for tweet in user_tweets_data:
-        user_tweets.append(tweet._json['full_text'])
+        user_tweets.append(get_full_text(tweet))
 
     q = "@{0} and -filter:retweets".format(username)
     mention_tweets_data = search_tweets(q, 1)
     mention_tweets = []
     for tweet in mention_tweets_data:
-        mention_tweets.append(tweet._json['full_text'])
+        mention_tweets.append(get_full_text(tweet))
 
     user_details = {
         "result": "success",
@@ -160,7 +162,7 @@ def profile_summary(username):
     try:
         user_obj = get_user(username)
         user_id = user_obj._json['id']
-        user_tweets_data = user_timeline(user_id, username, 500)
+        user_tweets_data = user_timeline(user_id, username, 50)
     
     except tweepy.errors.Unauthorized:
         res_obj = {

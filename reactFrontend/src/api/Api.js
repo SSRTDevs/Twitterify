@@ -28,8 +28,9 @@ const trending = async (trends, setTrends, setAlert) => {
 };
 
 const search_hash = async (tag, setTrends, setAlert) => {
+  tag = tag.replace(/^#/, "");
   setAlert({
-    error: `Fetching tweets for ${tag}...`,
+    error: `Fetching tweets for #${tag}...`,
     type: "info",
   });
   await axios
