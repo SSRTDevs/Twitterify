@@ -19,7 +19,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
           />
         </div>
       </div>
-      <div className="h-9/10 overflow-y-scroll pr-2">
+      <div className="h-9/10 overflow-y-scroll px-4">
         <div
           tabIndex={0}
           className="collapse collapse-open border border-base-300 bg-base-100 rounded-box h-fit"
