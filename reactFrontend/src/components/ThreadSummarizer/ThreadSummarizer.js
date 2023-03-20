@@ -3,6 +3,12 @@ import {RightThread, Threadtabs} from "../";
 import {Breakpoint} from "react-socks"
 
 export default function ThreadSummarizer({ thread, setThread }) {
+
+  const removeSlug = (url) => {
+    url = url.split("?")[0];
+    return url
+  }
+
   return (
     <>
       <div className="container mx-auto w-[75%] h-1/10">
@@ -13,7 +19,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
             className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base"
             placeholder="Enter Thread URL"
             onChange={(e) => {
-              setThread({ ...thread, url: e.target.value });
+              setThread({ ...thread, url: removeSlug(e.target.value) });
             }}
           />
         </div>
@@ -21,7 +27,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
       <div className="h-9/10 overflow-y-scroll px-4">
         <div
           tabIndex={0}
-          className="!bg-[#2222224a] collapse collapse-open rounded-box h-fit"
+          className="!bg-[#1c1c1c] collapse collapse-open rounded-box h-fit"
         >
           <div className="collapse-title text-xl font-medium">
             Thread Summary
