@@ -24,7 +24,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
     return (
         <>
             <div className="w-full h-full flex items-center flex-col space-y-2 px-2">
-                <div className="topSection h-1/10 w-full flex items-center justify-between px-[2vw]">
+                <div className="topSection h-1/10 w-full flex justify-between px-[2vw] mt-2">
                     <TrendingCard.Dropdown trends={trends} />
                     <div className="form-control">
                         <div className="input-group border border-zinc-800 rounded-sm">
@@ -53,6 +53,11 @@ export default function Trending({ trends, setTrends, setAlert }) {
                                     />
                                 </svg>
                             </button>
+                        </div>
+                        <div className="flex items-center text-gray-500 text-xs ml-auto mt-1">
+                            <div>
+                                Last fetched: <span>{trends.latest_trends[0].time_stamp}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
