@@ -14,3 +14,4 @@ export { default as MentionTweets } from "./UserSummarizer/UserTabsComponent/Men
 export { default as UserTimeline } from "./UserSummarizer/UserTabsComponent/UserTimeline";
 export { default as Alert } from "./Alert";
 export { default as Carousel } from "./ThreadSummarizer/Carousel";
+export {default as Threadtabs} from "./ThreadSummarizer/Threadtabs";
