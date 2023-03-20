@@ -1,9 +1,14 @@
 import { React } from "react";
-import {Carousel} from "../";
-import {RightThread} from "../";
+import {RightThread, Threadtabs} from "../";
 import {Breakpoint} from "react-socks"
 
 export default function ThreadSummarizer({ thread, setThread }) {
+
+  const removeSlug = (url) => {
+    url = url.split("?")[0];
+    return url
+  }
+
   return (
     <>
       <div className="container mx-auto w-[75%] h-1/10">
@@ -14,20 +19,20 @@ export default function ThreadSummarizer({ thread, setThread }) {
             className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base"
             placeholder="Enter Thread URL"
             onChange={(e) => {
-              setThread({ ...thread, url: e.target.value });
+              setThread({ ...thread, url: removeSlug(e.target.value) });
             }}
           />
         </div>
       </div>
-      <div className="h-9/10 overflow-y-scroll pr-2">
+      <div className="h-9/10 overflow-y-scroll px-4">
         <div
           tabIndex={0}
-          className="collapse collapse-open border border-base-300 bg-base-100 rounded-box h-fit"
+          className="!bg-[#1c1c1c] collapse collapse-open rounded-box h-fit"
         >
           <div className="collapse-title text-xl font-medium">
             Thread Summary
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content text-left">
             {Object.keys(thread.details).length === 0 ? (
               <p>No summary to show</p>
             ) : (
@@ -35,8 +40,10 @@ export default function ThreadSummarizer({ thread, setThread }) {
             )}
           </div>
         </div>
-        <div className="text-center w-full space-y-4 checker-bg border border-base-300 rounded-lg px-3 py-2 border mt-3 justify-around gap-3">
-          <div className="collapse m-auto w-80 collapse-arrow">
+
+        <div className="text-center w-full space-y-4 px-3 py-2 mt-3 justify-around gap-3">
+          <Threadtabs references={thread.details["references"]}/>
+          {/* <div className="collapse m-auto w-80 collapse-arrow">
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
               Reference/Links
@@ -62,8 +69,9 @@ export default function ThreadSummarizer({ thread, setThread }) {
             <span style={{ textAlign: "left" }}>No references to show</span>
           ) : (
             <Carousel thread={thread} />
-          )}
+          )} */}
         </div>
+
       </div>
       <Breakpoint small down>
         <br/>

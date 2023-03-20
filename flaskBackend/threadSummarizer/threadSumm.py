@@ -1,11 +1,8 @@
 import re 
-# from setups.tweepy_cred import api
-from helper.utilities import get_full_text
-from helper.utilities import format_profile_image_url
+from helper.utilities import get_full_text, format_profile_image_url
 from helper.api import search_tweets
 from setups.model_setup import tweet_summarizer,tweet_analyser
 import urlexpander
-
 
 # def thread_feed_model(thread_tweets):
 #     thread_summary = tweet_summarizer(' '.join(thread_tweets))
@@ -50,8 +47,6 @@ def thread_summarizer(url, count = 20):
             else:
                 sites.append(url)
 
-
-
     q = "from:{0} conversation_id:{1}".format(screen_name, tweet_id)
     for tweet in search_tweets(q, count):
         full_text = get_full_text(tweet)
@@ -67,5 +62,5 @@ def thread_summarizer(url, count = 20):
         'profile_image_url': profile_image_url,
         'references' : {"urls": sites, "images": images}
     }
-    print(res_obj)
+    
     return res_obj

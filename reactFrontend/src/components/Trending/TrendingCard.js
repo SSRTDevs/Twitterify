@@ -1,50 +1,48 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Breakpoint } from "react-socks";
+import { MdSentimentNeutral , MdSentimentSatisfiedAlt, MdSentimentVeryDissatisfied } from "react-icons/md"
 
 function Collapse({ RightComponent, click }) {
-  return (
-    <div onClick={click} tabIndex={0} className="collapse w-full">
-      <div className="link collapse-title text-sm text-right">Read more</div>
-      <div className="collapse-content w-full">{RightComponent}</div>
-    </div>
-  );
+    return (
+        <div onClick={click} tabIndex={0} className="collapse w-full">
+            <div className="link collapse-title text-sm text-right">Read more</div>
+            <div className="collapse-content w-full">{RightComponent}</div>
+        </div>
+    );
 }
 
 function TrendingDropdown({ trends }) {
-  const smoothScroll = (hashtag) => {
-    const element = document.getElementById(hashtag);
-    if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-  return (
-    <>
-      <div className="dropdown">
-        <label tabIndex={0} className="btn btn-sm normal-case">
-          Trending Today
-        </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-fit"
-        >
-          {trends.latest_trends.map((trend, idx) => (
-            <li>
-              <a
-                key={idx}
-                className="text-sm"
-                style={{ textDecoration: "none", cursor: "pointer" }}
-                onClick={() => smoothScroll(trend.topic_name)}
-              >
-                {trend.topic_name.replaceAll(" ", "_")}{" "}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
-  );
+    const smoothScroll = (hashtag) => {
+        const element = document.getElementById(hashtag);
+        if (element) {
+            // 👇 Will scroll smoothly to the top of the next section
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+    return (
+        <>
+            <div className="dropdown">
+                <label tabIndex={0} className="btn btn-sm normal-case">
+                    Trending Today
+                </label>
+                <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-fit">
+                    {trends.latest_trends.map((trend, idx) => (
+                        <li>
+                            <a
+                                key={idx}
+                                className="text-sm"
+                                style={{ textDecoration: "none", cursor: "pointer" }}
+                                onClick={() => smoothScroll(trend.topic_name)}
+                            >
+                                {trend.topic_name.replaceAll(" ", "_")}{" "}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </>
+    );
 }
 
 function TrendingCard({
