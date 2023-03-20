@@ -12,7 +12,7 @@ export default function RightThread(props) {
         <div className='h-auto w-full flex items-center border-black-700  rounded-lg p-4  bg-neutral-800'>
           <div className='avatar'>
             <div className='w-16 rounded-full ring ring-twitter-200 ring-offset-base-100 ring-offset-1'>
-              <img src={props.thread.details["profile_image_url"]} alt="profile_image"/>
+              <img src={props.thread.details["profile_image_url"]} alt="profile_image" />
             </div>
           </div>
           <div className='ml-[5%]'>
@@ -51,7 +51,24 @@ export default function RightThread(props) {
       </div>
 
       <br />
+      <div className="h-auto w-full checker-bg rounded-lg border border-base-300 p-4 mt-3">
+        <div className="w-full text-2xl">Thread About</div>
 
+        <div className="text-left w-full p-4 flex flex-wrap gap-0.5">
+          {props.thread.details["topic"] &&
+            props.thread.details["topic"].map((topic, idx) => {
+              return (
+                <>
+                  {" "}
+                  <div className="badge border-twitter-100 rounded-full bg-twitter-100 text-white">
+                    {topic}
+                  </div>{" "}
+                  &nbsp;{" "}
+                </>
+              );
+            })}
+        </div>
+      </div>
       <div className='overflow-y-scroll p-4 h-96 w-full checker-bg border rounded border border-base-300'>
         <div className='w-full'>
           <div className='text-2xl'>Replies</div>

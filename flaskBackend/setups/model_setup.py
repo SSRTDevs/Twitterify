@@ -83,7 +83,7 @@ def tweet_topic(combined_tweets):
     text = " ".join(combined_tweets)[:1024]
 
     # Tokenize the truncated text with a larger max_length
-    tokens = topic_tokenizer(text, max_length=1024, truncation=True, return_tensors='pt')
+    tokens = topic_tokenizer(text, max_length=1024, truncation=True, return_tensors='pt' )
     output = topic_model(**tokens)
 
     scores = output[0][0].detach().numpy()

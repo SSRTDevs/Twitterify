@@ -55,60 +55,66 @@ function TrendingCard({
   RightComponent,
 }) {
   return (
-      <>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <div id={`${hashtag}`} className="card shadow-md rounded !bg-[#2222224a]" style={{ margin: "2vh 1vw" }}>
-                  <div className="card-body p-5 space-y-1">
-                      <div className="topbar w-full flex justify-between items-center">
-                          <div className="flex flex-col items-start">
-                              <h4 className="card-title">{hashtag}</h4>
-                              <div className="text-xs text-right text-gray-400 hover:text-gray-300">
-                                  <span className="font-bold">{trend.topic_tweet_count}</span> tweets posted
-                              </div>
-                          </div>
-                          <div className="flex justify-between gap-3 text-center text-xl cursor-auto p-2">
-                              <div className="tooltip tooltip-left" data-tip="Positive">
-                                  <span className="text-green-500">🙂 {trend["pos"]}</span>
-                              </div>
-                              <div className="tooltip tooltip-top" data-tip="Negative">
-                                  <span className="text-red-500">🙁 {trend["neg"]}</span>
-                              </div>
-                              <div className="tooltip tooltip-right" data-tip="Neutral">
-                                  <span className="text-yellow-500">😐 {trend["neu"]}</span>
-                              </div>
-                          </div>
-                      </div>
-
-                      {/* <h6 className='card-subtitle text-muted'>Cricket</h6> */}
-                      {/* <h6 className="card-subtitle">
-                            Sentiment Stats: &nbsp; &nbsp;
-                            <span style={{ color: "green" }}>Pos: {trend.pos} &nbsp; &nbsp;</span>
-                            <span style={{ color: "red" }}>Neg: {trend.neg} &nbsp; &nbsp;</span>
-                            <span style={{ color: "yellow" }}>Neutral: {trend.neu} &nbsp; &nbsp;</span>
-                        </h6> */}
-
-                      <p className="card-text text-left">{trend.summary}</p>
-
-                      <div className="endbar flex justify-end w-full">
-                          {/* <p className="text-xs text-left text-[#707070]">{trend.time_stamp}</p> */}
-                          <Breakpoint small down>
-                              <Collapse RightComponent={RightComponent} click={() => setReadTweets(index)} />
-                          </Breakpoint>
-                          <Breakpoint medium up>
-                              <a
-                                  className="link text-right"
-                                  onClick={() => {
-                                      setReadTweets(index);
-                                  }}
-                              >
-                                  Read Tweets
-                              </a>
-                          </Breakpoint>
-                      </div>
-                  </div>
+    <>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <div id={`${hashtag}`} className="card shadow-md rounded !bg-[#2222224a]" style={{ margin: "2vh 1vw" }}>
+          <div className="card-body p-5 space-y-1">
+            <div className="topbar w-full flex justify-between items-center">
+              <div className="flex flex-col items-start">
+                <h4 className="card-title">{hashtag}</h4>
+                <div className="text-xs text-right text-gray-400 hover:text-gray-300">
+                  <span className="font-bold">{trend.topic_tweet_count}</span> tweets posted
+                </div>
               </div>
-          </motion.div>
-      </>
+              <br></br>
+              <>
+                {trend.topic &&
+                  trend.topic.map((topic, idx) => {
+                    return (
+                      <>
+                        {" "}
+                        <div className="badge border-twitter-100 rounded-full bg-twitter-100 text-white">
+                          {topic}
+                        </div>{" "}
+                        &nbsp;{" "}
+                      </>
+                    );
+                  })}
+              </>
+              <div className="flex justify-between gap-3 text-center text-xl cursor-auto p-2">
+                <div className="tooltip tooltip-left" data-tip="Positive">
+                  <span className="text-green-500">🙂 {trend["pos"]}</span>
+                </div>
+                <div className="tooltip tooltip-top" data-tip="Negative">
+                  <span className="text-red-500">🙁 {trend["neg"]}</span>
+                </div>
+                <div className="tooltip tooltip-right" data-tip="Neutral">
+                  <span className="text-yellow-500">😐 {trend["neu"]}</span>
+                </div>
+              </div>
+            </div>
+            <p className="card-text text-left">{trend.summary}</p>
+
+            <div className="endbar flex justify-end w-full">
+              {/* <p className="text-xs text-left text-[#707070]">{trend.time_stamp}</p> */}
+              <Breakpoint small down>
+                <Collapse RightComponent={RightComponent} click={() => setReadTweets(index)} />
+              </Breakpoint>
+              <Breakpoint medium up>
+                <a
+                  className="link text-right"
+                  onClick={() => {
+                    setReadTweets(index);
+                  }}
+                >
+                  Read Tweets
+                </a>
+              </Breakpoint>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </>
   );
 }
 

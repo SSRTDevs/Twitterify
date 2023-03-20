@@ -138,6 +138,10 @@ const get_topics = async (tweets, setAlert) => {
 }
 
 const thread_summarizer = async (thread, setThread, setAlert) => {
+  setAlert({
+    error: "Fetching thread details...",
+    type: "info",
+  });
   return await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
@@ -147,6 +151,7 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
       setThread((thread) => {
         return { ...thread, details: res.data };
       });
+      setAlert({})
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");

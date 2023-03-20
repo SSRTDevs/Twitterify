@@ -27,11 +27,14 @@ def process_trending_tweets():
     for object in trending_payload:
         trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
         trending_tweets_sentiment = tweet_analyser(object["topic_tweets"])
+        trending_tweets_topics = tweet_topic(object["topic_tweets"])
+        
         res_obj = {
             "topic_tweets" : object["topic_tweets"],
             "topic_name" : object["topic_name"],
             "topic_tweet_count" : object["topic_tweet_count"],
             "time_stamp" : object["time_stamp"],
+            "topic": trending_tweets_topics,
             "summary": trending_tweets_summarization, 
             "pos": trending_tweets_sentiment["pos"], 
             "neg": trending_tweets_sentiment["neg"], 
@@ -48,12 +51,14 @@ def hashtag_analysis(hashtag):
     
     hashtag_tweets_summarization = tweet_summarizer(' '.join(hashtag_tweets_payload["hashtag_tweets"]))
     hashtag_tweets_sentiment = tweet_analyser(hashtag_tweets_payload["hashtag_tweets"])
+    hashtag_tweet_topics = tweet_topic(hashtag_tweets_payload["hashtag_tweets"])
 
     res_obj = {
             "topic_tweets" : hashtag_tweets_payload["hashtag_tweets"],
             "topic_name" : hashtag_tweets_payload["hashtag"],
             "topic_tweet_count" : hashtag_tweets_payload["hashtag_tweet_count"],
             "time_stamp" : hashtag_tweets_payload["time_stamp"],
+            "topic": hashtag_tweet_topics,
             "summary": hashtag_tweets_summarization, 
             "pos": hashtag_tweets_sentiment["pos"], 
             "neg": hashtag_tweets_sentiment["neg"], 
@@ -64,6 +69,7 @@ def hashtag_analysis(hashtag):
 @app.route("/topic", methods=['POST'])
 def topic(): 
     data = request.get_json(force=True)["tweets"]
+    print(data)
     return make_response(tweet_topic(data))
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
@@ -98,6 +104,7 @@ def thread_summary(url):
     thread_obj = thread_summarizer(url)
     thread_obj['thread_summary'] = tweet_summarizer(' '.join(thread_obj['thread_tweets']))
     thread_obj['thread_sentiment'] = tweet_analyser(thread_obj['thread_tweets'])
+    thread_obj['topic'] = tweet_topic(thread_obj['thread_tweets'])
     # thread_obj['thread_summary'], thread_obj['thread_sentiment'] = thread_feed_model(
     #     thread_obj['thread_tweets'])
 
@@ -111,4 +118,3 @@ def get_summary():
     print(summarizer())
     return make_response(summarize(mock_text))
     # return make_response(summarizer())
-
