@@ -15,6 +15,19 @@ def clean_text(text):
 def current_time():
     return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
-def get_profile_image_url(profile_image_url):
+def format_profile_image_url(profile_image_url):
     profile_image_url = profile_image_url.replace('_normal', '')
     return profile_image_url
+
+def format_count(count):
+    if not isinstance(count, int):
+        count = int(count)
+
+    if count >= 10**9:
+        return f"{count/(10**9):.2f}B"
+    elif count >= 10**6:
+        return f"{count/(10**6):.2f}M"
+    elif count >= 10**3:
+        return f"{count/(10**3):.1f}K"
+    else:
+        return str(count)

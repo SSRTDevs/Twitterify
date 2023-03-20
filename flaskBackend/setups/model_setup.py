@@ -79,47 +79,23 @@ def summarize(text):
 
 def tweet_topic(combined_tweets):
     class_mapping = topic_model.config.id2label
-    num_labels = topic_model.config.num_labels
+     # Concatenate the list of strings and truncate to a maximum length of 1024
+    text = " ".join(combined_tweets)[:1024]
 
-    # Update class_mapping dictionary to include all possible keys
-    for i in range(num_labels):
-        if i not in class_mapping:
-            class_mapping[i] = str(i)
+    # Tokenize the truncated text with a larger max_length
+    tokens = topic_tokenizer(text, max_length=1024, truncation=True, return_tensors='pt')
+    output = topic_model(**tokens)
 
-    # Concatenate the list of strings
-    text = " ".join(combined_tweets)
-
-    # Split text into chunks of max length 1024
-    max_length = 1024
-    chunks = [text[i:i+max_length] for i in range(0, len(text), max_length)]
-
-    # Tokenize each chunk separately and feed to the model
-    outputs = []
-    for chunk in chunks:
-        tokens = topic_tokenizer(chunk, max_length=max_length, truncation = True ,return_tensors='pt')
-        output = topic_model(**tokens)
-        outputs.append(output)
-
-    # Aggregate the outputs from all the chunks
-    scores = None
-    for output in outputs:
-        if scores is None:
-            scores = output[0][0].detach().numpy()
-        else:
-            scores = np.concatenate((scores, output[0][0].detach().numpy()), axis=0)
-
+    scores = output[0][0].detach().numpy()
     scores = expit(scores)
     predictions = (scores >= 0.5) * 1
 
     output = []
     # Map to classes
     for i in range(len(predictions)):
-        try:
-            if predictions[i]:
-                output.append(class_mapping[i])
-        except KeyError:
-            pass
-    return output    
+        if predictions[i]:
+            output.append(class_mapping[i])
+    return output
 
 # example = [
 #   " Ye grandfather vala toh 'The Boys' moment ho gaya 😂",

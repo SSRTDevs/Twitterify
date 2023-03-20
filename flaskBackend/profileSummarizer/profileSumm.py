@@ -1,7 +1,6 @@
 # from setups.tweepy_cred import api
 from helper.api import get_user,search_tweets, user_timeline
-from helper.utilities import get_full_text
-from helper.utilities import get_profile_image_url
+from helper.utilities import get_full_text, format_profile_image_url,format_count
 import calendar
 from datetime import datetime
 import tweepy
@@ -24,18 +23,7 @@ def get_date_details(date_str):
 
     return month, week, key
 
-def format_followers_count(followers_count):
-    if not isinstance(followers_count, int):
-        followers_count = int(followers_count)
 
-    if followers_count >= 10**9:
-        return f"{followers_count/(10**9):.2f}B"
-    elif followers_count >= 10**6:
-        return f"{followers_count/(10**6):.2f}M"
-    elif followers_count >= 10**3:
-        return f"{followers_count/(10**3):.1f}K"
-    else:
-        return str(followers_count)
 
 def cleanTxt(text):
     text = re.sub('@[A-Za-z0–9]+', '', text)
@@ -88,8 +76,8 @@ def get_sentiments(user_tweets_data):
 def get_user_details(username, user_obj, user_tweets_data):
     name = user_obj._json['name']
     description = user_obj._json['description']
-    followers = format_followers_count(user_obj._json['followers_count'])
-    profile_image_url = get_profile_image_url(user_obj._json['profile_image_url'])
+    followers = format_count(user_obj._json['followers_count'])
+    profile_image_url = format_profile_image_url(user_obj._json['profile_image_url'])
     created_at = user_obj._json['created_at']
     arr = created_at.split()
     created_at = arr[1] + ", " + arr[-1]
