@@ -57,7 +57,7 @@ function TrendingCard({
   return (
       <>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <div id={`${hashtag}`} className="card shadow-md rounded !bg-[#2222224a]" style={{ margin: "2vh 1vw" }}>
+              <div id={`${hashtag}`} className="card shadow-md rounded !bg-[#2222224a] overflow-x-hidden"  style={{ margin: "2vh 1vw" }}>
                   <div className="card-body p-5 space-y-1">
                       <div className="topbar w-full flex justify-between items-center">
                           <div className="flex flex-col items-start">
