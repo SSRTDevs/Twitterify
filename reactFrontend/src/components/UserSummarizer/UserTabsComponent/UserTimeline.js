@@ -18,7 +18,7 @@ export default function UserTimeline({ user }) {
   return (
     <>
       {user.details.payload.length > 0 && (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mt-12">
           <label className='swap swap-active badge bg-gray-700 badge-outline mr-32 p-3 items-end self-end'>
             <div
               className={`${

@@ -57,12 +57,11 @@ let mock_trends = [
     neg: 0,
     neu: 3,
     pos: 0,
-    summary:
-      `The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
-      `,
+    summary:"",
     time_stamp: "25/02/2023 18:34:52",
     topic_name: "#Vande Bharat",
     topic_tweet_count: 437324,
+    topic: ["Politics", "Technology"],
     topic_tweets: [
       "Let’s count… How many coaches👇in Vande Bharat?",
       'How the railway rolling stock has evolved over the time.. ICF, LHB and the latest Vande Bharat at Sainagar Shirdi! ',
@@ -86,6 +85,7 @@ let mock_trends = [
     time_stamp: "25/02/2023 18:34:54",
     topic_name: "#RamCharanBossingOscars",
     topic_tweet_count: 357722,
+    topic: ["Entertainment", "film_&_television", "celebrity"],
     topic_tweets: [
       "నేను ఇక్కడ కూర్చొని మాట్లాడడం కాదు. I Want to Give My Time to You & Meet You All Personally. I Will Come to Your Tables ❤️ @AlwaysRamCharan Anna Love for fans 🙏🏻🫶",
       "It was a festival for the fans in LA, USA🥳 The meet & greet of our @AlwaysRamCharan with the fans couldn't have been more amazing🤩",
@@ -101,6 +101,7 @@ let mock_trends = [
     time_stamp: "25/02/2023 18:34:55",
     topic_name: "#CongressVoiceOfIndia",
     topic_tweet_count: 43968,
+    topic: ["Politics"],
     topic_tweets: [
       "A memorable picture with my inspiration &amp; soul of the @INCIndia Smt. Sonia Gandhi ji along with Former Minister my Sister Yashomati Thakur, MLA Praniti Shinde &amp; Brother Gurdeep Sappal \n\n#CongressVoiceOfIndia https://t.co/bRwEfaMjhm",
       '"I congratulate the congress party workers for the Yatra, the lakhs of people &amp; their enthusiasm for the Yatra &amp; I specially thank Shri Rahul Ji as his leadership was crucial for the Bharat Jodo Yatra"\n\n-Smt Sonia Gandhi Ji \n#CongressVoiceOfIndia https://t.co/qcbqmLmpTQ',
@@ -115,6 +116,7 @@ let mock_trends = [
     time_stamp: "25/02/2023 18:34:56",
     topic_name: "#SoftwareDeveloper",
     topic_tweet_count: 43075,
+    topic: ["Software", "Learning"],
     topic_tweets: [
       "HTML: The Language That Thinks It's a Programmer",
       "Yay!!! I just completed my first HTML/CSS project. I created a personal website for myself using HTML, css, and  @getbootstrap. Now moving on to JavaScript ✈️",
@@ -133,6 +135,7 @@ let mock_trends = [
     topic_name:
       "#ब्रिटिश साम्राज्य",
     topic_tweet_count: 36875,
+    topic: ["Politics", "Media"],
     topic_tweets: [
       "डियर #RavishKumar का यूट्यूब से पैगाम. ◆तानाशाही के दौर में लाखों खर्च कर पत्रकार बने पत्रकारों को दलाली करनी पड़ती है| ◆गोदी मीडिया की गुलामी से हमें लड़ना है!आप ब्रिटिश साम्राज्य को घूटनो पे लाये थे, मुझे यकीन है इस गुलामी से भी एक दिन बाहर आएंगे।",
       "वर्ष 1930 में आज के ही दिन साबरमती आश्रम से दांडी मार्च यात्रा प्रारम्भ हुआ था जिसने भारतीय स्वाधीनता आंदोलन को एक नई दिशा व ऊर्जा प्रदान की थी। ब्रिटिश साम्राज्य की बुनियाद को हिला देने वाले ऐतिहासिक 'दांडी मार्च' के समस्त सत्याग्रहियों को कोटि कोटि नमन।",
@@ -193,6 +196,7 @@ let mock_thread = {
   thread_summary:
     "Sacheil shares some of his life idealogies. Remove people who make you feel bad, both in the physical and digital worlds. Unfollow, mute, or block to improve happiness and avoid overcomplication.A good life is about subtraction as much as it is about addition.While it's important to surround ourselves with positivity, completely cutting out people from our lives may not always be feasible. Instead, we can try to focus on setting boundaries and limiting interactions with those who negatively impact us.",
   thread_sentiment: { pos: 8, neg: 0, neu: 2 },
+  topic: ["Way_of_life", "Healthy_lifestyle"]
 };
 
 let mock_user_details = {

@@ -20,3 +20,6 @@ def get_place_trends(woeid):
 
 def get_status(id):
     return api.get_status(id=id, tweet_mode='extended')
+
+def get_friends(screen_name): 
+    return api.get_friends(screen_name=screen_name,count=20,skip_status=False,include_entities=False)

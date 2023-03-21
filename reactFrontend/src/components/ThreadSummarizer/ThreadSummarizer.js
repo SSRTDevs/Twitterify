@@ -16,7 +16,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
           <input
             type="search"
             id="default-search"
-            className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base"
+            className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg"
             placeholder="Enter Thread URL"
             onChange={(e) => {
               setThread({ ...thread, url: removeSlug(e.target.value) });
@@ -43,33 +43,6 @@ export default function ThreadSummarizer({ thread, setThread }) {
 
         <div className="text-center w-full space-y-4 px-3 py-2 mt-3 justify-around gap-3">
           <Threadtabs references={thread.details["references"]}/>
-          {/* <div className="collapse m-auto w-80 collapse-arrow">
-            <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">
-              Reference/Links
-            </div>
-            <div className="collapse-content">
-              {Object.keys(thread.details).length === 0 ? (
-                <p>Summarize a Thread to see the links associated with it </p>
-              ) : (
-                thread.details["references"]["urls"].map((item, id) => {
-                  return (
-                    <div className="text-blue-600 dark:text-blue-500 hover:underline">
-                      <a href={item} target="blank" rel="noopener noreferrer">
-                        {item}
-                      </a>
-                    </div>
-                  );
-                })
-              )}
-            </div>
-          </div>
-
-          {Object.keys(thread.details).length === 0 ? (
-            <span style={{ textAlign: "left" }}>No references to show</span>
-          ) : (
-            <Carousel thread={thread} />
-          )} */}
         </div>
 
       </div>

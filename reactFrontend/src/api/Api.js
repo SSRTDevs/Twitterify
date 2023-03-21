@@ -1,13 +1,13 @@
 import axios from "axios";
 import { mock_tweets } from "../components/Mock_data";
 
-const trending = async (trends, setTrends, setAlert) => {
+const trending = async (trends, setTrends, setAlert, country = "India") => {
   setAlert({
-    error: "Fetching trending tweets...",
+    error: `Fetching trending tweets${country !== "India" ? " from " + country : ""}...`,
     type: "info",
   });
   await axios
-    .get(`http://127.0.0.1:5000/trending_tweets`)
+    .get(`http://127.0.0.1:5000/trending_tweets/${country}`)
     .then((res) => {
       console.log("Trending Tweets", res.data);
       setTrends((trends) => {
@@ -138,6 +138,10 @@ const get_topics = async (tweets, setAlert) => {
 }
 
 const thread_summarizer = async (thread, setThread, setAlert) => {
+  setAlert({
+    error: "Fetching thread details...",
+    type: "info",
+  });
   return await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
@@ -147,6 +151,7 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
       setThread((thread) => {
         return { ...thread, details: res.data };
       });
+      setAlert({})
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");

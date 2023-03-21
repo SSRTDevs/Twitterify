@@ -43,29 +43,31 @@ def get_topic_tweets(topic_name, tweet_count, geocode):
 def get_trending_tweets(location, tweet_count = 5, topic_count = 4):
     latitude, longitude, geocode = get_location_info(location)
     locations_woeid = get_locations_woeid(latitude, longitude)
-
-    topics_count_name = []
-    for woeid in locations_woeid:
-        for trends in get_place_trends(woeid):
-            topic_count_name = get_trend_count_name(trends, topic_count)
-            for obj in topic_count_name:
-                topics_count_name.append(obj)
-
     result = []
-    for topic_count_name in topics_count_name:
-        topic_name = topic_count_name[1]
-        topic_tweet_count = topic_count_name[0]
-        topic_tweet_count = format_count(topic_tweet_count)
-        time_stamp = current_time()
-        topic_tweets = get_topic_tweets(topic_name, tweet_count, geocode)
-        topic_object = {
-            "topic_name": topic_name,
-            "topic_tweet_count": topic_tweet_count,
-            "topic_tweets": topic_tweets,
-            "time_stamp": time_stamp,
-        }
-        result.append(topic_object)
+    try :
+        topics_count_name = []
+        for woeid in locations_woeid:
+            for trends in get_place_trends(woeid):
+                topic_count_name = get_trend_count_name(trends, topic_count)
+                for obj in topic_count_name:
+                    topics_count_name.append(obj)
 
+        for topic_count_name in topics_count_name:
+            topic_name = topic_count_name[1]
+            topic_tweet_count = topic_count_name[0]
+            topic_tweet_count = format_count(topic_tweet_count)
+            time_stamp = current_time()
+            topic_tweets = get_topic_tweets(topic_name, tweet_count, geocode)
+            topic_object = {
+                "topic_name": topic_name,
+                "topic_tweet_count": topic_tweet_count,
+                "topic_tweets": topic_tweets,
+                "time_stamp": time_stamp,
+            }
+            result.append(topic_object)
+    except:
+        print("Something is wrong beta, error ho raha hai") 
+        
     return result
 
 def get_hashtag_tweets(hashtag):
