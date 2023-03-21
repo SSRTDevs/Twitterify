@@ -74,7 +74,7 @@ def get_hashtag_tweets(hashtag):
     tweet_count = 10
     hashtag_tweets = []
     
-    for tweet in search_tweets(hashtag, tweet_count):
+    for tweet in search_tweets(hashtag, tweet_count, False):
         full_text = get_full_text(tweet) 
         full_text = clean_text(full_text)
         hashtag_tweets.append(full_text)    

@@ -36,7 +36,7 @@ export default function RightThread(props) {
             </div>
             <div className='stat-title'>Thread Length</div>
             <div className='stat-value'>
-              {props.thread.details["thread_tweets"].length + 1}
+              {props.thread.details["thread_tweets"].length}
             </div>
           </div>
 

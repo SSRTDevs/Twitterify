@@ -1,26 +1,30 @@
 import { React, useState } from "react";
 import { Carousel } from "..";
 
-function Links({ links }) {
+function Links({ urls }) {
     return (
         <>
             <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <tbody>
-                        {links.map((link, index) => {
-                            return (
-                                <tr style={{ "line-height": "1px" }}>
-                                    <th>{index + 1}</th>
-                                    <td>
-                                        <a className="link" href={link}>
-                                            {link}
-                                        </a>
-                                    </td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                {urls ? (
+                    <table className="table w-full">
+                        <tbody>
+                            {urls.map((item, index) => {
+                                return (
+                                    <tr style={{ "line-height": "1px" }}>
+                                        <th>{index + 1}</th>
+                                        <td>
+                                            <a className="link" href={item.url}>
+                                                {item.display}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                ) : (
+                    <></>
+                )}
             </div>
         </>
     );
@@ -30,11 +34,11 @@ export default function Threadtabs({ references }) {
     const tabItems = [
         {
             label: "Media",
-            Component: <Carousel media={references["images"]} />,
+            Component: <Carousel media_urls={references["media_urls"]} />,
         },
         {
             label: "Links",
-            Component: <Links links={references["urls"]} />,
+            Component: <Links urls={references["urls"]} />,
         },
     ];
     const [activeTabIndex, setActiveTabIndex] = useState(0);

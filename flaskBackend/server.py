@@ -101,7 +101,7 @@ def thread_summary(url):
     # thread_obj['thread_summary'], thread_obj['thread_sentiment'] = thread_feed_model(
     #     thread_obj['thread_tweets'])
 
-    print(thread_obj)
+    # print(thread_obj)
     response = make_response(thread_obj)
     return response
 

@@ -87,7 +87,7 @@ def get_user_details(username, user_obj, user_tweets_data):
         user_tweets.append(get_full_text(tweet))
 
     q = "@{0} and -filter:retweets".format(username)
-    mention_tweets_data = search_tweets(q, 1)
+    mention_tweets_data = search_tweets(q, 1, False)
     mention_tweets = []
     for tweet in mention_tweets_data:
         mention_tweets.append(get_full_text(tweet))

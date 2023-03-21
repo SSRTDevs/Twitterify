@@ -2,7 +2,12 @@ import re
 from datetime import datetime
 
 def get_full_text(tweet):
-    full_text = tweet._json["full_text"]
+    full_text = ''
+
+    if 'text' in tweet._json:
+        full_text = tweet._json['text']
+    if 'full_text' in tweet._json:
+        full_text = tweet._json["full_text"]
     if 'retweeted_status' in tweet._json:
         full_text = tweet._json['retweeted_status']['full_text']
 
@@ -31,3 +36,9 @@ def format_count(count):
         return f"{count/(10**3):.1f}K"
     else:
         return str(count)
+    
+def get_username(tweet):
+    return tweet._json['user']['name']
+
+def get_profile_image_url(tweet):
+    return tweet._json['user']['profile_image_url_https']
