@@ -104,7 +104,8 @@ def thread_summary(url):
     url = url[:-1]
     
     thread_obj = thread_summarizer(url)
-    thread_obj['thread_summary'] = tweet_summarizer(' '.join(thread_obj['thread_tweets']))
+    # thread_obj['thread_summary'] = tweet_summarizer(' '.join(thread_obj['thread_tweets']))
+    thread_obj['thread_summary'] = ""
     thread_obj['thread_sentiment'] = tweet_analyser(thread_obj['thread_tweets'])
     thread_obj['topic'] = tweet_topic(thread_obj['thread_tweets'])
     # thread_obj['thread_summary'], thread_obj['thread_sentiment'] = thread_feed_model(
@@ -114,7 +115,7 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-@app.route("/summarize",methods=['POST'])
+@app.route("/summarize",methods=['Phttps://twitter.com/warikoo/status/1636605038046101505OST'])
 def get_summary():
     data = request.get_json(force=True)["tweets"]
     return make_response(tweet_summarizer(data)) ; 

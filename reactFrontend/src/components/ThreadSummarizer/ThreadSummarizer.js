@@ -1,13 +1,12 @@
 import { React } from "react";
-import {RightThread, Threadtabs} from "../";
-import {Breakpoint} from "react-socks"
+import { RightThread, Threadtabs } from "../";
+import { Breakpoint } from "react-socks";
 
 export default function ThreadSummarizer({ thread, setThread }) {
-
   const removeSlug = (url) => {
     url = url.split("?")[0];
-    return url
-  }
+    return url;
+  };
 
   return (
     <>
@@ -32,7 +31,13 @@ export default function ThreadSummarizer({ thread, setThread }) {
           <div className="collapse-title text-xl font-medium">
             Thread Summary
           </div>
-          <div className="collapse-content text-left">
+          <div
+            className={`collapse-content text-left min-h-[100px] mx-4  mb-4 ${
+              thread.details["thread_summary"] === ""
+                ? "animate-pulse bg-[#4e4b4b] rounded"
+                : ""
+            }`}
+          >
             {Object.keys(thread.details).length === 0 ? (
               <p>No summary to show</p>
             ) : (
@@ -42,13 +47,12 @@ export default function ThreadSummarizer({ thread, setThread }) {
         </div>
 
         <div className="text-center w-full space-y-4 px-3 py-2 mt-3 justify-around gap-3">
-          <Threadtabs references={thread.details["references"]}/>
+          <Threadtabs references={thread.details["references"]} />
         </div>
-
       </div>
       <Breakpoint small down>
-        <br/>
-        <RightThread  thread={thread}/>
+        <br />
+        <RightThread thread={thread} />
       </Breakpoint>
     </>
   );

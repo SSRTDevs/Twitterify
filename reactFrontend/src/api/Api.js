@@ -150,12 +150,13 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
     error: "Fetching thread details...",
     type: "info",
   });
+  let thread_tweets = [] 
   return await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
     )
     .then((res) => {
-      console.log(res.data);
+      thread_tweets = res.data["thread_tweets"]
       setThread((thread) => {
         return { ...thread, details: res.data };
       });
@@ -171,6 +172,11 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
         setAlert({});
       }, 3000);
     });
+
+    let summary = await summarize(thread_tweets) ; 
+    setThread((thread) => {
+      return {...thread, thread_summary: summary}
+    })
 };
 
 const summarize = async (tweets) => {

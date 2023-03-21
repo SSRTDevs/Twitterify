@@ -6,7 +6,7 @@ function Links({ urls }) {
         <>
             <div className="overflow-x-auto">
                 {urls ? (
-                    <table className="table w-full">
+                    <table className="table">
                         <tbody>
                             {urls.map((item, index) => {
                                 return (

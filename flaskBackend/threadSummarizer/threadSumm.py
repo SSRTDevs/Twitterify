@@ -39,7 +39,6 @@ def get_tweet_media_urls(tweet):
     return res
 
 
-
 def thread_summarizer(url, count = 20):
     screen_name = url.split('/')[3]
     tweet_id = url.split('/')[-1]
