@@ -15,6 +15,7 @@ const trending = async (trends, setTrends, setAlert, country = "India") => {
         return { ...trends, latest_trends: res.data };
       });
       setAlert({});
+      // console.log("On line 18");
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
@@ -27,6 +28,7 @@ const trending = async (trends, setTrends, setAlert, country = "India") => {
       }, 2000);
     });
   
+  // console.log("On line 30")
   for(let i = 0 ; i < latest_trends_copy.length ; i++){
     let summary = await summarize(latest_trends_copy[i]["topic_tweets"])
     latest_trends_copy[i]["summary"] = summary ; 
@@ -41,15 +43,17 @@ const search_hash = async (tag, setTrends, setAlert) => {
     error: `Fetching tweets for #${tag}...`,
     type: "info",
   });
+  let hash_data = {};
   await axios
     .get(`http://127.0.0.1:5000/hashtag/${tag}`)
     .then((res) => {
+      hash_data = res.data ; 
       setTrends((trends) => {
         let search_hash = [res.data] ; 
         return {...trends, latest_trends: search_hash.concat(trends.latest_trends)} ;
       });
       setAlert({});
-      
+      // console.log("On line 57");
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
@@ -61,6 +65,15 @@ const search_hash = async (tag, setTrends, setAlert) => {
         setAlert({});
       }, 2000);
     });
+  
+    // console.log("Online 70")
+    let summary = await summarize(hash_data["topic_tweets"]) ; 
+    setTrends(trends => {
+      let latest_trends_copy = trends.latest_trends ;
+      latest_trends_copy[0]["summary"] = summary ; 
+      return {...trends, latest_trends: latest_trends_copy} ; 
+    })
+
 };
 
 const user_summarizer = async (user, setUser, setAlert) => {

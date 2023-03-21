@@ -47,9 +47,7 @@ def process_trending_tweets(country):
 
 @app.route("/hashtag/<hashtag>", methods=['GET'])
 def hashtag_analysis(hashtag):
-    hashtag_tweets_payload = get_hashtag_tweets(hashtag)
-    
-    hashtag_tweets_summarization = tweet_summarizer(' '.join(hashtag_tweets_payload["hashtag_tweets"]))
+    hashtag_tweets_payload = get_hashtag_tweets(hashtag)    
     hashtag_tweets_sentiment = tweet_analyser(hashtag_tweets_payload["hashtag_tweets"])
     hashtag_tweet_topics = tweet_topic(hashtag_tweets_payload["hashtag_tweets"])
 
@@ -59,7 +57,7 @@ def hashtag_analysis(hashtag):
             "topic_tweet_count" : hashtag_tweets_payload["hashtag_tweet_count"],
             "time_stamp" : hashtag_tweets_payload["time_stamp"],
             "topic": hashtag_tweet_topics,
-            "summary": hashtag_tweets_summarization, 
+            "summary": "", 
             "pos": hashtag_tweets_sentiment["pos"], 
             "neg": hashtag_tweets_sentiment["neg"], 
             "neu": hashtag_tweets_sentiment["neu"],
@@ -115,7 +113,11 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-@app.route("/summarize",methods=['Phttps://twitter.com/warikoo/status/1636605038046101505OST'])
+@app.route("/summarize",methods=['POST'])
 def get_summary():
-    data = request.get_json(force=True)["tweets"]
+    try: 
+        data = request.get_json(force=True)["tweets"]
+    except : 
+        return make_response("Hey The data is not in proper format",400)
+        
     return make_response(tweet_summarizer(data)) ; 
