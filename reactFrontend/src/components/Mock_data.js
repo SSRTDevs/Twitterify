@@ -57,9 +57,7 @@ let mock_trends = [
     neg: 0,
     neu: 3,
     pos: 0,
-    summary:
-      `The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
-      `,
+    summary:"",
     time_stamp: "25/02/2023 18:34:52",
     topic_name: "#Vande Bharat",
     topic_tweet_count: 437324,

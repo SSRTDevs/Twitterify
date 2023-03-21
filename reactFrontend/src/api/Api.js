@@ -3,7 +3,7 @@ import { mock_tweets } from "../components/Mock_data";
 
 const trending = async (trends, setTrends, setAlert, country = "India") => {
   setAlert({
-    error: "Fetching trending tweets...",
+    error: `Fetching trending tweets${country !== "India" ? " from " + country : ""}...`,
     type: "info",
   });
   await axios

@@ -130,7 +130,8 @@ function TrendingCard({
 
               <SentimentDiv trend={trend} />
             </div>
-            <p className="card-text text-left">{trend.summary}</p>
+            <p className={`card-text text-left min-h-[50px]
+            ${trend.summary === "" ? "animate-pulse bg-[#343232] rounded" : ""}`}>{trend.summary}</p>
 
             <div className="endbar flex justify-end w-full">
               {/* <p className="text-xs text-left text-[#707070]">{trend.time_stamp}</p> */}
