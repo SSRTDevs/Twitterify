@@ -66,6 +66,11 @@ def hashtag_analysis(hashtag):
         }
     return res_obj
 
+@app.route("/trending/<country>", methods=["GET"])
+def trending_tweets_country(country):
+    return make_response("country") ; 
+
+
 @app.route("/topic", methods=['POST'])
 def topic(): 
     data = request.get_json(force=True)["tweets"]

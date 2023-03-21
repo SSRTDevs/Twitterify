@@ -55,6 +55,32 @@ const search_hash = async (tag, setTrends, setAlert) => {
     });
 };
 
+const get_country_tweets = async (country, setTrends, setAlert) => {
+  setAlert({
+    error: `Fetching Trending tweets in #${country}...`,
+    type: "info",
+  });
+  await axios
+    .get(`http://127.0.0.1:5000/trending/${country}`)
+    .then((res) => {
+      // setTrends((trends) => {
+      //   return {...trends, latest_trends: res.data} ;
+      // });
+      setAlert({});
+      
+    })
+    .catch((err) => {
+      console.log("Kuch toh gadbad hai beta");
+      setAlert({
+        error: "Could not fetch tweets...",
+        type: "error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 2000);
+    });
+}
+
 const user_summarizer = async (user, setUser, setAlert) => {
   setAlert({
     error: "Fetching User data, please wait...",
@@ -169,6 +195,7 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
 export {
   trending,
   search_hash,
+  get_country_tweets,
   user_summarizer,
   thread_summarizer,
 };
