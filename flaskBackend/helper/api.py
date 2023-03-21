@@ -17,3 +17,6 @@ def closest_trends(latitude, longitude):
 
 def get_place_trends(woeid):
     return api.get_place_trends(woeid)
+
+def get_friends(screen_name): 
+    return api.get_friends(screen_name=screen_name,count=20,skip_status=False,include_entities=False)

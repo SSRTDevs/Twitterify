@@ -1,7 +1,7 @@
 from flask import Flask, make_response, request
 from profileSummarizer.processing import get_sentiments, get_word_clouds
 # from profileSummarizer.profileSumm import profile_summarizer, user_activity
-from profileSummarizer.profileSumm import profile_summary
+from profileSummarizer.profileSumm import profile_summary, get_user_friends
 from generalPage.generalTrends import get_trending_tweets, get_hashtag_tweets
 from threadSummarizer.threadSumm import thread_summarizer
 from setups.model_setup import summarize
@@ -19,9 +19,9 @@ CORS(app)
 def init(): 
     return make_response("Hey there, Welcome to Twitterify's API.")
 
-@app.route("/trending_tweets", methods=['GET'])
-def process_trending_tweets():
-    trending_payload = get_trending_tweets("India")
+@app.route("/trending_tweets/<country>", methods=['GET'])
+def process_trending_tweets(country):
+    trending_payload = get_trending_tweets(country)
     trending_tweets_data = []
     
     for object in trending_payload:
@@ -66,11 +66,6 @@ def hashtag_analysis(hashtag):
         }
     return res_obj
 
-@app.route("/trending/<country>", methods=["GET"])
-def trending_tweets_country(country):
-    return make_response("country") ; 
-
-
 @app.route("/topic", methods=['POST'])
 def topic(): 
     data = request.get_json(force=True)["tweets"]
@@ -101,6 +96,10 @@ def wordclouds(Username, tweets):
     response = make_response(cloud)
     return response
 
+@app.route("/friends/<Username>", methods=['GET'])
+def get_friends(Username): 
+    return make_response(get_user_friends(Username))
+
 @app.route("/thread_summary/<url>", methods=['GET'])
 def thread_summary(url):
     url = url.replace("*","/")
@@ -116,7 +115,6 @@ def thread_summary(url):
     print(thread_obj)
     response = make_response(thread_obj)
     return response
-
 
 @app.route("/summary",methods=['GET'])
 def get_summary():

@@ -1,13 +1,13 @@
 import axios from "axios";
 import { mock_tweets } from "../components/Mock_data";
 
-const trending = async (trends, setTrends, setAlert) => {
+const trending = async (trends, setTrends, setAlert, country = "India") => {
   setAlert({
     error: "Fetching trending tweets...",
     type: "info",
   });
   await axios
-    .get(`http://127.0.0.1:5000/trending_tweets`)
+    .get(`http://127.0.0.1:5000/trending_tweets/${country}`)
     .then((res) => {
       console.log("Trending Tweets", res.data);
       setTrends((trends) => {
@@ -54,32 +54,6 @@ const search_hash = async (tag, setTrends, setAlert) => {
       }, 2000);
     });
 };
-
-const get_country_tweets = async (country, setTrends, setAlert) => {
-  setAlert({
-    error: `Fetching Trending tweets in #${country}...`,
-    type: "info",
-  });
-  await axios
-    .get(`http://127.0.0.1:5000/trending/${country}`)
-    .then((res) => {
-      // setTrends((trends) => {
-      //   return {...trends, latest_trends: res.data} ;
-      // });
-      setAlert({});
-      
-    })
-    .catch((err) => {
-      console.log("Kuch toh gadbad hai beta");
-      setAlert({
-        error: "Could not fetch tweets...",
-        type: "error",
-      });
-      setTimeout(() => {
-        setAlert({});
-      }, 2000);
-    });
-}
 
 const user_summarizer = async (user, setUser, setAlert) => {
   setAlert({
@@ -195,7 +169,6 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
 export {
   trending,
   search_hash,
-  get_country_tweets,
   user_summarizer,
   thread_summarizer,
 };

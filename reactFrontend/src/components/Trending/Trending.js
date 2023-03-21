@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TrendingCard } from "../index";
 import { RightTrend } from "../index";
-import { search_hash, get_country_tweets } from "../../api/Api";
+import { search_hash, trending } from "../../api/Api";
 
 export default function Trending({ trends, setTrends, setAlert }) {
   const [tag, settag] = useState("AirIndia");
@@ -42,7 +42,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
                   onClick={() => {
                     tag.includes("#")
                       ? search_hash(tag, setTrends, setAlert)
-                      : get_country_tweets(tag, setTrends, setAlert);
+                      : trending(trends, setTrends, setAlert, tag);
                   }}
                 >
                   <svg

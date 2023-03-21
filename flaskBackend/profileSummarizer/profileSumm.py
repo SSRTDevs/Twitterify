@@ -1,5 +1,5 @@
 # from setups.tweepy_cred import api
-from helper.api import get_user,search_tweets, user_timeline
+from helper.api import get_user,search_tweets, user_timeline, get_friends
 from helper.utilities import get_full_text, format_profile_image_url,format_count
 import calendar
 from datetime import datetime
@@ -22,8 +22,6 @@ def get_date_details(date_str):
     key = (week, month, year)
 
     return month, week, key
-
-
 
 def cleanTxt(text):
     text = re.sub('@[A-Za-z0–9]+', '', text)
@@ -163,3 +161,17 @@ def profile_summary(username):
     res_obj.update(get_user_activity(user_tweets_data))
     
     return res_obj
+
+def get_user_friends(username): 
+    user = get_user(username)
+
+    friends = []
+    for friend in get_friends(user.screen_name):
+        friends_obj = {
+            "name": friend._json["name"],
+            "screen_name": friend._json["screen_name"],
+            "profile_image_url": format_profile_image_url(friend._json["profile_image_url"])
+        }
+        friends.append(friends_obj)
+
+    return friends 
