@@ -25,7 +25,7 @@ def process_trending_tweets(country):
     trending_tweets_data = []
     
     for object in trending_payload:
-        trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
+        # trending_tweets_summarization = tweet_summarizer(' '.join(object["topic_tweets"]))
         trending_tweets_sentiment = tweet_analyser(object["topic_tweets"])
         trending_tweets_topics = tweet_topic(object["topic_tweets"])
         
@@ -35,7 +35,7 @@ def process_trending_tweets(country):
             "topic_tweet_count" : object["topic_tweet_count"],
             "time_stamp" : object["time_stamp"],
             "topic": trending_tweets_topics,
-            "summary": trending_tweets_summarization, 
+            "summary": "", 
             "pos": trending_tweets_sentiment["pos"], 
             "neg": trending_tweets_sentiment["neg"], 
             "neu": trending_tweets_sentiment["neu"],
@@ -68,8 +68,6 @@ def hashtag_analysis(hashtag):
 
 @app.route("/topic", methods=['POST'])
 def topic(): 
-    data = request.get_json(force=True)["tweets"]
-    print(data)
     return make_response(tweet_topic(data))
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
@@ -116,8 +114,7 @@ def thread_summary(url):
     response = make_response(thread_obj)
     return response
 
-@app.route("/summary",methods=['GET'])
+@app.route("/summarize",methods=['POST'])
 def get_summary():
-    print(summarizer())
-    return make_response(summarize(mock_text))
-    # return make_response(summarizer())
+    data = request.get_json(force=True)["tweets"]
+    return make_response(tweet_summarizer(data)) ; 

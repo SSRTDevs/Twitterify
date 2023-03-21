@@ -25,7 +25,7 @@ sentiment = pipeline("sentiment-analysis", model=sentiment_model,
 
 def tweet_summarizer(combined_tweets):
     summary = ""
-    text = combined_tweets
+    text = " ".join(combined_tweets)
     try : 
         tokenized_text = summarizer.tokenizer(text, return_tensors='pt')
         input_ids = tokenized_text['input_ids']
@@ -47,7 +47,7 @@ def tweet_summarizer(combined_tweets):
         return summary
     except: 
         print("Somethings wrong beta in summarizer_model")
-    
+    return "No Summary Generated"
 
 
 def tweet_analyser(tweets):

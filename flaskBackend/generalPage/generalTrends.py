@@ -66,7 +66,7 @@ def get_trending_tweets(location, tweet_count = 5, topic_count = 4):
             }
             result.append(topic_object)
     except:
-        print("Something is wrong beta, error ho raha hai") 
+        print("Something is wrong beta, error ho raha hai @ get_trending_tweets") 
         
     return result
 

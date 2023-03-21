@@ -6,10 +6,11 @@ const trending = async (trends, setTrends, setAlert, country = "India") => {
     error: `Fetching trending tweets${country !== "India" ? " from " + country : ""}...`,
     type: "info",
   });
+  let latest_trends_copy = [] 
   await axios
     .get(`http://127.0.0.1:5000/trending_tweets/${country}`)
     .then((res) => {
-      console.log("Trending Tweets", res.data);
+      latest_trends_copy = res.data ; 
       setTrends((trends) => {
         return { ...trends, latest_trends: res.data };
       });
@@ -25,6 +26,13 @@ const trending = async (trends, setTrends, setAlert, country = "India") => {
         setAlert({});
       }, 2000);
     });
+  
+  for(let i = 0 ; i < latest_trends_copy.length ; i++){
+    let summary = await summarize(latest_trends_copy[i]["topic_tweets"])
+    latest_trends_copy[i]["summary"] = summary ; 
+    setTrends((trends)=> {return {...trends, latest_trends: latest_trends_copy}}) ; 
+  }
+  
 };
 
 const search_hash = async (tag, setTrends, setAlert) => {
@@ -135,7 +143,7 @@ const get_topics = async (tweets, setAlert) => {
     }, 3000);
   })
   return topics ;
-}
+};
 
 const thread_summarizer = async (thread, setThread, setAlert) => {
   setAlert({
@@ -165,6 +173,14 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
     });
 };
 
+const summarize = async (tweets) => {
+  let data = { tweets: tweets };
+  let summary = "" ;
+  await axios.post("http://localhost:5000/summarize", JSON.stringify(data)).then((res) => {
+    summary = res.data 
+  })
+  return summary ;
+};
 
 export {
   trending,

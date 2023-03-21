@@ -32,7 +32,7 @@ function TrendingDropdown({ trends }) {
         </label>
         <ul
           tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-fit"
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-fit min-w-[15rem]"
         >
           {trends.latest_trends.map((trend, idx) => (
             <li>
@@ -102,7 +102,7 @@ function TrendingCard({
       >
         <div
           id={`${hashtag}`}
-          className="card shadow-md rounded !bg-[#2222224a]"
+          className="card min-w-[57rem] shadow-md rounded !bg-[#2222224a]"
           style={{ margin: "2vh 1vw" }}
         >
           <div className="card-body p-5 space-y-1">
@@ -130,7 +130,7 @@ function TrendingCard({
 
               <SentimentDiv trend={trend} />
             </div>
-            <p className={`card-text text-left min-h-[50px]
+            <p className={`card-text w-full text-left min-h-[50px]
             ${trend.summary === "" ? "animate-pulse bg-[#343232] rounded" : ""}`}>{trend.summary}</p>
 
             <div className="endbar flex justify-end w-full">
