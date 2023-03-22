@@ -7,14 +7,10 @@ function TopSection({ children }) {
   return (
     <div className="topSection h-1/10 w-full">
       <Breakpoint small down>
-        <div className="flex justify-between mt-2">
-          {children}
-        </div>
+        <div className="flex justify-between mt-2">{children}</div>
       </Breakpoint>
       <Breakpoint medium up>
-        <div className="flex justify-between mt-2 px-[2vw]">
-          {children}
-        </div>
+        <div className="flex justify-between mt-2 px-[2vw]">{children}</div>
       </Breakpoint>
     </div>
   );
@@ -37,7 +33,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
   };
 
   const RightTrendComponent = (
-    <RightTrend trends={trends} className="h-20 overflow-y-scroll" />
+    <RightTrend trends={trends} className="h-20 overflow-y-scroll text" />
   );
 
   return (
@@ -89,14 +85,27 @@ export default function Trending({ trends, setTrends, setAlert }) {
 
         <div className="h-9/10 overflow-y-scroll pr-2 px-3">
           {trends.latest_trends.map((trend, idx) => (
-            <TrendingCard
-              key={idx}
-              index={idx}
-              hashtag={trend.topic_name}
-              trend={trend}
-              setReadTweets={read_tweets}
-              RightComponent={RightTrendComponent}
-            />
+            <>
+              <Breakpoint small down>
+                <TrendingCard.TrendingSmallCard
+                  key={idx}
+                  index={idx}
+                  hashtag={trend.topic_name}
+                  trend={trend}
+                  setReadTweets={read_tweets}
+                  RightComponent={RightTrendComponent}
+                />
+              </Breakpoint>
+              <Breakpoint medium up>
+                <TrendingCard
+                  key={idx}
+                  index={idx}
+                  hashtag={trend.topic_name}
+                  trend={trend}
+                  setReadTweets={read_tweets}
+                />
+              </Breakpoint>
+            </>
           ))}
         </div>
       </div>

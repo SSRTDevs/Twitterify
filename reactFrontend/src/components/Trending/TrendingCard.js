@@ -7,6 +7,63 @@ import {
   MdSentimentVeryDissatisfied,
 } from "react-icons/md";
 
+function TrendingSmallCard({
+  index,
+  trend,
+  hashtag,
+  setReadTweets,
+  RightComponent,
+}) {
+  return (
+    <>
+      <div
+        id={`${hashtag}`}
+        className="card w-screen shadow-md rounded !bg-[#2222224a]"
+      >
+        <div className="card-body p-5 space-y-1">
+          <div className="topbar w-full flex flex-col justify-between gap-4 items-center">
+            <div className="flex flex-col items-start">
+              <h4 className="card-title">{hashtag}</h4>
+              <div className="text-xs text-right text-gray-400 hover:text-gray-300">
+                <span className="font-bold">{trend.topic_tweet_count}</span>{" "}
+                tweets posted
+              </div>
+            </div>
+            <div>
+              {trend.topic &&
+                trend.topic.map((topic, idx) => {
+                  return (
+                    <>
+                      &nbsp;
+                      <span className="badge badge-outlined rounded-full text-white">
+                        {topic}
+                      </span>
+                    </>
+                  );
+                })}
+            </div>
+
+            <SentimentDiv trend={trend} />
+          </div>
+          <p
+            className={`card-text w-full text-left min-h-[50px] text-sm
+    ${trend.summary === "" ? "animate-pulse bg-[#343232] rounded" : ""}`}
+          >
+            {trend.summary}
+          </p>
+
+          <div className="endbar flex justify-end w-full">
+            <Collapse
+              RightComponent={RightComponent}
+              click={() => setReadTweets(index)}
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 function Collapse({ RightComponent, click }) {
   return (
     <div onClick={click} tabIndex={0} className="collapse w-full">
@@ -91,7 +148,6 @@ function TrendingCard({
   trend,
   hashtag,
   setReadTweets,
-  RightComponent,
 }) {
   return (
     <>
@@ -130,18 +186,16 @@ function TrendingCard({
 
               <SentimentDiv trend={trend} />
             </div>
-            <p className={`card-text w-full text-left min-h-[50px]
-            ${trend.summary === "" ? "animate-pulse bg-[#343232] rounded" : ""}`}>{trend.summary}</p>
+            <p
+              className={`card-text w-full text-left min-h-[50px]
+            ${
+              trend.summary === "" ? "animate-pulse bg-[#343232] rounded" : ""
+            }`}
+            >
+              {trend.summary}
+            </p>
 
             <div className="endbar flex justify-end w-full">
-              {/* <p className="text-xs text-left text-[#707070]">{trend.time_stamp}</p> */}
-              <Breakpoint small down>
-                <Collapse
-                  RightComponent={RightComponent}
-                  click={() => setReadTweets(index)}
-                />
-              </Breakpoint>
-              <Breakpoint medium up>
                 <a
                   className="link text-right"
                   onClick={() => {
@@ -150,7 +204,6 @@ function TrendingCard({
                 >
                   Read Tweets
                 </a>
-              </Breakpoint>
             </div>
           </div>
         </div>
@@ -159,5 +212,6 @@ function TrendingCard({
   );
 }
 
+TrendingCard.TrendingSmallCard = TrendingSmallCard;
 TrendingCard.Dropdown = TrendingDropdown;
 export default TrendingCard;
