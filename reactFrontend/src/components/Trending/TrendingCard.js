@@ -180,7 +180,7 @@ function TrendingCard({
                     return (
                       <>
                         &nbsp;
-                        <span className="badge badge-outlined rounded-full text-white">
+                        <span className="badge badge-outline rounded-full">
                           {topic}
                         </span>
                       </>
