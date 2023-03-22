@@ -1,6 +1,7 @@
 import { React } from "react";
-import { RightThread, Threadtabs } from "../";
+import { RightThread, Threadtabs, InputWithBtn } from "../";
 import { Breakpoint } from "react-socks";
+import { thread_summarizer } from "../../api/Api";
 
 export default function ThreadSummarizer({ thread, setThread }) {
   const removeSlug = (url) => {
@@ -11,7 +12,11 @@ export default function ThreadSummarizer({ thread, setThread }) {
   return (
     <>
       <div className="container mx-auto w-[75%] h-1/10">
-        <div className="flex flex-row">
+        <div>
+          <Breakpoint small down>
+            <InputWithBtn run={() => thread_summarizer(thread,setThread)} placeholder="Thread URL..."/>
+          </Breakpoint>
+          <Breakpoint medium up>
           <input
             type="search"
             id="default-search"
@@ -21,6 +26,7 @@ export default function ThreadSummarizer({ thread, setThread }) {
               setThread({ ...thread, url: removeSlug(e.target.value) });
             }}
           />
+          </Breakpoint>
         </div>
       </div>
       <div className="h-9/10 overflow-y-scroll px-4">

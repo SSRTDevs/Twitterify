@@ -1,16 +1,20 @@
 import axios from "axios";
 import { mock_tweets } from "../components/Mock_data";
 
+const empty = () => {};
+
 const trending = async (trends, setTrends, setAlert, country = "India") => {
   setAlert({
-    error: `Fetching trending tweets${country !== "India" ? " from " + country : ""}...`,
+    error: `Fetching trending tweets${
+      country !== "India" ? " from " + country : ""
+    }...`,
     type: "info",
   });
-  let latest_trends_copy = [] 
+  let latest_trends_copy = [];
   await axios
     .get(`http://127.0.0.1:5000/trending_tweets/${country}`)
     .then((res) => {
-      latest_trends_copy = res.data ; 
+      latest_trends_copy = res.data;
       setTrends((trends) => {
         return { ...trends, latest_trends: res.data };
       });
@@ -27,14 +31,15 @@ const trending = async (trends, setTrends, setAlert, country = "India") => {
         setAlert({});
       }, 2000);
     });
-  
+
   // console.log("On line 30")
-  for(let i = 0 ; i < latest_trends_copy.length ; i++){
-    let summary = await summarize(latest_trends_copy[i]["topic_tweets"])
-    latest_trends_copy[i]["summary"] = summary ; 
-    setTrends((trends)=> {return {...trends, latest_trends: latest_trends_copy}}) ; 
+  for (let i = 0; i < latest_trends_copy.length; i++) {
+    let summary = await summarize(latest_trends_copy[i]["topic_tweets"]);
+    latest_trends_copy[i]["summary"] = summary;
+    setTrends((trends) => {
+      return { ...trends, latest_trends: latest_trends_copy };
+    });
   }
-  
 };
 
 const search_hash = async (tag, setTrends, setAlert) => {
@@ -47,10 +52,13 @@ const search_hash = async (tag, setTrends, setAlert) => {
   await axios
     .get(`http://127.0.0.1:5000/hashtag/${tag}`)
     .then((res) => {
-      hash_data = res.data ; 
+      hash_data = res.data;
       setTrends((trends) => {
-        let search_hash = [res.data] ; 
-        return {...trends, latest_trends: search_hash.concat(trends.latest_trends)} ;
+        let search_hash = [res.data];
+        return {
+          ...trends,
+          latest_trends: search_hash.concat(trends.latest_trends),
+        };
       });
       setAlert({});
       // console.log("On line 57");
@@ -65,18 +73,17 @@ const search_hash = async (tag, setTrends, setAlert) => {
         setAlert({});
       }, 2000);
     });
-  
-    // console.log("Online 70")
-    let summary = await summarize(hash_data["topic_tweets"]) ; 
-    setTrends(trends => {
-      let latest_trends_copy = trends.latest_trends ;
-      latest_trends_copy[0]["summary"] = summary ; 
-      return {...trends, latest_trends: latest_trends_copy} ; 
-    })
 
+  // console.log("Online 70")
+  let summary = await summarize(hash_data["topic_tweets"]);
+  setTrends((trends) => {
+    let latest_trends_copy = trends.latest_trends;
+    latest_trends_copy[0]["summary"] = summary;
+    return { ...trends, latest_trends: latest_trends_copy };
+  });
 };
 
-const user_summarizer = async (user, setUser, setAlert) => {
+const user_summarizer = async (user, setUser, setAlert = empty) => {
   setAlert({
     error: "Fetching User data, please wait...",
     type: "info",
@@ -101,7 +108,7 @@ const user_summarizer = async (user, setUser, setAlert) => {
       setTimeout(() => {
         setAlert({});
       }, 3000);
-      return {}; 
+      return {};
     });
 
   const get_user_cloud = await axios
@@ -118,62 +125,72 @@ const user_summarizer = async (user, setUser, setAlert) => {
       setTimeout(() => {
         setAlert({});
       }, 3000);
-      return "" ;
+      return "";
     });
-    
-    let [user_details, user_cloud] = await Promise.all([
-      get_user_details,
-      get_user_cloud,
-    ])
 
-    setAlert({
-      error: "Fetching User topics...",
-      type: "info",
-    })
-    
-    let tweets = Object.keys(user_details.sentiments["Tweet"]).map((idx)=>  user_details.sentiments["Tweet"][idx]) ; 
-    let data = { tweets: tweets };
-    const user_topics = await get_topics(tweets,setAlert) ;
-    setAlert({})
-    console.log(user_topics)
-    setUser((user)=> {
-      return {...user, details: user_details, clouds: user_cloud, topics: user_topics}
-    })
+  let [user_details, user_cloud] = await Promise.all([
+    get_user_details,
+    get_user_cloud,
+  ]);
+
+  setAlert({
+    error: "Fetching User topics...",
+    type: "info",
+  });
+
+  let tweets = Object.keys(user_details.sentiments["Tweet"]).map(
+    (idx) => user_details.sentiments["Tweet"][idx]
+  );
+  let data = { tweets: tweets };
+  const user_topics = await get_topics(tweets, setAlert);
+  setAlert({});
+  console.log(user_topics);
+  setUser((user) => {
+    return {
+      ...user,
+      details: user_details,
+      clouds: user_cloud,
+      topics: user_topics,
+    };
+  });
 };
 
 const get_topics = async (tweets, setAlert) => {
   let data = { tweets: tweets };
-  let topics = [] ; 
-  await axios.post("http://localhost:5000/topic", JSON.stringify(data)).then((res) => {
-    topics = res.data 
-  }).catch((err) => {
-    setAlert({
-      error: "Seems like an error while fetching topics", 
-      type: "error"
+  let topics = [];
+  await axios
+    .post("http://localhost:5000/topic", JSON.stringify(data))
+    .then((res) => {
+      topics = res.data;
+    })
+    .catch((err) => {
+      setAlert({
+        error: "Seems like an error while fetching topics",
+        type: "error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 3000);
     });
-    setTimeout(() => {
-      setAlert({});
-    }, 3000);
-  })
-  return topics ;
+  return topics;
 };
 
-const thread_summarizer = async (thread, setThread, setAlert) => {
+const thread_summarizer = async (thread, setThread, setAlert = empty) => {
   setAlert({
     error: "Fetching thread details...",
     type: "info",
   });
-  let thread_tweets = [] 
+  let thread_tweets = [];
   return await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
     )
     .then((res) => {
-      thread_tweets = res.data["thread_tweets"]
+      thread_tweets = res.data["thread_tweets"];
       setThread((thread) => {
         return { ...thread, details: res.data };
       });
-      setAlert({})
+      setAlert({});
     })
     .catch((err) => {
       console.log("Kuch toh gadbad hai beta");
@@ -186,24 +203,21 @@ const thread_summarizer = async (thread, setThread, setAlert) => {
       }, 3000);
     });
 
-    let summary = await summarize(thread_tweets) ; 
-    setThread((thread) => {
-      return {...thread, thread_summary: summary}
-    })
+  let summary = await summarize(thread_tweets);
+  setThread((thread) => {
+    return { ...thread, thread_summary: summary };
+  });
 };
 
 const summarize = async (tweets) => {
   let data = { tweets: tweets };
-  let summary = "" ;
-  await axios.post("http://localhost:5000/summarize", JSON.stringify(data)).then((res) => {
-    summary = res.data 
-  })
-  return summary ;
+  let summary = "";
+  await axios
+    .post("http://localhost:5000/summarize", JSON.stringify(data))
+    .then((res) => {
+      summary = res.data;
+    });
+  return summary;
 };
 
-export {
-  trending,
-  search_hash,
-  user_summarizer,
-  thread_summarizer,
-};
+export { trending, search_hash, user_summarizer, thread_summarizer };

@@ -1,13 +1,16 @@
 import { React, useEffect } from "react";
 import "../../css/LeftComponents/UserSummarizer.css";
+import { user_summarizer } from "../../api/Api";
 import {
   UserTweets,
   MentionTweets,
   UserTimeline,
   UserTabs,
   RightUser,
+  InputWithBtn
 } from "../index";
 import { Breakpoint } from "react-socks";
+
 
 export default function UserSummarizer({ user, setUser }) {
   const tabItems = [
@@ -28,16 +31,20 @@ export default function UserSummarizer({ user, setUser }) {
   return (
     <>
       <div className="container mx-auto mt-2 h-full">
-        <div className="flex flex-col h-1/10 w-[75%] mx-auto">
-          <input
+        <div className="h-1/10 w-[75%] mx-auto">
+          <Breakpoint small down>
+            <InputWithBtn run={() => {user_summarizer(user, setUser)}} placeholder="Username..."/>
+          </Breakpoint>
+          <Breakpoint medium up><input
             type="search"
             id="default-search"
-            className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg text-base"
+            className="block p-3 py-2 pl-10 w-full text-sm bg-neutral-800 rounded-lg"
             placeholder="Search Username"
             onChange={(e) => {
               setUser({ ...user, Username: e.target.value });
             }}
-          />
+          /></Breakpoint>
+          
         </div>
 
         <Breakpoint small down>

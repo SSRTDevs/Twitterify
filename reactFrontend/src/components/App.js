@@ -6,7 +6,6 @@ import { IoTrendingUpOutline } from "react-icons/io5";
 import { MdOutlineSummarize } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
 import { Breakpoint, BreakpointProvider } from "react-socks";
-import Footer from "./Footer";
 
 export default function App() {
     const [user, setUser] = useState({
@@ -64,7 +63,6 @@ export default function App() {
                     <Tabs tabs={tabs} />
                 </Breakpoint>
             </BreakpointProvider>
-            <Footer />
         </>
     );
 }
