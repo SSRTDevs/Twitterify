@@ -133,6 +133,8 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
     get_user_cloud,
   ]);
 
+  if(!Object.keys(user_details).length) return ;
+
   setAlert({
     error: "Fetching User topics...",
     type: "info",
@@ -141,7 +143,6 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
   let tweets = Object.keys(user_details.sentiments["Tweet"]).map(
     (idx) => user_details.sentiments["Tweet"][idx]
   );
-  let data = { tweets: tweets };
   const user_topics = await get_topics(tweets, setAlert);
   setAlert({});
   console.log(user_topics);

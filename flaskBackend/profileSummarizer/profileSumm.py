@@ -46,30 +46,9 @@ def getSubjectivity(text):
     return TextBlob(text).sentiment.subjectivity
 
 def get_sentiments(user_tweets_data):
-    df = create_DataFrame(user_tweets_data)
-    df['Sentiment'] = df['Tweet'].apply(sentiment_textblob)
-    df['Subjectivity'] = df['Tweet'].apply(getSubjectivity)
-    df1 = df.groupby('Sentiment').count()
-    try:
-        pos = df1.loc(0)["pos"]["Tweet"]
-    except:
-        pos = 0
-    try:
-        neg = df1.loc(0)["neg"]["Tweet"]
-    except:
-        neg = 0
-    try:
-        neutral = df1.loc(0)["neutral"]["Tweet"]
-    except:
-        neutral = 0
-    
-    sentiment_obj = {
-        "sentiments": df.to_json(),
-        "pos_count": str(pos),
-        "neg_count": str(neg),
-        "neutral_count": str(neutral)
-    }
-    return sentiment_obj
+    for user_tweet in user_tweets_data :
+        print(user_tweet)
+        user_tweet["sentiment"] = sentiment_textblob(user_tweet["tweet"])
 
 def get_user_details(username, user_obj, user_tweets_data):
     name = user_obj._json['name']
@@ -88,6 +67,8 @@ def get_user_details(username, user_obj, user_tweets_data):
             "retweets": tweet.retweet_count,
         }
         user_tweets.append(user_tweet_info) 
+    
+    get_sentiments(user_tweets)
         
     q = "@{0} and -filter:retweets".format(username)
     mention_tweets_data = search_tweets(q, 1, False)
@@ -161,8 +142,7 @@ def profile_summary(username):
         }
         return res_obj, res_obj
     
-    res_obj = get_sentiments(user_tweets_data)
-    res_obj.update(get_user_details(username, user_obj, user_tweets_data))
+    res_obj = get_user_details(username, user_obj, user_tweets_data)
     res_obj.update(get_user_activity(user_tweets_data))
     
     return res_obj
