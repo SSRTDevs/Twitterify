@@ -89,10 +89,3 @@ def get_hashtag_tweets(hashtag):
     }
     return res_obj
 
-# def feed_model(trending_tweets):
-#     trending_tweets_summarization = ""
-#     trending_tweets_sentiment = {}
-#     trending_tweets_summarization = tweet_summarizer(' '.join(trending_tweets))
-#     trending_tweets_sentiment = tweet_analyser(trending_tweets)
-
-#     return trending_tweets_summarization,trending_tweets_sentiment

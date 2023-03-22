@@ -82,8 +82,13 @@ def get_user_details(username, user_obj, user_tweets_data):
 
     user_tweets = []
     for tweet in user_tweets_data:
-        user_tweets.append(get_full_text(tweet))
-
+        user_tweet_info = {
+            "tweet": get_full_text(tweet),
+            "likes": tweet.favorite_count,
+            "retweets": tweet.retweet_count,
+        }
+        user_tweets.append(user_tweet_info) 
+        
     q = "@{0} and -filter:retweets".format(username)
     mention_tweets_data = search_tweets(q, 1, False)
     mention_tweets = []
@@ -175,3 +180,4 @@ def get_user_friends(username):
         friends.append(friends_obj)
 
     return friends 
+

@@ -74,13 +74,6 @@ def topic():
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])
 def sentiments(Username, tweets):
-    # sentiments, pos_count, neg_count, neutral_count = get_sentiments(Username,tweets)
-    # user_sentiments, user_details, user_activity_details = profile_summary(Username)
-
-    
-    # return_obj.update(user_details)
-    # return_obj.update(user_activity_details)
-
     res_obj = profile_summary(Username)
     response = make_response(res_obj)
     return response
