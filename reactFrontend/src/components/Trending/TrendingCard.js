@@ -74,7 +74,7 @@ function SentimentDiv({ trend }) {
         {trend["neu"]}
       </div>
       <div
-        className="tooltip tooltip-right flex justify-between gap-2"
+        className="tooltip tooltip-tops flex justify-between gap-2"
         data-tip="Negative"
       >
         <span className="stat-figure text-red-600">

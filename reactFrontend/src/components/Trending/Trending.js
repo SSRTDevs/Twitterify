@@ -1,7 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { TrendingCard } from "../index";
-import { RightTrend } from "../index";
+import { TrendingCard, RightTrend } from "../index";
+import { Breakpoint } from "react-socks";
 import { search_hash, trending } from "../../api/Api";
+
+function TopSection({ children }) {
+  return (
+    <div className="topSection h-1/10 w-full">
+      <Breakpoint small down>
+        <div className="flex justify-between mt-2">
+          {children}
+        </div>
+      </Breakpoint>
+      <Breakpoint medium up>
+        <div className="flex justify-between mt-2 px-[2vw]">
+          {children}
+        </div>
+      </Breakpoint>
+    </div>
+  );
+}
 
 export default function Trending({ trends, setTrends, setAlert }) {
   const [tag, settag] = useState("AirIndia");
@@ -26,7 +43,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
   return (
     <>
       <div className="w-full h-full flex items-center flex-col space-y-2 px-2">
-        <div className="topSection h-1/10 w-full flex justify-between px-[2vw] mt-2">
+        <TopSection>
           <TrendingCard.Dropdown trends={trends} />
           <div>
             <div className="form-control tooltip tooltip-left">
@@ -68,9 +85,9 @@ export default function Trending({ trends, setTrends, setAlert }) {
               </div>
             </div>
           </div>
-        </div>
+        </TopSection>
 
-        <div className="h-9/10 overflow-y-scroll pr-2 px-3 overflow-x-hidden">
+        <div className="h-9/10 overflow-y-scroll pr-2 px-3">
           {trends.latest_trends.map((trend, idx) => (
             <TrendingCard
               key={idx}
