@@ -66,6 +66,10 @@ def hashtag_analysis(hashtag):
 
 @app.route("/topic", methods=['POST'])
 def topic(): 
+    try: 
+        data = request.get_json(force=True)["tweets"]
+    except : 
+        return make_response("Hey The data is not in proper format",400)
     return make_response(tweet_topic(data))
 
 @app.route("/sentiments/<Username>/<tweets>", methods=['GET'])

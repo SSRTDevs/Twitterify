@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Breakpoint } from "react-socks";
+import {RightTrend} from "../"
 import {
   MdSentimentNeutral,
   MdSentimentSatisfiedAlt,
@@ -11,8 +11,6 @@ function TrendingSmallCard({
   index,
   trend,
   hashtag,
-  setReadTweets,
-  RightComponent,
 }) {
   return (
     <>
@@ -54,8 +52,7 @@ function TrendingSmallCard({
 
           <div className="endbar flex justify-end w-full">
             <Collapse
-              RightComponent={RightComponent}
-              click={() => setReadTweets(index)}
+              tweets={trend.topic_tweets}
             />
           </div>
         </div>
@@ -64,11 +61,18 @@ function TrendingSmallCard({
   );
 }
 
-function Collapse({ RightComponent, click }) {
+function Collapse({ tweets }) {
+  const trends = {
+    show_tweets: tweets , 
+    hash_tweets: {} 
+  }
   return (
-    <div onClick={click} tabIndex={0} className="collapse w-full">
+    <div className="collapse w-full">
+      <input type="checkbox" /> 
       <div className="link collapse-title text-sm text-right">Read more</div>
-      <div className="collapse-content w-full">{RightComponent}</div>
+      <div className="collapse-content w-full">
+        <RightTrend trends={trends} className="h-20 overflow-y-scroll text" />
+      </div>
     </div>
   );
 }

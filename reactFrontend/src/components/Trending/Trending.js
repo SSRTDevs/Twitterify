@@ -32,9 +32,6 @@ export default function Trending({ trends, setTrends, setAlert }) {
     });
   };
 
-  const RightTrendComponent = (
-    <RightTrend trends={trends} className="h-20 overflow-y-scroll text" />
-  );
 
   return (
     <>
@@ -92,8 +89,7 @@ export default function Trending({ trends, setTrends, setAlert }) {
                   index={idx}
                   hashtag={trend.topic_name}
                   trend={trend}
-                  setReadTweets={read_tweets}
-                  RightComponent={RightTrendComponent}
+                  tweets={trends.show_tweets}
                 />
               </Breakpoint>
               <Breakpoint medium up>

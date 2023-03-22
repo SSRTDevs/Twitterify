@@ -196,7 +196,7 @@ const thread_summarizer = async (thread, setThread, setAlert = empty) => {
       console.log("Kuch toh gadbad hai beta");
       setAlert({
         error: "Bruh !! Somethings wrong with your api. Fix it quick",
-        type: "type-error",
+        type: "error",
       });
       setTimeout(() => {
         setAlert({});
