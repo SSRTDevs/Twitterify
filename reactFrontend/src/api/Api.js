@@ -92,7 +92,6 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
   const get_user_details = await axios
     .get(`http://localhost:5000/sentiments/${user.Username}/${user.tweets}`)
     .then((res) => {
-      res.data["sentiments"] = JSON.parse(res.data["sentiments"]);
       setAlert({
         error: "Fetching User wordcloud...",
         type: "info",
@@ -140,12 +139,11 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
     type: "info",
   });
 
-  let tweets = Object.keys(user_details.sentiments["Tweet"]).map(
-    (idx) => user_details.sentiments["Tweet"][idx]
+  let tweets = user_details.user_tweets.map(
+    (user_tweet) => user_tweet.tweet 
   );
   const user_topics = await get_topics(tweets, setAlert);
   setAlert({});
-  console.log(user_topics);
   setUser((user) => {
     return {
       ...user,

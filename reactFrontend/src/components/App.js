@@ -11,7 +11,7 @@ export default function App() {
     const [user, setUser] = useState({
         Username: "@SharmaAbhitech",
         tweets: 0,
-        details: mock_user_details,
+        details: {},
         clouds: "",
         topics: mock_topics,
     });

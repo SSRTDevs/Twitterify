@@ -16,7 +16,7 @@ export default function UserSummarizer({ user, setUser }) {
   const tabItems = [
     {
       name: "User Tweets",
-      component: <UserTweets user={user} />,
+      component: <UserTweets user={user} setUser={setUser}/>,
     },
     {
       name: "Mention Tweets",
