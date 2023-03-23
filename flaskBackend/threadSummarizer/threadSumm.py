@@ -1,7 +1,7 @@
 import re 
 from helper.utilities import get_full_text, format_profile_image_url, get_username, get_profile_image_url
 from helper.api import search_tweets, get_status
-from setups.model_setup import tweet_summarizer,tweet_analyser
+from setups.model_setup import tweet_summarizer,tweet_analyser, predict_emotions
 import urlexpander
 
 def get_tweet_urls(tweet):
@@ -69,13 +69,18 @@ def thread_summarizer(url, count = 20):
             reply_tweets.append(full_text)
 
     thread_tweets.reverse()
+    _,common_emotions = predict_emotions(thread_tweets) 
+    print(common_emotions)
 
     res_obj = {
         'thread_tweets': thread_tweets,
         'reply_tweets': reply_tweets,
+        "common_emotions": common_emotions,
         'username' : username,
         'profile_image_url': profile_image_url,
         'references' : {"urls": tweet_urls, "media_urls": tweet_media_urls}
     }
     
     return res_obj
+
+thread_summarizer("https://twitter.com/nonmayorpete/status/1638775916150284289")

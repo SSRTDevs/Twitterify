@@ -3,6 +3,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os
 import numpy as np
 from scipy.special import expit
+import torch
 
 summarization_model = AutoModelForSeq2SeqLM.from_pretrained(
     f'{os.getcwd()}/setups/model/summarization_model')
@@ -16,6 +17,10 @@ sentiment_tokenizer = AutoTokenizer.from_pretrained(
 
 topic_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model/topic_model')
 topic_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer/topic_tokenizer')
+
+emotion_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model/emotion_model')
+emotion_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer/emotion_tokenizer')
+
 
 summarizer = pipeline("summarization", model=summarization_model,
                       tokenizer=summarization_tokenizer)
@@ -96,3 +101,35 @@ def tweet_topic(combined_tweets):
     except : 
         print("Somethings wrong with topic detection model beta")
     return output
+
+
+# Define emotions
+emotion_labels = ['anger', "disgust", "fear", "joy", "neutral", "sadness", "surprise"]
+
+# Define function to predict emotions for input text
+def predict_emotions(texts):
+    # Tokenize texts
+    inputs = emotion_tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
+    # Pass through model and get predictions
+    outputs = emotion_model(**inputs)
+    predictions = torch.softmax(outputs.logits, dim=1).detach().cpu().numpy()
+    # Get the most likely emotion for each text
+    predicted_labels = [emotion_labels[prediction.argmax()] for prediction in predictions]
+    # Count the occurrence of each emotion
+    emotion_counts = {label: predicted_labels.count(label) for label in emotion_labels}
+    # Get the two or three most common emotions
+    most_common_emotions = sorted(emotion_counts.items(), key=lambda x: x[1], reverse=True)[:3]
+    return predicted_labels, most_common_emotions
+
+# # Example usage
+# texts = [
+#     "I'm so happy today!",
+#     "I can't believe how angry I am right now.",
+#     "Things are really looking up. I'm feeling very optimistic.",
+#     "I'm not sure if this is going to work out. Feeling a bit pessimistic.",
+#     "I trust that everything will work out in the end.",
+#     "I have no strong feelings one way or the other. Feeling pretty neutral."
+# ]
+# predicted_labels, most_common_emotions = predict_emotions(texts)
+# print(predicted_labels)
+# print(most_common_emotions)
