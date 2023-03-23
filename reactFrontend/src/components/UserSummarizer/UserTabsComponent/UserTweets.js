@@ -3,20 +3,37 @@ import { FcLike } from "react-icons/fc";
 import { AiOutlineRetweet } from "react-icons/ai";
 
 function Tweet_stat({ tweet, sort_by_likes, sort_by_retweets }) {
+  const format_count = (count) => {
+    if (!Number.isInteger(count)) return;
+
+    if (count >= 10 ** 9) {
+      count = count / (10 ** 9);
+      return `${count.toFixed(2)}B`;
+    }
+    if (count >= 10 ** 6) {
+      count = count / (10 ** 6);
+      return `${count.toFixed(2)}M`;
+    }
+    if (count >= 10 ** 3) {
+      count = count / (10 ** 3);
+      return `${count.toFixed(1)}K`;
+    }
+    return String(count);
+  };
   return (
-    <div className="flex flex-col justify-between w-fit">
+    <div className="flex flex-col h-fit w-fit space-y-1">
       <div
         className="flex items-center cursor-pointer"
         onClick={() => sort_by_likes()}
       >
-        <FcLike /> &nbsp; <span>{tweet.likes}</span>
+        <FcLike /> &nbsp; <span>{format_count(tweet.likes)}</span>
       </div>
       <div
         className="flex items-center cursor-pointer"
         onClick={() => sort_by_retweets()}
       >
         <AiOutlineRetweet className="text-twitter-100" /> &nbsp;{" "}
-        <span>{tweet.retweets}</span>
+        <span>{format_count(tweet.retweets)}</span>
       </div>
     </div>
   );

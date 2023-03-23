@@ -47,7 +47,6 @@ def getSubjectivity(text):
 
 def get_sentiments(user_tweets_data):
     for user_tweet in user_tweets_data :
-        print(user_tweet)
         user_tweet["sentiment"] = sentiment_textblob(user_tweet["tweet"])
 
 def get_user_details(username, user_obj, user_tweets_data):

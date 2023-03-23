@@ -1,4 +1,3 @@
-
 let prev_mock_trends = {
   "#INDvsENG": {
     neg: 2,
@@ -57,7 +56,7 @@ let mock_trends = [
     neg: 0,
     neu: 3,
     pos: 0,
-    summary:`The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
+    summary: `The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
     `,
     time_stamp: "25/02/2023 18:34:52",
     topic_name: "#Vande Bharat",
@@ -65,7 +64,7 @@ let mock_trends = [
     topic: ["Politics", "Technology"],
     topic_tweets: [
       "Let’s count… How many coaches👇in Vande Bharat?",
-      'How the railway rolling stock has evolved over the time.. ICF, LHB and the latest Vande Bharat at Sainagar Shirdi! ',
+      "How the railway rolling stock has evolved over the time.. ICF, LHB and the latest Vande Bharat at Sainagar Shirdi! ",
       `Everyone now takes Vande Bharat for granted For 50 years we were slogging it out in shitty trains, nobody cared Then this guy comes in. Builds it. 
       
       Gets pushed back by babus. Vigilance enquiry! 
@@ -74,7 +73,7 @@ let mock_trends = [
       
       So many roadblocks. 
       
-      It wasn't easy.`
+      It wasn't easy.`,
     ],
   },
   {
@@ -123,7 +122,7 @@ let mock_trends = [
       "Yay!!! I just completed my first HTML/CSS project. I created a personal website for myself using HTML, css, and  @getbootstrap. Now moving on to JavaScript ✈️",
       "Client never knows it all",
       "PO as a software developer : If you must be referred to as a world class dev, your process to things must be well developed.",
-      "Azure Clouding is the most important thing you can learn as a software developer."
+      "Azure Clouding is the most important thing you can learn as a software developer.",
     ],
   },
   {
@@ -133,8 +132,7 @@ let mock_trends = [
     summary:
       "No, the British Empire did not spontaneously end slavery.  Credit for that goes to several generations of slave revolts—including the successful Dandi March and sustained pressure from radical social movements pushing for abolition.",
     time_stamp: "25/02/2023 18:34:57",
-    topic_name:
-      "#ब्रिटिश साम्राज्य",
+    topic_name: "#ब्रिटिश साम्राज्य",
     topic_tweet_count: 36875,
     topic: ["Politics", "Media"],
     topic_tweets: [
@@ -174,30 +172,40 @@ let mock_thread = {
     "https://images.generated.photos/zDm6WNAATR2-bOBf0_qcZ0vJ2q1e1K1vvXERSxqgrH0/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MDMyMDA2LmpwZw.jpg",
   references: {
     media_urls: [
-      { url: "https://pbs.twimg.com/media/Fq4gg0hX0AEdyyM?format=jpg&name=900x900"},
-      { url: "https://th.bing.com/th?id=OIP.UYV_bihup-y039M8_Dk0KQHaFP&w=297&h=210&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"},
-      { url: "https://th.bing.com/th/id/OIP._5g8Ec7fLoLES3CYUp1evQHaJ4?w=140&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7"},
-      { url: "https://th.bing.com/th?id=OIP.kdmpPmRlzz-u8Zf8r3LSvwHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"},
-      { url: "https://th.bing.com/th?id=OIP.k-q_vJLFJ7uccPEkmFh2SgHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"},
+      {
+        url: "https://pbs.twimg.com/media/Fq4gg0hX0AEdyyM?format=jpg&name=900x900",
+      },
+      {
+        url: "https://th.bing.com/th?id=OIP.UYV_bihup-y039M8_Dk0KQHaFP&w=297&h=210&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      },
+      {
+        url: "https://th.bing.com/th/id/OIP._5g8Ec7fLoLES3CYUp1evQHaJ4?w=140&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      },
+      {
+        url: "https://th.bing.com/th?id=OIP.kdmpPmRlzz-u8Zf8r3LSvwHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      },
+      {
+        url: "https://th.bing.com/th?id=OIP.k-q_vJLFJ7uccPEkmFh2SgHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+      },
     ],
     urls: [
-      {url: "https://t.co/GAqzTMncMM", display: "Sample Name"},
-      {url: "https://t.co/zg9utP5lt0", display: "Sample Name"},
-      {url: "https://t.co/miy0A4IyWI", display: "Sample Name"},
-      {url: "https://t.co/6Dta8unQyg", display: "Sample Name"},
-      {url: "https://t.co/mv6cAV0Xb2", display: "Sample Name"},
-      {url: "https://t.co/PVZ6FZKF2E", display: "Sample Name"},
-      {url: "https://t.co/14uoTGyJBP", display: "Sample Name"},
-      {url: "https://t.co/MLujBB7SnC", display: "Sample Name"},
-      {url: "https://t.co/J49XXoHIRW", display: "Sample Name"},
-      {url: "https://t.co/tryhlnGgPg", display: "Sample Name"},
-      {url: "https://t.co/NFfsKeD3ut", display: "Sample Name"},
+      { url: "https://t.co/GAqzTMncMM", display: "Sample Name" },
+      { url: "https://t.co/zg9utP5lt0", display: "Sample Name" },
+      { url: "https://t.co/miy0A4IyWI", display: "Sample Name" },
+      { url: "https://t.co/6Dta8unQyg", display: "Sample Name" },
+      { url: "https://t.co/mv6cAV0Xb2", display: "Sample Name" },
+      { url: "https://t.co/PVZ6FZKF2E", display: "Sample Name" },
+      { url: "https://t.co/14uoTGyJBP", display: "Sample Name" },
+      { url: "https://t.co/MLujBB7SnC", display: "Sample Name" },
+      { url: "https://t.co/J49XXoHIRW", display: "Sample Name" },
+      { url: "https://t.co/tryhlnGgPg", display: "Sample Name" },
+      { url: "https://t.co/NFfsKeD3ut", display: "Sample Name" },
     ],
   },
   thread_summary:
     "Sacheil shares some of his life idealogies. Remove people who make you feel bad, both in the physical and digital worlds. Unfollow, mute, or block to improve happiness and avoid overcomplication.A good life is about subtraction as much as it is about addition.While it's important to surround ourselves with positivity, completely cutting out people from our lives may not always be feasible. Instead, we can try to focus on setting boundaries and limiting interactions with those who negatively impact us.",
   thread_sentiment: { pos: 8, neg: 0, neu: 2 },
-  topic: ["Way_of_life", "Healthy_lifestyle"]
+  topic: ["Way_of_life", "Healthy_lifestyle"],
 };
 
 let mock_user_details = {
@@ -288,22 +296,79 @@ let mock_user_details = {
   neutral_count: "4",
   pos_count: "6",
   profile_image_url:
-   "https://images.generated.photos/kEtyIuts_R7fqTwr6dHBpwY3mMm-3GwWrw7xq51A_VI/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ2ODAxLmpwZw.jpg",
-  sentiments: {
-    Sentiment: { 0: "pos", 1: "pos", 2: "neg", 3: "neutral", 4: "neg", 5: "pos", 6:"pos", 7:"pos", 8:"pos", 9:"neutral" },
-    Tweet: {
-      0: " Most of your friends aren’t really your friends. They’re just along for the ride when it’s fun or convenient. Your real friends are there for you when you have nothing to offer.",
-      1: "You don't need to have an opinion on everything. It's perfectly reasonable to have no opinion on something that you haven't researched or don't understand.",
-      2: "You can get pretty damn far in life by just saying what you're going to do and then doing it. No fancy hack needed.",
-      3: "Most of us need fewer friends and more intellectual sparring partners. Friends are easy to come by, but intellectual sparring partners question our assumptions and force us to level up.",
-      4: "Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.",
-      5: "Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.",
-      6: "For the first time in my life I don’t have my next 6 months planned. For the first time I feel like I can escape the matrix. For the first time I feel confident even without knowing my next move. Feels surreal.",
-      7: "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job. Junior Devs  >>>>>> 😂",
-      8: "The failure of #SVB is likely to have a ripple effect on #Indian startups, many of which have significant amounts of funds deposited with the bank. It will also dent the #fundraising ability of Indian #startups as the US-based bank was a key source of funding for #tech startups.",
-      9: "It’s my 7th year in tech & I’m  a software Engineer who’s also enthusiastic about UX Design & Data Science, you possibly use or have used one of the products I’ve built😎.",
+    "https://images.generated.photos/kEtyIuts_R7fqTwr6dHBpwY3mMm-3GwWrw7xq51A_VI/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ2ODAxLmpwZw.jpg",
+  user_tweets: [
+    {
+      tweet:
+        "Most of your friends aren’t really your friends. They’re just along for the ride when it’s fun or convenient. Your real friends are there for you when you have nothing to offer.",
+      likes: 200,
+      retweets: 157,
+      sentiment: "pos",
     },
-  },
+    {
+      tweet:
+        "You don't need to have an opinion on everything. It's perfectly reasonable to have no opinion on something that you haven't researched or don't understand.",
+      likes: 185,
+      retweets: 30,
+      sentiment: "neg",
+    },
+    {
+      tweet:
+        "You can get pretty damn far in life by just saying what you're going to do and then doing it. No fancy hack needed.",
+      likes: 158,
+      retweets: 27,
+      sentiment: "pos",
+    },
+    {
+      tweet:
+        "Most of us need fewer friends and more intellectual sparring partners. Friends are easy to come by, but intellectual sparring partners question our assumptions and force us to level up.",
+      likes: 100,
+      retweets: 30,
+      sentiment: "pos",
+    },
+    {
+      tweet:
+        "Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.",
+      likes: 102,
+      retweets: 10,
+      sentiment: "neutral",
+    },
+    {
+      tweet:
+        "Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.",
+      likes: 500,
+      retweets: 213,
+      sentiment: "pos",
+    },
+    {
+      tweet:
+        "For the first time in my life I don’t have my next 6 months planned. For the first time I feel like I can escape the matrix. For the first time I feel confident even without knowing my next move. Feels surreal.",
+      likes: 34,
+      retweets: 8,
+      sentiment: "neutral",
+    },
+    {
+      tweet:
+        "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job. Junior Devs  >>>>>> 😂",
+      likes: 9,
+      retweets: 1,
+      sentiment: "neg",
+    },
+    {
+      tweet:
+        "The failure of #SVB is likely to have a ripple effect on #Indian startups, many of which have significant amounts of funds deposited with the bank. It will also dent the #fundraising ability of Indian #startups as the US-based bank was a key source of funding for #tech startups.",
+      likes: 89,
+      retweets: 5,
+      sentiment: "neg",
+    },
+    {
+      tweet:
+        "It’s my 7th year in tech & I’m  a software Engineer who’s also enthusiastic about UX Design & Data Science, you possibly use or have used one of the products I’ve built😎.",
+      likes: 15,
+      retweets: 65,
+      sentiment: "pos",
+    },
+  ],
   username: "Jennifer Johnson",
 };
 
@@ -348,10 +413,24 @@ let mock_tweets = [
   "Most of the people you look up to and admire are remarkably unremarkable. Their success is not due to some intrinsic difference, but some stellar combination of effort and luck.",
   "Failure doesn't always lead to growth. Sometimes failure just leads to pain. Sometimes the growth doesn't come from the failure, but from simply outlasting the darkness.",
   "For the first time in my life I don’t have my next 6 months planned. For the first time I feel like I can escape the matrix. For the first time I feel confident even without knowing my next move. Feels surreal.",
-  "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job.😂"
-]
+  "They say Twitter is not a place but I met 90% of my close tech friends on Twitter. We had no mentor, just online resources, Twitter and a WhatsApp group to help each other out when stuck. Today, everyone of them earns in tech, some with more than one job.😂",
+];
 
-let mock_topics = ['Software', 'Politics', "Entertainment", 'Health', 'Blockchain', 'DSA', 'Competitive Programming']
+let mock_topics = [
+  "Software",
+  "Politics",
+  "Entertainment",
+  "Health",
+  "Blockchain",
+  "DSA",
+  "Competitive Programming",
+];
 
-
-export { mock_trends, mock_thread, mock_user_details, mock_tag_detail, mock_tweets, mock_topics };
+export {
+  mock_trends,
+  mock_thread,
+  mock_user_details,
+  mock_tag_detail,
+  mock_tweets,
+  mock_topics,
+};
