@@ -3,6 +3,9 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import os
 import numpy as np
 from scipy.special import expit
+import torch
+from collections import Counter
+import numpy as np
 
 summarization_model = AutoModelForSeq2SeqLM.from_pretrained(
     f'{os.getcwd()}/setups/model/summarization_model')
@@ -16,6 +19,10 @@ sentiment_tokenizer = AutoTokenizer.from_pretrained(
 
 topic_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model/topic_model')
 topic_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer/topic_tokenizer')
+
+emotion_model = AutoModelForSequenceClassification.from_pretrained(f'{os.getcwd()}/setups/model/emotion_model')
+emotion_tokenizer = AutoTokenizer.from_pretrained(f'{os.getcwd()}/setups/tokenizer/emotion_tokenizer')
+
 
 summarizer = pipeline("summarization", model=summarization_model,
                       tokenizer=summarization_tokenizer)
@@ -112,34 +119,30 @@ def tweet_topic(combined_tweets):
             pass
     return output    
 
-# example = [
-#   " Ye grandfather vala toh 'The Boys' moment ho gaya 😂",
-#   " Best thing, she will put it as whatsapp status or dp so that everyone can see how weird I was. But this is something which is cute and cringe at the same time.",
-#   " Perfect example of how visuals and figures can be misleading at times. If you tie both ends of a 80m rope on a 50m pole,  only then it will satisfy the numbers given.",
-#   " 😆 I remember my mom doing the same. Moments like these makes us nostalgic now.",
-#   "_Jadwani Very deep. This quote always reminds of Itachi Uchiha.",
-#   " 4india Nice, shortest solution saw till now.",
-#   "_jaden Awesome Jaden 🙌",
-#   " Well said, dheeraj !! Just wanted to add that self complimenting is equally beneficial as receiving them from loved ones. The reason I say this is because I believe that there might be times when we won't be appreciated much.",
-#   " To be honest, I use to love writing essays in Hindi. It was my teacher who made me fall in love with the literature and I could still see that today.  Everything has good and bad in it. You can't make your blood boil by just looking at the bad side.",
-#   " Congratulations !! 🙌",
-#   " Symmetry is indeed beautiful ! So the radius of circle should be 3.  And 1/3rd of 9π is the answer.",
-#   "_texplorer So true 💯. Yet seeking external validation is so taught to us that it becomes our nature as such.",
-#   "3 Well, I believe that this struggle will continue because the point between logic and emotions is in an unstable equilibrium. You might attain it temporarily but hard to maintain it throughout.",
-#   "_texplorer Sach bata, \"kal se karunga\" kitne din se bol raha hai 😂",
-#   "_kumar_4 Because to stay humble, you need to accept that you may not be always right, is what I think. Hence it is indeed difficult to develop.",
-#   "_raj_sharma DSA/Dev are the two sides of the same coin. Engineering is not just about problem solving but also about applications. So both the options go hand in hand.",
-#   " Difficult to digest that  people of 2nd type are more than that of 1st type.  I was expecting a complete opposite distribution, when I clicked on the poll.",
-#   " Awesome, Congratulations 🙌",
-#   " Definitely teaching. In fact, I'm doing it right now by helping with my mother's tuition.",
-#   "I'm not sure why, but after getting a decent job offer, I feel like I'm doing CP (competitive programming) more for fun now. I no longer force myself to participate in contests. Negative deltas no longer make me feel as low as they used to.",
-#   "@_SaketThota You have to live through these unfair parts so you never take the best moments for granted, bro.",
-#   "@VanshGoel 🙌",
-#   " I would like to appreciate the design !! With a nice gradient in the background and a blurred logo, and that speaks it all. What a powerful way to express your idea..",
-#   "_kumar_4 Yes, it is challenging to stand out.",
-#   "_048 😂"
-# ]
 
-# print(tweet_topic(example))
+#Emotion detector
+emotion_labels = ['anger', "disgust", "fear", "joy", "neutral", "sadness", "surprise"]
 
+# Define function to predict emotions for input text
+def predict_emotions(texts):
+    inputs = emotion_tokenizer(texts, padding=True, truncation=True, return_tensors="pt")
+    outputs = emotion_model(**inputs)
+    predictions = torch.softmax(outputs.logits, dim=1).detach().cpu().numpy()
+    predicted_labels = [emotion_labels[prediction.argmax()] for prediction in predictions]
+    emotion_counts = {label: predicted_labels.count(label) for label in emotion_labels}
+    most_common_emotions = sorted(emotion_counts.items(), key=lambda x: x[1], reverse=True)[:3]
+    return predicted_labels, most_common_emotions
+
+# Example usage
+texts = [
+    "I'm so happy today!",
+    "I can't believe how angry I am right now.",
+    "Things are really looking up. I'm feeling very optimistic.",
+    "I'm not sure if this is going to work out. Feeling a bit pessimistic.",
+    "I trust that everything will work out in the end.",
+    "I have no strong feelings one way or the other. Feeling pretty neutral."
+]
+predicted_labels, most_common_emotions = predict_emotions(texts)
+print(predicted_labels)
+print(most_common_emotions)
 
