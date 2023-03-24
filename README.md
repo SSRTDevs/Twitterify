@@ -9,9 +9,12 @@ setups
 ---- sentiment_model
 ---- summarization_model
 ---- topic_model
+---- emotion_model
 -- tokenizer
 ---- sentiment_tokenizer
 ---- summarization_tokenizer
+---- topic_tokenizer
+---- emotion_tokenizer
 
 ```
 
