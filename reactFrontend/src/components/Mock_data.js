@@ -144,6 +144,11 @@ let mock_trends = [
 ];
 
 let mock_thread = {
+  common_emotions: [
+    ["joy",4],
+    ["sadness",2],
+    ["fear",1]
+  ],
   thread_tweets: [
     "1. @lexdotpage\n\nUnlock your best writing with Lex.\nAny time you don’t know how to continue your text, type +++ and Lex continues for you.\n\nIt also helps generate titles for your texts! https://t.co/NFfsKeD3ut",
     "2. @runwayml\n\nRunway is the content creation suite from the future. It has magical AI tools like:\n- change images with text descriptions\n- remove objects in videos\n- remove video backgrounds\n- expand images with descriptions (as seen in the video)\n+++ https://t.co/tryhlnGgPg",

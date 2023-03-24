@@ -180,12 +180,13 @@ const thread_summarizer = async (thread, setThread, setAlert = empty) => {
     type: "info",
   });
   let thread_tweets = [];
-  return await axios
+  await axios
     .get(
       `http://localhost:5000/thread_summary/${thread.url.replaceAll("/", "*")}}`
     )
     .then((res) => {
       thread_tweets = res.data["thread_tweets"];
+      console.log(res.data)
       setThread((thread) => {
         return { ...thread, details: res.data };
       });
@@ -204,7 +205,7 @@ const thread_summarizer = async (thread, setThread, setAlert = empty) => {
 
   let summary = await summarize(thread_tweets);
   setThread((thread) => {
-    return { ...thread, thread_summary: summary };
+    return { ...thread, details:{...thread.details, thread_summary: summary} };
   });
 };
 

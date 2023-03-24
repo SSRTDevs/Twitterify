@@ -83,4 +83,4 @@ def thread_summarizer(url, count = 20):
     
     return res_obj
 
-thread_summarizer("https://twitter.com/nonmayorpete/status/1638775916150284289")
+# thread_summarizer("https://twitter.com/nonmayorpete/status/1638775916150284289")
