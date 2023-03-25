@@ -53,9 +53,9 @@ let prev_mock_trends = {
 
 let mock_trends = [
   {
-    neg: 0,
-    neu: 3,
-    pos: 0,
+    neg: "300",
+    neu: "150",
+    pos: "550",
     summary: `The Vande Bharat Express is one of the prestigious and modern trains run and managed by the Indian Railways. It is considered a semi-high speed train, which is the second fastest train in India, the first being the Gatimaan Express. Vande Bharat is also known as Train 18 and was inaugurated by the Prime Minister of India, Shri Narendra Modi in 2019. As of 2022, the Vande Bharat train runs only on 2 routes
     `,
     time_stamp: "25/02/2023 18:34:52",
@@ -77,9 +77,9 @@ let mock_trends = [
     ],
   },
   {
-    neg: 0,
-    neu: 0,
-    pos: 3,
+    neg: "100",
+    neu: "450",
+    pos: "550",
     summary:
       "India's entry RRR is running in the Best Song nomination for Naatu Naatu, and all hopes are pinned on it. Ahead of that, Ram Charan delighted his fans in the US by having a small meet-and-greet with them. Fans thronged in large numbers to see him.RRR has received an Oscar nomination for Naatu Naatu in Best Original Song category.",
     time_stamp: "25/02/2023 18:34:54",
@@ -93,9 +93,9 @@ let mock_trends = [
     ],
   },
   {
-    neg: 0,
-    neu: 0,
-    pos: 2,
+    neg: "150",
+    neu: "300",
+    pos: "550",
     summary:
       "A memorable picture with my inspiration &amp; soul of the @INCIndia Smt. Sonia Gandhi ji along with Former Minister my Sister Yashomati Thakur, MLA Praniti Shinde and Brother Gurd",
     time_stamp: "25/02/2023 18:34:55",
@@ -108,9 +108,9 @@ let mock_trends = [
     ],
   },
   {
-    neg: 0,
-    neu: 3,
-    pos: 2,
+    neg: "237",
+    neu: "455",
+    pos: "360",
     summary:
       "You DON'T need to be a genius to learn coding -- All you need do is: 1. Learn HTML & CSS 2. Learn JavaScript 3. Learn ReactJS 4. Build an ePortfolio with 4-5 good projects 5. Apply for 100+ jobs daily",
     time_stamp: "25/02/2023 18:34:56",
@@ -126,9 +126,9 @@ let mock_trends = [
     ],
   },
   {
-    neg: 2,
-    neu: 0,
-    pos: 0,
+    neg: "200",
+    neu: "150",
+    pos: "800",
     summary:
       "No, the British Empire did not spontaneously end slavery.  Credit for that goes to several generations of slave revolts—including the successful Dandi March and sustained pressure from radical social movements pushing for abolition.",
     time_stamp: "25/02/2023 18:34:57",
