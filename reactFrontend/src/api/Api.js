@@ -132,16 +132,22 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
     get_user_cloud,
   ]);
 
-  if(!Object.keys(user_details).length) return ;
+  let pos = 0,
+      neg = 0;
+  user_details.user_tweets.forEach((tweet) => {
+    pos += tweet.sentiment === "pos" ? 1 : 0;
+    neg += tweet.sentiment === "neg" ? 1 : 0;
+  });
+  user_details = { ...user_details, pos_count: pos, neg_count: neg };
+
+  if (!Object.keys(user_details).length) return;
 
   setAlert({
     error: "Fetching User topics...",
     type: "info",
   });
 
-  let tweets = user_details.user_tweets.map(
-    (user_tweet) => user_tweet.tweet 
-  );
+  let tweets = user_details.user_tweets.map((user_tweet) => user_tweet.tweet);
   const user_topics = await get_topics(tweets, setAlert);
   setAlert({});
   setUser((user) => {
@@ -186,7 +192,7 @@ const thread_summarizer = async (thread, setThread, setAlert = empty) => {
     )
     .then((res) => {
       thread_tweets = res.data["thread_tweets"];
-      console.log(res.data)
+      console.log(res.data);
       setThread((thread) => {
         return { ...thread, details: res.data };
       });
@@ -205,7 +211,10 @@ const thread_summarizer = async (thread, setThread, setAlert = empty) => {
 
   let summary = await summarize(thread_tweets);
   setThread((thread) => {
-    return { ...thread, details:{...thread.details, thread_summary: summary} };
+    return {
+      ...thread,
+      details: { ...thread.details, thread_summary: summary },
+    };
   });
 };
 
