@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {NoData} from ".."
 
 function Trending_tweets({ trends, className = "" }) {
   return (
     <>
       {trends.show_tweets.length === 0 ? (
-        "Nothing to show"
+        <NoData/>
       ) : (
         <motion.div className={`chat chat-end w-full space-y-2 ${className}`}>
           {trends.show_tweets.map((item) => {
