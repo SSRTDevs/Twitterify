@@ -1,17 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {RightTrend} from "../"
+import { RightTrend } from "..";
 import {
   MdSentimentNeutral,
   MdSentimentSatisfiedAlt,
   MdSentimentVeryDissatisfied,
 } from "react-icons/md";
 
-function TrendingSmallCard({
-  index,
-  trend,
-  hashtag,
-}) {
+function CardTitle({ hashtag, tweet_count }) {
+  return (
+    <div className="flex flex-col items-start">
+      <h4 className="card-title">{hashtag}</h4>
+      <div className="text-xs text-right text-gray-400 hover:text-gray-300">
+        <span className="font-bold">{tweet_count}</span> tweets posted
+      </div>
+    </div>
+  );
+}
+
+function TrendingSmallCard({ index, trend, hashtag }) {
   return (
     <>
       <div
@@ -20,26 +27,12 @@ function TrendingSmallCard({
       >
         <div className="card-body p-5 space-y-1">
           <div className="topbar w-full flex flex-col justify-between gap-4 items-center">
-            <div className="flex flex-col items-start">
-              <h4 className="card-title">{hashtag}</h4>
-              <div className="text-xs text-right text-gray-400 hover:text-gray-300">
-                <span className="font-bold">{trend.topic_tweet_count}</span>{" "}
-                tweets posted
-              </div>
-            </div>
-            <div>
-              {trend.topic &&
-                trend.topic.map((topic, idx) => {
-                  return (
-                    <>
-                      &nbsp;
-                      <span className="badge badge-outlined rounded-full text-white">
-                        {topic}
-                      </span>
-                    </>
-                  );
-                })}
-            </div>
+            <CardTitle
+              hashtag={hashtag}
+              tweet_count={trend.topic_tweet_count}
+            />
+
+            <TopicList topics={trend.topic} />
 
             <SentimentDiv trend={trend} />
           </div>
@@ -51,9 +44,7 @@ function TrendingSmallCard({
           </p>
 
           <div className="endbar flex justify-end w-full">
-            <Collapse
-              tweets={trend.topic_tweets}
-            />
+            <Collapse tweets={trend.topic_tweets} />
           </div>
         </div>
       </div>
@@ -63,12 +54,12 @@ function TrendingSmallCard({
 
 function Collapse({ tweets }) {
   const trends = {
-    show_tweets: tweets , 
-    hash_tweets: {} 
-  }
+    show_tweets: tweets,
+    hash_tweets: {},
+  };
   return (
     <div className="collapse w-full">
-      <input type="checkbox" /> 
+      <input type="checkbox" />
       <div className="link collapse-title text-sm text-right">Read more</div>
       <div className="collapse-content w-full">
         <RightTrend trends={trends} className="h-20 overflow-y-scroll text" />
@@ -113,6 +104,22 @@ function TrendingDropdown({ trends }) {
   );
 }
 
+function TopicList({ topics }) {
+  return (
+    <div>
+      {topics &&
+        topics.map((topic, idx) => {
+          return (
+            <>
+              &nbsp;
+              <span className="badge badge-outline rounded-full">{topic}</span>
+            </>
+          );
+        })}
+    </div>
+  );
+}
+
 function SentimentDiv({ trend }) {
   return (
     <div className="flex justify-between gap-3 text-center text-xl cursor-auto p-2">
@@ -147,12 +154,7 @@ function SentimentDiv({ trend }) {
   );
 }
 
-function TrendingCard({
-  index,
-  trend,
-  hashtag,
-  setReadTweets,
-}) {
+function TrendingCard({ index, trend, hashtag, setReadTweets }) {
   return (
     <>
       <motion.div
@@ -167,26 +169,12 @@ function TrendingCard({
         >
           <div className="card-body p-5 space-y-1">
             <div className="topbar w-full flex justify-between items-center">
-              <div className="flex flex-col items-start">
-                <h4 className="card-title">{hashtag}</h4>
-                <div className="text-xs text-right text-gray-400 hover:text-gray-300">
-                  <span className="font-bold">{trend.topic_tweet_count}</span>{" "}
-                  tweets posted
-                </div>
-              </div>
-              <div>
-                {trend.topic &&
-                  trend.topic.map((topic, idx) => {
-                    return (
-                      <>
-                        &nbsp;
-                        <span className="badge badge-outline rounded-full">
-                          {topic}
-                        </span>
-                      </>
-                    );
-                  })}
-              </div>
+              <CardTitle
+                hashtag={hashtag}
+                tweet_count={trend.topic_tweet_count}
+              />
+
+              <TopicList topics={trend.topic} />
 
               <SentimentDiv trend={trend} />
             </div>
@@ -200,14 +188,14 @@ function TrendingCard({
             </p>
 
             <div className="endbar flex justify-end w-full">
-                <a
-                  className="link text-right"
-                  onClick={() => {
-                    setReadTweets(index);
-                  }}
-                >
-                  Read Tweets
-                </a>
+              <a
+                className="link text-right"
+                onClick={() => {
+                  setReadTweets(index);
+                }}
+              >
+                Read Tweets
+              </a>
             </div>
           </div>
         </div>
@@ -216,6 +204,4 @@ function TrendingCard({
   );
 }
 
-TrendingCard.TrendingSmallCard = TrendingSmallCard;
-TrendingCard.Dropdown = TrendingDropdown;
-export default TrendingCard;
+export { TrendingCard, TrendingSmallCard, TrendingDropdown };
