@@ -4,6 +4,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import { TiGroup } from "react-icons/ti";
 import { BiCalendar } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { user_summarizer } from "../../api/Api";
 import { InfoCard } from "../";
 
 const Wordcloud = ({ clouds }) => (
@@ -99,7 +100,9 @@ export default function RightUser({ user }) {
             icon={<BiCalendar size={30} />}
             noVal={true}
           >
-            <div className="stat-desc font-bold text-xl">{user.details["created_at"]}</div>
+            <div className="stat-desc font-bold text-xl">
+              {user.details["created_at"]}
+            </div>
           </Stat>
           <Stat
             title="Positive"
@@ -119,6 +122,28 @@ export default function RightUser({ user }) {
       </InfoCard>
 
       <Wordcloud clouds={user.clouds} />
+
+      <InfoCard title="People you may know">
+        <div className="w-full overflow-x-scroll flex gap-8 justify-between mt-4 pb-8">
+          {user.friends.map((freind, idx) => {
+            return (
+              <div className="flex flex-col items-center">
+                <Zoom>
+                  <div className="avatar p-2">
+                    <div className="w-16 rounded-full ring ring-twitter-200 ring-offset-base-100 ring-offset-1">
+                      <img
+                        src={freind["profile_image_url"]}
+                        alt="profile_image"
+                      />
+                    </div>
+                  </div>
+                </Zoom>
+                <p>{freind.name}</p>
+              </div>
+            );
+          })}
+        </div>
+      </InfoCard>
     </>
   );
 }

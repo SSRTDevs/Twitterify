@@ -5,9 +5,11 @@ import {
   UserTweets,
   MentionTweets,
   UserTimeline,
+  UserNetwork,
   UserTabs,
   RightUser,
-  InputWithBtn
+  InputWithBtn,
+  InfoCard,
 } from "../index";
 import { Breakpoint } from "react-socks";
 
@@ -57,6 +59,9 @@ export default function UserSummarizer({ user, setUser }) {
         ) : (
           <UserTabs tabItems={tabItems} />
         )}
+        
+        
+
       </div>
     </>
   );

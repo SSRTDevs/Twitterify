@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { Trending, ThreadSummarizer, UserSummarizer, RightThread, RightTrend, RightUser, Alert, Tabs, Drawer } from ".";
-import { mock_thread, mock_trends, mock_user_details, mock_topics } from "./Mock_data";
+import { mock_thread, mock_trends, mock_user_details, mock_topics, mock_freinds } from "./Mock_data";
 import { trending, user_summarizer, thread_summarizer } from "../api/Api";
 import { IoTrendingUpOutline } from "react-icons/io5";
 import { MdOutlineSummarize } from "react-icons/md";
@@ -13,6 +13,7 @@ export default function App() {
         tweets: 0,
         details: mock_user_details,
         clouds: "",
+        friends: mock_freinds,
         topics: mock_topics,
     });
     const [thread, setThread] = useState({

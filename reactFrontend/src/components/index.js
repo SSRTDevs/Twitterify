@@ -13,7 +13,7 @@ export { default as MentionTweets } from "./UserSummarizer/UserTabsComponent/Men
 export { default as UserTimeline } from "./UserSummarizer/UserTabsComponent/UserTimeline";
 export { default as Alert } from "./Alert";
 export { default as Carousel } from "./ThreadSummarizer/Carousel";
-export {default as Threadtabs} from "./ThreadSummarizer/Threadtabs";
-export {default as InputWithBtn} from "./InputWithBtn";
-export {default as InfoCard} from "./InfoCard"
-export {default as NoData} from "./NoData"
+export { default as Threadtabs } from "./ThreadSummarizer/Threadtabs";
+export { default as InputWithBtn } from "./InputWithBtn";
+export { default as InfoCard } from "./InfoCard";
+export { default as NoData } from "./NoData";

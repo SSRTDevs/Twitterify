@@ -1,5 +1,4 @@
 import axios from "axios";
-import { mock_tweets } from "../components/Mock_data";
 
 const empty = () => {};
 
@@ -133,7 +132,7 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
   ]);
 
   let pos = 0,
-      neg = 0;
+    neg = 0;
   user_details.user_tweets.forEach((tweet) => {
     pos += tweet.sentiment === "pos" ? 1 : 0;
     neg += tweet.sentiment === "neg" ? 1 : 0;
@@ -149,7 +148,7 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
 
   let tweets = user_details.user_tweets.map((user_tweet) => user_tweet.tweet);
   const user_topics = await get_topics(tweets, setAlert);
-  setAlert({});
+  
   setUser((user) => {
     return {
       ...user,
@@ -158,6 +157,19 @@ const user_summarizer = async (user, setUser, setAlert = empty) => {
       topics: user_topics,
     };
   });
+
+  setAlert({
+    error: "Fetching User Network...",
+    type: "info",
+  });
+
+  let friends = await get_user_friends(user.Username, setAlert) ;
+  setUser((user) => {
+    return { ...user, friends: friends };
+  });
+
+  setAlert({})
+
 };
 
 const get_topics = async (tweets, setAlert) => {
@@ -178,6 +190,25 @@ const get_topics = async (tweets, setAlert) => {
       }, 3000);
     });
   return topics;
+};
+
+const get_user_friends = async (username, setAlert) => {
+  let friends = [];
+  await axios
+    .get(`http://localhost:5000/friends/${username}`)
+    .then((res) => {
+      friends = res.data;
+    })
+    .catch((err) => {
+      setAlert({
+        error: "Seems like an error while fetching freinds",
+        type: "error",
+      });
+      setTimeout(() => {
+        setAlert({});
+      }, 3000);
+    });
+  return friends;
 };
 
 const thread_summarizer = async (thread, setThread, setAlert = empty) => {

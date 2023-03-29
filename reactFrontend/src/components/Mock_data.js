@@ -145,9 +145,9 @@ let mock_trends = [
 
 let mock_thread = {
   common_emotions: [
-    ["joy",4],
-    ["sadness",2],
-    ["fear",1]
+    ["joy", 4],
+    ["sadness", 2],
+    ["fear", 1],
   ],
   thread_tweets: [
     "1. @lexdotpage\n\nUnlock your best writing with Lex.\nAny time you don’t know how to continue your text, type +++ and Lex continues for you.\n\nIt also helps generate titles for your texts! https://t.co/NFfsKeD3ut",
@@ -377,6 +377,69 @@ let mock_user_details = {
   username: "Jennifer Johnson",
 };
 
+let mock_freinds =  [
+    {
+      name: "Wolfi OS",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1592962227363012609/6s2yZVxc.png",
+      screen_name: "wolfi_os",
+    },
+    {
+      name: "Peter Kowalczyk",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/864135890406440960/PmRm5FIL.jpg",
+      screen_name: "peter_kow",
+    },
+    {
+      name: "Andy Peng",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1501621492303360002/NqvPH5ql.jpg",
+      screen_name: "pymhq",
+    },
+    {
+      name: "Data Council",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1610657130494984192/TNGRaJvi.jpg",
+      screen_name: "DataCouncilAI",
+    },
+    {
+      name: "Brandon West",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1415449869389471744/bYZA7D_d.jpg",
+      screen_name: "bwest",
+    },
+    {
+      name: "Anand #IndianFromSouth",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1632328257851760641/aYqrNFC1.jpg",
+      screen_name: "Bharatiyan108",
+    },
+    {
+      name: "Josefine Schaefer",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1479370366665515009/kcM8rY2X.jpg",
+      screen_name: "JsfnSchfr",
+    },
+    {
+      name: "Grovemade",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/438376515298816000/kv4rUhpk.jpeg",
+      screen_name: "grovemade",
+    },
+    {
+      name: "Colton Dempsey",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1627893322290466817/q6q2Stgj.jpg",
+      screen_name: "coltondempsey",
+    },
+    {
+      name: "Claire-me",
+      profile_image_url:
+        "http://pbs.twimg.com/profile_images/1599111048749006849/VvPzOiFM.png",
+      screen_name: "claire__charles",
+    },
+];
+
 let mock_tag_detail = {
   summary: `
   Per capita income has more than doubled to ₹1.97 lakh in around nine years.
@@ -438,4 +501,5 @@ export {
   mock_tag_detail,
   mock_tweets,
   mock_topics,
+  mock_freinds,
 };
