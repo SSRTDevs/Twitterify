@@ -1,7 +1,11 @@
 # Twitterify
 *A web platform to get quick, accurate and valuable statistical insights for real time twitter data.*
 
-<img src="./Assets/Trending_section.png"/>
+<img src="./Assets/Twitterify-lighthouse.png"/>
+
+<br/>
+
+Twitterify has undergone rigorous testing to ensure that it meets industry standards for web development best practices. We're proud to report that our project scored a perfect 100 in the Best Practices category of the Lighthouse report. This means that our code adheres to a set of recommended 
 
 ### Table of contents
 
@@ -34,7 +38,7 @@
 #### Analysis of Twitter Threads
 - Thread Analysis Page
 
-![Thread Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Thread_Summarizer.png?raw=true "Thread Analysis Page")
+<img src="./Assets/Thread_Summarizer.png"/>
 
 - This section displays the summary of a thread and statistical information associated with it like the no of tweets the thread consists of and the replies it has received.
 - Users can enter the thread link in the input field for analyzing a particular thread
@@ -67,7 +71,7 @@
 - The flask server soley interacted with the Twitter API's to extract data and processed it based on the corresponding requests made by the React Server at the frontend.
 
 ### Tech Stacks used
-- Tech Stack used: React JS, Flask
+- Tech Stack used: React JS, Flask,
 
 ### How to Contribute
 
