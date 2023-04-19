@@ -17,7 +17,7 @@
 - Twitterify is a web application which provides quick accurate and valuable statistical insights on real time twitter data.
 - The application consists of three modules that focusses on analyzing trending data, threads and user profiles respectively.
 - The application aquires real time twitter data from the twitter API's. The data is processed and then analyzed before the insights are shown to the users
-- Check out the website landing page for more information
+- Check out the website landing page for more information: https://ssrtdevs.github.io/Twitterify-landing-page/
 
 ### Why Twitterify?
 - There are over 500 million tweets tweeted per day on twitter by people to share their opinion. While many users use the platform to frequently speak their thoughts, twitter has a large passive userbase which uses the platform, mainly too read tweets and hear about people’s opinions. Often to understand the user opinion or why a particular hashtag is trending, users have to read an average of 20 tweets which can be time consuming.
@@ -104,4 +104,4 @@ Twitterify has undergone rigorous testing to ensure that it meets industry stand
 [Prithvi Rohira](https://github.com/prithvirohira8)
 
 ## Achievement
-- We came runner up college project Expo
+- Runner up at our college project Expo
