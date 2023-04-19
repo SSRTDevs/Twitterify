@@ -13,7 +13,8 @@ Twitterify has undergone rigorous testing to ensure that it meets industry stand
 - [Why Twitterify?](#why-twitterify)                  
 - [Demonstration](#demonstration)                   
 - [Architecture](#project-architecture) 
-- [Implementation Details](#implementaion-details) 
+- [Implementation Details](#implementaion-details)
+- [Steps to Download and Integrate](#integrattion-details)
 - [Tech stacks used](#tech-stacks-used)
 - [How to contribute](#project-contributors)   
 
@@ -69,6 +70,18 @@ Twitterify has undergone rigorous testing to ensure that it meets industry stand
 - The application conisted of 2 servers catering to the frontend and backend of the application.
 - The frontend server was made using React JS and made use of data processed by the Flask server at the backend.
 - The flask server soley interacted with the Twitter API's to extract data and processed it based on the corresponding requests made by the React Server at the frontend.
+
+
+### How to Download and Integrate
+1. Clone the repository from 
+2. The frontend and backend servers of the application run independently and need to be set up before starting them.
+3. the flaskBackend folder corresponds to the flask server and the reactFrontend corresponds to the frontend server
+4. Install the latest versions of Node JS and Python on the device that would be required to set up and run the application
+5. To set up the flask server, open the terminal in the flaskFrontend directory and run pip install -r requirements.txt. This would install all the necessary packages for the flask server
+6. To set up the flask server, open the terminal in the reactBackend directory and run npm intsall. This would install all the necessary packages for the react server
+7. To run the flask server, run export FLASK_APP=sever.py and flask run subsequently on the terminal opened for the flask server. This would start the flask server on port 5000 on the localhost.
+8. To run the react server, run npm start on the terminal opened for the react server. This would start the react server on port 3000 on the localhost.
+9. The application then can be viewed on the browser on localhost:3000 and can be used by the users.
 
 ### Tech Stacks used
 - Tech Stack used: React JS, Flask,
