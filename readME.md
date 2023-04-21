@@ -41,7 +41,7 @@
 
 #### Trending Section
 
-<img src="./Assets/Trending_section.png"/>
+<img src="./Assets/Trending_Topics_Section.png"/>
 
 - Summaries, category and sentiments of the top trends are shown
 - Users can read a few tweets associated with a particular hashtag
