@@ -1,17 +1,9 @@
-<div style="display: flex; align-items: center; justify-content: center;">
-  <div style="text-align: center; margin-top: 30px">
-    <p style="font-size: 48px;">TWITERIFY</p>
-  </div>
-  <div style="margin-left: 20px;">
-        <img src="./Assets/twitterify_logo.png"/>
-  </div>
+<div align="center">
+  <h1 style="font-family: sans-serif;"> TWITTERIFY </h1>
+  <img style="float: right;" src="./Assets/twitterify_logo.png" alt="Twitterify Logo" width="80" height="80">
 </div>
 
-<div>
-<h5> A web platform to get quick, accurate and valuable statistical insights for real time twitter data. </h5>
-</div>
-
----
+### *A web platform to get quick, accurate and valuable statistical insights for real time twitter data. </h3>*
 
 ### Table of contents
 
@@ -103,7 +95,11 @@
 
 <br/>
 
-Twitterify has undergone rigorous testing to ensure that it meets industry standards for web development best practices. We're proud to report that our project scored a perfect 100 in the Best Practices category of the Lighthouse report. This means that our code adheres to a set of recommended
+Twitterify has achieved a perfect score of 100 in the Best Practices category of the Lighthouse report, indicating that the project conforms to recommended web development standards.
+
+### Achievement
+
+- 🎉 Secured runner-up position at the Project Expo organized by our college
 
 ### Project Contributors
 [Abhishek Sharma](https://github.com/Abhi-tech-09)
@@ -114,6 +110,3 @@ Twitterify has undergone rigorous testing to ensure that it meets industry stand
 
 [Prithvi Rohira](https://github.com/prithvirohira8)
 
-### Achievement
-
-- 🎉 Secured runner-up position at the Project Expo organized by our college
