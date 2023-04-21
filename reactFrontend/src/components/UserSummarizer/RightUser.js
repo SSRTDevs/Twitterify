@@ -36,7 +36,7 @@ const Wordcloud = ({ clouds }) => (
 
 const Stat = ({ title, value, icon, children, noVal = false }) => (
   <div className="stats shadow">
-    <div className="stat">
+    <div className="stat pb-1">
       <div className="stat-figure text-twitter-100">{icon}</div>
       <div className="stat-title">{title}</div>
       {!noVal && <div className="stat-value">{value}</div>}
@@ -49,7 +49,7 @@ export default function RightUser({ user }) {
   return (
     <>
       <div>
-        <div className="h-auto w-full flex items-center border-black-700 rounded-lg p-4 bg-neutral-800">
+        <div className="h-auto w-full flex items-center border-black-700 rounded-lg p-3 bg-neutral-800">
           {Object.keys(user.details).length > 0 && (
             <Zoom>
               <div className="avatar p-2">
@@ -64,7 +64,7 @@ export default function RightUser({ user }) {
           )}
 
           <div className="ml-[5%] space-y-2 text-left">
-            <h1 className="text-2xl font-bold">{user.details["username"]}</h1>
+            <h1 className="text-xl font-bold">{user.details["username"]}</h1>
             <h1 className="text-sm">{user.details["description"]}</h1>
           </div>
         </div>

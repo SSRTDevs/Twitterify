@@ -60,7 +60,7 @@ let mock_trends = [
     `,
     time_stamp: "25/02/2023 18:34:52",
     topic_name: "#Vande Bharat",
-    topic_tweet_count: 437324,
+    topic_tweet_count: "43.7K",
     topic: ["Politics", "Technology"],
     topic_tweets: [
       "Let’s count… How many coaches👇in Vande Bharat?",
@@ -84,7 +84,7 @@ let mock_trends = [
       "India's entry RRR is running in the Best Song nomination for Naatu Naatu, and all hopes are pinned on it. Ahead of that, Ram Charan delighted his fans in the US by having a small meet-and-greet with them. Fans thronged in large numbers to see him.RRR has received an Oscar nomination for Naatu Naatu in Best Original Song category.",
     time_stamp: "25/02/2023 18:34:54",
     topic_name: "#RamCharanBossingOscars",
-    topic_tweet_count: 357722,
+    topic_tweet_count: "357K",
     topic: ["Entertainment", "film_&_television", "celebrity"],
     topic_tweets: [
       "నేను ఇక్కడ కూర్చొని మాట్లాడడం కాదు. I Want to Give My Time to You & Meet You All Personally. I Will Come to Your Tables ❤️ @AlwaysRamCharan Anna Love for fans 🙏🏻🫶",
@@ -100,7 +100,7 @@ let mock_trends = [
       "A memorable picture with my inspiration &amp; soul of the @INCIndia Smt. Sonia Gandhi ji along with Former Minister my Sister Yashomati Thakur, MLA Praniti Shinde and Brother Gurd",
     time_stamp: "25/02/2023 18:34:55",
     topic_name: "#CongressVoiceOfIndia",
-    topic_tweet_count: 43968,
+    topic_tweet_count: "43.9K",
     topic: ["Politics"],
     topic_tweets: [
       "A memorable picture with my inspiration &amp; soul of the @INCIndia Smt. Sonia Gandhi ji along with Former Minister my Sister Yashomati Thakur, MLA Praniti Shinde &amp; Brother Gurdeep Sappal \n\n#CongressVoiceOfIndia https://t.co/bRwEfaMjhm",
@@ -485,10 +485,6 @@ let mock_tweets = [
 ];
 
 let mock_topics = [
-  "Software",
-  "Politics",
-  "Entertainment",
-  "Health",
   "Blockchain",
   "DSA",
   "Competitive Programming",

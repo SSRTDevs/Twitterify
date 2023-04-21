@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { FiTwitter } from "react-icons/fi";
-import twitter_logo from "../images/twitter_logo.png";
+import twitter_logo from "../images/twitterify_logo.png";
 
 const Themes = [
   "black",
@@ -35,7 +35,7 @@ export default function Tabs({ tabs }) {
               data-tip={Themes[themeIndex]}
               onClick={() => setThemeIndex((themeIndex + 1) % Themes.length)}
             >
-              <div className="w-10 rounded-full">
+              <div className="w-16 h-16">  
                 <img src={twitter_logo} />
               </div>
             </div>

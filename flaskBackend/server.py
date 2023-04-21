@@ -11,7 +11,8 @@ from mock_text import mock_text, summarizer, mock_hash
 from setups.model_setup import tweet_summarizer, tweet_analyser, tweet_topic
 
 app = Flask(__name__)
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 CORS(app)
 
 

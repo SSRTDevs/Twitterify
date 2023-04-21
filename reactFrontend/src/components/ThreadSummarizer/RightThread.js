@@ -19,7 +19,7 @@ export default function RightThread(props) {
             </div>
           </div>
           <div className="ml-[5%]">
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-xl font-bold">
               {props.thread.details["username"]}
             </h1>
           </div>

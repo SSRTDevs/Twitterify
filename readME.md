@@ -1,17 +1,32 @@
-# Twitterify
-*A web platform to get quick, accurate and valuable statistical insights for real time twitter data.*
+<div style="display: flex; align-items: center; justify-content: center;">
+  <div style="text-align: center; margin-top: 30px">
+    <p style="font-size: 48px;">Twitterify</p>
+  </div>
+  <div style="margin-left: 20px;">
+        <img src="./Assets/twitterify_logo.png"/>
+  </div>
+</div>
 
-<img src="./Assets/Trending_section.png"/>
+
+## *A web platform to get quick, accurate and valuable statistical insights for real time twitter data.*
+
+---
 
 ### Table of contents
 
-- [About](#about)                           
-- [Why Twitterify?](#why-twitterify)                  
-- [Demonstration](#demonstration)                   
-- [Architecture](#project-architecture) 
-- [Implementation Details](#implementaion-details) 
-- [Tech stacks used](#tech-stacks-used)
-- [How to contribute](#project-contributors)   
+- [*A web platform to get quick, accurate and valuable statistical insights for real time twitter data.*](#a-web-platform-to-get-quick-accurate-and-valuable-statistical-insights-for-real-time-twitter-data)
+  - [Table of contents](#table-of-contents)
+  - [About](#about)
+  - [Why Twitterify?](#why-twitterify)
+  - [Demonstration](#demonstration)
+    - [Trending Section](#trending-section)
+    - [Thread Section](#thread-section)
+    - [User Profile Section](#user-profile-section)
+  - [Project Architecture](#project-architecture)
+  - [Implementation Details](#implementation-details)
+  - [Tech Stack](#tech-stack)
+  - [Project Contributors](#project-contributors)
+  - [Achievement](#achievement)
 
 ### About
 - Twitterify is a web application which provides quick accurate and valuable statistical insights on real time twitter data.
@@ -19,44 +34,41 @@
 - The application aquires real time twitter data from the twitter API's. The data is processed and then analyzed before the insights are shown to the users
 
 ### Why Twitterify?
-- There are over 500 million tweets tweeted per day on twitter by people to share their opinion. While many users use the platform to frequently speak their thoughts, twitter has a large passive userbase which uses the platform, mainly too read tweets and hear about people’s opinions. Often to understand the user opinion or why a particular hashtag is trending, users have to read an average of 20 tweets which can be time consuming. 
-- The aim of the application is to summarize trending data on twitter or data present in a lot of tweets (like threads, or a particular hashtag) and provide insightful information based on  the sentiments expressed along with the emotions involved. The application can be extremely useful for all sections to understand people’s opinions regarding the current affairs in the world effectively. 
+- Twitter is a popular platform where millions of tweets are posted daily to share opinions. To comprehend user opinions or trending hashtags, users have to spend a significant amount of time reading tweets.
+- The application aims to provide insightful information based on the sentiments and emotions expressed in trending Twitter data, including threads and hashtags. It can be useful for gaining a better understanding of people's opinions on current events. 
 
 ### Demonstration
 
-#### Trending Data Analysis
-- Trending Data Analysis page
+#### Trending Section
 
 <img src="./Assets/Trending_section.png"/>
 
-- This page displays the summaries of the top 10 trends on twitter along with the percentage of sentiments involved in each one of them. Users on the platform can read a few tweets, too associated with the particular trends with the same hashtag
+- Summaries, category and sentiments of the top trends are shown
+- Users can read a few tweets associated with a particular hashtag
+- Search Anything feature enables users to know about any hashtag or trending topic in different geographic locations
 
-#### Analysis of Twitter Threads
-- Thread Analysis Page
+#### Thread Section
 
-![Thread Analysis Page](https://github.com/SaketThota/Twitterify/blob/main/Assets/Thread_Summarizer.png?raw=true "Thread Analysis Page")
+![Thread Analysis Page](./Assets/Thread_Summarizer.png?raw=true "Thread Analysis Page")
 
-- This section displays the summary of a thread and statistical information associated with it like the no of tweets the thread consists of and the replies it has received.
-- Users can enter the thread link in the input field for analyzing a particular thread
-- The platform classifies a particular thread as positive or negative after evaluating its sentiments and systematically provides references for the tweets that make up the entire thread.
+- Displays the summary of a thread, sentiment, emtion expressed, thread lenght, replies to thread.
+- Media carousel and links of the thread are provided in different sections
 
-#### Analysis of User profiles
-- Twitter User Profile Analysis Page
+#### User Profile Section
 
-<img src="./Assets/Profile_user_tweets.png" />
+<img src="./Assets/Profile_section_user_tweets.png" />
 
 <br/>
 
-<img src="./Assets/Profile_user_timeline.png" />
+<img src="./Assets/Profile_section_user_timeline.png" />
 
-- This page extracts analyzes a particular user profile on twitter
-- Ther sentiments in the user tweets are noted and a statistical figure of the positiv and negative tweets tweeted by the user is displayed.
-- A word cloud is created displaying the most used words by the user.
-- Other information of the user such as no of followers, the joining date of the user and the user tweets are displayed too.
+- Ther sentiments in the user tweets are noted and a statistical figure of the positive and negative tweets tweeted by the user is displayed
+- User timeline is displayed
+- Word cloud is generated to showcase the most frequently used words by the user
 
 ### Project Architecture
 
-![Architecture Diagram](https://github.com/SaketThota/Twitterify/blob/main/Assets/Architecture.png?raw=true "Architecture Diagram")
+![Architecture Diagram](./Assets/Flowchart.png?raw=true "Architecture Diagram")
 
 
 ### Implementation Details
@@ -66,11 +78,8 @@
 - The frontend server was made using React JS and made use of data processed by the Flask server at the backend.
 - The flask server soley interacted with the Twitter API's to extract data and processed it based on the corresponding requests made by the React Server at the frontend.
 
-### Tech Stacks used
-- Tech Stack used: React JS, Flask
-
-### How to Contribute
-
+### Tech Stack
+- React JS, Flask, Daisy UI, Hugging Face ML Models, Tweepy library
 
 ### Project Contributors
 [Abhishek Sharma](https://github.com/Abhi-tech-09)
@@ -80,3 +89,7 @@
 [Shashwat Satao](https://github.com/kafka-654)
 
 [Prithvi Rohira](https://github.com/prithvirohira8)
+
+### Achievement
+
+- Secured runner-up position at the Project Expo organized by our college.
