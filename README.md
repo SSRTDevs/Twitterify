@@ -1,7 +1,7 @@
 
 ## How to setup models locally
 
-Install models from [here](https://drive.google.com/drive/folders/1WZ1fX8diwd-lDRB0xfZFBHKB5TzFsx_V?usp=sharing)
+Install models from [here](https://drive.google.com/drive/folders/1IeALzCjpz2QxFwes95U3D22Jvua2AUf5?usp=sharing)
 
 ```
 setups 
@@ -18,4 +18,4 @@ setups
 
 ```
 
-Download and put it inside setups folder maintaining the above heirarchy. 
+Download and put it inside setups folder inside flaskBackend maintaining the above heirarchy. 
