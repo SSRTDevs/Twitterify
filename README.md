@@ -77,19 +77,6 @@
 - The frontend server was made using React JS and made use of data processed by the Flask server at the backend.
 - The flask server soley interacted with the Twitter API's to extract data and processed it based on the corresponding requests made by the React Server at the frontend.
 
-
-### Steps to Download and Integrate
-1. Clone the repository from
-2. The frontend and backend servers of the application run independently and need to be set up before starting them.
-3. the flaskBackend folder corresponds to the flask server and the reactFrontend corresponds to the frontend server
-4. Install the latest versions of Node JS and Python on the device that would be required to set up and run the application
-5. To set up the flask server, open the terminal in the flaskFrontend directory and run pip install -r requirements.txt. This would install all the necessary packages for the flask server
-6. To set up the flask server, open the terminal in the reactBackend directory and run npm intsall. This would install all the necessary packages for the react server
-7. To run the flask server, run export FLASK_APP=sever.py and flask run subsequently on the terminal opened for the flask server. This would start the flask server on port 5000 on the localhost.
-8. To run the react server, run npm start on the terminal opened for the react server. This would start the react server on port 3000 on the localhost.
-9. The application then can be viewed on the browser on localhost:3000 and can be used by the users.
-
-
 ### Performance and Analysis
 <img src="./Assets/Twitterify-lighthouse.png"/>
 
@@ -100,6 +87,39 @@ Twitterify has achieved a perfect score of 100 in the Best Practices category of
 ### Achievement
 
 - 🎉 Secured runner-up position at the Project Expo organized by our college
+
+
+### Steps to Download and Integrate
+- Prerequisite 
+  - Nodejs >= 18
+  - Python >= 3.0
+
+1. Fork and Clone the repository on your local machine. 
+2. The frontend and backend servers of the application run independently and need to be set up before starting them.
+- <strong>Setting frontend</strong>
+
+3. To run the react server, simply navigate to the reactfrontend directory and run ```npm install```. Once the installation completes you just need ```npm start```. This would start the react server on port 3000 on the localhost.
+4. The application then can be viewed on the browser on localhost:3000 and can be used by the users.
+- <strong>Setting Backend</strong>
+
+5. Setting the Backend could be quite a hassle.
+6. To set up the flask server, open the terminal in the flaskBackend directory and run ```pip install -r requirements.txt```. This would install all the necessary packages for the flask server.
+
+- Setting the API keys
+7. You need to make ```.env``` inside flaskbackend dir and put the API keys in there. Get your API keys [here](https://developer.twitter.com/en/portal/petition/essential/terms?plan=free). 
+
+```
+api_key=**********
+api_key_secret=***************
+access_token=**********
+access_token_secret=********
+consumer_key=********
+consumer_secret=**********
+bearer_token=********
+```
+- Setting up models: (This will be time consuming 😢)
+8. Head over [here](https://github.com/SSRTDevs/Twitterify/blob/models/README.md) to know about model setup
+9. To run the flask server, run ```flask --app server run``` subsequently on the terminal opened for the flask server. This would start the flask server on port 5000 on the localhost.
 
 ### Project Contributors
 [Abhishek Sharma](https://github.com/Abhi-tech-09)
